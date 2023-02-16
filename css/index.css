@@ -6,5 +6,8 @@
 }
 
 :lang(bn){
-  
+  *{
+    font-family: 'Noto Serif Bengali', serif;
+
+  }
 }
