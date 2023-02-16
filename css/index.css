@@ -5,6 +5,6 @@
   box-sizing: content-box;
 }
 
-#blog-body{
-  font-family: font-family: 'Lora', serif;
+.blog-body{
+  font-family: font-family: 'Lora', serif;!important
 }
