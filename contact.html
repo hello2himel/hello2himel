@@ -41,7 +41,11 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <form action="" name="Contact Form" data-netlify="true">
+          <form action="" name="Contact Form" data-netlify="true" netlify-honeypot="bot-field">
+            <div class="d-none">
+              <label for="exampleFormControlInput1" class="form-label">Name</label>
+              <input type="text" name="bot-field" class="form-control" id="exampleFormControlInput0" placeholder="Your Name">
+            </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Name</label>
               <input type="text" name="Name" class="form-control" id="exampleFormControlInput0" placeholder="Your Name">
