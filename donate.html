@@ -15,10 +15,7 @@
   </button>
 
   <script>
-    function toggleThemeAuto () {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark': 'light';
-      document.getElementById('autoTheme').setAttribute('data-bs-theme', systemTheme);
-    }
+    
     function toggleTheme () {
       const currentTheme = document.getElementById("autoTheme").getAttribute("data-bs-theme");
       const newTheme = currentTheme === "light" ? "dark": "light";
