@@ -5,7 +5,7 @@ function toggleTheme () {
 }
 
 function toggleThemeAuto() {
-  const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light': 'dark';
+  const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark': 'light';
   document.getElementById('autoTheme').setAttribute('data-bs-theme', systemTheme);
 }
 
