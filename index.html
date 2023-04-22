@@ -100,26 +100,11 @@ Projects
 
 
 <!-- Native JS Start -->
-<script>
-  function toggleTheme () {
-  const currentTheme = document.getElementById("autoTheme").getAttribute("data-bs-theme");
-  const newTheme = currentTheme === "light" ? "dark": "light";
-  document.getElementById("autoTheme").setAttribute("data-bs-theme", newTheme);
-}
-
-function toggleThemeAuto() {
-  const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark': 'light';
-  document.getElementById('autoTheme').setAttribute('data-bs-theme', systemTheme);
-}
-
-// Set initial theme on page load
-toggleThemeAuto();
-</script>
+<script src="js/index.js"></script>
 <!-- Native JS End -->
 
 <!-- Bootstrap JS Start -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
+<script src="js/bootstrap.js"></script>
 <!-- Bootstrap JS End -->
 
 </body>
