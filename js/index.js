@@ -8,7 +8,7 @@ function toggleTheme() {
 
 function toggleThemeAuto() {
   const savedTheme = localStorage.getItem("theme");
-  const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark': 'light';
+  const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
   const newTheme = savedTheme || systemTheme;
   document.getElementById('autoTheme').setAttribute('data-bs-theme', newTheme);
   updateTextEmphasis(newTheme);
@@ -16,7 +16,7 @@ function toggleThemeAuto() {
 
 function updateTextEmphasis(theme) {
   const h1Name = document.getElementById("h1Name");
-  if (theme === "light") {
+  if(theme === "light") {
     h1Name.classList.add("text-dark");
     h1Name.classList.remove("text-light-emphasis");
   } else {
