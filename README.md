@@ -51,6 +51,4 @@
 
 <br clear="both">
 
-<img src="https://raw.githubusercontent.com/hello2himel/hello2himel/blob/output/snake.svg" alt="Snake animation" />
-
 ###
