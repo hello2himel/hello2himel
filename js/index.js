@@ -20,13 +20,13 @@ function updateTextEmphasis(theme) {
     h1Name.classList.add("text-dark");
     h1Name.classList.remove("text-light-emphasis");
     toggleButton.classList.add("btn-dark");
-    toggleButton.classList.remove("btn-light");
+    toggleButton.classList.remove("btn-dark");
     toggleIcon.classList.add("ri-moon-clear-fill");
     toggleIcon.classList.remove("ri-sun-fill");
   } else {
     h1Name.classList.add("text-light-emphasis");
     h1Name.classList.remove("text-dark");
-    toggleButton.classList.add("btn-light");
+    toggleButton.classList.add("btn-dark");
     toggleButton.classList.remove("btn-dark");
     toggleIcon.classList.add("ri-sun-fill");
     toggleIcon.classList.remove("ri-moon-clear-fill");
