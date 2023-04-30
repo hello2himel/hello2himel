@@ -21,11 +21,15 @@ function updateTextEmphasis(theme) {
     h1Name.classList.remove("text-light-emphasis");
     toggleButton.classList.add("btn-dark");
     toggleButton.classList.remove("btn-light");
+    toggleIcon.classList.add("fa-moon");
+    toggleIcon.classList.remove("fa-sun");
   } else {
     h1Name.classList.add("text-light-emphasis");
     h1Name.classList.remove("text-dark");
     toggleButton.classList.add("btn-light");
     toggleButton.classList.remove("btn-dark");
+    toggleIcon.classList.add("fa-sun");
+    toggleIcon.classList.remove("fa-moon");
   }
 }
 
