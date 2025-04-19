@@ -1,90 +1,755 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light" id="autoTheme">
-
+<html lang="en">
 <head>
-  
-  <!-- Native CSS Start -->
-  <link rel="stylesheet" href="css/index.css">
-  <!-- Native CSS End-->
-  
-  <!-- Bootstrap CSS Start -->
-  <link rel="stylesheet" href="css/bootstrap.css" class="css">
-  <!-- Bootstrap CSS End -->
-  
-  <!-- Icon Pack Start -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-  <!-- Icon Pack End -->
-  
-  <!-- Meta Start -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="I'm Himel Das, a programmer, podcaster, article writer and a bookworm.">
-  <title>I'm Himel</title>
-  <!-- Meta End -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himel Das | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+          :root {
+            --bg-color: #0a0a0a;
+            --text-color: #f0f0f0;
+            --border-color: #333;
+            --card-bg: #111;
+            --card-hover-border: #555;
+            --tag-bg: #222;
+            --overlay-bg: rgba(0, 0, 0, 0.8);
+            --sidebar-width: 250px;
+        }
+        
+        [data-theme="light"] {
+            --bg-color: #f5f5f5;
+            --text-color: #121212;
+            --border-color: #ddd;
+            --card-bg: #fff;
+            --card-hover-border: #999;
+            --tag-bg: #e9e9e9;
+            --overlay-bg: rgba(255, 255, 255, 0.95);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .main-container {
+            padding: 2rem;
+            transition: margin-left 0.3s ease;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-img-container {
+            flex-shrink: 0;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+        
+        .profile-name-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .profile-name-title h1 {
+            margin-bottom: 0.25rem;
+        }
+        
+        .profile-content {
+            width: 100%;
+            text-align: left;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            opacity: 0.85;
+        }
+        
+        .bio-highlight {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 0.5rem 0 1.5rem;
+            opacity: 0.9;
+            max-width: 800px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            margin: 0.25rem;
+            font-size: 0.8rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .achievement-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+            transition: transform 0.2s;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .achievement-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .medal {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--card-hover-border);
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .leadership-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .leadership-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+        
+        .leadership-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .leadership-org {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+            justify-content: flex-start;
+        }
+        
+        .contact-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--tag-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .contact-button:hover {
+            transform: translateX(5px);
+            border-color: var(--card-hover-border);
+        }
+        
+        .contact-button i {
+            transition: transform 0.2s;
+        }
+        
+        .contact-button:hover i.fa-arrow-right {
+            transform: translateX(3px);
+        }
+        
+        .header-controls {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .header-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .header-button:hover {
+            transform: translateY(-3px);
+            border-color: var(--card-hover-border);
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--bg-color);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-button {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .sidebar-button:hover {
+            border-color: var(--card-hover-border);
+            transform: translateY(-2px);
+        }
+        
+        .sidebar-menu {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .sidebar-link {
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: background 0.2s;
+            font-weight: 500;
+        }
+        
+        .sidebar-link:hover {
+            background: var(--card-bg);
+        }
+        
+        .sidebar-divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 1rem 0;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-bg);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 999;
+        }
+        
+        .overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        @media (min-width: 1024px) {
+            body {
+                display: flex;
+            }
+            
+            .main-container {
+                max-width: min(1400px, 80%);
+                padding: 2rem 3rem;
+            }
+            
+            body.sidebar-expanded .main-container {
+                margin-left: var(--sidebar-width);
+                max-width: min(1400px, 80%);
+            }
+            
+            .sidebar {
+                left: 0;
+                transform: translateX(-100%);
+            }
+            
+            body.sidebar-expanded .sidebar {
+                transform: translateX(0);
+            }
+            
+            .header-button#menu-toggle {
+                display: none;
+            }
+            
+            /* Hide header theme toggle on big screens */
+            .header-button#theme-toggle {
+                display: none;
+            }
+            
+            .overlay {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 1023px) {
+            .sidebar-controls .sidebar-button#theme-toggle-sidebar {
+                display: flex; /* Always show in sidebar on mobile */
+            }
+            
+            /* Show header theme toggle on mobile */
+            .header-button#theme-toggle {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-name-title {
+                align-items: center;
+            }
+            
+            .profile-content {
+                text-align: center;
+            }
+            
+            .contact-buttons {
+                justify-content: center;
+            }
+            
+            .profile-section {
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .header-controls {
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  
-  <main class="d-block mx-auto" style="max-width:400px;">
-    
-    <div class="w-100">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid my-auto">
-          <p class="navbar-brand h1 mb-0">
-            I'm Himel
-          </p>
-          <div>
-            <button id="toggleButton" class="btn btn-dark" onclick="toggleTheme()"><i id="toggleIcon" class="ri-moon-clear-fill"></i></button>
-            <button class="btn btn-danger" onclick="location.href = '/contact';"><i
-                class="ri-chat-4-fill pe-2"></i>Let's talk!</button>
-          </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-controls">
+            <button class="sidebar-button" id="sidebar-collapse" title="Collapse sidebar">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="sidebar-button" id="theme-toggle-sidebar" title="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
-      </nav>
+        
+        <div class="sidebar-menu">
+            <a href="#achievements" class="sidebar-link">
+                <i class="fas fa-trophy"></i> Achievements
+            </a>
+            <a href="#leadership" class="sidebar-link">
+                <i class="fas fa-users"></i> Leadership
+            </a>
+            <a href="#projects" class="sidebar-link">
+                <i class="fas fa-code-branch"></i> Projects
+            </a>
+            <a href="#vision" class="sidebar-link">
+                <i class="fas fa-eye"></i> Vision
+            </a>
+            <div class="sidebar-divider"></div>
+            <a href="https://hello2himel.blogspot.com" class="sidebar-link" target="_blank">
+                <i class="fas fa-blog"></i> Read Blog
+            </a>
+            <a href="mailto:hello2himel@proton.me" class="sidebar-link">
+                <i class="fas fa-envelope"></i> Contact Me
+            </a>
+            <a href="https://github.com/hello2himel" class="sidebar-link" target="_blank">
+                <i class="fab fa-github"></i> View Projects
+            </a>
+        </div>
     </div>
     
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <img src="res/himel_portfolio_profile.jpg" alt="himel_portfolio_profile"
-            class="rounded-5 d-block mx-auto my-3 shadow-sm" style="width:50%">
-          <h1 id="h1Name" class="text-dark text-center fw-bold">
-            Himel
-          </h1>
-          <p class="fs-6 text-center">
-            @hello2himel
-          </p>
-          <p class="fs-5 text-center">
-            Hey there! I'm a programmer, podcaster, article writer and a bookworm.
-          </p>
+    <div class="main-container">
+        <header>
+            <div class="header-controls">
+                <button class="header-button" id="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="header-button" id="menu-toggle" title="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+        
+        <div class="profile-section">
+            <div class="profile-header">
+                <div class="profile-img-container">
+                    <img src="https://avatars.githubusercontent.com/u/99470657?v=4" alt="Himel Das" class="profile-img">
+                </div>
+                <div class="profile-name-title">
+                    <h1>Himel Das</h1>
+                    <div class="tags">
+                      <span class="tag">Astrophysics</span>
+                      <span class="tag">Comptuational Science</span>
+                      <span class="tag">Scientific Research</span>
+                      <span class="tag">Linux & FOSS</span>
+                  </div>
+                </div>
+            </div>
+            <div class="profile-content">
+                <p class="bio-highlight">A <span id="age">16</span>-year-old aspiring astrophysicist from Bangladesh with a passion for understanding the universe through the lens of mathematics and physics. Currently exploring the unknown while building technology that matters.</p>
+                
+                <div class="contact-buttons">
+                    <a href="mailto:hello2himel@proton.me" class="contact-button">
+                        <i class="fas fa-envelope"></i> Email <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="https://t.me/hello2himel" class="contact-button" target="_blank">
+                        <i class="fab fa-telegram"></i> Telegram <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="https://github.com/hello2himel" class="contact-button" target="_blank">
+                        <i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="https://hello2himel.blogspot.com" class="contact-button" target="_blank">
+                        <i class="fas fa-blog"></i> Blog <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-7">
-          <a href="https://hello2himel.blogspot.com">
-            <button class="btn btn-danger w-100"><i class="ri-newspaper-fill pe-2"></i>Read Blog</button>
-          </a>
-        </div>
-        <div class="col-5">
-          <button class="btn btn-outline-danger w-100" onclick="location.href = 'https://github.com/hello2himel';"><i
-              class="ri-briefcase-4-fill pe-2"></i></i>Projects</button>
-        </div>
-      </div>
+        
+        <section class="section" id="achievements">
+            <h2>Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-title"><span class="medal">🥈</span>Silver Medalist</div>
+                    <p>Bangladesh Olympiad on Astronomy and Astrophysics (Regional Round)</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-title"><span class="medal">🥇</span>1st Prize</div>
+                    <p>National Science Fair 2024</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-title"><span class="medal">🥈</span>2nd Prize</div>
+                    <p>National Science Quiz 2024</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-title"><span class="medal">🏆</span>Winner</div>
+                    <p>Digital Innovation Fair (2023, Regional)</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="leadership">
+            <h2>Leadership</h2>
+            <div class="leadership-list">
+                <div class="leadership-item">
+                    <div class="leadership-title">President</div>
+                    <div class="leadership-org">Science Club, Bogura Zilla School</div>
+                    <p>Organizing science fairs, workshops, competitions, and building model rockets/telescopes to inspire scientific curiosity.</p>
+                </div>
+                <div class="leadership-item">
+                    <div class="leadership-title">Founder</div>
+                    <div class="leadership-org">Techbondhu (2020–Present)</div>
+                    <p>Building a community focused on technology education and innovation.</p>
+                </div>
+                <div class="leadership-item">
+                    <div class="leadership-title">Chief Initiator</div>
+                    <div class="leadership-org">The Winter School (2024–Present)</div>
+                    <p>Creating educational opportunities during the winter break.</p>
+                </div>
+                <div class="leadership-item">
+                    <div class="leadership-title">Research & Publication Lead</div>
+                    <div class="leadership-org">The Insight Post (Oct 2024–Present)</div>
+                    <p>Leading research initiatives and publication strategies.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="projects">
+            <h2>Current Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">Custom Android ROM</div>
+                    <p>Building a personalized Android ROM based on LineageOS with custom launcher and settings for optimized user experience.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">NASA APOD Live Wallpaper</div>
+                    <p>Developing an Android app that fetches NASA's Astronomy Picture of the Day as dynamic live wallpaper.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">Aaturghor Youth Organization</div>
+                    <p>Founding a network of intelligent, impact-driven teens focused on software development, science, and entrepreneurship.</p>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">Self-Hosted Homelab</div>
+                    <p>Building a personal server with redundancy, hosting services like office suite, password manager, AI capabilities, and more.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="vision">
+            <h2>Vision</h2>
+            <p>My vision is to contribute to the advancement of human knowledge through the exploration of the universe and its mysteries. With a deep passion for astrophysics and an unwavering curiosity about the cosmos, I aim to blend scientific research with innovative technology to unravel the fundamental forces shaping our existence.</p>
+            <p>I aspire to lead impactful research, inspire the next generation of thinkers, and bridge the gap between science and society. By combining my love for physics, education, and technology, I envision creating a world where knowledge is accessible, curiosity is nurtured, and the frontiers of science are continually pushed.</p>
+        </section>
+        
+        <footer>
+            &copy; 2025 Himel Das - Bogura, Bangladesh
+        </footer>
     </div>
-    </div>
-  </main>
-  
-  
-  
-  
-  <!-- Native JS Start -->
-  <script src="js/index.js"></script>
-  <!-- Native JS End -->
-  
-  <!-- Bootstrap JS Start -->
-  <script src="js/bootstrap.js"></script>
-  <!-- Bootstrap JS End -->
-  
-</body>
 
+    <script>
+        // Age calculation
+        function calculateAge(birthDate) {
+            const today = new Date();
+            const birth = new Date(birthDate);
+            let age = today.getFullYear() - birth.getFullYear();
+            const monthDiff = today.getMonth() - birth.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+                age--;
+            }
+            
+            return age;
+        }
+        
+        // Set age dynamically
+        document.getElementById('age').textContent = calculateAge('2009-01-20');
+        
+        // Theme handling
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleSidebar = document.getElementById('theme-toggle-sidebar');
+        const themeIcons = document.querySelectorAll('#theme-toggle i, #theme-toggle-sidebar i');
+        
+        // Check for saved theme preference or use system preference
+        const getPreferredTheme = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            
+            // Check system preference
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
+        
+        // Apply theme to document
+        const applyTheme = (theme) => {
+            document.documentElement.setAttribute('data-theme', theme);
+            themeIcons.forEach(icon => {
+                icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            });
+        };
+        
+        // Initial theme setup
+        applyTheme(getPreferredTheme());
+        
+        // Theme toggle functionality
+        const toggleTheme = () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        };
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleSidebar?.addEventListener('click', toggleTheme);
+        
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            // Only apply if user hasn't manually set a preference
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+        
+        // Sidebar functionality
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarCollapse = document.getElementById('sidebar-collapse');
+        const overlay = document.getElementById('overlay');
+        
+        // Check screen size and set initial sidebar state
+        function checkScreenSize() {
+            if (window.innerWidth >= 1024) {
+                document.body.classList.add('sidebar-expanded');
+            } else {
+                document.body.classList.remove('sidebar-expanded');
+            }
+        }
+        
+        // Run on page load
+        checkScreenSize();
+        
+        // Toggle sidebar on menu button click
+        menuToggle.addEventListener('click', () => {
+            if (window.innerWidth < 1024) {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+        
+        // Collapse sidebar button functionality
+        sidebarCollapse.addEventListener('click', () => {
+            if (window.innerWidth >= 1024) {
+                document.body.classList.toggle('sidebar-expanded');
+            } else {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close mobile sidebar when clicking overlay
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close mobile sidebar when clicking menu links
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (link.getAttribute('href').startsWith('#') && window.innerWidth < 1024) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+        
+        // Update sidebar state when resizing
+        window.addEventListener('resize', checkScreenSize);
+    </script>
+</body>
 </html>
