@@ -270,20 +270,20 @@ footer {
   border-color: var(--card-hover-border);
 }
 
-.contact-button i.fa-arrow-right {
+.contact-button i.ri-arrow-right-s-line {
   opacity: 0;
   position: absolute;
   right: -20px;
   transition: opacity 0.2s, right 0.2s;
 }
 
-.contact-button:hover i.fa-arrow-right {
+.contact-button:hover i.ri-arrow-right-s-line {
   opacity: 1;
   right: 10px;
 }
 
 .contact-button:hover {
-  padding-right: 2rem;
+  padding-right: 2.25rem;
 }
 
 /* Header Controls */
@@ -495,14 +495,14 @@ body.error-page {
   border-color: var(--card-hover-border);
 }
 
-.button i.fa-arrow-right {
+.button i.ri-arrow-right-s-line {
   opacity: 0;
   position: absolute;
   right: -20px;
   transition: opacity 0.2s, right 0.2s;
 }
 
-.button:hover i.fa-arrow-right {
+.button:hover i.ri-arrow-right-s-line {
   opacity: 1;
   right: 10px;
 }
