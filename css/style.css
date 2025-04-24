@@ -446,13 +446,13 @@ body.error-page {
 
 @keyframes float {
   0% {
-      transform: translateY(0px);
+    transform: translateY(0px);
   }
   50% {
-      transform: translateY(-20px);
+    transform: translateY(-20px);
   }
   100% {
-      transform: translateY(0px);
+    transform: translateY(0px);
   }
 }
 
@@ -511,6 +511,18 @@ body.error-page {
   padding-right: 2.5rem;
 }
 
+/* Space Container & Elements - Enhanced with Parallax */
+#space-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .space-element {
   position: absolute;
   opacity: 0.2;
@@ -519,11 +531,14 @@ body.error-page {
 }
 
 .star {
+  position: absolute;
   background-color: var(--text-color);
   border-radius: 50%;
   width: 3px;
   height: 3px;
   animation: twinkle 2s infinite ease-in-out;
+  will-change: transform;
+  transition: transform 0.2s ease-out;
 }
 
 .planet {
@@ -532,6 +547,82 @@ body.error-page {
   border-radius: 50%;
   background: linear-gradient(135deg, #FFC107, #FFD54F);
   box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+  transition: transform 0.3s ease-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Media query to handle planet visibility */
+@media (min-width: 769px) {
+  .planet {
+    display: none !important;
+  }
+  
+  /* More pronounced parallax effect on larger screens */
+  .star {
+    transition: transform 0.15s ease-out;
+  }
+}
+
+@media (max-width: 768px) {
+  .planet {
+    display: block !important;
+  }
+  
+  /* Smoother transitions for mobile gyroscope */
+  .star {
+    transition: transform 0.3s ease-out;
+  }
+  
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .profile-name-title {
+    align-items: center;
+  }
+  
+  .profile-content {
+    text-align: center;
+  }
+  
+  .contact-buttons {
+    justify-content: center;
+  }
+  
+  .profile-section {
+    align-items: center;
+  }
+  
+  .error-code {
+    font-size: 6rem;
+  }
+  
+  .error-title {
+    font-size: 1.5rem;
+  }
+  
+  .error-message {
+    font-size: 1rem;
+  }
+  
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Fix for background to stay fixed */
@@ -551,26 +642,7 @@ body.error-page {
   z-index: 1;
 }
 
-/* Make the star elements stay in place */
-.star {
-  position: absolute;
-  background-color: var(--text-color);
-  border-radius: 50%;
-  width: 3px;
-  height: 3px;
-  animation: twinkle 2s infinite ease-in-out;
-  z-index: -1;
-}
-
-@keyframes twinkle {
-  0%, 100% {
-      opacity: 0.2;
-  }
-  50% {
-      opacity: 0.7;
-  }
-}
-
+/* Theme toggle button */
 .theme-toggle {
   position: fixed;
   top: 1.5rem;
@@ -610,48 +682,21 @@ body.error-page {
   border-bottom-style: solid;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-  .profile-header {
-      flex-direction: column;
-      text-align: center;
-  }
-  
-  .profile-name-title {
-      align-items: center;
-  }
-  
-  .profile-content {
-      text-align: center;
-  }
-  
-  .contact-buttons {
-      justify-content: center;
-  }
-  
-  .profile-section {
-      align-items: center;
-  }
-  
-  .error-code {
-      font-size: 6rem;
-  }
-  
-  .error-title {
-      font-size: 1.5rem;
-  }
-  
-  .error-message {
-      font-size: 1rem;
-  }
-  
-  .buttons-container {
-      flex-direction: column;
-      align-items: center;
-  }
-  
-  .button {
-      width: 100%;
-      justify-content: center;
-  }
+/* Add different star sizes for more visual depth */
+.star.small {
+  width: 2px;
+  height: 2px;
+  opacity: 0.15;
+}
+
+.star.medium {
+  width: 3px;
+  height: 3px;
+  opacity: 0.2;
+}
+
+.star.large {
+  width: 4px;
+  height: 4px;
+  opacity: 0.25;
 }
