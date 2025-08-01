@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Himel Das | Portfolio</title>
   <link href="/res/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
   <!-- Space container for animation -->
   <div id="space-container"></div>
-
   <div class="overlay" id="overlay"></div>
   <div class="sidebar" id="sidebar">
     <div class="sidebar-controls">
@@ -21,16 +22,18 @@
         <i class="ri-lg ri-arrow-right-s-line"></i>
       </button>
     </div>
-
     <div class="sidebar-menu">
-      <a href="#achievements" class="sidebar-link">
-        <i class="ri-lg ri-trophy-line"></i> Achievements
+      <a href="#projects" class="sidebar-link">
+        <i class="ri-lg ri-git-branch-line"></i> Projects
+      </a>
+      <a href="#publications" class="sidebar-link">
+        <i class="ri-lg ri-book-line"></i> Publications
       </a>
       <a href="#leadership" class="sidebar-link">
         <i class="ri-lg ri-group-line"></i> Leadership
       </a>
-      <a href="#projects" class="sidebar-link">
-        <i class="ri-lg ri-git-branch-line"></i> Projects
+      <a href="#achievements" class="sidebar-link">
+        <i class="ri-lg ri-trophy-line"></i> Achievements
       </a>
       <a href="#vision" class="sidebar-link">
         <i class="ri-lg ri-eye-line"></i> Vision
@@ -47,7 +50,6 @@
       </a>
     </div>
   </div>
-
   <!-- Fixed position control buttons at top right -->
   <div class="header-controls">
     <button class="header-button" id="theme-toggle" title="Toggle theme">
@@ -57,7 +59,6 @@
       <i class="ri-lg ri-menu-2-line"></i>
     </button>
   </div>
-
   <div class="main-container">
     <div class="profile-section">
       <div class="profile-header">
@@ -76,9 +77,10 @@
       </div>
       <div class="profile-content">
         <p class="bio-highlight">
-          A <span id="age">16</span>-year-old aspiring astrophysicist from Bangladesh with a passion for understanding the universe through the lens of mathematics and physics. Currently exploring the unknown while building technology that matters.
+          A <span id="age">16</span>-year-old astronerd from Bangladesh with a passion for FOSS and a strong focus
+          towards digital sovereignty. Currently exploring the unknown while building technology that matters.
         </p>
-        <div class="contact-buttons">
+         <div class="contact-buttons">
           <a href="mailto:hello2himel@proton.me" class="contact-button">
             <i class="ri-lg ri-mail-fill"></i> Email <i class="ri-lg ri-arrow-right-s-line"></i>
           </a>
@@ -94,7 +96,95 @@
         </div>
       </div>
     </div>
-
+    <section class="section" id="projects">
+      <h2>Current Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card bottom-align">
+          <div class="project-title">Cordata</div>
+          <p>A tool to calculate the area, circumference, and centroid of a polygon in coordinate geometry.</p>
+          <a class="learn-more-btn" href="https://github.com/hello2himel/cordata" target="_blank"
+            aria-label="Learn more about Cordara">
+            Learn More
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+        <div class="project-card bottom-align">
+          <div class="project-title">JustVocals</div>
+          <p>Isolate vocals and remove musical instruments from any audio clip.</p>
+          <a class="learn-more-btn" href="https://github.com/hello2himel/justvocals" target="_blank"
+            aria-label="Learn more about JustVocals">
+            Learn More
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+        <div class="project-card bottom-align">
+          <div class="project-title">Boka OS</div>
+          <p>Minimalist dumb OS, focused towards FOSS, privacy, and productivity.</p>
+        </div>
+        <div class="project-card bottom-align">
+          <div class="project-title">NASA APOD Live Wallpaper</div>
+          <p>Developing an Android app that fetches NASA's Astronomy Picture of the Day as dynamic live wallpaper.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="publications">
+      <h2>Publications</h2>
+      <div class="projects-grid">
+        <div class="project-card bottom-align">
+          <div class="project-title">Equilibrium Statistic</div>
+          <p>A Recursive Convergence Model for Central Tendency</p>
+          <a class="learn-more-btn" href="https://github.com/hello2himel/equilibrium-statistic" target="_blank"
+            aria-label="Learn more about Equilibrium Statistics">
+            Learn More
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="leadership">
+      <h2>Leadership</h2>
+      <div class="leadership-list">
+        <div class="leadership-item">
+          <div class="leadership-title">Founder</div>
+          <div class="leadership-org">Stargzr</div>
+          <p>Started as a hobbyist network of astro people based in Bogura to talk about astro, now arranges astro
+            outreach and events.</p>
+        </div>
+        <div class="leadership-item">
+          <div class="leadership-title">President</div>
+          <div class="leadership-org">Science Club, Bogura Zilla School</div>
+          <p>Organizing science fairs, workshops, competitions, and building model rockets/telescopes to inspire
+            scientific curiosity.</p>
+        </div>
+        <div class="leadership-item">
+          <div class="leadership-title">Founder</div>
+          <div class="leadership-org">Techbondhu (2020–Present)</div>
+          <p>Building a community focused on technology education and innovation.</p>
+        </div>
+        <div class="leadership-item">
+          <div class="leadership-title">Co-Head of Department of Content and Production</div>
+          <div class="leadership-org">Aruddho Ekattor</div>
+          <p>Leading content creation and production strategies.</p>
+        </div>
+        <div class="leadership-item">
+          <div class="leadership-title">Content Writer</div>
+          <div class="leadership-org">Tachyon</div>
+          <p>Contributing articles and content on science and technology.</p>
+        </div>
+      </div>
+    </section>
     <section class="section" id="achievements">
       <h2>Achievements</h2>
       <div class="achievements-grid">
@@ -116,65 +206,20 @@
         </div>
       </div>
     </section>
-
-    <section class="section" id="leadership">
-      <h2>Leadership</h2>
-      <div class="leadership-list">
-        <div class="leadership-item">
-          <div class="leadership-title">President</div>
-          <div class="leadership-org">Science Club, Bogura Zilla School</div>
-          <p>Organizing science fairs, workshops, competitions, and building model rockets/telescopes to inspire scientific curiosity.</p>
-        </div>
-        <div class="leadership-item">
-          <div class="leadership-title">Founder</div>
-          <div class="leadership-org">Techbondhu (2020–Present)</div>
-          <p>Building a community focused on technology education and innovation.</p>
-        </div>
-        <div class="leadership-item">
-          <div class="leadership-title">Chief Initiator</div>
-          <div class="leadership-org">The Winter School (2024–Present)</div>
-          <p>Creating educational opportunities during the winter break.</p>
-        </div>
-        <div class="leadership-item">
-          <div class="leadership-title">Research & Publication Lead</div>
-          <div class="leadership-org">The Insight Post (Oct 2024–Present)</div>
-          <p>Leading research initiatives and publication strategies.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <h2>Current Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-title">Custom Android ROM</div>
-          <p>Building a personalized Android ROM based on LineageOS with custom launcher and settings for optimized user experience.</p>
-        </div>
-        <div class="project-card">
-          <div class="project-title">NASA APOD Live Wallpaper</div>
-          <p>Developing an Android app that fetches NASA's Astronomy Picture of the Day as dynamic live wallpaper.</p>
-        </div>
-        <div class="project-card">
-          <div class="project-title">Aaturghor Youth Organization</div>
-          <p>Founding a network of intelligent, impact-driven teens focused on software development, science, and entrepreneurship.</p>
-        </div>
-        <div class="project-card">
-          <div class="project-title">Self-Hosted Homelab</div>
-          <p>Building a personal server with redundancy, hosting services like office suite, password manager, AI capabilities, and more.</p>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="vision">
       <h2>Vision</h2>
-      <p>My vision is to contribute to the advancement of human knowledge through the exploration of the universe and its mysteries. With a deep passion for astrophysics and an unwavering curiosity about the cosmos, I aim to blend scientific research with innovative technology to unravel the fundamental forces shaping our existence.</p>
-      <p>I aspire to lead impactful research, inspire the next generation of thinkers, and bridge the gap between science and society. By combining my love for physics, education, and technology, I envision creating a world where knowledge is accessible, curiosity is nurtured, and the frontiers of science are continually pushed.</p>
+      <p>My vision is to contribute to the advancement of human knowledge through the exploration of the universe and
+        its mysteries. With a deep passion for astrophysics and an unwavering curiosity about the cosmos, I aim to blend
+        scientific research with innovative technology to unravel the fundamental forces shaping our existence.</p>
+      <p>I aspire to lead impactful research, inspire the next generation of thinkers, and bridge the gap between
+        science and society. By combining my love for physics, education, and technology, I envision creating a world
+        where knowledge is accessible, curiosity is nurtured, and the frontiers of science are continually pushed.</p>
     </section>
-
     <footer>
       &copy; 2025 Himel Das - Bogura, Bangladesh
     </footer>
   </div>
   <script src="/js/scripts.js"></script>
 </body>
+
 </html>
