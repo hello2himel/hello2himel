@@ -1,5 +1,5 @@
 [build]
-  command = "hugo --config blog/hugo.toml --source blog"
+  command = "hugo --source blog"
   publish = "blog/public"
 
 [context.production.environment]
