@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = '/blog/'
 languageCode = 'en-us'
 title = "Himel Das | Blog"
 theme = 'PaperMod'
@@ -33,7 +33,7 @@ relativeURLs = false
 [menu]
   [[menu.main]]
     name = "Home"
-    url = "/"
+    url = "https://hello2himel.netlify.app"
     weight = 10
   
   [[menu.main]]
