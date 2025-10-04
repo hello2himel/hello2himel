@@ -1,4 +1,4 @@
-baseURL = 'https://hello2himel.netlify.app'
+baseURL = 'https://hello2himel.netlify.app/blog'
 languageCode = 'en-us'
 title = "Himel Das | Blog"
 theme = 'PaperMod'
