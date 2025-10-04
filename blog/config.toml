@@ -1,31 +1,56 @@
-baseURL = '/blog'
+baseURL = 'https://hello2himel.netlify.app/blog/'
 languageCode = 'en-us'
 title = "Himel Das | Blog"
 theme = 'PaperMod'
 
 [params]
+  env = "production"
+  description = "Thoughts on astrophysics, FOSS, and technology"
+  author = "Himel Das"
   defaultTheme = "auto"
   ShowReadingTime = true
   ShowShareButtons = true
   ShowCodeCopyButtons = true
   ShowBreadCrumbs = true
   ShowPostNavLinks = true
+  ShowToc = true
+  TocOpen = false
 
-  # Info displayed above the first post
-  [params.homeInfoParams]
-    Title = "Welcome to My Blog 👋"
-    Content = """
-Here you'll find my latest posts on **astrophysics**, **FOSS**, and **tech projects**.  
-I write about coding, research, and science, sharing insights along the way.
-"""
+  # Social icons in footer
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:hello2himel@proton.me"
+  
+  [[params.socialIcons]]
+    name = "telegram"
+    url = "https://t.me/hello2himel"
+  
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/hello2himel"
 
-[params.profileMode]
-  enabled = false  # disables profile card
-
+# Main menu
 [menu]
   [[menu.main]]
     name = "Home"
-    url = "../"
+    url = "/"
+    weight = 10
+  
   [[menu.main]]
     name = "Blog"
-    url = "/"
+    url = "/blog/"
+    weight = 20
+  
+  [[menu.main]]
+    name = "Tags"
+    url = "/blog/tags/"
+    weight = 30
+  
+  [[menu.main]]
+    name = "Search"
+    url = "/blog/search/"
+    weight = 40
+
+# Enable search
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
