@@ -1,7 +1,9 @@
-baseURL = 'https://hello2himel.netlify.app/blog/'
+baseURL = '/blog/'
 languageCode = 'en-us'
 title = "Himel Das | Blog"
 theme = 'PaperMod'
+canonifyURLs = true
+relativeURLs = false
 
 [params]
   env = "production"
