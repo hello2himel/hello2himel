@@ -18,7 +18,6 @@ relativeURLs = false
   ShowToc = true
   TocOpen = false
 
-  # Social icons in footer
   [[params.socialIcons]]
     name = "email"
     url = "mailto:hello2himel@proton.me"
@@ -31,11 +30,10 @@ relativeURLs = false
     name = "github"
     url = "https://github.com/hello2himel"
 
-# Main menu
 [menu]
   [[menu.main]]
     name = "Home"
-    url = "../"
+    url = "/"
     weight = 10
   
   [[menu.main]]
@@ -53,6 +51,5 @@ relativeURLs = false
     url = "/blog/search/"
     weight = 40
 
-# Enable search
 [outputs]
   home = ["HTML", "RSS", "JSON"]
