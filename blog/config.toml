@@ -2,7 +2,7 @@ baseURL = '/blog/'
 languageCode = 'en-us'
 title = "Himel Das | Blog"
 theme = 'PaperMod'
-canonifyURLs = false  # ← Change to false
+canonifyURLs = true
 relativeURLs = false
 
 [params]
@@ -33,8 +33,10 @@ relativeURLs = false
 [menu]
   [[menu.main]]
     name = "Home"
-    url = "/"  # ← Use "/" not "../"
+    url = "https://hello2himel.netlify.app"
     weight = 10
+    [menu.main.params]
+      external = true  # This tells Hugo not to prepend baseURL
   
   [[menu.main]]
     name = "Blog"
