@@ -35,7 +35,7 @@ relativeURLs = false
 [menu]
   [[menu.main]]
     name = "Home"
-    url = "/"
+    url = "../"
     weight = 10
   
   [[menu.main]]
