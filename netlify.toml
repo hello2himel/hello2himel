@@ -1,0 +1,3 @@
+[build]
+  publish = "."
+  command = "hugo --source blog --destination blog"
