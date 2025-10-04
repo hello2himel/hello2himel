@@ -33,8 +33,10 @@ relativeURLs = false
 [menu]
   [[menu.main]]
     name = "Home"
-    url = "https://hello2himel.netlify.app"
+    url = "/"
     weight = 10
+    [menu.main.params]
+      external = true  # This tells Hugo not to prepend baseURL
   
   [[menu.main]]
     name = "Blog"
