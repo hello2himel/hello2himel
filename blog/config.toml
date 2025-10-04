@@ -1,4 +1,4 @@
-baseURL = '/blog/'
+baseURL = '/'
 languageCode = 'en-us'
 title = "Himel Das | Blog"
 theme = 'PaperMod'
