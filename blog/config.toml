@@ -2,7 +2,7 @@ baseURL = '/blog/'
 languageCode = 'en-us'
 title = "Himel Das | Blog"
 theme = 'PaperMod'
-canonifyURLs = true
+canonifyURLs = false  # ← Change to false
 relativeURLs = false
 
 [params]
@@ -33,10 +33,8 @@ relativeURLs = false
 [menu]
   [[menu.main]]
     name = "Home"
-    url = "/"
+    url = "/"  # ← Use "/" not "../"
     weight = 10
-    [menu.main.params]
-      external = true  # This tells Hugo not to prepend baseURL
   
   [[menu.main]]
     name = "Blog"
