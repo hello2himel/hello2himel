@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Himel Das | Blog</title>
-    <link>http://localhost:44627/posts/</link>
-    <description>Recent content on Himel Das | Blog</description>
+    <title>Hello-World on Himel Das | Blog</title>
+    <link>http://localhost:44627/tags/hello-world/</link>
+    <description>Recent content in Hello-World on Himel Das | Blog</description>
     <generator>Hugo -- 0.150.1</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 04 Oct 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:44627/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:44627/tags/hello-world/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My First Blog Post</title>
       <link>http://localhost:44627/posts/hello-world-copy-2/</link>

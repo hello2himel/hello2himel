@@ -1,0 +1,40 @@
+/* --- Homepage grid layout --- */
+.index-page .post-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;          /* spacing between cards */
+    margin-top: 2rem;   /* space below the intro */
+    padding: 0;
+}
+
+/* Optional: make post cards visually stand out */
+.index-page .post-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.index-page .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Post title styling */
+.index-page .post-card .post-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Post description styling */
+.index-page .post-card .post-excerpt {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Remove extra padding/margin above posts */
+.index-page .page-header {
+    display: block; /* keep the intro visible */
+    margin-bottom: 2rem;
+}
