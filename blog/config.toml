@@ -1,4 +1,31 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://hello2himel.netlify.app'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = "PaperMod"
+title = "Himel Das | Blog"
+theme = 'PaperMod'
+
+[params]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowCodeCopyButtons = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+
+  # Info displayed above the first post
+  [params.homeInfoParams]
+    Title = "Welcome to My Blog 👋"
+    Content = """
+Here you'll find my latest posts on **astrophysics**, **FOSS**, and **tech projects**.  
+I write about coding, research, and science, sharing insights along the way.
+"""
+
+[params.profileMode]
+  enabled = false  # disables profile card
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "../"
+  [[menu.main]]
+    name = "Blog"
+    url = "/"
