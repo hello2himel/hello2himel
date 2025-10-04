@@ -1,3 +1,7 @@
 [build]
-  command = "cd blog && hugo --config hugo.toml"
+  command = "hugo --config blog/hugo.toml --source blog"
   publish = "blog/public"
+
+[context.production.environment]
+  HUGO_VERSION = "0.115.1"
+  HUGO_ENV = "production"
