@@ -1,11 +1,7 @@
 [build]
-  command = "hugo --source blog --destination ../public/blog"
+  command = "./build.sh"
   publish = "public"
 
 [context.production.environment]
   HUGO_VERSION = "0.150.1"
   HUGO_ENV = "production"
-
-# Copy portfolio files to public folder
-[build.processing]
-  skip_processing = false
