@@ -1,57 +1,115 @@
 baseURL = '/blog/'
-languageCode = 'en-us'
-title = "Himel Das | Blog"
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
 theme = 'PaperMod'
 canonifyURLs = true
 relativeURLs = false
 
-[params]
-  env = "production"
-  description = "Thoughts on astrophysics, FOSS, and technology"
-  author = "Himel Das"
-  defaultTheme = "auto"
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowCodeCopyButtons = true
-  ShowBreadCrumbs = true
-  ShowPostNavLinks = true
-  ShowToc = true
-  TocOpen = false
-  disableSpecial1stPost = true
+# Language configurations
+[languages]
+  [languages.en]
+    languageName = "English"
+    languageCode = "en-us"
+    title = "Himel Das | Blog"
+    weight = 1
+    
+    [languages.en.params]
+      env = "production"
+      description = "Thoughts on astrophysics, FOSS, and technology"
+      author = "Himel Das"
+      defaultTheme = "auto"
+      ShowReadingTime = true
+      ShowShareButtons = true
+      ShowCodeCopyButtons = true
+      ShowBreadCrumbs = true
+      ShowPostNavLinks = true
+      ShowToc = true
+      TocOpen = false
+      disableSpecial1stPost = true
 
-  [[params.socialIcons]]
-    name = "email"
-    url = "mailto:hello2himel@proton.me"
-  
-  [[params.socialIcons]]
-    name = "telegram"
-    url = "https://t.me/hello2himel"
-  
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/hello2himel"
+      [[languages.en.params.socialIcons]]
+        name = "email"
+        url = "mailto:hello2himel@proton.me"
+      
+      [[languages.en.params.socialIcons]]
+        name = "telegram"
+        url = "https://t.me/hello2himel"
+      
+      [[languages.en.params.socialIcons]]
+        name = "github"
+        url = "https://github.com/hello2himel"
 
-[menu]
-  [[menu.main]]
-    name = "Home"
-    url = "https://hello2himel.netlify.app"
-    weight = 10
-    # Removed the [menu.main.params] section
-  
-  [[menu.main]]
-    name = "Blog"
-    url = "/blog/"
-    weight = 20
-  
-  [[menu.main]]
-    name = "Tags"
-    url = "/blog/tags/"
-    weight = 30
-  
-  [[menu.main]]
-    name = "Search"
-    url = "/blog/search/"
-    weight = 40
+    [[languages.en.menu.main]]
+      name = "Home"
+      url = "https://hello2himel.netlify.app"
+      weight = 10
+    
+    [[languages.en.menu.main]]
+      name = "Blog"
+      url = "/blog/"
+      weight = 20
+    
+    [[languages.en.menu.main]]
+      name = "Tags"
+      url = "/blog/tags/"
+      weight = 30
+    
+    [[languages.en.menu.main]]
+      name = "Search"
+      url = "/blog/search/"
+      weight = 40
+
+  [languages.bn]
+    languageName = "বাংলা"
+    languageCode = "bn-bd"
+    title = "হিমেল দাস | ব্লগ"
+    weight = 2
+    
+    [languages.bn.params]
+      env = "production"
+      description = "জ্যোতির্পদার্থবিদ্যা, FOSS, এবং প্রযুক্তি নিয়ে চিন্তাভাবনা"
+      author = "হিমেল দাস"
+      defaultTheme = "auto"
+      ShowReadingTime = true
+      ShowShareButtons = true
+      ShowCodeCopyButtons = true
+      ShowBreadCrumbs = true
+      ShowPostNavLinks = true
+      ShowToc = true
+      TocOpen = false
+      disableSpecial1stPost = true
+
+      [[languages.bn.params.socialIcons]]
+        name = "email"
+        url = "mailto:hello2himel@proton.me"
+      
+      [[languages.bn.params.socialIcons]]
+        name = "telegram"
+        url = "https://t.me/hello2himel"
+      
+      [[languages.bn.params.socialIcons]]
+        name = "github"
+        url = "https://github.com/hello2himel"
+
+    [[languages.bn.menu.main]]
+      name = "হোম"
+      url = "https://hello2himel.netlify.app"
+      weight = 10
+    
+    [[languages.bn.menu.main]]
+      name = "ব্লগ"
+      url = "/blog/bn/"
+      weight = 20
+    
+    [[languages.bn.menu.main]]
+      name = "ট্যাগ"
+      url = "/blog/bn/tags/"
+      weight = 30
+    
+    [[languages.bn.menu.main]]
+      name = "অনুসন্ধান"
+      url = "/blog/bn/search/"
+      weight = 40
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
