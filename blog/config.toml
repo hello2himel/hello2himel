@@ -102,12 +102,12 @@ theme = 'PaperMod'
     
     [[languages.bn.menu.main]]
       name = "ট্যাগ"
-      url = "/blog/bn/tags/"
+      url = "/bn/tags/"
       weight = 30
     
     [[languages.bn.menu.main]]
       name = "অনুসন্ধান"
-      url = "/blog/bn/search/"
+      url = "/search/"
       weight = 40
 
 [outputs]
