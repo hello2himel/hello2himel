@@ -1,9 +1,7 @@
-baseURL = '/blog/'
+baseURL = 'https://hello2himel.netlify.app/blog/'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = true
 theme = 'PaperMod'
-canonifyURLs = false
-relativeURLs = false
 
 [languages]
   [languages.en]
@@ -40,27 +38,23 @@ relativeURLs = false
         url = "https://github.com/hello2himel"
 
     [[languages.en.menu.main]]
-      identifier = "home"
       name = "Home"
-      url = "/"
+      url = "https://hello2himel.netlify.app/"
       weight = 10
     
     [[languages.en.menu.main]]
-      identifier = "blog"
       name = "Blog"
-      url = "/blog/en/"
+      url = "/"
       weight = 20
     
     [[languages.en.menu.main]]
-      identifier = "tags"
       name = "Tags"
-      url = "/blog/en/tags/"
+      url = "/tags/"
       weight = 30
     
     [[languages.en.menu.main]]
-      identifier = "search"
       name = "Search"
-      url = "/blog/en/search/"
+      url = "/search/"
       weight = 40
 
   [languages.bn]
@@ -97,27 +91,23 @@ relativeURLs = false
         url = "https://github.com/hello2himel"
 
     [[languages.bn.menu.main]]
-      identifier = "home"
       name = "হোম"
-      url = "/"
+      url = "https://hello2himel.netlify.app/"
       weight = 10
     
     [[languages.bn.menu.main]]
-      identifier = "blog"
       name = "ব্লগ"
-      url = "/blog/bn/"
+      url = "/"
       weight = 20
     
     [[languages.bn.menu.main]]
-      identifier = "tags"
       name = "ট্যাগ"
-      url = "/blog/bn/tags/"
+      url = "/tags/"
       weight = 30
     
     [[languages.bn.menu.main]]
-      identifier = "search"
       name = "অনুসন্ধান"
-      url = "/blog/bn/search/"
+      url = "/search/"
       weight = 40
 
 [outputs]
