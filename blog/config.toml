@@ -1,15 +1,13 @@
 baseURL = '/blog/'
 defaultContentLanguage = 'en'
-defaultContentLanguageInSubdir = false
+defaultContentLanguageInSubdir = true
 theme = 'PaperMod'
-canonifyURLs = true
-relativeURLs = false
 
-# Language configurations
 [languages]
   [languages.en]
     languageName = "English"
     languageCode = "en-us"
+    contentDir = "content/en"
     title = "Himel Das | Blog"
     weight = 1
     
@@ -46,22 +44,23 @@ relativeURLs = false
     
     [[languages.en.menu.main]]
       name = "Blog"
-      url = "/blog/"
+      url = "/blog/en/"
       weight = 20
     
     [[languages.en.menu.main]]
       name = "Tags"
-      url = "/blog/tags/"
+      url = "/blog/en/tags/"
       weight = 30
     
     [[languages.en.menu.main]]
       name = "Search"
-      url = "/blog/search/"
+      url = "/blog/en/search/"
       weight = 40
 
   [languages.bn]
     languageName = "বাংলা"
     languageCode = "bn-bd"
+    contentDir = "content/bn"
     title = "হিমেল দাস | ব্লগ"
     weight = 2
     
@@ -98,17 +97,17 @@ relativeURLs = false
     
     [[languages.bn.menu.main]]
       name = "ব্লগ"
-      url = "/bn/"
+      url = "/blog/bn/"
       weight = 20
     
     [[languages.bn.menu.main]]
       name = "ট্যাগ"
-      url = "/bn/tags/"
+      url = "/blog/bn/tags/"
       weight = 30
     
     [[languages.bn.menu.main]]
       name = "অনুসন্ধান"
-      url = "/bn/search/"
+      url = "/blog/bn/search/"
       weight = 40
 
 [outputs]
