@@ -38,3 +38,8 @@
     display: block; /* keep the intro visible */
     margin-bottom: 2rem;
 }
+
+/* Remove external link icon from Home menu item */
+#menu a[href*="://"] svg {
+    display: none;
+}
