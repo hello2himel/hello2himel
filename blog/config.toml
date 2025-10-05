@@ -1,7 +1,8 @@
-baseURL = 'https://hello2himel.netlify.app/blog/'
+baseURL = 'https://hello2himel.netlify.app/'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = true
 theme = 'PaperMod'
+relativeURLs = false
 
 [languages]
   [languages.en]
@@ -44,17 +45,17 @@ theme = 'PaperMod'
     
     [[languages.en.menu.main]]
       name = "Blog"
-      url = "/"
+      url = "/blog/en/"
       weight = 20
     
     [[languages.en.menu.main]]
       name = "Tags"
-      url = "/tags/"
+      url = "/blog/en/tags/"
       weight = 30
     
     [[languages.en.menu.main]]
       name = "Search"
-      url = "/search/"
+      url = "/blog/en/search/"
       weight = 40
 
   [languages.bn]
@@ -97,17 +98,17 @@ theme = 'PaperMod'
     
     [[languages.bn.menu.main]]
       name = "ব্লগ"
-      url = "/"
+      url = "/blog/bn/"
       weight = 20
     
     [[languages.bn.menu.main]]
       name = "ট্যাগ"
-      url = "/tags/"
+      url = "/blog/bn/tags/"
       weight = 30
     
     [[languages.bn.menu.main]]
       name = "অনুসন্ধান"
-      url = "/search/"
+      url = "/blog/bn/search/"
       weight = 40
 
 [outputs]
