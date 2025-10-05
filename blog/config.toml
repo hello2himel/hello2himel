@@ -98,7 +98,7 @@ relativeURLs = false
     
     [[languages.bn.menu.main]]
       name = "ব্লগ"
-      url = "/blog/bn/"
+      url = "/bn/"
       weight = 20
     
     [[languages.bn.menu.main]]
