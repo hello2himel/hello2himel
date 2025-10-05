@@ -5,6 +5,7 @@ theme = 'PaperMod'
 canonifyURLs = true
 relativeURLs = false
 
+# Language configurations
 [languages]
   [languages.en]
     languageName = "English"
@@ -97,17 +98,17 @@ relativeURLs = false
     
     [[languages.bn.menu.main]]
       name = "ব্লগ"
-      url = "/blog/bn/"
+      url = "/bn/"
       weight = 20
     
     [[languages.bn.menu.main]]
       name = "ট্যাগ"
-      url = "/blog/bn/tags/"
+      url = "/bn/tags/"
       weight = 30
     
     [[languages.bn.menu.main]]
       name = "অনুসন্ধান"
-      url = "/blog/bn/search/"
+      url = "/bn/search/"
       weight = 40
 
 [outputs]
