@@ -17,6 +17,7 @@ relativeURLs = false
   ShowPostNavLinks = true
   ShowToc = true
   TocOpen = false
+  disableSpecial1stPost = true
 
   [[params.socialIcons]]
     name = "email"
