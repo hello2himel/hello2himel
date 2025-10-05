@@ -1,0 +1,48 @@
+# Common UI strings
+- id: home
+  translation: "মূলপাতা"
+
+- id: posts
+  translation: "পোস্টসমূহ"
+
+- id: read_more
+  translation: "আরও পড়ুন"
+
+- id: toc
+  translation: "সূচিপত্র"
+
+- id: translations
+  translation: "অনুবাদ"
+
+- id: share_on
+  translation: "শেয়ার করুন"
+
+- id: draft
+  translation: "খসড়া"
+
+- id: tags
+  translation: "ট্যাগ"
+
+- id: categories
+  translation: "বিভাগ"
+
+- id: series
+  translation: "সিরিজ"
+
+- id: reading_time
+  translation: "পড়ার সময়"
+
+- id: word_count
+  translation: "শব্দ সংখ্যা"
+
+- id: search_placeholder
+  translation: "পোস্ট, ট্যাগ এবং বিষয়বস্তু অনুসন্ধান করুন..."
+
+- id: search_title
+  translation: "অনুসন্ধান"
+
+- id: code_copy
+  translation: "কপি"
+
+- id: code_copied
+  translation: "কপি হয়েছে!"
