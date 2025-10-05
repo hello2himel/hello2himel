@@ -1,8 +1,8 @@
-baseURL = 'https://hello2himel.netlify.app/'
+baseURL = 'https://hello2himel.netlify.app/blog/'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = true
 theme = 'PaperMod'
-relativeURLs = false
+canonifyURLs = true
 
 [languages]
   [languages.en]
