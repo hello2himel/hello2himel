@@ -44,18 +44,19 @@ canonifyURLs = true
       weight = 10
     
     [[languages.en.menu.main]]
+      identifier = "blog"
       name = "Blog"
-      url = "/blog/en/"
+      url = "/"
       weight = 20
     
     [[languages.en.menu.main]]
       name = "Tags"
-      url = "/blog/en/tags/"
+      url = "/tags/"
       weight = 30
     
     [[languages.en.menu.main]]
       name = "Search"
-      url = "/blog/en/search/"
+      url = "/search/"
       weight = 40
 
   [languages.bn]
@@ -97,18 +98,19 @@ canonifyURLs = true
       weight = 10
     
     [[languages.bn.menu.main]]
+      identifier = "blog"
       name = "ব্লগ"
-      url = "/blog/bn/"
+      url = "/"
       weight = 20
     
     [[languages.bn.menu.main]]
       name = "ট্যাগ"
-      url = "/blog/bn/tags/"
+      url = "/tags/"
       weight = 30
     
     [[languages.bn.menu.main]]
       name = "অনুসন্ধান"
-      url = "/blog/bn/search/"
+      url = "/search/"
       weight = 40
 
 [outputs]
