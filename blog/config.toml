@@ -1,8 +1,8 @@
 baseURL = 'https://hello2himel.netlify.app/blog/'
+languageCode = 'en-us'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = true
 theme = 'PaperMod'
-canonifyURLs = true
 
 [languages]
   [languages.en]
@@ -44,7 +44,6 @@ canonifyURLs = true
       weight = 10
     
     [[languages.en.menu.main]]
-      identifier = "blog"
       name = "Blog"
       url = "/"
       weight = 20
@@ -98,7 +97,6 @@ canonifyURLs = true
       weight = 10
     
     [[languages.bn.menu.main]]
-      identifier = "blog"
       name = "ব্লগ"
       url = "/"
       weight = 20
