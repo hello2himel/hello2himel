@@ -2,14 +2,14 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>http://localhost:33997/blog/en/sitemap.xml</loc>
+    <loc>//localhost:33997/blog/en/sitemap.xml</loc>
     
       <lastmod>2025-10-04T00:00:00+00:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>http://localhost:33997/blog/bn/sitemap.xml</loc>
+    <loc>//localhost:33997/blog/bn/sitemap.xml</loc>
     
       <lastmod>2025-10-05T00:00:00+00:00</lastmod>
     
