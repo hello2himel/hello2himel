@@ -88,25 +88,37 @@
   text-align: center;
 }
 
-/* Back Button */
+/* Back Button - Small, Rounded, Top Left */
 .back-btn {
-  display: inline-flex;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 36px;
+  height: 36px;
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  margin-bottom: 1.5rem;
-  background: transparent;
+  justify-content: center;
+  background: var(--card-bg);
   border: 1px solid var(--border-color);
+  border-radius: 50%;
   color: var(--text-color);
-  border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
-  font-weight: 500;
-  font-size: 0.9rem;
+  padding: 0;
 }
 
 .back-btn:hover {
-  background: var(--tag-bg);
+  transform: translateY(-2px);
+  border-color: var(--card-hover-border);
+}
+
+.back-btn i {
+  font-size: 1.1rem;
+}
+
+/* Adjust h2 margin when back button is present */
+.wizard-step:not(#step-region-select) h2 {
+  margin-top: 2rem;
 }
 
 /* Step Options */
@@ -118,19 +130,14 @@
 }
 
 .step-option {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
   padding: 1.25rem 1.5rem;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
-  color: var(--text-color);
-  font-size: 1rem;
-  font-weight: 500;
   text-align: left;
+  width: 100%;
 }
 
 .step-option:hover {
@@ -138,9 +145,31 @@
   border-color: var(--card-hover-border);
 }
 
-.step-option i {
+.option-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.option-main i {
   font-size: 1.5rem;
   opacity: 0.7;
+}
+
+.option-subtext {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  color: var(--text-color);
+  margin-left: 2.5rem;
 }
 
 /* Payment Details */
@@ -211,10 +240,6 @@
   height: 1px;
   background: var(--border-color);
   z-index: -1;
-}
-
-.divider::before {
-  background: var(--border-color);
 }
 
 /* Phone Details */
@@ -388,8 +413,28 @@ footer {
     margin-bottom: 1.5rem;
   }
 
+  .wizard-step:not(#step-region-select) h2 {
+    margin-top: 2rem;
+  }
+
+  .back-btn {
+    top: 1rem;
+    left: 1rem;
+    width: 32px;
+    height: 32px;
+  }
+
+  .back-btn i {
+    font-size: 1rem;
+  }
+
   .step-option {
     padding: 1rem 1.25rem;
+  }
+
+  .option-subtext {
+    margin-left: 2.25rem;
+    font-size: 0.8rem;
   }
 
   .qr-placeholder {
