@@ -24,6 +24,9 @@
     </div>
 
     <div class="sidebar-menu">
+      <a href="/" class="sidebar-link">
+        <i class="ri-lg ri-home-4-line"></i> Home
+      </a>
       <a href="/#achievements" class="sidebar-link">
         <i class="ri-lg ri-trophy-line"></i> Achievements
       </a>
@@ -38,7 +41,7 @@
       </a>
       <div class="sidebar-divider"></div>
       <a href="https://hello2himel.blogspot.com" class="sidebar-link" target="_blank">
-        <i class="ri-lg ri-quill-pen-ai-line"></i> Read Blog
+        <i class="ri-lg ri-article-line"></i> Read Blog
       </a>
       <a href="mailto:hello2himel@proton.me" class="sidebar-link">
         <i class="ri-lg ri-mail-line"></i> Contact Me
@@ -75,13 +78,23 @@
           
           <div class="step-options">
             <button class="step-option" data-target-step="step-bangladesh-methods">
-              <i class="ri-flag-2-line"></i>
-              <span>Bangladesh</span>
+              <div class="option-content">
+                <div class="option-main">
+                  <i class="ri-flag-2-line"></i>
+                  <span>Bangladesh</span>
+                </div>
+                <div class="option-subtext">bKash, Bank Transfer</div>
+              </div>
             </button>
             
             <button class="step-option" data-target-step="step-international-methods">
-              <i class="ri-earth-line"></i>
-              <span>International</span>
+              <div class="option-content">
+                <div class="option-main">
+                  <i class="ri-earth-line"></i>
+                  <span>International</span>
+                </div>
+                <div class="option-subtext">Bank Transfer (SWIFT)</div>
+              </div>
             </button>
           </div>
 
@@ -90,21 +103,31 @@
 
         <!-- Step 2: Bangladesh Methods -->
         <div class="wizard-step" id="step-bangladesh-methods">
-          <button class="back-btn" data-back-target="step-region-select">
-            <i class="ri-arrow-left-line"></i> Back
+          <button class="back-btn" data-back-target="step-region-select" title="Go back" aria-label="Go back">
+            <i class="ri-arrow-left-line"></i>
           </button>
           
           <h2>Payment Method</h2>
           
           <div class="step-options">
             <button class="step-option" data-target-step="step-bkash-details">
-              <i class="ri-smartphone-line"></i>
-              <span>bKash</span>
+              <div class="option-content">
+                <div class="option-main">
+                  <i class="ri-smartphone-line"></i>
+                  <span>bKash</span>
+                </div>
+                <div class="option-subtext">Instant mobile payment</div>
+              </div>
             </button>
             
             <button class="step-option" data-target-step="step-bank-details-bd">
-              <i class="ri-bank-line"></i>
-              <span>Bank Transfer</span>
+              <div class="option-content">
+                <div class="option-main">
+                  <i class="ri-bank-line"></i>
+                  <span>Bank Transfer</span>
+                </div>
+                <div class="option-subtext">Direct bank deposit</div>
+              </div>
             </button>
           </div>
 
@@ -113,16 +136,21 @@
 
         <!-- Step 2: International Methods -->
         <div class="wizard-step" id="step-international-methods">
-          <button class="back-btn" data-back-target="step-region-select">
-            <i class="ri-arrow-left-line"></i> Back
+          <button class="back-btn" data-back-target="step-region-select" title="Go back" aria-label="Go back">
+            <i class="ri-arrow-left-line"></i>
           </button>
           
           <h2>Payment Method</h2>
           
           <div class="step-options">
             <button class="step-option" data-target-step="step-bank-details-int">
-              <i class="ri-bank-line"></i>
-              <span>Bank Transfer</span>
+              <div class="option-content">
+                <div class="option-main">
+                  <i class="ri-bank-line"></i>
+                  <span>Bank Transfer</span>
+                </div>
+                <div class="option-subtext">SWIFT/Wire transfer</div>
+              </div>
             </button>
           </div>
 
@@ -131,8 +159,8 @@
 
         <!-- Step 3: bKash Details -->
         <div class="wizard-step" id="step-bkash-details">
-          <button class="back-btn" data-back-target="step-bangladesh-methods">
-            <i class="ri-arrow-left-line"></i> Back
+          <button class="back-btn" data-back-target="step-bangladesh-methods" title="Go back" aria-label="Go back">
+            <i class="ri-arrow-left-line"></i>
           </button>
           
           <h2>bKash Payment</h2>
@@ -155,7 +183,7 @@
                 <span>01868 735269</span>
                 <i class="ri-file-copy-line"></i>
               </button>
-              <p class="detail-hint">Click to copy</p>
+              <p class="detail-hint">Click to copy number</p>
             </div>
 
             <p class="support-text">Supporting <strong id="bkash-project-name">my work</strong></p>
@@ -166,14 +194,14 @@
 
         <!-- Step 3: Bank Transfer BD -->
         <div class="wizard-step" id="step-bank-details-bd">
-          <button class="back-btn" data-back-target="step-bangladesh-methods">
-            <i class="ri-arrow-left-line"></i> Back
+          <button class="back-btn" data-back-target="step-bangladesh-methods" title="Go back" aria-label="Go back">
+            <i class="ri-arrow-left-line"></i>
           </button>
           
           <h2>Bank Transfer</h2>
           
           <div class="payment-details">
-            <p class="bank-info">Request bank account details via email to support <strong id="bank-project-name-bd">my work</strong>.</p>
+            <p class="bank-info">Request bank details via email to support <strong id="bank-project-name-bd">my work</strong>.</p>
             
             <button class="primary-btn bank-mail-trigger" data-email-type="bd">
               <i class="ri-mail-line"></i>
@@ -186,14 +214,14 @@
 
         <!-- Step 3: Bank Transfer International -->
         <div class="wizard-step" id="step-bank-details-int">
-          <button class="back-btn" data-back-target="step-international-methods">
-            <i class="ri-arrow-left-line"></i> Back
+          <button class="back-btn" data-back-target="step-international-methods" title="Go back" aria-label="Go back">
+            <i class="ri-arrow-left-line"></i>
           </button>
           
           <h2>Bank Transfer</h2>
           
           <div class="payment-details">
-            <p class="bank-info">Request international bank transfer details via email to support <strong id="bank-project-name-int">my work</strong>.</p>
+            <p class="bank-info">Request bank transfer details via email to support <strong id="bank-project-name-int">my work</strong>.</p>
             
             <button class="primary-btn bank-mail-trigger" data-email-type="int">
               <i class="ri-mail-line"></i>
