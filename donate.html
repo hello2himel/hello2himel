@@ -5,398 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Donate | Himel Das</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css"> 
-  <style>
-    /* CSS Variables: Only define those specific to this page or overrides not in style.css */
-    :root {
-      --primary-color: #4f46e5; /* Keeping as it's a specific highlight color */
-      --secondary-color: #10b981; /* Keeping as it's a specific highlight color */
-      /* Session ID color: Lighter for dark mode, darker for light mode */
-      --session-id-color: rgba(240, 240, 240, 0.5); 
-    }
-
-    [data-theme="light"] {
-      --session-id-color: rgba(18, 18, 18, 0.5);
-    }
-
-    /* Main Layout - Specific adjustments for donation page to fit width and padding */
-    .main-container {
-      max-width: 800px; /* Specific width for donation content */
-      padding-top: 5rem; /* Space for fixed header controls */
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      margin: 0 auto; /* Center main container */
-    }
-
-    /* Section for Donate page specific padding */
-    .section {
-      flex: 1; /* Allow section to grow and push footer down */
-      padding: 2rem 0;
-    }
-
-    /* h1 in section: color is now handled by --text-color from style.css */
-    .section h1 {
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-color); 
-    }
-
-    /* Tag styles: uses style.css variables, adjusted padding for specific look */
-    .tag {
-      padding: 0.25rem 0.75rem; 
-      background: var(--tag-bg); /* From style.css */
-      border: 1px solid var(--border-color); /* From style.css */
-      border-radius: 4px; /* From style.css */
-      font-size: 0.875rem;
-      color: var(--text-color); /* From style.css */
-    }
-
-    /* Donation Card: Uses style.css variables for background, border, and rounding */
-    .donation-card {
-      padding: 2rem;
-      margin-top: 1.5rem;
-      transition: min-height 0.4s ease-in-out; /* Only min-height transition */
-      position: relative;
-      overflow: hidden; /* Important for hiding sliding steps */
-      border-radius: 6px; /* From style.css */
-      background: var(--card-bg); /* From style.css */
-      border: 1px solid var(--border-color); /* From style.css */
-      display: flex; /* To contain absolute children */
-      flex-direction: column; /* To stack absolute children vertically if needed */
-      justify-content: flex-start;
-      align-items: center; /* Center content within the card */
-    }
-
-    .donation-card:hover {
-      border-color: var(--card-hover-border); /* From style.css */
-    }
-
-    /* Step container for smooth transitions: Uses style.css variables */
-    .step-container {
-      position: absolute; /* Changed to absolute to allow stacking for transition */
-      top: 0;
-      left: 0;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 2rem; /* Keep original padding */
-      background: var(--card-bg); /* From style.css */
-      opacity: 0;
-      visibility: hidden;
-      transform: translateX(100%);
-      transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
-      display: flex; /* Flexbox for internal layout */
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start; /* Left align items within step container */
-      border-radius: 6px; /* Inherit parent border-radius */
-      /* Ensure full height within the card when active */
-      min-height: 100%; 
-    }
-
-    .step-container.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(0%);
-      position: static; /* Active step becomes static to take up space and allow height calculation */
-      display: flex; /* Ensure it's still a flex container */
-    }
-    
-    .step-container.exit {
-        transform: translateX(-100%);
-        opacity: 0;
-        visibility: hidden;
-        position: absolute; /* Exiting step becomes absolute again */
-    }
-
-    /* h2 in step-container: color is now handled by --text-color from style.css */
-    .step-container h2 {
-      color: var(--text-color); 
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      align-self: flex-start; /* Ensure heading is left-aligned */
-    }
-
-    /* Donation options: Uses style.css variables */
-    .donation-options {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      width: 100%;
-    }
-
-    .donation-option {
-      display: flex;
-      align-items: center;
-      padding: 0.75rem 1rem;
-      gap: 0.75rem;
-      border-radius: 4px;
-      background: var(--card-bg); /* From style.css */
-      border: 1px solid var(--border-color); /* From style.css */
-      color: var(--text-color); /* From style.css */
-      text-align: left;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-    }
-
-    .donation-option:hover {
-      background: var(--tag-bg); /* From style.css */
-      border-color: var(--card-hover-border); /* From style.css */
-      transform: translateY(-2px);
-    }
-
-    .donation-option.active {
-      background: var(--card-hover-border); /* From style.css */
-      border-color: var(--card-hover-border); /* From style.css */
-    }
-
-    /* Donation methods: Uses style.css variables */
-    .donation-methods {
-      display: flex;
-      flex-direction: column; /* Changed to column for consistency with donation-options */
-      gap: 1rem;
-      margin-top: 1.5rem;
-      width: 100%;
-      /* justify-content: center; Removed as now column */
-      align-items: flex-start; /* Left align items */
-    }
-
-    .donation-method {
-      display: flex;
-      align-items: center;
-      padding: 0.75rem 1rem; /* Matched donation-option padding */
-      gap: 0.75rem; /* Matched donation-option gap */
-      border-radius: 4px;
-      background: var(--card-bg); /* From style.css */
-      border: 1px solid var(--border-color); /* From style.css */
-      color: var(--text-color); /* From style.css */
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      width: 100%; /* Make them full width like donation-options */
-      text-align: left; /* Ensure text is left-aligned */
-    }
-
-    .donation-method:hover {
-      border-color: var(--card-hover-border); /* From style.css */
-      background: var(--tag-bg); /* From style.css */
-      transform: translateY(-2px);
-    }
-
-    .donation-method.active {
-      background: var(--card-hover-border); /* From style.css */
-      border-color: var(--card-hover-border); /* From style.css */
-    }
-
-    /* Donation method details: Adjusted to remove nested box look */
-    .donation-method-details {
-      margin-top: 1.5rem;
-      padding: 0; /* Remove padding here */
-      width: 100%;
-      border-radius: 6px;
-      /* Removed background and border here, let the parent .step-container handle it */
-      display: flex; /* Use flex to manage inner content */
-      flex-direction: column;
-      align-items: flex-start; /* Left align items within details */
-      text-align: left; /* Left align text within details */
-    }
-
-    /* h2 and p in donation-method-details: color is now handled by --text-color from style.css */
-    .donation-method-details h2 {
-      color: var(--text-color);
-      margin-bottom: 1rem;
-      align-self: flex-start; /* Ensure heading is left-aligned */
-    }
-
-    .donation-method-details p {
-      color: var(--text-color);
-      line-height: 1.6;
-      padding: 0; /* Remove padding to avoid indentation issues */
-      margin-bottom: 1rem; /* Add consistent bottom margin */
-    }
-
-    .donation-qr {
-      max-width: 200px;
-      height: auto;
-      margin: 1rem 0; /* Align left */
-      border: 2px solid var(--border-color); /* From style.css */
-      border-radius: 4px;
-      background: white; /* QR background remains white */
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      color: #666; /* Specific color for placeholder text */
-      text-align: center; /* Still center QR placeholder text */
-    }
-
-    /* Phone number tag: Uses style.css variables */
-    .phone-number {
-      cursor: pointer;
-      padding: 0.25rem 0.75rem;
-      background: var(--card-bg); /* From style.css */
-      border-radius: 4px;
-      border: 1px solid var(--border-color); /* From style.css */
-      color: var(--text-color); /* From style.css */
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-
-    .phone-number:hover {
-      background: var(--tag-bg); /* From style.css */
-    }
-
-    /* Contact buttons (general purpose, also used for bank mail trigger): Uses style.css variables */
-    .contact-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      margin-top: 1rem; /* Added margin-top */
-      background: var(--card-bg); /* From style.css */
-      border: 1px solid var(--border-color); /* From style.css */
-      border-radius: 4px; /* From style.css */
-      color: var(--text-color); /* From style.css */
-      text-decoration: none;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    .contact-button:hover {
-      border-color: var(--card-hover-border); /* From style.css */
-      background: var(--tag-bg); /* From style.css */
-      text-decoration: none;
-    }
-
-    /* Back button style: Uses style.css variables */
-    .back-button {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      margin-top: 0rem;
-      align-self: flex-start;
-      margin-bottom: 1rem;
-      background: var(--card-bg); /* From style.css */
-      border: 1px solid var(--border-color); /* From style.css */
-      color: var(--text-color); /* From style.css */
-      border-radius: 4px; /* From style.css */
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-
-    .back-button:hover {
-      background: var(--tag-bg); /* From style.css */
-    }
-
-    /* Session ID display: Uses new specific variable */
-    .session-id-display {
-      color: var(--session-id-color);
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
-      font-family: 'Courier New', monospace; /* Mono font for session ID */
-      text-align: center; /* Center the text */
-      width: 100%; /* Ensure it takes full width for centering */
-    }
-
-    /* Footer: Uses style.css variables */
-    footer {
-      margin-top: auto;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-color);
-      text-align: center;
-      font-size: 0.875rem;
-      opacity: 0.7;
-      color: var(--text-color);
-    }
-
-    /* Custom Message Box */
-    .message-box {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: var(--primary-color);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .message-box.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* Media query specific adjustments */
-    @media (max-width: 768px) {
-      .main-container {
-        padding: 1rem;
-        padding-top: 5rem;
-      }
-      
-      .donation-card {
-        padding: 1.5rem;
-      }
-      
-      .step-container {
-        padding: 1.5rem; /* Adjusted padding for mobile steps */
-        align-items: center; /* Center align for steps on mobile for general buttons */
-      }
-
-      .step-container h2 {
-          align-self: center; /* Center headings on mobile */
-      }
-
-      .donation-options, .donation-methods {
-        align-items: center; /* Center buttons on mobile */
-      }
-
-      .donation-option, .donation-method {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-      }
-
-      .donation-method-details {
-          align-items: center; /* Center align details content on mobile */
-          text-align: center;
-      }
-
-      .donation-method-details h2 {
-          align-self: center; /* Center heading within details on mobile */
-      }
-
-      .donation-method-details p {
-        padding: 0 0.5rem; /* Adjust padding for mobile text */
-      }
-
-      .donation-qr {
-        max-width: 150px;
-        margin: 1rem auto; /* Center QR on mobile */
-      }
-
-      .session-id-display {
-        text-align: center; /* Ensure centered on smaller screens */
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/donate.css">
 </head>
 <body>
   <div id="space-container"></div>
@@ -449,456 +59,165 @@
   </div>
 
   <div class="main-container">
-    <section class="section" id="donate">
-      <h1 id="main-title">Donate <span id="project-name"></span></h1>
-      <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">Thank you for supporting my work and passion for advancing scientific discovery!</p>
+    <div class="donate-content">
+      <!-- Header -->
+      <div class="donate-header">
+        <h1 id="main-title">Donate <span id="project-name"></span></h1>
+        <p class="donate-description">Thank you for supporting my work and passion for advancing scientific discovery.</p>
+      </div>
 
-      <div class="donation-card">
-        <div class="step-container active" id="step-region-select">
-            <h2><i class="ri-globe-line"></i> Choose Your Donation Region</h2>
-            <div class="donation-options">
-                <button class="donation-option" data-target-step="step-bangladesh-methods">
-                    <i class="ri-flag-2-line"></i> I am donating from Bangladesh
-                </button>
-                <button class="donation-option" data-target-step="step-international-methods">
-                    <i class="ri-plane-line"></i> I am donating from another country
-                </button>
-            </div>
-            <p class="session-id-display"><span id="session-id-main">N/A</span></p>
+      <!-- Donation Wizard -->
+      <div class="donation-wizard">
+        
+        <!-- Step 1: Region Selection -->
+        <div class="wizard-step active" id="step-region-select">
+          <h2>Choose Your Region</h2>
+          
+          <div class="step-options">
+            <button class="step-option" data-target-step="step-bangladesh-methods">
+              <i class="ri-flag-2-line"></i>
+              <span>Bangladesh</span>
+            </button>
+            
+            <button class="step-option" data-target-step="step-international-methods">
+              <i class="ri-earth-line"></i>
+              <span>International</span>
+            </button>
+          </div>
+
+          <p class="session-id"><span id="session-id-main">N/A</span></p>
         </div>
 
-        <div class="step-container" id="step-bangladesh-methods">
-            <button class="back-button" data-back-target="step-region-select"><i class="ri-arrow-left-line"></i> Back</button>
-            <h2><i class="ri-wallet-line"></i> Donation Options for Bangladesh</h2>
-            <div class="donation-methods">
-                <button class="donation-method" data-target-step="step-bkash-details">
-                    <i class="ri-bank-card-line"></i> bKash
-                </button>
-                <button class="donation-method" data-target-step="step-bank-details-bd">
-                    <i class="ri-bank-line"></i> Bank Transfer
-                </button>
-            </div>
-            <p class="session-id-display"><span id="session-id-bd">N/A</span></p>
+        <!-- Step 2: Bangladesh Methods -->
+        <div class="wizard-step" id="step-bangladesh-methods">
+          <button class="back-btn" data-back-target="step-region-select">
+            <i class="ri-arrow-left-line"></i> Back
+          </button>
+          
+          <h2>Payment Method</h2>
+          
+          <div class="step-options">
+            <button class="step-option" data-target-step="step-bkash-details">
+              <i class="ri-smartphone-line"></i>
+              <span>bKash</span>
+            </button>
+            
+            <button class="step-option" data-target-step="step-bank-details-bd">
+              <i class="ri-bank-line"></i>
+              <span>Bank Transfer</span>
+            </button>
+          </div>
+
+          <p class="session-id"><span id="session-id-bd">N/A</span></p>
         </div>
 
-        <div class="step-container" id="step-international-methods">
-            <button class="back-button" data-back-target="step-region-select"><i class="ri-arrow-left-line"></i> Back</button>
-            <h2><i class="ri-wallet-line"></i> Donation Options for International Donors</h2>
-            <div class="donation-methods">
-                <button class="donation-method" data-target-step="step-bank-details-int">
-                    <i class="ri-bank-line"></i> Bank Transfer
-                </button>
-            </div>
-            <p class="session-id-display"><span id="session-id-int">N/A</span></p>
+        <!-- Step 2: International Methods -->
+        <div class="wizard-step" id="step-international-methods">
+          <button class="back-btn" data-back-target="step-region-select">
+            <i class="ri-arrow-left-line"></i> Back
+          </button>
+          
+          <h2>Payment Method</h2>
+          
+          <div class="step-options">
+            <button class="step-option" data-target-step="step-bank-details-int">
+              <i class="ri-bank-line"></i>
+              <span>Bank Transfer</span>
+            </button>
+          </div>
+
+          <p class="session-id"><span id="session-id-int">N/A</span></p>
         </div>
 
-        <div class="step-container" id="step-bkash-details">
-            <button class="back-button" data-back-target="step-bangladesh-methods"><i class="ri-arrow-left-line"></i> Back</button>
-            <div class="donation-method-details">
-                <h2><i class="ri-bank-card-fill"></i> bKash Details</h2>
-                <div class="donation-qr">
-                    QR Code Placeholder<br><small>(bKash QR would go here)</small>
-                </div>
-                <p>Please kindly scan the QR code above to <span style="color: #E91E63;">send money</span> via bKash to support <span id="bkash-project-name">Project</span>.</p>
-                <p style="margin-top: 1rem;">Alternatively, you can send money to the number <span class="tag phone-number" onclick="copyPhoneNumber('01868735269')" title="Click to copy"><i class="ri-phone-line"></i> 01868735269</span>.</p>
+        <!-- Step 3: bKash Details -->
+        <div class="wizard-step" id="step-bkash-details">
+          <button class="back-btn" data-back-target="step-bangladesh-methods">
+            <i class="ri-arrow-left-line"></i> Back
+          </button>
+          
+          <h2>bKash Payment</h2>
+          
+          <div class="payment-details">
+            <div class="qr-code">
+              <p class="detail-label">Scan QR Code</p>
+              <div class="qr-placeholder">
+                <i class="ri-qr-code-line"></i>
+                <span>QR Code</span>
+              </div>
             </div>
-            <p class="session-id-display"><span id="session-id-bkash">N/A</span></p>
+
+            <div class="divider">or</div>
+
+            <div class="phone-details">
+              <p class="detail-label">Send money to</p>
+              <button class="phone-number" onclick="copyPhoneNumber('01868735269')">
+                <i class="ri-phone-line"></i>
+                <span>01868 735269</span>
+                <i class="ri-file-copy-line"></i>
+              </button>
+              <p class="detail-hint">Click to copy</p>
+            </div>
+
+            <p class="support-text">Supporting <strong id="bkash-project-name">my work</strong></p>
+          </div>
+
+          <p class="session-id"><span id="session-id-bkash">N/A</span></p>
         </div>
 
-        <div class="step-container" id="step-bank-details-bd">
-            <button class="back-button" data-back-target="step-bangladesh-methods"><i class="ri-arrow-left-line"></i> Back</button>
-            <div class="donation-method-details">
-                <h2><i class="ri-bank-fill"></i> Bank Transfer Details (Bangladesh)</h2>
-                <p>Click below to open mail and request bank details to support <span id="bank-project-name-bd">Project</span>.</p>
-                <button class="contact-button bank-mail-trigger" data-email-type="bd"><i class="ri-mail-line"></i> Request Bank Details</button>
-            </div>
-            <p class="session-id-display"><span id="session-id-bank-bd">N/A</span></p>
+        <!-- Step 3: Bank Transfer BD -->
+        <div class="wizard-step" id="step-bank-details-bd">
+          <button class="back-btn" data-back-target="step-bangladesh-methods">
+            <i class="ri-arrow-left-line"></i> Back
+          </button>
+          
+          <h2>Bank Transfer</h2>
+          
+          <div class="payment-details">
+            <p class="bank-info">Request bank account details via email to support <strong id="bank-project-name-bd">my work</strong>.</p>
+            
+            <button class="primary-btn bank-mail-trigger" data-email-type="bd">
+              <i class="ri-mail-line"></i>
+              Request Bank Details
+            </button>
+          </div>
+
+          <p class="session-id"><span id="session-id-bank-bd">N/A</span></p>
         </div>
 
-        <div class="step-container" id="step-bank-details-int">
-            <button class="back-button" data-back-target="step-international-methods"><i class="ri-arrow-left-line"></i> Back</button>
-            <div class="donation-method-details">
-                <h2><i class="ri-bank-fill"></i> Bank Transfer Details (International)</h2>
-                <p>Click below to open mail and request bank details to support <span id="bank-project-name-int">Project</span>.</p>
-                <button class="contact-button bank-mail-trigger" data-email-type="int"><i class="ri-mail-line"></i> Request Bank Details</button>
-            </div>
-            <p class="session-id-display"><span id="session-id-bank-int">N/A</span></p>
+        <!-- Step 3: Bank Transfer International -->
+        <div class="wizard-step" id="step-bank-details-int">
+          <button class="back-btn" data-back-target="step-international-methods">
+            <i class="ri-arrow-left-line"></i> Back
+          </button>
+          
+          <h2>Bank Transfer</h2>
+          
+          <div class="payment-details">
+            <p class="bank-info">Request international bank transfer details via email to support <strong id="bank-project-name-int">my work</strong>.</p>
+            
+            <button class="primary-btn bank-mail-trigger" data-email-type="int">
+              <i class="ri-mail-line"></i>
+              Request Bank Details
+            </button>
+          </div>
+
+          <p class="session-id"><span id="session-id-bank-int">N/A</span></p>
         </div>
 
       </div>
-    </section>
+    </div>
 
     <footer>
       © 2025 Himel Das - Bogura, Bangladesh
     </footer>
   </div>
 
-  <div class="message-box" id="message-box"></div>
+  <div class="toast" id="toast">
+    <i class="ri-checkbox-circle-line"></i>
+    <span></span>
+  </div>
 
-  <script>
-    // Age calculation function (kept from original)
-    function calculateAge(birthDate) {
-      const today = new Date();
-      const birth = new Date(birthDate);
-      let age = today.getFullYear() - birth.getFullYear();
-      const monthDiff = today.getMonth() - birth.getMonth();
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-        age--;
-      }
-      return age;
-    }
-
-    // Theme handling functions (kept from original)
-    const getPreferredTheme = () => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        return savedTheme;
-      }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    };
-
-    const applyTheme = (theme) => {
-      document.documentElement.setAttribute('data-theme', theme);
-      // Update all theme icons
-      const themeIcons = document.querySelectorAll('#theme-toggle i, #theme-toggle-sidebar i');
-      themeIcons.forEach(icon => {
-        icon.className = theme === 'dark' ? 'ri-lg ri-sun-fill' : 'ri-lg ri-moon-clear-fill';
-      });
-    };
-
-    const toggleTheme = () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('theme', newTheme);
-      applyTheme(newTheme);
-    };
-
-    // Create stars for parallax effect (kept from original)
-    function createStars() {
-      const spaceContainer = document.getElementById('space-container');
-      if (!spaceContainer) return;
-      
-      spaceContainer.innerHTML = ''; // Clear any existing stars
-      
-      const numStars = 100; // Define numStars here for local creation
-      const starSizes = ['small', 'medium', 'large'];
-      for (let i = 0; i < numStars; i++) {
-        const star = document.createElement('div');
-        star.classList.add('space-element', 'star');
-        
-        const sizeClass = starSizes[Math.floor(Math.random() * starSizes.length)];
-        star.classList.add(sizeClass);
-        
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.animationDelay = `${Math.random() * 3}s`;
-        
-        star.dataset.origLeft = star.style.left;
-        star.dataset.origTop = star.style.top;
-        
-        spaceContainer.appendChild(star);
-      }
-      
-      const planet = document.createElement('div');
-      planet.classList.add('space-element', 'planet');
-      planet.style.left = '75%';
-      planet.style.top = '20%';
-      // Planet visibility will be handled in initParallaxEffect based on screen size
-      spaceContainer.appendChild(planet);
-    }
-
-    // Parallax effect function for stars (kept from original)
-    function initParallaxEffect() {
-      const allStars = document.querySelectorAll('.star');
-      const planet = document.querySelector('.planet');
-      
-      if (!allStars.length && !planet) return;
-      
-      function updatePlanetVisibility() {
-        if (planet) {
-          planet.style.display = window.innerWidth <= 768 ? 'block' : 'none';
-        }
-      }
-      updatePlanetVisibility();
-      window.addEventListener('resize', updatePlanetVisibility);
-      
-      if (window.innerWidth > 768) {
-        document.addEventListener('mousemove', (e) => {
-          const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-          const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-          
-          allStars.forEach((star) => {
-            let depth = 0.5;
-            if (star.classList.contains('small')) depth = 0.3;
-            if (star.classList.contains('medium')) depth = 0.5;
-            if (star.classList.contains('large')) depth = 0.7;
-            
-            const moveX = -mouseX * depth * 50;
-            const moveY = -mouseY * depth * 50;
-            
-            star.style.transform = `translate(${moveX}px, ${moveY}px)`;
-          });
-        });
-      } else {
-        if (window.DeviceOrientationEvent) {
-          window.addEventListener('deviceorientation', (e) => {
-            const tiltX = e.beta ? (e.beta - 45) * 0.5 : 0;
-            const tiltY = e.gamma ? e.gamma * 0.5 : 0;
-            
-            allStars.forEach((star) => {
-              let depth = 0.5;
-              if (star.classList.contains('small')) depth = 0.2;
-              if (star.classList.contains('medium')) depth = 0.4;
-              if (star.classList.contains('large')) depth = 0.6;
-              
-              const moveX = tiltY * depth * 3;
-              const moveY = tiltX * depth * 3;
-              
-              star.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
-            
-            if (planet && window.innerWidth <= 768) {
-              const planetMoveX = -tiltY * 0.8 * 2;
-              const planetMoveY = -tiltX * 0.8 * 2;
-              planet.style.transform = `translate(${planetMoveX}px, ${planetMoveY}px)`;
-            }
-          });
-        }
-      }
-    }
-
-    // Function to show a temporary message box
-    function showMessageBox(message, duration = 3000) {
-        const messageBox = document.getElementById('message-box');
-        if (messageBox) {
-            messageBox.textContent = message;
-            messageBox.classList.add('show');
-            setTimeout(() => {
-                messageBox.classList.remove('show');
-            }, duration);
-        }
-    }
-
-    // Function to copy phone number to clipboard
-    function copyPhoneNumber(phoneNumber) {
-        navigator.clipboard.writeText(phoneNumber).then(() => {
-            showMessageBox('Phone number copied to clipboard!');
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-            showMessageBox('Failed to copy phone number.');
-        });
-    }
-
-    // Main DOMContentLoaded listener for this page's logic
-    document.addEventListener('DOMContentLoaded', () => {
-      // Initialize theme on load
-      applyTheme(getPreferredTheme());
-
-      // Attach theme toggle event listeners
-      const themeToggleButtons = document.querySelectorAll('#theme-toggle, #theme-toggle-sidebar');
-      themeToggleButtons.forEach(button => {
-        if (button) {
-          button.addEventListener('click', toggleTheme);
-        }
-      });
-      // Listen for system theme changes
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        if (!localStorage.getItem('theme')) {
-          applyTheme(e.matches ? 'dark' : 'light');
-        }
-      });
-
-      // Initialize parallax background effects
-      createStars();
-      setTimeout(initParallaxEffect, 100); // Small delay to ensure DOM is ready and elements are positioned
-
-      // Sidebar functionality
-      const menuToggle = document.getElementById('menu-toggle');
-      const sidebar = document.getElementById('sidebar');
-      const sidebarCollapse = document.getElementById('sidebar-collapse');
-      const overlay = document.getElementById('overlay');
-      
-      if (menuToggle && sidebar && sidebarCollapse && overlay) {
-        menuToggle.addEventListener('click', () => {
-          sidebar.classList.add('active');
-          overlay.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        });
-        
-        sidebarCollapse.addEventListener('click', () => {
-          sidebar.classList.remove('active');
-          overlay.classList.remove('active');
-          document.body.style.overflow = '';
-        });
-        
-        overlay.addEventListener('click', () => {
-          sidebar.classList.remove('active');
-          overlay.classList.remove('active');
-          document.body.style.overflow = '';
-        });
-        
-        document.querySelectorAll('.sidebar-link').forEach(link => {
-          link.addEventListener('click', () => {
-            if (link.getAttribute('href').startsWith('#')) {
-              sidebar.classList.remove('active');
-              overlay.classList.remove('active');
-              document.body.style.overflow = '';
-            }
-          });
-        });
-      }
-
-      // Parse URL parameters
-      const urlParams = new URLSearchParams(window.location.search);
-      const projectName = urlParams.get('source') || null;
-      const sessionId = urlParams.get('session_id') || null;
-
-      const currentProjectName = projectName || null;
-      const currentSessionId = sessionId || null;
-
-      // Update main title based on project name availability
-      const mainTitleElement = document.getElementById('main-title');
-      if (currentProjectName) {
-          mainTitleElement.innerHTML = `Donate for <span id="project-name">${currentProjectName}</span>`;
-      } else {
-          mainTitleElement.innerHTML = `Donate`;
-      }
-
-      // Update project name in details sections
-      if (currentProjectName) {
-        const bkashProjectName = document.getElementById('bkash-project-name');
-        if (bkashProjectName) bkashProjectName.textContent = currentProjectName;
-        const bankProjectNameBd = document.getElementById('bank-project-name-bd');
-        if (bankProjectNameBd) bankProjectNameBd.textContent = currentProjectName;
-        const bankProjectNameInt = document.getElementById('bank-project-name-int');
-        if (bankProjectNameInt) bankProjectNameInt.textContent = currentProjectName;
-      }
-
-
-      // Update all session ID displays
-      const sessionIdElements = document.querySelectorAll('.session-id-display span'); // Select the span inside
-      sessionIdElements.forEach(element => {
-          if (currentSessionId) {
-              element.textContent = currentSessionId;
-              element.parentElement.style.display = 'block'; // Show the parent p tag
-          } else {
-              element.parentElement.style.display = 'none'; // Hide the parent p tag
-          }
-      });
-
-      // Function to generate mailto link
-      function generateMailtoLink() {
-          let subject = 'Donation';
-          if (currentProjectName) subject += ` for ${currentProjectName}`;
-          // Session ID is intentionally removed from subject
-
-          let body = `Dear Himel Das,\n\nI would like to know the details for a bank transfer to support`;
-          if (currentProjectName) body += ` ${currentProjectName}.`; else body += `.`;
-          body += `\n\nCould you please provide the necessary bank transfer information?\n\nThank you.\n\nBest regards,\n[Your Name]\n\n--- This is an auto-generated mail.`;
-          if (currentSessionId) body += `\nSession ID: ${currentSessionId}`; // Move session ID here
-
-          const encodedSubject = encodeURIComponent(subject);
-          const encodedBody = encodeURIComponent(body);
-
-          return `mailto:hello2himel@proton.me?subject=${encodedSubject}&body=${encodedBody}`;
-      }
-
-      // Attach event listeners to bank mail trigger buttons
-      document.querySelectorAll('.bank-mail-trigger').forEach(button => {
-          button.addEventListener('click', () => {
-              window.location.href = generateMailtoLink();
-          });
-      });
-
-      // Step navigation functionality
-      const stepContainers = document.querySelectorAll('.step-container');
-      let currentActiveStep = document.querySelector('.step-container.active'); 
-      const donationCard = currentActiveStep.closest('.donation-card');
-
-      // Helper function to set the height of the donation card based on a given step
-      function setDonationCardHeight(stepElement) {
-          // Temporarily set the step to static and visible to measure its full height
-          stepElement.style.position = 'static';
-          stepElement.style.visibility = 'hidden';
-          stepElement.style.opacity = '0';
-          stepElement.style.transform = 'translateX(0%)';
-          stepElement.style.display = 'flex'; // Ensure it's rendered as flex
-          
-          // Force a reflow to ensure the computed style is correct
-          void stepElement.offsetWidth; 
-          
-          const targetHeight = stepElement.scrollHeight;
-          donationCard.style.minHeight = targetHeight + 'px';
-
-          // Revert the step back to its original absolute positioning
-          stepElement.style.position = 'absolute';
-          stepElement.style.opacity = '0';
-          stepElement.style.visibility = 'hidden';
-          // Do not set transform here, as it will be set by the showStep function for animation
-      }
-
-      // Initial height calculation for the first active step
-      if (donationCard && currentActiveStep) {
-          setDonationCardHeight(currentActiveStep);
-          // After measurement, ensure the active step is correctly visible and static
-          currentActiveStep.style.position = 'static';
-          currentActiveStep.style.visibility = 'visible';
-          currentActiveStep.style.opacity = '1';
-          currentActiveStep.style.transform = 'translateX(0%)';
-          currentActiveStep.style.display = 'flex';
-      }
-
-      function showStep(targetStepId) {
-          const targetStep = document.getElementById(targetStepId);
-          if (!targetStep || targetStep === currentActiveStep) return;
-
-          // Determine direction of animation
-          const currentStepIndex = Array.from(stepContainers).indexOf(currentActiveStep);
-          const targetStepIndex = Array.from(stepContainers).indexOf(targetStep);
-          const direction = (targetStepIndex < currentStepIndex) ? '-100%' : '100%'; // -100% for back, 100% for forward
-
-          // Set the height of the donation card based on the *incoming* target step
-          setDonationCardHeight(targetStep);
-
-          // Animate current step out
-          currentActiveStep.classList.remove('active');
-          currentActiveStep.classList.add('exit');
-          currentActiveStep.style.transform = `translateX(${-parseInt(direction)}%)`; // Move current step opposite to target
-
-          // Listen for the end of the current step's exit animation
-          currentActiveStep.addEventListener('transitionend', function handler() {
-              currentActiveStep.style.display = 'none'; // Hide it after it transitions out
-              currentActiveStep.removeEventListener('transitionend', handler);
-
-              // Animate target step in
-              targetStep.style.display = 'flex'; // Make it flex so content is measured
-              void targetStep.offsetWidth; // Trigger reflow for new position
-              targetStep.classList.add('active'); // Add active class to transition in
-              targetStep.classList.remove('exit');
-              targetStep.style.transform = 'translateX(0%)'; // Move to center
-              targetStep.style.opacity = '1';
-              targetStep.style.visibility = 'visible';
-
-              // Update current active step
-              currentActiveStep = targetStep;
-          }, { once: true }); // Ensure handler runs only once
-      }
-
-      // Add event listeners for navigation buttons
-      document.querySelectorAll('[data-target-step]').forEach(button => {
-          button.addEventListener('click', (event) => {
-              const targetStepId = event.currentTarget.dataset.targetStep;
-              showStep(targetStepId);
-          });
-      });
-
-      document.querySelectorAll('[data-back-target]').forEach(button => {
-          button.addEventListener('click', (event) => {
-              const backTargetStepId = event.currentTarget.dataset.backTarget;
-              showStep(backTargetStepId);
-          });
-      });
-    });
-  </script>
+  <script src="/js/scripts.js"></script>
+  <script src="/js/donate.js"></script>
 </body>
 </html>
