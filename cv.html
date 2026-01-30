@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Himel Das</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm 2cm;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #000;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 1.5cm 2cm;
+        }
+        
+        h1 {
+            font-size: 20pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 4pt;
+            text-align: center;
+        }
+        
+        .contact {
+            text-align: center;
+            font-size: 10pt;
+            margin-bottom: 14pt;
+            line-height: 1.3;
+        }
+        
+        .contact a {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        h2 {
+            font-size: 11pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 2pt;
+            margin-top: 10pt;
+            margin-bottom: 6pt;
+        }
+        
+        h3 {
+            font-size: 11pt;
+            font-weight: 700;
+            margin-top: 6pt;
+            margin-bottom: 2pt;
+        }
+        
+        .institution {
+            font-style: italic;
+            font-weight: normal;
+        }
+        
+        .date {
+            float: right;
+            font-weight: normal;
+            font-size: 10pt;
+        }
+        
+        .subtitle {
+            font-size: 10pt;
+            margin-bottom: 3pt;
+            color: #222;
+        }
+        
+        .gpa {
+            font-weight: 600;
+            margin-top: 2pt;
+            font-size: 10pt;
+        }
+        
+        ul {
+            margin-left: 18pt;
+            margin-top: 3pt;
+            margin-bottom: 4pt;
+        }
+        
+        li {
+            margin-bottom: 2pt;
+            line-height: 1.3;
+        }
+        
+        .project-header {
+            margin-top: 5pt;
+        }
+        
+        .project-title {
+            font-weight: 700;
+        }
+        
+        .project-date {
+            font-size: 10pt;
+            color: #333;
+        }
+        
+        .award-item {
+            margin-bottom: 3pt;
+        }
+        
+        .award-title {
+            font-weight: 600;
+        }
+        
+        .skills-grid {
+            margin-top: 4pt;
+        }
+        
+        .skill-row {
+            margin-bottom: 2pt;
+        }
+        
+        .skill-label {
+            font-weight: 600;
+            display: inline-block;
+            width: 140pt;
+        }
+        
+        .reference-block {
+            margin-top: 4pt;
+            line-height: 1.3;
+        }
+        
+        .references-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20pt;
+            margin-top: 4pt;
+        }
+        
+        .reference-item {
+            line-height: 1.3;
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        @media print {
+            .references-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+            
+            h3 {
+                page-break-after: avoid;
+            }
+            
+            .project-header {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Himel Das</h1>
+    
+    <div class="contact">
+        Born: 20 January 2009 | Nationality: Bangladeshi<br>
+        Bogura, Rajshahi Division, Bangladesh<br>
+        <a href="mailto:dashimel798@gmail.com">dashimel798@gmail.com</a> | +880 1868735269<br>
+        Portfolio: <a href="https://hello2himel.netlify.app">hello2himel.netlify.app</a> | GitHub: <a href="https://github.com/hello2himel">github.com/hello2himel</a>
+    </div>
+    
+    <h2>Education</h2>
+    
+    <div class="clearfix">
+        <h3>Government Azizul Haque College, Bogura <span class="date">2025 – 2027</span></h3>
+    </div>
+    <div class="subtitle">Higher Secondary Certificate (HSC) | Science Stream</div>
+    <div class="subtitle">Core Subjects: Physics, Mathematics, Chemistry, Biology, ICT</div>
+    
+    <div class="clearfix" style="margin-top: 8pt;">
+        <h3>Bogura Zilla School, Bogura <span class="date">2017 – 2025</span></h3>
+    </div>
+    <div class="subtitle">Secondary School Certificate (SSC) | Science Stream</div>
+    <div class="gpa">GPA: 5.00 / 5.00 (National Maximum)</div>
+    <div class="gpa">Government Merit Scholarship Recipient</div>
+    
+    <h2>Academic Objectives</h2>
+    
+    <p style="margin-top: 4pt;">Undergraduate studies in Physics with the aim of pursuing graduate studies in 
+Astrophysics and Observational Cosmology, particularly in dark matter 
+phenomenology and computational astronomy.</p>
+    
+    <h2>Independent Research Projects</h2>
+    
+    <div class="project-header">
+        <span class="project-title">Exoplanet Transit Photometry and Parameter Estimation</span> 
+        <span class="project-date">| January – May 2025</span>
+    </div>
+    <ul>
+        <li>Analyzed archival Kepler mission light curve data from 23 stellar targets, successfully detecting transits in 8 confirmed exoplanet systems through flux time-series analysis</li>
+        <li>Estimated planetary radii, orbital periods, and semi-major axes with mean deviation &lt;10% from published parameters</li>
+        <li>Repository: <a href="https://github.com/hello2himel/exoplanet-transit-analysis">github.com/hello2himel/exoplanet-transit-analysis</a> | Tools: Python (NumPy, Lightkurve, Matplotlib)</li>
+    </ul>
+    
+    <div class="project-header">
+        <span class="project-title">Quantum State Simulation: Superposition and Entanglement</span> 
+        <span class="project-date">| February – March 2025</span>
+    </div>
+    <ul>
+        <li>Implemented computational models of single-qubit superposition states and two-qubit entanglement circuits, simulating measurement operators and visualizing probabilistic state collapse</li>
+        <li>Repository: <a href="https://github.com/hello2himel/quantum-simulation">github.com/hello2himel/quantum-simulation</a> | Tools: Qiskit (IBM Quantum), Python</li>
+    </ul>
+    
+    <div class="project-header">
+        <span class="project-title">Cordata: Computational Geometry Analysis Tool</span> 
+        <span class="project-date">| 2024</span>
+    </div>
+    <ul>
+        <li>Developed web-based application for polygon analysis including centroid computation, area calculation, and coordinate transformations with real-time geometric visualization</li>
+        <li>Deployment: <a href="https://cordata.netlify.app">cordata.netlify.app</a> | Tools: JavaScript, HTML/CSS</li>
+    </ul>
+    
+    <h2>Honors and Competitive Achievements</h2>
+    
+    <div class="award-item">
+        <span class="award-title">National Round Participant, Regional Winner</span> – Bangladesh Olympiad on Astronomy and Astrophysics, 2026
+    </div>
+    <div class="award-item">
+        <span class="award-title">Second Prize (Regional Level)</span> – Bangladesh Olympiad on Astronomy and Astrophysics, 2025
+    </div>
+    <div class="award-item">
+        <span class="award-title">First Prize</span> – National Science Fair, February 2024
+    </div>
+    <div class="award-item">
+        <span class="award-title">Second Prize</span> – National Science Quiz Competition, February 2024
+    </div>
+    
+    <h2>Academic Leadership and Science Outreach</h2>
+    
+    <div class="clearfix">
+        <h3>Science Outreach Coordinator, Stargzr <span class="date">December 2024 – Present</span></h3>
+    </div>
+    <ul>
+        <li>Designed and delivered hands-on physics demonstrations for 200+ elementary students across five rural schools where scientific exposure is scarce</li>
+        <li>Created low-cost experimental setups (mechanics, optics, electricity) using locally available materials to make fundamental physics concepts accessible</li>
+        <li>Developed curriculum materials that sparked scientific curiosity in underserved communities</li>
+    </ul>
+    
+    <div class="clearfix">
+        <h3>President, Bogura Zilla School Science Club <span class="date">March 2024 – March 2025</span></h3>
+    </div>
+    <ul>
+        <li>Led a 40-member club in organizing three major science workshops reaching over 350 students</li>
+        <li>Coordinated school participation in national science olympiads and mentored 12 students in physics problem-solving</li>
+        <li>Established a peer tutoring program connecting students with advanced knowledge in specific subjects with peers seeking to develop those skills</li>
+    </ul>
+    
+    <h2>Technical and Scientific Skills</h2>
+    
+    <div class="skills-grid">
+        <div class="skill-row">
+            <span class="skill-label">Programming Languages:</span> Python, JavaScript
+        </div>
+        <div class="skill-row">
+            <span class="skill-label">Scientific Computing:</span> NumPy, SciPy, Matplotlib, Lightkurve, Qiskit
+        </div>
+        <div class="skill-row">
+            <span class="skill-label">Development Tools:</span> Linux (Ubuntu), Git/GitHub, Jupyter Notebook, Flask
+        </div>
+        <div class="skill-row">
+            <span class="skill-label">Web Technologies:</span> HTML/CSS, JavaScript (ES6+)
+        </div>
+        <div class="skill-row">
+            <span class="skill-label">Languages:</span> Bengali (native), English (fluent reading/writing, professional speaking proficiency), Hindi (working proficiency)
+        </div>
+    </div>
+    
+    <h2>Professional Development</h2>
+    
+    <div style="margin-top: 4pt;">
+        <span class="award-title">CS50: Introduction to Computer Science</span> – HarvardX (edX), 2026
+    </div>
+    
+    <h2>Academic References</h2>
+    
+    <div class="references-container">
+        <div class="reference-item">
+            <strong>Md. Asadullah Al Goni</strong><br>
+            Lecturer, Department of Physics<br>
+            Government Azizul Haque College<br>
+            Bogura, Bangladesh<br>
+            Email: <a href="mailto:asadgoni6@gmail.com">asadgoni6@gmail.com</a><br>
+            Phone: +880 1515-609153
+        </div>
+        
+        <div class="reference-item">
+            <strong>[Reference Name]</strong><br>
+            [Position/Title]<br>
+            [Institution Name]<br>
+            [City, Country]<br>
+            Email: <a href="mailto:reference@example.com">reference@example.com</a><br>
+            Phone: [Phone Number]
+        </div>
+    </div>
+
+</body>
+</html>
