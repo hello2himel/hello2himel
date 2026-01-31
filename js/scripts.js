@@ -177,6 +177,13 @@ document.addEventListener('DOMContentLoaded', function () {
     ageElement.textContent = calculateAge('2009-01-20');
   }
   
+  // Set dynamic year in footer
+  const footerYearElements = document.querySelectorAll('footer');
+  const currentYear = new Date().getFullYear();
+  footerYearElements.forEach(footer => {
+    footer.innerHTML = footer.innerHTML.replace(/©\s*\d{4}/, `© ${currentYear}`);
+  });
+  
   // Theme toggle event listeners
   const themeToggleButtons = document.querySelectorAll('.theme-toggle, #theme-toggle, #theme-toggle-sidebar');
   themeToggleButtons.forEach(button => {
