@@ -1,0 +1,134 @@
+{
+  "profile": {
+    "name": "Himel Das",
+    "birthDate": "2009-01-20",
+    "tags": [
+      "Astrophysics",
+      "Computational Science",
+      "Scientific Research",
+      "Linux & FOSS"
+    ],
+    "bio": "A {age}-year-old astronerd from Bangladesh with a passion for FOSS and a strong focus towards digital sovereignty. Currently exploring the unknown while building technology that matters.",
+    "contacts": [
+      {
+        "type": "email",
+        "label": "Email",
+        "icon": "ri-mail-fill",
+        "url": "mailto:hello2himel@proton.me"
+      },
+      {
+        "type": "telegram",
+        "label": "Telegram",
+        "icon": "ri-telegram-2-fill",
+        "url": "https://t.me/hello2himel"
+      },
+      {
+        "type": "github",
+        "label": "GitHub",
+        "icon": "ri-github-fill",
+        "url": "https://github.com/hello2himel"
+      },
+      {
+        "type": "blog",
+        "label": "Blog",
+        "icon": "ri-quill-pen-ai-fill",
+        "url": "https://hello2himel.blogspot.com"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "title": "AtomicMemory",
+      "description": "Learn the periodic table through an interactive, gamified experience. ",
+      "link": "https://atomicmemory.netlify.app",
+      "linkText": "Try It Live"
+    },
+    {
+      "title": "Cordata",
+      "description": "A tool to calculate the area, circumference, and centroid of a polygon in coordinate geometry.",
+      "link": "https://github.com/hello2himel/cordata",
+      "linkText": "Learn More"
+    },
+    {
+      "title": "Urochithi",
+      "description": "Privacy-focused anonymous letter platform with vintage paper aesthetic. Features two-factor authentication, zero data collection, and Google Sheets backend.",
+      "link": "https://github.com/hello2himel/urochithi",
+      "linkText": "Learn More"
+    },
+    {
+      "title": "Takla Bangla Converter",
+      "description": "AI-powered tool that converts phonetic Bangla (written in English) to proper Bengali script. Features web interface and Telegram bot..",
+      "link": "https://github.com/hello2himel/takla-onubad",
+      "linkText": "Learn More"
+    },
+    {
+      "title": "JustVocals",
+      "description": "Isolate vocals and remove musical instruments from any audio clip.",
+      "link": "https://github.com/hello2himel/justvocals",
+      "linkText": "Learn More"
+    }
+  ],
+  "publications": [
+    {
+      "title": "Equilibrium Statistic",
+      "description": "A Recursive Convergence Model for Central Tendency",
+      "link": "https://github.com/hello2himel/equilibrium-statistic",
+      "linkText": "Learn More"
+    }
+  ],
+  "leadership": [
+    {
+      "title": "Founder",
+      "organization": "Stargzr",
+      "description": "Started as a hobbyist network of astro people based in Bogura to talk about astro, now arranges astro outreach and events."
+    },
+    {
+      "title": "President",
+      "organization": "Science Club, Bogura Zilla School",
+      "description": "Organizing science fairs, workshops, competitions, and building model rockets/telescopes to inspire scientific curiosity."
+    },
+    {
+      "title": "Founder",
+      "organization": "Techbondhu (2020–Present)",
+      "description": "Building a community focused on technology education and innovation."
+    },
+    {
+      "title": "Co-Head of Department of Content and Production",
+      "organization": "Aruddho Ekattor",
+      "description": "Leading content creation and production strategies."
+    },
+    {
+      "title": "Content Writer",
+      "organization": "Tachyon",
+      "description": "Contributing articles and content on science and technology."
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Silver Medalist",
+      "medal": "🥈",
+      "description": "Bangladesh Olympiad on Astronomy and Astrophysics (Regional Round)"
+    },
+    {
+      "title": "1st Prize",
+      "medal": "🥇",
+      "description": "National Science Fair 2024"
+    },
+    {
+      "title": "2nd Prize",
+      "medal": "🥈",
+      "description": "National Science Quiz 2024"
+    },
+    {
+      "title": "Winner",
+      "medal": "🏆",
+      "description": "Digital Innovation Fair (2023, Regional)"
+    }
+  ],
+  "vision": {
+    "paragraphs": [
+      "My vision is to contribute to the advancement of human knowledge through the exploration of the universe and its mysteries. With a deep passion for astrophysics and an unwavering curiosity about the cosmos, I aim to blend scientific research with innovative technology to unravel the fundamental forces shaping our existence.",
+      "I aspire to lead impactful research, inspire the next generation of thinkers, and bridge the gap between science and society. By combining my love for physics, education, and technology, I envision creating a world where knowledge is accessible, curiosity is nurtured, and the frontiers of science are continually pushed."
+    ]
+  }
+}
