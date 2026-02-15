@@ -35,6 +35,166 @@ const toggleTheme = () => {
   applyTheme(newTheme);
 };
 
+// Function to load and render portfolio data
+async function loadPortfolioData() {
+  try {
+    const response = await fetch('/res/data.json');
+    const data = await response.json();
+    
+    // Render profile data
+    renderProfile(data.profile);
+    
+    // Render projects
+    renderProjects(data.projects);
+    
+    // Render publications
+    renderPublications(data.publications);
+    
+    // Render leadership
+    renderLeadership(data.leadership);
+    
+    // Render achievements
+    renderAchievements(data.achievements);
+    
+    // Render vision
+    renderVision(data.vision);
+    
+  } catch (error) {
+    console.error('Error loading portfolio data:', error);
+  }
+}
+
+// Render profile section
+function renderProfile(profile) {
+  // Update tags
+  const tagsContainer = document.querySelector('.profile-name-title .tags');
+  if (tagsContainer && profile.tags) {
+    tagsContainer.innerHTML = profile.tags
+      .map(tag => `<span class="tag">${tag}</span>`)
+      .join('');
+  }
+  
+  // Update bio with calculated age
+  const bioElement = document.querySelector('.bio-highlight');
+  if (bioElement && profile.bio) {
+    const age = calculateAge(profile.birthDate);
+    bioElement.innerHTML = profile.bio.replace('{age}', `<span id="age">${age}</span>`);
+  }
+  
+  // Update contact buttons
+  const contactButtonsContainer = document.querySelector('.contact-buttons');
+  if (contactButtonsContainer && profile.contacts) {
+    contactButtonsContainer.innerHTML = profile.contacts
+      .map(contact => `
+        <a href="${contact.url}" class="contact-button" ${contact.url.startsWith('http') ? 'target="_blank"' : ''}>
+          <i class="ri-lg ${contact.icon}"></i> ${contact.label} <i class="ri-lg ri-arrow-right-s-line"></i>
+        </a>
+      `)
+      .join('');
+  }
+}
+
+// Render projects
+function renderProjects(projects) {
+  const projectsGrid = document.querySelector('#projects .projects-grid');
+  if (!projectsGrid || !projects) return;
+  
+  projectsGrid.innerHTML = projects
+    .map(project => `
+      <div class="project-card bottom-align">
+        <div class="project-title">${project.title}</div>
+        <p>${project.description}</p>
+        ${project.link ? `
+          <a class="learn-more-btn" href="${project.link}" target="_blank" aria-label="Learn more about ${project.title}">
+            ${project.linkText}
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        ` : ''}
+      </div>
+    `)
+    .join('');
+}
+
+// Render publications
+function renderPublications(publications) {
+  const publicationsGrid = document.querySelector('#publications .projects-grid');
+  if (!publicationsGrid || !publications) return;
+  
+  publicationsGrid.innerHTML = publications
+    .map(publication => `
+      <div class="project-card bottom-align">
+        <div class="project-title">${publication.title}</div>
+        <p>${publication.description}</p>
+        ${publication.link ? `
+          <a class="learn-more-btn" href="${publication.link}" target="_blank" aria-label="Learn more about ${publication.title}">
+            ${publication.linkText}
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        ` : ''}
+      </div>
+    `)
+    .join('');
+}
+
+// Render leadership
+function renderLeadership(leadership) {
+  const leadershipList = document.querySelector('#leadership .leadership-list');
+  if (!leadershipList || !leadership) return;
+  
+  leadershipList.innerHTML = leadership
+    .map(item => `
+      <div class="leadership-item">
+        <div class="leadership-title">${item.title}</div>
+        <div class="leadership-org">${item.organization}</div>
+        <p>${item.description}</p>
+      </div>
+    `)
+    .join('');
+}
+
+// Render achievements
+function renderAchievements(achievements) {
+  const achievementsGrid = document.querySelector('#achievements .achievements-grid');
+  if (!achievementsGrid || !achievements) return;
+  
+  achievementsGrid.innerHTML = achievements
+    .map(achievement => `
+      <div class="achievement-card">
+        <div class="achievement-title">
+          <span class="medal">${achievement.medal}</span>${achievement.title}
+        </div>
+        <p>${achievement.description}</p>
+      </div>
+    `)
+    .join('');
+}
+
+// Render vision
+function renderVision(vision) {
+  const visionSection = document.querySelector('#vision');
+  if (!visionSection || !vision || !vision.paragraphs) return;
+  
+  // Find existing paragraphs and replace them
+  const existingParagraphs = visionSection.querySelectorAll('p');
+  existingParagraphs.forEach(p => p.remove());
+  
+  // Add new paragraphs
+  const h2 = visionSection.querySelector('h2');
+  vision.paragraphs.forEach(text => {
+    const p = document.createElement('p');
+    p.textContent = text;
+    h2.insertAdjacentElement('afterend', p);
+  });
+}
+
 // Create stars for parallax effect
 function createStars() {
   const spaceContainer = document.getElementById('space-container');
@@ -171,11 +331,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initial theme setup
   applyTheme(getPreferredTheme());
   
-  // Set age if element exists
-  const ageElement = document.getElementById('age');
-  if (ageElement) {
-    ageElement.textContent = calculateAge('2009-01-20');
-  }
+  // Load portfolio data
+  loadPortfolioData();
   
   // Set dynamic year in footer
   const footerYearElements = document.querySelectorAll('footer');
