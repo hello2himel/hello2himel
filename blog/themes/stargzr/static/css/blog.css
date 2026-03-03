@@ -150,6 +150,7 @@ a:hover {
   opacity: 1;
 }
 
+.rss-toggle,
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -165,9 +166,14 @@ a:hover {
   font-size: 1rem;
 }
 
+.rss-toggle:hover,
 .theme-toggle:hover {
   transform: translateY(-2px);
   border-color: var(--card-hover-border);
+}
+
+.rss-toggle {
+  opacity: 1;
 }
 
 /* Home / Profile intro */
