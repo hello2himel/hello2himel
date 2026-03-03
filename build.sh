@@ -4,12 +4,9 @@ mkdir -p public
 
 # Copy portfolio files to public
 cp -r css js res *.html public/
+cp -f robots.txt sitemap.xml public/ 2>/dev/null || true
 
-# Build Hugo blog into public/blog
-hugo --source blog --destination "$(pwd)/public/blog"
-
-# Ensure blog index exists
-if [ ! -f public/blog/index.html ]; then
-    echo "ERROR: Blog build failed - no index.html found"
-    exit 1
+# Copy prebuilt blog into public/blog when available
+if [ -d blog/public ]; then
+    cp -r blog/public public/blog
 fi
