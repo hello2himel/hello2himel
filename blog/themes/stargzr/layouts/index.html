@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="home-intro">
+  {{ .Content }}
+</div>
+
+{{ $pages := where .Site.RegularPages "Type" "posts" }}
+{{ if $pages }}
+
+{{ $latest := index $pages 0 }}
+<section class="featured-post">
+  <a href="{{ $latest.Permalink }}">
+    <div class="featured-post-title">{{ $latest.Title }}</div>
+    {{ with $latest.Params.summary }}<div class="featured-post-summary">{{ . }}</div>{{ end }}
+    <div class="featured-post-meta">
+      <span>{{ $latest.Date.Format "Jan 2, 2006" }}</span>
+      <span>{{ $latest.ReadingTime }} min read</span>
+    </div>
+  </a>
+</section>
+
+{{ $rest := after 1 $pages }}
+{{ if $rest }}
+<h2 class="section-title">More Posts</h2>
+<div class="post-grid">
+  {{ range $rest }}
+  <article class="post-grid-item">
+    <a href="{{ .Permalink }}">
+      <div class="post-entry-title">{{ .Title }}</div>
+      {{ with .Params.summary }}<div class="post-entry-summary">{{ . }}</div>{{ end }}
+      <div class="post-entry-meta">
+        <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+        <span>{{ .ReadingTime }} min read</span>
+      </div>
+    </a>
+  </article>
+  {{ end }}
+</div>
+{{ end }}
+
+{{ end }}
+
+{{ template "_internal/pagination.html" . }}
+{{ end }}

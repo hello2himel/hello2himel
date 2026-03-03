@@ -1,0 +1,39 @@
+{{ define "main" }}
+<h1 class="section-title">{{ .Title }}</h1>
+
+{{ with .Content }}
+<div class="post-content">{{ . }}</div>
+{{ end }}
+
+{{ $pages := .Pages }}
+{{ if eq .Kind "taxonomy" }}
+  {{ $pages = .Pages }}
+{{ end }}
+
+{{ if $pages }}
+<ul class="post-list">
+  {{ range $pages }}
+  {{ if ne .Kind "taxonomy" }}
+  <li class="post-entry">
+    <a href="{{ .Permalink }}">
+      <div class="post-entry-title">{{ .Title }}</div>
+      {{ with .Params.summary }}<div class="post-entry-summary">{{ . }}</div>{{ end }}
+      <div class="post-entry-meta">
+        <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+        <span>{{ .ReadingTime }} min read</span>
+      </div>
+    </a>
+  </li>
+  {{ else }}
+  <li class="post-entry">
+    <a href="{{ .Permalink }}">
+      <div class="post-entry-title">{{ .Title }} <span class="taxonomy-count">({{ len .Pages }})</span></div>
+    </a>
+  </li>
+  {{ end }}
+  {{ end }}
+</ul>
+{{ end }}
+
+{{ template "_internal/pagination.html" . }}
+{{ end }}

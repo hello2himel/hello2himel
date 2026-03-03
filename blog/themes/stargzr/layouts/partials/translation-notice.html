@@ -1,0 +1,19 @@
+{{ if .Params.autoTranslated }}
+<div class="translation-notice">
+  {{ if eq .Language.Lang "en" }}
+  ⚠️ This article was auto-translated from
+  {{ if eq .Params.originalLang "bn" }}Bengali{{ else }}{{ .Params.originalLang }}{{ end }}
+  and may not fully convey the original meaning.
+  {{ range .Translations }}
+  <a href="{{ .Permalink }}">Read the original →</a>
+  {{ end }}
+  {{ else }}
+  ⚠️ এই প্রবন্ধটি
+  {{ if eq .Params.originalLang "en" }}ইংরেজি{{ else }}{{ .Params.originalLang }}{{ end }}
+  থেকে স্বয়ংক্রিয়ভাবে অনূদিত এবং মূল অর্থ সম্পূর্ণভাবে প্রকাশ নাও করতে পারে।
+  {{ range .Translations }}
+  <a href="{{ .Permalink }}">মূল লেখাটি পড়ুন →</a>
+  {{ end }}
+  {{ end }}
+</div>
+{{ end }}

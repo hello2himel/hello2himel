@@ -1,0 +1,46 @@
+{{ define "main" }}
+<article>
+  <div class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    <div class="post-meta">
+      {{ with .Params.author }}<span>{{ . }}</span>{{ end }}
+      <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+      <span class="reading-time">{{ .ReadingTime }} min read</span>
+    </div>
+  </div>
+
+  {{- partial "translation-notice.html" . -}}
+
+  {{ if .Site.Params.ShowToc }}
+  {{ if .TableOfContents }}
+  <details class="toc" {{ if .Site.Params.TocOpen }}open{{ end }}>
+    <summary>Table of Contents</summary>
+    <nav>{{ .TableOfContents }}</nav>
+  </details>
+  {{ end }}
+  {{ end }}
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.tags }}
+  <div class="post-tags">
+    {{ range . }}
+    <a href="{{ "tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ if .Site.Params.ShowPostNavLinks }}
+  <nav class="post-nav">
+    {{ with .PrevInSection }}
+    <a href="{{ .Permalink }}">&larr; {{ .Title }}</a>
+    {{ end }}
+    {{ with .NextInSection }}
+    <a href="{{ .Permalink }}">{{ .Title }} &rarr;</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</article>
+{{ end }}
