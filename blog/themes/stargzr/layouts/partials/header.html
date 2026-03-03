@@ -2,19 +2,26 @@
   <div class="site-title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></div>
   <nav class="site-nav">
     {{- range .Site.Menus.main }}
+    {{- if eq .Name "হোম" "Home" }}
+    <a href="{{ .URL }}" class="home-link" data-home="true">{{ .Name }}</a>
+    {{- else }}
     <a href="{{ .URL }}">{{ .Name }}</a>
     {{- end }}
-    {{- if .IsTranslated }}
-    {{ range .Translations }}
-    <a href="{{ .Permalink }}" class="lang-switch" title="{{ .Language.LanguageName }}">{{ .Language.LanguageName }}</a>
-    {{ end }}
-    {{- else }}
-    {{ range .Site.Languages }}
-    {{ if ne .Lang $.Site.Language.Lang }}
-    <a href="{{ ($.Site.GetPage "/").Permalink | absLangURL }}" class="lang-switch" title="{{ .LanguageName }}">{{ .LanguageName }}</a>
-    {{ end }}
-    {{ end }}
     {{- end }}
+    <span class="lang-switcher">
+    {{- if eq .Language.Lang "bn" -}}
+      <a href="{{ with .Translations }}{{ (index . 0).Permalink }}{{ else }}/en/{{ end }}" class="lang-switch" title="English">EN</a> | <span class="lang-active">বাং</span>
+    {{- else -}}
+      <span class="lang-active">EN</span> | <a href="{{ with .Translations }}{{ (index . 0).Permalink }}{{ else }}/{{ end }}" class="lang-switch" title="বাংলা">বাং</a>
+    {{- end -}}
+    </span>
     <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">☾</button>
   </nav>
 </header>
+<script>
+(function() {
+  var homeLinks = document.querySelectorAll('a[data-home="true"]');
+  var origin = window.location.origin || (window.location.protocol + '//' + window.location.host);
+  homeLinks.forEach(function(a) { a.href = origin + '/'; });
+})();
+</script>

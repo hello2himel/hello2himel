@@ -515,19 +515,30 @@ a:hover {
 }
 
 /* Language switcher */
-.lang-switch {
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
   font-size: 0.85rem;
   font-weight: 600;
-  padding: 0.2rem 0.6rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  background: var(--tag-bg);
-  transition: border-color 0.2s, transform 0.2s;
+}
+
+.lang-switch {
+  padding: 0.15rem 0.4rem;
+  border: none;
+  border-bottom: 1px dashed var(--border-color);
+  transition: opacity 0.2s;
+  opacity: 0.6;
 }
 
 .lang-switch:hover {
-  border-color: var(--card-hover-border);
-  transform: translateY(-1px);
+  opacity: 1;
+  border-bottom-style: solid;
+}
+
+.lang-active {
+  opacity: 1;
+  font-weight: 700;
 }
 
 /* Translation notice */
