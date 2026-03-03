@@ -3,12 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Support Himel Das's research and projects via secure donation options." />
+  <meta property="og:title" content="Donate | Himel Das" />
+  <meta property="og:description" content="Support Himel Das's work through bKash or bank transfer options." />
+  <meta property="og:image" content="/res/bkash-qr.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Donate | Himel Das" />
+  <meta name="twitter:description" content="Support Himel Das's work through secure donation options." />
+  <meta name="twitter:image" content="/res/bkash-qr.png" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self';" />
   <title>Donate | Himel Das</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet">
+  <link href="/res/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/donate.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div id="space-container"></div>
 
   <div class="overlay" id="overlay"></div>
@@ -40,13 +51,13 @@
         <i class="ri-lg ri-eye-line"></i> Vision
       </a>
       <div class="sidebar-divider"></div>
-      <a href="https://hello2himel.blogspot.com" class="sidebar-link" target="_blank">
+      <a href="https://hello2himel.blogspot.com" class="sidebar-link" target="_blank" rel="noopener noreferrer" aria-label="Read Blog (opens in a new tab)">
         <i class="ri-lg ri-article-line"></i> Read Blog
       </a>
       <a href="mailto:hello2himel@proton.me" class="sidebar-link">
         <i class="ri-lg ri-mail-line"></i> Contact Me
       </a>
-      <a href="https://github.com/hello2himel" class="sidebar-link" target="_blank">
+      <a href="https://github.com/hello2himel" class="sidebar-link" target="_blank" rel="noopener noreferrer" aria-label="View Projects (opens in a new tab)">
         <i class="ri-lg ri-github-line"></i> View Projects
       </a>
     </div>
@@ -61,7 +72,7 @@
     </button>
   </div>
 
-  <div class="main-container">
+  <main class="main-container" id="main-content">
     <div class="donate-content">
       <!-- Header -->
       <div class="donate-header">
@@ -77,23 +88,23 @@
           <h2>Choose Your Region</h2>
           
           <div class="step-options">
-            <button class="step-option" data-target-step="step-bangladesh-methods">
+            <button class="step-option" data-target-step="step-bangladesh-methods" aria-describedby="bd-option-subtext">
               <div class="option-content">
                 <div class="option-main">
                   <i class="ri-flag-2-line"></i>
                   <span>Bangladesh</span>
                 </div>
-                <div class="option-subtext">bKash, Bank Transfer</div>
+                <div class="option-subtext" id="bd-option-subtext">bKash, Bank Transfer</div>
               </div>
             </button>
             
-            <button class="step-option" data-target-step="step-international-methods">
+            <button class="step-option" data-target-step="step-international-methods" aria-describedby="int-option-subtext">
               <div class="option-content">
                 <div class="option-main">
                   <i class="ri-earth-line"></i>
                   <span>International</span>
                 </div>
-                <div class="option-subtext">Bank Transfer (SWIFT)</div>
+                <div class="option-subtext" id="int-option-subtext">Bank Transfer (SWIFT)</div>
               </div>
             </button>
           </div>
@@ -169,7 +180,7 @@
             <div class="qr-code">
               <p class="detail-label">Scan QR Code</p>
               <div class="qr-placeholder">
-                <img src="/res/bkash-qr.png" alt="bKash QR Code" style="width: 100%; height: 100%; object-fit: contain;">
+                <img src="/res/bkash-qr.png" alt="bKash QR Code" class="qr-image" loading="lazy" width="180" height="180">
               </div>
             </div>
 
@@ -177,7 +188,7 @@
 
             <div class="phone-details">
               <p class="detail-label">Send money to</p>
-              <button class="phone-number" onclick="copyPhoneNumber('01868735269')">
+              <button class="phone-number" id="copy-phone-button" data-phone='MDE4Njg3MzUyNjk='>
                 <i class="ri-phone-line"></i>
                 <span>01868 735269</span>
                 <i class="ri-file-copy-line"></i>
@@ -235,9 +246,9 @@
     </div>
 
     <footer>
-      © 2025 Himel Das - Bogura, Bangladesh
+      © 2026 Himel Das - Bogura, Bangladesh
     </footer>
-  </div>
+  </main>
 
   <div class="toast" id="toast">
     <i class="ri-checkbox-circle-line"></i>

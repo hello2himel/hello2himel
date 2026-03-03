@@ -7,6 +7,8 @@
   --tag-bg: #222;
   --overlay-bg: rgba(0, 0, 0, 0.8);
   --sidebar-width: 250px;
+  --profile-image-size: 150px;
+  --min-touch-target-size: 48px;
 }
 
 [data-theme="light"] {
@@ -26,20 +28,13 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Custom spaceship cursor for all pages */
 body {
-  /* cursor: url('../res/cursor.png'), auto !important; */
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
   transition: background-color 0.3s, color 0.3s;
   overflow-x: hidden;
   position: relative;
-}
-
-/* Hover state cursor */
-a, button, .button, .contact-button, .theme-toggle, .header-button, .sidebar-button, .sidebar-link {
-  /* cursor: url('../res/cursor-hover.png'), pointer !important; */
 }
 
 /* Main Layout */
@@ -81,8 +76,8 @@ header {
 }
 
 .profile-img {
-  width: 150px;
-  height: 150px;
+  width: var(--profile-image-size);
+  height: var(--profile-image-size);
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--border-color);
@@ -338,8 +333,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: var(--min-touch-target-size);
+  height: var(--min-touch-target-size);
   border-radius: 50%;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
@@ -381,8 +376,8 @@ footer {
 .sidebar-button {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  width: 36px;
-  height: 36px;
+  width: var(--min-touch-target-size);
+  height: var(--min-touch-target-size);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -685,8 +680,8 @@ body.error-page {
   position: fixed;
   top: 1.5rem;
   right: 1.5rem;
-  width: 40px;
-  height: 40px;
+  width: var(--min-touch-target-size);
+  height: var(--min-touch-target-size);
   border-radius: 50%;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
@@ -737,4 +732,65 @@ body.error-page {
   width: 4px;
   height: 4px;
   opacity: 0.25;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  z-index: 2000;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--card-hover-border);
+  outline-offset: 2px;
+}
+
+.loading-text,
+.error-text {
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+
+.error-text {
+  opacity: 0.95;
+  color: #ff7a7a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  #space-container,
+  .header-controls,
+  .sidebar,
+  .overlay,
+  .theme-toggle,
+  .skip-link {
+    display: none !important;
+  }
+
+  body,
+  .main-container {
+    background: #fff !important;
+    color: #000 !important;
+  }
 }

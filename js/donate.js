@@ -17,10 +17,12 @@ function showToast(message, duration = 3000) {
 // Copy phone number
 function copyPhoneNumber(phoneNumber) {
   navigator.clipboard.writeText(phoneNumber).then(() => {
-    showToast('Phone number copied!');
+    const message = 'Phone number copied!';
+    showToast(message, Math.max(3000, message.length * 120));
   }).catch(err => {
     console.error('Failed to copy:', err);
-    showToast('Failed to copy.');
+    const message = 'Failed to copy.';
+    showToast(message, Math.max(3000, message.length * 120));
   });
 }
 
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Parse URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const projectName = urlParams.get('source') || null;
+  // session_id helps map donor context with a specific referral flow.
   const sessionId = urlParams.get('session_id') || null;
 
   // Update main title
@@ -89,6 +92,19 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = generateMailtoLink();
     });
   });
+
+  const copyPhoneButton = document.getElementById('copy-phone-button');
+  if (copyPhoneButton) {
+    copyPhoneButton.addEventListener('click', () => {
+      const encodedPhone = copyPhoneButton.dataset.phone || '';
+      try {
+        const phone = atob(encodedPhone);
+        copyPhoneNumber(phone);
+      } catch (error) {
+        console.error('Invalid phone number encoding:', error);
+      }
+    });
+  }
 
   // Step navigation
   const wizardSteps = document.querySelectorAll('.wizard-step');
