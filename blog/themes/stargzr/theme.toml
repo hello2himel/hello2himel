@@ -1,0 +1,6 @@
+name = "STARGZR"
+license = "MIT"
+description = "A minimal blog theme matching the portfolio aesthetic"
+
+[author]
+  name = "Himel Das"
