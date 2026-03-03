@@ -1,7 +1,8 @@
 baseURL = 'https://hello2himel.netlify.app/blog/'
-languageCode = 'en-us'
 title = "Himel Das | Blog"
 theme = 'stargzr'
+defaultContentLanguage = 'bn'
+defaultContentLanguageInSubdir = false
 
 [params]
   env = "production"
@@ -29,26 +30,52 @@ theme = 'stargzr'
     name = "github"
     url = "https://github.com/hello2himel"
 
-[menu]
-  [[menu.main]]
-    name = "Home"
-    url = "https://hello2himel.netlify.app"
-    weight = 10
-  
-  [[menu.main]]
-    name = "Blog"
-    url = "/"
-    weight = 20
-  
-  [[menu.main]]
-    name = "Tags"
-    url = "/tags/"
-    weight = 30
-  
-  [[menu.main]]
-    name = "Search"
-    url = "/search/"
-    weight = 40
+[languages]
+  [languages.bn]
+    languageCode = 'bn'
+    languageName = 'বাংলা'
+    weight = 1
+    [languages.bn.params]
+      description = "জ্যোতির্পদার্থবিদ্যা, FOSS এবং প্রযুক্তি নিয়ে ভাবনা"
+    [[languages.bn.menu.main]]
+      name = "হোম"
+      url = "https://hello2himel.netlify.app"
+      weight = 10
+    [[languages.bn.menu.main]]
+      name = "ব্লগ"
+      url = "/"
+      weight = 20
+    [[languages.bn.menu.main]]
+      name = "ট্যাগ"
+      url = "/tags/"
+      weight = 30
+    [[languages.bn.menu.main]]
+      name = "খুঁজুন"
+      url = "/search/"
+      weight = 40
+
+  [languages.en]
+    languageCode = 'en'
+    languageName = 'English'
+    weight = 2
+    [languages.en.params]
+      description = "Thoughts on astrophysics, FOSS, and technology"
+    [[languages.en.menu.main]]
+      name = "Home"
+      url = "https://hello2himel.netlify.app"
+      weight = 10
+    [[languages.en.menu.main]]
+      name = "Blog"
+      url = "/en/"
+      weight = 20
+    [[languages.en.menu.main]]
+      name = "Tags"
+      url = "/en/tags/"
+      weight = 30
+    [[languages.en.menu.main]]
+      name = "Search"
+      url = "/en/search/"
+      weight = 40
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

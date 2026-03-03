@@ -4,6 +4,17 @@
     {{- range .Site.Menus.main }}
     <a href="{{ .URL }}">{{ .Name }}</a>
     {{- end }}
+    {{- if .IsTranslated }}
+    {{ range .Translations }}
+    <a href="{{ .Permalink }}" class="lang-switch" title="{{ .Language.LanguageName }}">{{ .Language.LanguageName }}</a>
+    {{ end }}
+    {{- else }}
+    {{ range .Site.Languages }}
+    {{ if ne .Lang $.Site.Language.Lang }}
+    <a href="{{ ($.Site.GetPage "/").Permalink | absLangURL }}" class="lang-switch" title="{{ .LanguageName }}">{{ .LanguageName }}</a>
+    {{ end }}
+    {{ end }}
+    {{- end }}
     <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">☾</button>
   </nav>
 </header>

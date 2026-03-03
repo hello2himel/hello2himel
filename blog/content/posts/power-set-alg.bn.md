@@ -4,6 +4,7 @@ date: 2023-05-02
 author: "Himel Das"
 tags: ["গণিতের 'ত'", "নিউরণের তৃষ্ণা"]
 categories: ["গণিত"]
+translationKey: "power-set-alg"
 summary: "2ⁿ সূত্র কীভাবে সেটের উপসেট নির্ণয় করে তা সহজভাবে ব্যাখ্যা।"
 ---
 

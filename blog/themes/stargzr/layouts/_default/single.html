@@ -9,6 +9,8 @@
     </div>
   </div>
 
+  {{- partial "translation-notice.html" . -}}
+
   {{ if .Site.Params.ShowToc }}
   {{ if .TableOfContents }}
   <details class="toc" {{ if .Site.Params.TocOpen }}open{{ end }}>
