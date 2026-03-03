@@ -1,4 +1,6 @@
 // Donate Page JavaScript - Clean & Simple
+const TOAST_MS_PER_CHAR = 120;
+const getToastDuration = (message) => Math.max(3000, message.length * TOAST_MS_PER_CHAR);
 
 // Toast notification
 function showToast(message, duration = 3000) {
@@ -17,10 +19,12 @@ function showToast(message, duration = 3000) {
 // Copy phone number
 function copyPhoneNumber(phoneNumber) {
   navigator.clipboard.writeText(phoneNumber).then(() => {
-    showToast('Phone number copied!');
+    const message = 'Phone number copied!';
+    showToast(message, getToastDuration(message));
   }).catch(err => {
     console.error('Failed to copy:', err);
-    showToast('Failed to copy.');
+    const message = 'Failed to copy.';
+    showToast(message, getToastDuration(message));
   });
 }
 
@@ -29,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Parse URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const projectName = urlParams.get('source') || null;
+  // session_id is an optional tracking token from inbound links; when present it is displayed and appended to generated support emails.
   const sessionId = urlParams.get('session_id') || null;
 
   // Update main title
@@ -89,6 +94,19 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = generateMailtoLink();
     });
   });
+
+  const copyPhoneButton = document.getElementById('copy-phone-button');
+  if (copyPhoneButton) {
+    copyPhoneButton.addEventListener('click', () => {
+      const encodedPhone = copyPhoneButton.dataset.phone || '';
+      try {
+        const phone = atob(encodedPhone);
+        copyPhoneNumber(phone);
+      } catch (error) {
+        console.error('Invalid phone number encoding:', error);
+      }
+    });
+  }
 
   // Step navigation
   const wizardSteps = document.querySelectorAll('.wizard-step');

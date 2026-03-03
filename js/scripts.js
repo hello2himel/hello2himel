@@ -1,5 +1,6 @@
 // Age calculation function
 function calculateAge(birthDate) {
+  if (Number.isNaN(new Date(birthDate).getTime())) return null;
   const today = new Date();
   const birth = new Date(birthDate);
   let age = today.getFullYear() - birth.getFullYear();
@@ -37,9 +38,16 @@ const toggleTheme = () => {
 
 // Function to load and render portfolio data
 async function loadPortfolioData() {
+  setLoadingState(true);
   try {
     const response = await fetch('/res/data.json');
+    if (!response.ok) {
+      throw new Error(`Failed to load data (${response.status})`);
+    }
     const data = await response.json();
+    if (!data?.profile || !Array.isArray(data.projects) || !Array.isArray(data.publications)) {
+      throw new Error('Portfolio data is incomplete.');
+    }
     
     // Render profile data
     renderProfile(data.profile);
@@ -58,10 +66,47 @@ async function loadPortfolioData() {
     
     // Render vision
     renderVision(data.vision);
+    setLoadingState(false);
     
   } catch (error) {
     console.error('Error loading portfolio data:', error);
+    showPortfolioError('Sorry, portfolio data is currently unavailable. Please try again later.');
+    setLoadingState(false);
   }
+}
+
+function setLoadingState(isLoading) {
+  const sections = ['projects', 'publications', 'leadership', 'achievements', 'vision'];
+  sections.forEach((id) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+    section.setAttribute('aria-busy', isLoading ? 'true' : 'false');
+    const container = section.querySelector('.projects-grid, .leadership-list') || section;
+    if (isLoading) {
+      if (!container.querySelector('.loading-text')) {
+        const loading = document.createElement('p');
+        loading.className = 'loading-text';
+        loading.textContent = 'Loading content...';
+        container.appendChild(loading);
+      }
+    } else {
+      container.querySelectorAll('.loading-text').forEach((el) => el.remove());
+    }
+  });
+}
+
+function showPortfolioError(message) {
+  const sections = ['projects', 'publications', 'leadership', 'achievements', 'vision'];
+  sections.forEach((id) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+    const container = section.querySelector('.projects-grid, .leadership-list') || section;
+    container.textContent = '';
+    const error = document.createElement('p');
+    error.className = 'error-text';
+    error.textContent = message;
+    container.appendChild(error);
+  });
 }
 
 // Render profile section
@@ -78,7 +123,7 @@ function renderProfile(profile) {
   const bioElement = document.querySelector('.bio-highlight');
   if (bioElement && profile.bio) {
     const age = calculateAge(profile.birthDate);
-    bioElement.innerHTML = profile.bio.replace('{age}', `<span id="age">${age}</span>`);
+    bioElement.innerHTML = profile.bio.replace('{age}', `<span id="age">${age ?? 'N/A'}</span>`);
   }
   
   // Update contact buttons
@@ -86,7 +131,7 @@ function renderProfile(profile) {
   if (contactButtonsContainer && profile.contacts) {
     contactButtonsContainer.innerHTML = profile.contacts
       .map(contact => `
-        <a href="${contact.url}" class="contact-button" ${contact.url.startsWith('http') ? 'target="_blank"' : ''}>
+        <a href="${contact.url}" class="contact-button" ${contact.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
           <i class="ri-lg ${contact.icon}"></i> ${contact.label} <i class="ri-lg ri-arrow-right-s-line"></i>
         </a>
       `)
@@ -101,11 +146,11 @@ function renderProjects(projects) {
   
   projectsGrid.innerHTML = projects
     .map(project => `
-      <div class="project-card bottom-align">
+      <article class="project-card bottom-align">
         <div class="project-title">${project.title}</div>
         <p>${project.description}</p>
         ${project.link ? `
-          <a class="learn-more-btn" href="${project.link}" target="_blank" aria-label="Learn more about ${project.title}">
+          <a class="learn-more-btn" href="${project.link}" target="_blank" rel="noopener noreferrer" aria-label="Learn more about ${project.title} (opens in a new tab)">
             ${project.linkText}
             <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
@@ -114,7 +159,7 @@ function renderProjects(projects) {
             </svg>
           </a>
         ` : ''}
-      </div>
+      </article>
     `)
     .join('');
 }
@@ -126,11 +171,11 @@ function renderPublications(publications) {
   
   publicationsGrid.innerHTML = publications
     .map(publication => `
-      <div class="project-card bottom-align">
+      <article class="project-card bottom-align">
         <div class="project-title">${publication.title}</div>
         <p>${publication.description}</p>
         ${publication.link ? `
-          <a class="learn-more-btn" href="${publication.link}" target="_blank" aria-label="Learn more about ${publication.title}">
+          <a class="learn-more-btn" href="${publication.link}" target="_blank" rel="noopener noreferrer" aria-label="Learn more about ${publication.title} (opens in a new tab)">
             ${publication.linkText}
             <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
@@ -139,7 +184,7 @@ function renderPublications(publications) {
             </svg>
           </a>
         ` : ''}
-      </div>
+      </article>
     `)
     .join('');
 }
@@ -151,11 +196,11 @@ function renderLeadership(leadership) {
   
   leadershipList.innerHTML = leadership
     .map(item => `
-      <div class="leadership-item">
+      <article class="leadership-item">
         <div class="leadership-title">${item.title}</div>
         <div class="leadership-org">${item.organization}</div>
         <p>${item.description}</p>
-      </div>
+      </article>
     `)
     .join('');
 }
@@ -167,12 +212,12 @@ function renderAchievements(achievements) {
   
   achievementsGrid.innerHTML = achievements
     .map(achievement => `
-      <div class="achievement-card">
+      <article class="achievement-card">
         <div class="achievement-title">
           <span class="medal">${achievement.medal}</span>${achievement.title}
         </div>
         <p>${achievement.description}</p>
-      </div>
+      </article>
     `)
     .join('');
 }
@@ -205,7 +250,8 @@ function createStars() {
   
   // Create stars with different sizes
   const starSizes = ['small', 'medium', 'large'];
-  for (let i = 0; i < 70; i++) {
+  const starCount = window.innerWidth <= 768 ? 35 : 70;
+  for (let i = 0; i < starCount; i++) {
     const star = document.createElement('div');
     star.classList.add('space-element', 'star');
     
@@ -257,24 +303,8 @@ function initParallaxEffect() {
   
   // For larger screens - mouse parallax
   if (window.innerWidth > 768) {
-    // Add debug element to check if mouse events are firing
-    const debug = document.createElement('div');
-    debug.style.position = 'fixed';
-    debug.style.bottom = '10px';
-    debug.style.left = '10px';
-    debug.style.background = 'rgba(0,0,0,0.7)';
-    debug.style.color = 'white';
-    debug.style.padding = '5px';
-    debug.style.fontSize = '12px';
-    debug.style.zIndex = '9999';
-    debug.style.display = 'none'; // Set to 'block' for debugging
-    document.body.appendChild(debug);
-    
     // Mouse move event for parallax
     document.addEventListener('mousemove', (e) => {
-      // Update debug info
-      debug.textContent = `Mouse: X=${e.clientX}, Y=${e.clientY}`;
-      
       // Calculate center-relative position (-1 to 1 range)
       const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
       const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
@@ -299,7 +329,7 @@ function initParallaxEffect() {
   // For smaller screens - gyroscope parallax
   else {
     if (window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', (e) => {
+      const enableDeviceMotion = () => window.addEventListener('deviceorientation', (e) => {
         const tiltX = e.beta ? (e.beta - 45) * 0.5 : 0;  // Adjust for typical holding angle
         const tiltY = e.gamma ? e.gamma * 0.5 : 0;
         
@@ -322,6 +352,17 @@ function initParallaxEffect() {
           planet.style.transform = `translate(${planetMoveX}px, ${planetMoveY}px)`;
         }
       });
+
+      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        const request = () => DeviceOrientationEvent.requestPermission()
+          .then((permissionState) => {
+            if (permissionState === 'granted') enableDeviceMotion();
+          })
+          .catch(() => {});
+        window.addEventListener('click', request, { once: true });
+      } else {
+        enableDeviceMotion();
+      }
     }
   }
 }
@@ -366,18 +407,21 @@ document.addEventListener('DOMContentLoaded', function () {
     menuToggle.addEventListener('click', () => {
       sidebar.classList.add('active');
       overlay.classList.add('active');
+      sidebarCollapse.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
     });
     
     sidebarCollapse.addEventListener('click', () => {
       sidebar.classList.remove('active');
       overlay.classList.remove('active');
+      sidebarCollapse.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     });
     
     overlay.addEventListener('click', () => {
       sidebar.classList.remove('active');
       overlay.classList.remove('active');
+      sidebarCollapse.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     });
     
@@ -386,6 +430,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (link.getAttribute('href').startsWith('#')) {
           sidebar.classList.remove('active');
           overlay.classList.remove('active');
+          sidebarCollapse.setAttribute('aria-expanded', 'false');
           document.body.style.overflow = '';
         }
       });
@@ -393,7 +438,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   
   // Create space elements
-  createStars();
+  try {
+    createStars();
+  } catch (error) {
+    console.error('Error creating stars:', error);
+  }
   
   // Initialize parallax effect with a small delay to ensure DOM is ready
   setTimeout(initParallaxEffect, 100);
