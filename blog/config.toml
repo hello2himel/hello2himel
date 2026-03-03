@@ -39,7 +39,7 @@ defaultContentLanguageInSubdir = false
       description = "জ্যোতির্পদার্থবিদ্যা, FOSS এবং প্রযুক্তি নিয়ে ভাবনা"
     [[languages.bn.menu.main]]
       name = "হোম"
-      url = "https://hello2himel.netlify.app"
+      url = "/"
       weight = 10
     [[languages.bn.menu.main]]
       name = "ব্লগ"
@@ -62,7 +62,7 @@ defaultContentLanguageInSubdir = false
       description = "Thoughts on astrophysics, FOSS, and technology"
     [[languages.en.menu.main]]
       name = "Home"
-      url = "https://hello2himel.netlify.app"
+      url = "/"
       weight = 10
     [[languages.en.menu.main]]
       name = "Blog"

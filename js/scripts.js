@@ -36,6 +36,91 @@ const toggleTheme = () => {
   applyTheme(newTheme);
 };
 
+// Language handling
+let currentLang = localStorage.getItem('lang') || 'en';
+let portfolioData = null;
+
+const getLang = () => currentLang;
+
+const setLang = (lang) => {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+  updateLangButtons();
+  if (portfolioData) {
+    renderAllContent(portfolioData);
+  }
+};
+
+const toggleLang = () => {
+  setLang(currentLang === 'en' ? 'bn' : 'en');
+};
+
+const updateLangButtons = () => {
+  const langButtons = document.querySelectorAll('#lang-toggle span, #lang-toggle-sidebar span');
+  langButtons.forEach(span => {
+    span.textContent = currentLang === 'en' ? 'বাং' : 'EN';
+  });
+  // Update sidebar i18n labels
+  const i18nMap = {
+    projects: { en: 'Projects', bn: 'প্রকল্প' },
+    publications: { en: 'Publications', bn: 'প্রকাশনা' },
+    leadership: { en: 'Leadership', bn: 'নেতৃত্ব' },
+    achievements: { en: 'Achievements', bn: 'অর্জন' },
+    vision: { en: 'Vision', bn: 'পরিকল্পনা' },
+    readBlog: { en: 'Read Blog', bn: 'ব্লগ পড়ুন' },
+    contactMe: { en: 'Contact Me', bn: 'যোগাযোগ' },
+    viewProjects: { en: 'View Projects', bn: 'প্রকল্প দেখুন' }
+  };
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18nMap[key]) {
+      el.textContent = i18nMap[key][currentLang] || i18nMap[key].en;
+    }
+  });
+};
+
+const t = (obj, field) => {
+  if (!obj) return '';
+  const bnField = field + '_bn';
+  if (currentLang === 'bn' && obj[bnField]) return obj[bnField];
+  return obj[field] || '';
+};
+
+const tArr = (obj, field) => {
+  if (!obj) return [];
+  const bnField = field + '_bn';
+  if (currentLang === 'bn' && obj[bnField]) return obj[bnField];
+  return obj[field] || [];
+};
+
+function renderAllContent(data) {
+  renderProfile(data.profile);
+  renderProjects(data.projects);
+  renderPublications(data.publications);
+  renderLeadership(data.leadership);
+  renderAchievements(data.achievements);
+  renderVision(data.vision);
+  // Update section headings
+  if (data.sectionHeadings) {
+    const sections = ['projects', 'publications', 'leadership', 'achievements', 'vision'];
+    sections.forEach(id => {
+      const section = document.getElementById(id);
+      if (!section) return;
+      const h2 = section.querySelector('h2');
+      if (h2) h2.textContent = t(data.sectionHeadings, id);
+    });
+  }
+  // Update footer
+  const footer = document.querySelector('footer');
+  if (footer) {
+    const year = new Date().getFullYear();
+    footer.innerHTML = currentLang === 'bn'
+      ? `&copy; ${year} হিমেল দাস - বগুড়া, বাংলাদেশ`
+      : `&copy; ${year} Himel Das - Bogura, Bangladesh`;
+  }
+}
+
 // Function to load and render portfolio data
 async function loadPortfolioData() {
   setLoadingState(true);
@@ -49,23 +134,8 @@ async function loadPortfolioData() {
       throw new Error('Portfolio data is incomplete.');
     }
     
-    // Render profile data
-    renderProfile(data.profile);
-    
-    // Render projects
-    renderProjects(data.projects);
-    
-    // Render publications
-    renderPublications(data.publications);
-    
-    // Render leadership
-    renderLeadership(data.leadership);
-    
-    // Render achievements
-    renderAchievements(data.achievements);
-    
-    // Render vision
-    renderVision(data.vision);
+    portfolioData = data;
+    renderAllContent(data);
     setLoadingState(false);
     
   } catch (error) {
@@ -114,7 +184,8 @@ function renderProfile(profile) {
   // Update tags
   const tagsContainer = document.querySelector('.profile-name-title .tags');
   if (tagsContainer && profile.tags) {
-    tagsContainer.innerHTML = profile.tags
+    const tags = tArr(profile, 'tags');
+    tagsContainer.innerHTML = tags
       .map(tag => `<span class="tag">${tag}</span>`)
       .join('');
   }
@@ -123,7 +194,8 @@ function renderProfile(profile) {
   const bioElement = document.querySelector('.bio-highlight');
   if (bioElement && profile.bio) {
     const age = calculateAge(profile.birthDate);
-    bioElement.innerHTML = profile.bio.replace('{age}', `<span id="age">${age ?? 'N/A'}</span>`);
+    const bio = t(profile, 'bio');
+    bioElement.innerHTML = bio.replace('{age}', `<span id="age">${age ?? 'N/A'}</span>`);
   }
   
   // Update contact buttons
@@ -132,7 +204,7 @@ function renderProfile(profile) {
     contactButtonsContainer.innerHTML = profile.contacts
       .map(contact => `
         <a href="${contact.url}" class="contact-button" ${contact.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
-          <i class="ri-lg ${contact.icon}"></i> ${contact.label} <i class="ri-lg ri-arrow-right-s-line"></i>
+          <i class="ri-lg ${contact.icon}"></i> ${t(contact, 'label')} <i class="ri-lg ri-arrow-right-s-line"></i>
         </a>
       `)
       .join('');
@@ -147,11 +219,11 @@ function renderProjects(projects) {
   projectsGrid.innerHTML = projects
     .map(project => `
       <article class="project-card bottom-align">
-        <div class="project-title">${project.title}</div>
-        <p>${project.description}</p>
+        <div class="project-title">${t(project, 'title')}</div>
+        <p>${t(project, 'description')}</p>
         ${project.link ? `
           <a class="learn-more-btn" href="${project.link}" target="_blank" rel="noopener noreferrer" aria-label="Learn more about ${project.title} (opens in a new tab)">
-            ${project.linkText}
+            ${t(project, 'linkText')}
             <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
               <line x1="5" y1="12" x2="19" y2="12" />
@@ -172,11 +244,11 @@ function renderPublications(publications) {
   publicationsGrid.innerHTML = publications
     .map(publication => `
       <article class="project-card bottom-align">
-        <div class="project-title">${publication.title}</div>
-        <p>${publication.description}</p>
+        <div class="project-title">${t(publication, 'title')}</div>
+        <p>${t(publication, 'description')}</p>
         ${publication.link ? `
           <a class="learn-more-btn" href="${publication.link}" target="_blank" rel="noopener noreferrer" aria-label="Learn more about ${publication.title} (opens in a new tab)">
-            ${publication.linkText}
+            ${t(publication, 'linkText')}
             <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
               <line x1="5" y1="12" x2="19" y2="12" />
@@ -197,9 +269,9 @@ function renderLeadership(leadership) {
   leadershipList.innerHTML = leadership
     .map(item => `
       <article class="leadership-item">
-        <div class="leadership-title">${item.title}</div>
-        <div class="leadership-org">${item.organization}</div>
-        <p>${item.description}</p>
+        <div class="leadership-title">${t(item, 'title')}</div>
+        <div class="leadership-org">${t(item, 'organization')}</div>
+        <p>${t(item, 'description')}</p>
       </article>
     `)
     .join('');
@@ -214,9 +286,9 @@ function renderAchievements(achievements) {
     .map(achievement => `
       <article class="achievement-card">
         <div class="achievement-title">
-          <span class="medal">${achievement.medal}</span>${achievement.title}
+          <span class="medal">${achievement.medal}</span>${t(achievement, 'title')}
         </div>
-        <p>${achievement.description}</p>
+        <p>${t(achievement, 'description')}</p>
       </article>
     `)
     .join('');
@@ -233,7 +305,8 @@ function renderVision(vision) {
   
   // Add new paragraphs
   const h2 = visionSection.querySelector('h2');
-  vision.paragraphs.forEach(text => {
+  const paragraphs = tArr(vision, 'paragraphs');
+  paragraphs.forEach(text => {
     const p = document.createElement('p');
     p.textContent = text;
     h2.insertAdjacentElement('afterend', p);
@@ -375,12 +448,17 @@ document.addEventListener('DOMContentLoaded', function () {
   // Load portfolio data
   loadPortfolioData();
   
-  // Set dynamic year in footer
-  const footerYearElements = document.querySelectorAll('footer');
-  const currentYear = new Date().getFullYear();
-  footerYearElements.forEach(footer => {
-    footer.innerHTML = footer.innerHTML.replace(/©\s*\d{4}/, `© ${currentYear}`);
+  // Language toggle event listeners
+  const langToggleButtons = document.querySelectorAll('#lang-toggle, #lang-toggle-sidebar');
+  langToggleButtons.forEach(button => {
+    if (button) {
+      button.addEventListener('click', toggleLang);
+    }
   });
+  
+  // Initial language setup
+  updateLangButtons();
+  document.documentElement.setAttribute('lang', currentLang);
   
   // Theme toggle event listeners
   const themeToggleButtons = document.querySelectorAll('.theme-toggle, #theme-toggle, #theme-toggle-sidebar');
