@@ -26,6 +26,7 @@
   </script>
 </head>
 <body>
+  <div id="space-container"></div>
   <div class="container">
     {{- partial "header.html" . -}}
     <main>
@@ -49,6 +50,33 @@
         localStorage.setItem('theme', next);
         updateIcon();
       });
+    })();
+  </script>
+  <script>
+    (function() {
+      var container = document.getElementById('space-container');
+      if (!container) return;
+      var sizes = ['small', 'medium', 'large'];
+      var count = window.innerWidth <= 768 ? 35 : 70;
+      for (var i = 0; i < count; i++) {
+        var s = document.createElement('div');
+        s.className = 'star ' + sizes[Math.floor(Math.random() * sizes.length)];
+        s.style.left = Math.random() * 100 + '%';
+        s.style.top = Math.random() * 100 + '%';
+        s.style.animationDelay = Math.random() * 3 + 's';
+        container.appendChild(s);
+      }
+      if (window.innerWidth > 768) {
+        var stars = container.querySelectorAll('.star');
+        document.addEventListener('mousemove', function(e) {
+          var mx = (e.clientX / window.innerWidth) * 2 - 1;
+          var my = (e.clientY / window.innerHeight) * 2 - 1;
+          stars.forEach(function(star) {
+            var d = star.classList.contains('small') ? 0.3 : star.classList.contains('large') ? 0.7 : 0.5;
+            star.style.transform = 'translate(' + (-mx * d * 50) + 'px,' + (-my * d * 50) + 'px)';
+          });
+        });
+      }
     })();
   </script>
 </body>
