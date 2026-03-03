@@ -1,4 +1,6 @@
 // Donate Page JavaScript - Clean & Simple
+const TOAST_MS_PER_CHAR = 120;
+const getToastDuration = (message) => Math.max(3000, message.length * TOAST_MS_PER_CHAR);
 
 // Toast notification
 function showToast(message, duration = 3000) {
@@ -18,11 +20,11 @@ function showToast(message, duration = 3000) {
 function copyPhoneNumber(phoneNumber) {
   navigator.clipboard.writeText(phoneNumber).then(() => {
     const message = 'Phone number copied!';
-    showToast(message, Math.max(3000, message.length * 120));
+    showToast(message, getToastDuration(message));
   }).catch(err => {
     console.error('Failed to copy:', err);
     const message = 'Failed to copy.';
-    showToast(message, Math.max(3000, message.length * 120));
+    showToast(message, getToastDuration(message));
   });
 }
 
@@ -31,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Parse URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const projectName = urlParams.get('source') || null;
-  // session_id helps map donor context with a specific referral flow.
+  // session_id is an optional tracking token from inbound links; when present it is displayed and appended to generated support emails.
   const sessionId = urlParams.get('session_id') || null;
 
   // Update main title

@@ -45,7 +45,7 @@ async function loadPortfolioData() {
       throw new Error(`Failed to load data (${response.status})`);
     }
     const data = await response.json();
-    if (!data?.profile || !data?.projects || !data?.publications || !data?.leadership || !data?.achievements || !data?.vision?.paragraphs) {
+    if (!data?.profile || !Array.isArray(data.projects) || !Array.isArray(data.publications)) {
       throw new Error('Portfolio data is incomplete.');
     }
     
@@ -101,7 +101,11 @@ function showPortfolioError(message) {
     const section = document.getElementById(id);
     if (!section) return;
     const container = section.querySelector('.projects-grid, .leadership-list') || section;
-    container.innerHTML = `<p class="error-text">${message}</p>`;
+    container.textContent = '';
+    const error = document.createElement('p');
+    error.className = 'error-text';
+    error.textContent = message;
+    container.appendChild(error);
   });
 }
 
@@ -127,7 +131,7 @@ function renderProfile(profile) {
   if (contactButtonsContainer && profile.contacts) {
     contactButtonsContainer.innerHTML = profile.contacts
       .map(contact => `
-        <a href="${contact.url}" class="contact-button" ${contact.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer" aria-label="' + contact.label + ' (opens in a new tab)"' : ''}>
+        <a href="${contact.url}" class="contact-button" ${contact.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
           <i class="ri-lg ${contact.icon}"></i> ${contact.label} <i class="ri-lg ri-arrow-right-s-line"></i>
         </a>
       `)
