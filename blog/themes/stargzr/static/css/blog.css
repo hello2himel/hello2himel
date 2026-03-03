@@ -514,6 +514,40 @@ a:hover {
   }
 }
 
+/* Language switcher */
+.lang-switch {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--tag-bg);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.lang-switch:hover {
+  border-color: var(--card-hover-border);
+  transform: translateY(-1px);
+}
+
+/* Translation notice */
+.translation-notice {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid #f0ad4e;
+  border-radius: 0 6px 6px 0;
+  padding: 0.75rem 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.translation-notice a {
+  font-weight: 600;
+  border-bottom: 1px solid var(--card-hover-border);
+}
+
 /* Print */
 @media print {
   body {

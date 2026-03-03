@@ -8,29 +8,40 @@
       "Scientific Research",
       "Linux & FOSS"
     ],
+    "tags_bn": [
+      "জ্যোতির্পদার্থবিদ্যা",
+      "কম্পিউটেশনাল সায়েন্স",
+      "বৈজ্ঞানিক গবেষণা",
+      "লিনাক্স ও FOSS"
+    ],
     "bio": "A {age}-year-old astronerd from Bangladesh with a passion for FOSS and a strong focus towards digital sovereignty. Currently exploring the unknown while building technology that matters.",
+    "bio_bn": "বাংলাদেশের {age} বছর বয়সী একজন মহাকাশপ্রেমী, FOSS-এর প্রতি আগ্রহ এবং ডিজিটাল সার্বভৌমত্বের প্রতি দৃঢ় মনোযোগ। বর্তমানে অজানাকে অন্বেষণ করছি এবং অর্থবহ প্রযুক্তি তৈরি করছি।",
     "contacts": [
       {
         "type": "email",
         "label": "Email",
+        "label_bn": "ইমেইল",
         "icon": "ri-mail-fill",
         "url": "mailto:hello2himel@proton.me"
       },
       {
         "type": "telegram",
         "label": "Telegram",
+        "label_bn": "টেলিগ্রাম",
         "icon": "ri-telegram-2-fill",
         "url": "https://t.me/hello2himel"
       },
       {
         "type": "github",
         "label": "GitHub",
+        "label_bn": "গিটহাব",
         "icon": "ri-github-fill",
         "url": "https://github.com/hello2himel"
       },
       {
         "type": "blog",
         "label": "Blog",
+        "label_bn": "ব্লগ",
         "icon": "ri-quill-pen-ai-fill",
         "url": "/blog/"
       }
@@ -39,96 +50,153 @@
   "projects": [
     {
       "title": "AtomicMemory",
+      "title_bn": "AtomicMemory",
       "description": "Learn the periodic table through an interactive, gamified experience. ",
+      "description_bn": "ইন্টারেক্টিভ, গেমিফাইড অভিজ্ঞতার মাধ্যমে পর্যায় সারণি শিখুন।",
       "link": "https://atomicmemory.netlify.app",
-      "linkText": "Try It Live"
+      "linkText": "Try It Live",
+      "linkText_bn": "ব্যবহার করুন"
     },
     {
       "title": "Cordata",
+      "title_bn": "Cordata",
       "description": "A tool to calculate the area, circumference, and centroid of a polygon in coordinate geometry.",
+      "description_bn": "স্থানাঙ্ক জ্যামিতিতে বহুভুজের ক্ষেত্রফল, পরিধি এবং কেন্দ্রবিন্দু গণনার একটি টুল।",
       "link": "https://github.com/hello2himel/cordata",
-      "linkText": "Learn More"
+      "linkText": "Learn More",
+      "linkText_bn": "আরও জানুন"
     },
     {
       "title": "Urochithi",
+      "title_bn": "উরোচিঠি",
       "description": "Privacy-focused anonymous letter platform with vintage paper aesthetic. Features two-factor authentication, zero data collection, and Google Sheets backend.",
+      "description_bn": "ভিন্টেজ কাগজের নান্দনিকতায় গোপনীয়তা-কেন্দ্রিক বেনামী চিঠি প্ল্যাটফর্ম। দুই-ধাপ প্রমাণীকরণ, শূন্য ডেটা সংগ্রহ এবং Google Sheets ব্যাকএন্ড।",
       "link": "https://github.com/hello2himel/urochithi",
-      "linkText": "Learn More"
+      "linkText": "Learn More",
+      "linkText_bn": "আরও জানুন"
     },
     {
       "title": "Takla Bangla Converter",
+      "title_bn": "তাকলা বাংলা কনভার্টার",
       "description": "AI-powered tool that converts phonetic Bangla (written in English) to proper Bengali script. Features web interface and Telegram bot..",
+      "description_bn": "AI-চালিত টুল যা ফোনেটিক বাংলাকে (ইংরেজিতে লেখা) সঠিক বাংলা লিপিতে রূপান্তর করে। ওয়েব ইন্টারফেস এবং টেলিগ্রাম বট।",
       "link": "https://github.com/hello2himel/takla-onubad",
-      "linkText": "Learn More"
+      "linkText": "Learn More",
+      "linkText_bn": "আরও জানুন"
     },
     {
       "title": "JustVocals",
+      "title_bn": "JustVocals",
       "description": "Isolate vocals and remove musical instruments from any audio clip.",
+      "description_bn": "যেকোনো অডিও ক্লিপ থেকে ভোকাল আলাদা করুন এবং বাদ্যযন্ত্র সরিয়ে ফেলুন।",
       "link": "https://github.com/hello2himel/justvocals",
-      "linkText": "Learn More"
+      "linkText": "Learn More",
+      "linkText_bn": "আরও জানুন"
     }
   ],
   "publications": [
     {
       "title": "Equilibrium Statistic",
+      "title_bn": "Equilibrium Statistic",
       "description": "A Recursive Convergence Model for Central Tendency",
+      "description_bn": "কেন্দ্রীয় প্রবণতার জন্য একটি রিকার্সিভ কনভার্জেন্স মডেল",
       "link": "https://github.com/hello2himel/equilibrium-statistic",
-      "linkText": "Learn More"
+      "linkText": "Learn More",
+      "linkText_bn": "আরও জানুন"
     }
   ],
   "leadership": [
     {
       "title": "Founder",
+      "title_bn": "প্রতিষ্ঠাতা",
       "organization": "Stargzr",
-      "description": "Started as a hobbyist network of astro people based in Bogura to talk about astro, now arranges astro outreach and events."
+      "organization_bn": "Stargzr",
+      "description": "Started as a hobbyist network of astro people based in Bogura to talk about astro, now arranges astro outreach and events.",
+      "description_bn": "বগুড়াভিত্তিক মহাকাশপ্রেমীদের একটি শখের নেটওয়ার্ক হিসেবে শুরু, এখন মহাকাশ বিষয়ক আউটরিচ এবং ইভেন্ট আয়োজন করে।"
     },
     {
       "title": "President",
+      "title_bn": "সভাপতি",
       "organization": "Science Club, Bogura Zilla School",
-      "description": "Organizing science fairs, workshops, competitions, and building model rockets/telescopes to inspire scientific curiosity."
+      "organization_bn": "বিজ্ঞান ক্লাব, বগুড়া জিলা স্কুল",
+      "description": "Organizing science fairs, workshops, competitions, and building model rockets/telescopes to inspire scientific curiosity.",
+      "description_bn": "বিজ্ঞান মেলা, কর্মশালা, প্রতিযোগিতা আয়োজন এবং বৈজ্ঞানিক কৌতূহল জাগাতে মডেল রকেট/টেলিস্কোপ তৈরি।"
     },
     {
       "title": "Founder",
+      "title_bn": "প্রতিষ্ঠাতা",
       "organization": "Techbondhu (2020–Present)",
-      "description": "Building a community focused on technology education and innovation."
+      "organization_bn": "টেকবন্ধু (২০২০–বর্তমান)",
+      "description": "Building a community focused on technology education and innovation.",
+      "description_bn": "প্রযুক্তি শিক্ষা এবং উদ্ভাবনে কেন্দ্রীভূত একটি সম্প্রদায় গঠন।"
     },
     {
       "title": "Co-Head of Department of Content and Production",
+      "title_bn": "কন্টেন্ট ও প্রোডাকশন বিভাগের সহ-প্রধান",
       "organization": "Aruddho Ekattor",
-      "description": "Leading content creation and production strategies."
+      "organization_bn": "আরুদ্ধ একাত্তর",
+      "description": "Leading content creation and production strategies.",
+      "description_bn": "কন্টেন্ট তৈরি এবং প্রোডাকশন কৌশল পরিচালনা।"
     },
     {
       "title": "Content Writer",
+      "title_bn": "কন্টেন্ট লেখক",
       "organization": "Tachyon",
-      "description": "Contributing articles and content on science and technology."
+      "organization_bn": "ট্যাকিয়ন",
+      "description": "Contributing articles and content on science and technology.",
+      "description_bn": "বিজ্ঞান ও প্রযুক্তি বিষয়ে প্রবন্ধ এবং কন্টেন্ট অবদান।"
     }
   ],
   "achievements": [
     {
       "title": "Silver Medalist",
+      "title_bn": "রৌপ্য পদকজয়ী",
       "medal": "🥈",
-      "description": "Bangladesh Olympiad on Astronomy and Astrophysics (Regional Round)"
+      "description": "Bangladesh Olympiad on Astronomy and Astrophysics (Regional Round)",
+      "description_bn": "বাংলাদেশ জ্যোতির্বিদ্যা ও জ্যোতির্পদার্থবিদ্যা অলিম্পিয়াড (আঞ্চলিক পর্ব)"
     },
     {
       "title": "1st Prize",
+      "title_bn": "১ম পুরস্কার",
       "medal": "🥇",
-      "description": "National Science Fair 2024"
+      "description": "National Science Fair 2024",
+      "description_bn": "জাতীয় বিজ্ঞান মেলা ২০২৪"
     },
     {
       "title": "2nd Prize",
+      "title_bn": "২য় পুরস্কার",
       "medal": "🥈",
-      "description": "National Science Quiz 2024"
+      "description": "National Science Quiz 2024",
+      "description_bn": "জাতীয় বিজ্ঞান কুইজ ২০২৪"
     },
     {
       "title": "Winner",
+      "title_bn": "বিজয়ী",
       "medal": "🏆",
-      "description": "Digital Innovation Fair (2023, Regional)"
+      "description": "Digital Innovation Fair (2023, Regional)",
+      "description_bn": "ডিজিটাল ইনোভেশন ফেয়ার (২০২৩, আঞ্চলিক)"
     }
   ],
   "vision": {
     "paragraphs": [
       "My vision is to contribute to the advancement of human knowledge through the exploration of the universe and its mysteries. With a deep passion for astrophysics and an unwavering curiosity about the cosmos, I aim to blend scientific research with innovative technology to unravel the fundamental forces shaping our existence.",
       "I aspire to lead impactful research, inspire the next generation of thinkers, and bridge the gap between science and society. By combining my love for physics, education, and technology, I envision creating a world where knowledge is accessible, curiosity is nurtured, and the frontiers of science are continually pushed."
+    ],
+    "paragraphs_bn": [
+      "আমার লক্ষ্য হলো মহাবিশ্ব এবং এর রহস্য অন্বেষণের মাধ্যমে মানব জ্ঞানের অগ্রগতিতে অবদান রাখা। জ্যোতির্পদার্থবিদ্যার প্রতি গভীর আবেগ এবং মহাজাগতিক বিষয়ে অদম্য কৌতূহল নিয়ে, আমি বৈজ্ঞানিক গবেষণা ও উদ্ভাবনী প্রযুক্তির সমন্বয়ে আমাদের অস্তিত্বকে রূপদানকারী মৌলিক শক্তিগুলো উন্মোচন করতে চাই।",
+      "আমি প্রভাবশালী গবেষণায় নেতৃত্ব দিতে, পরবর্তী প্রজন্মের চিন্তাবিদদের অনুপ্রাণিত করতে এবং বিজ্ঞান ও সমাজের মধ্যে সেতুবন্ধন তৈরি করতে চাই। পদার্থবিদ্যা, শিক্ষা এবং প্রযুক্তির প্রতি আমার ভালোবাসাকে একত্রিত করে, আমি এমন একটি পৃথিবী কল্পনা করি যেখানে জ্ঞান সবার কাছে সহজলভ্য, কৌতূহল লালিত এবং বিজ্ঞানের সীমানা ক্রমাগত প্রসারিত।"
     ]
+  },
+  "sectionHeadings": {
+    "projects": "Current Projects",
+    "projects_bn": "বর্তমান প্রকল্পসমূহ",
+    "publications": "Publications",
+    "publications_bn": "প্রকাশনা",
+    "leadership": "Leadership",
+    "leadership_bn": "নেতৃত্ব",
+    "achievements": "Achievements",
+    "achievements_bn": "অর্জনসমূহ",
+    "vision": "Vision",
+    "vision_bn": "ভবিষ্যৎ পরিকল্পনা"
   }
 }
