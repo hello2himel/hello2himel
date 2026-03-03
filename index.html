@@ -4,21 +4,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Himel Das portfolio featuring projects, publications, leadership, achievements, and vision." />
+  <meta property="og:title" content="Himel Das | Portfolio" />
+  <meta property="og:description" content="Explore Himel Das's projects, publications, leadership, and achievements." />
+  <meta property="og:image" content="/res/himel_portfolio_profile.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Himel Das | Portfolio" />
+  <meta name="twitter:description" content="Explore Himel Das's projects, publications, leadership, and achievements." />
+  <meta name="twitter:image" content="/res/himel_portfolio_profile.png" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self';" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Himel Das",
+      "jobTitle": "Physics Student & Researcher",
+      "url": "https://hello2himel.github.io/"
+    }
+  </script>
   <title>Himel Das | Portfolio</title>
   <link href="/res/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Space container for animation -->
   <div id="space-container"></div>
   <div class="overlay" id="overlay"></div>
   <div class="sidebar" id="sidebar">
     <div class="sidebar-controls">
-      <button class="sidebar-button" id="theme-toggle-sidebar" title="Toggle theme">
+      <button class="sidebar-button" id="theme-toggle-sidebar" title="Toggle theme" aria-label="Toggle theme">
         <i class="ri-lg ri-moon-clear-fill"></i>
       </button>
-      <button class="sidebar-button" id="sidebar-collapse" title="Collapse sidebar">
+      <button class="sidebar-button" id="sidebar-collapse" title="Collapse sidebar" aria-label="Collapse sidebar" aria-expanded="false">
         <i class="ri-lg ri-arrow-right-s-line"></i>
       </button>
     </div>
@@ -39,31 +59,31 @@
         <i class="ri-lg ri-eye-line"></i> Vision
       </a>
       <div class="sidebar-divider"></div>
-      <a href="https://hello2himel.blogspot.com" class="sidebar-link" target="_blank">
+      <a href="https://hello2himel.blogspot.com" class="sidebar-link" target="_blank" rel="noopener noreferrer" aria-label="Read Blog (opens in a new tab)">
         <i class="ri-lg ri-quill-pen-ai-line"></i> Read Blog
       </a>
       <a href="mailto:hello2himel@proton.me" class="sidebar-link">
         <i class="ri-lg ri-mail-line"></i> Contact Me
       </a>
-      <a href="https://github.com/hello2himel" class="sidebar-link" target="_blank">
+      <a href="https://github.com/hello2himel" class="sidebar-link" target="_blank" rel="noopener noreferrer" aria-label="View Projects (opens in a new tab)">
         <i class="ri-lg ri-github-line"></i> View Projects
       </a>
     </div>
   </div>
   <!-- Fixed position control buttons at top right -->
   <div class="header-controls">
-    <button class="header-button" id="theme-toggle" title="Toggle theme">
+    <button class="header-button" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
       <i class="ri-lg ri-moon-clear-fill"></i>
     </button>
-    <button class="header-button" id="menu-toggle" title="Menu">
+    <button class="header-button" id="menu-toggle" title="Menu" aria-label="Toggle menu">
       <i class="ri-lg ri-menu-2-line"></i>
     </button>
   </div>
-  <div class="main-container">
+  <main class="main-container" id="main-content">
     <div class="profile-section">
       <div class="profile-header">
         <div class="profile-img-container">
-          <img src="/res/himel_portfolio_profile.png" alt="Himel Das" class="profile-img">
+          <img src="/res/himel_portfolio_profile.png" alt="Himel Das" class="profile-img" loading="lazy" width="150" height="150">
         </div>
         <div class="profile-name-title">
           <h1>Himel Das</h1>
@@ -112,7 +132,7 @@
     <footer>
       &copy; 2026 Himel Das - Bogura, Bangladesh
     </footer>
-  </div>
+  </main>
   <script src="/js/scripts.js"></script>
 </body>
 
