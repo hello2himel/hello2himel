@@ -1,0 +1,9 @@
+<header class="site-header">
+  <div class="site-title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></div>
+  <nav class="site-nav">
+    {{- range .Site.Menus.main }}
+    <a href="{{ .URL }}">{{ .Name }}</a>
+    {{- end }}
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">☾</button>
+  </nav>
+</header>

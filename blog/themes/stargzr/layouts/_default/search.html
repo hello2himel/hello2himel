@@ -1,0 +1,38 @@
+{{ define "main" }}
+<h1 class="section-title">{{ .Title }}</h1>
+
+<input type="text" id="search-input" class="search-input" placeholder="{{ .Params.placeholder | default "Search..." }}" autofocus>
+<ul class="post-list" id="search-results"></ul>
+
+<script>
+(function() {
+  var searchInput = document.getElementById('search-input');
+  var results = document.getElementById('search-results');
+  var data = [];
+
+  fetch('{{ "index.json" | relURL }}')
+    .then(function(r) { return r.json(); })
+    .then(function(d) { data = d; });
+
+  searchInput.addEventListener('input', function() {
+    var q = this.value.toLowerCase().trim();
+    results.innerHTML = '';
+    if (!q) return;
+    var matches = data.filter(function(item) {
+      return (item.title && item.title.toLowerCase().includes(q)) ||
+             (item.content && item.content.toLowerCase().includes(q)) ||
+             (item.tags && item.tags.some(function(t) { return t.toLowerCase().includes(q); }));
+    });
+    matches.forEach(function(item) {
+      var li = document.createElement('li');
+      li.className = 'post-entry';
+      li.innerHTML = '<a href="' + item.permalink + '">' +
+        '<div class="post-entry-title">' + item.title + '</div>' +
+        (item.summary ? '<div class="post-entry-summary">' + item.summary + '</div>' : '') +
+        '</a>';
+      results.appendChild(li);
+    });
+  });
+})();
+</script>
+{{ end }}
