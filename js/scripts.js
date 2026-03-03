@@ -36,61 +36,14 @@ const toggleTheme = () => {
   applyTheme(newTheme);
 };
 
-// Language handling
-let currentLang = localStorage.getItem('lang') || 'en';
-let portfolioData = null;
-
-const getLang = () => currentLang;
-
-const setLang = (lang) => {
-  currentLang = lang;
-  localStorage.setItem('lang', lang);
-  document.documentElement.setAttribute('lang', lang);
-  updateLangButtons();
-  if (portfolioData) {
-    renderAllContent(portfolioData);
-  }
-};
-
-const toggleLang = () => {
-  setLang(currentLang === 'en' ? 'bn' : 'en');
-};
-
-const updateLangButtons = () => {
-  const langButtons = document.querySelectorAll('#lang-toggle span, #lang-toggle-sidebar span');
-  langButtons.forEach(span => {
-    span.textContent = currentLang === 'en' ? 'বাং' : 'EN';
-  });
-  // Update sidebar i18n labels
-  const i18nMap = {
-    projects: { en: 'Projects', bn: 'প্রকল্প' },
-    publications: { en: 'Publications', bn: 'প্রকাশনা' },
-    leadership: { en: 'Leadership', bn: 'নেতৃত্ব' },
-    achievements: { en: 'Achievements', bn: 'অর্জন' },
-    vision: { en: 'Vision', bn: 'পরিকল্পনা' },
-    readBlog: { en: 'Read Blog', bn: 'ব্লগ পড়ুন' },
-    contactMe: { en: 'Contact Me', bn: 'যোগাযোগ' },
-    viewProjects: { en: 'View Projects', bn: 'প্রকল্প দেখুন' }
-  };
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (i18nMap[key]) {
-      el.textContent = i18nMap[key][currentLang] || i18nMap[key].en;
-    }
-  });
-};
-
+// Content helper - always returns English field
 const t = (obj, field) => {
   if (!obj) return '';
-  const bnField = field + '_bn';
-  if (currentLang === 'bn' && obj[bnField]) return obj[bnField];
   return obj[field] || '';
 };
 
 const tArr = (obj, field) => {
   if (!obj) return [];
-  const bnField = field + '_bn';
-  if (currentLang === 'bn' && obj[bnField]) return obj[bnField];
   return obj[field] || [];
 };
 
@@ -101,24 +54,6 @@ function renderAllContent(data) {
   renderLeadership(data.leadership);
   renderAchievements(data.achievements);
   renderVision(data.vision);
-  // Update section headings
-  if (data.sectionHeadings) {
-    const sections = ['projects', 'publications', 'leadership', 'achievements', 'vision'];
-    sections.forEach(id => {
-      const section = document.getElementById(id);
-      if (!section) return;
-      const h2 = section.querySelector('h2');
-      if (h2) h2.textContent = t(data.sectionHeadings, id);
-    });
-  }
-  // Update footer
-  const footer = document.querySelector('footer');
-  if (footer) {
-    const year = new Date().getFullYear();
-    footer.innerHTML = currentLang === 'bn'
-      ? `&copy; ${year} হিমেল দাস - বগুড়া, বাংলাদেশ`
-      : `&copy; ${year} Himel Das - Bogura, Bangladesh`;
-  }
 }
 
 // Function to load and render portfolio data
@@ -134,7 +69,6 @@ async function loadPortfolioData() {
       throw new Error('Portfolio data is incomplete.');
     }
     
-    portfolioData = data;
     renderAllContent(data);
     setLoadingState(false);
     
@@ -447,18 +381,6 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // Load portfolio data
   loadPortfolioData();
-  
-  // Language toggle event listeners
-  const langToggleButtons = document.querySelectorAll('#lang-toggle, #lang-toggle-sidebar');
-  langToggleButtons.forEach(button => {
-    if (button) {
-      button.addEventListener('click', toggleLang);
-    }
-  });
-  
-  // Initial language setup
-  updateLangButtons();
-  document.documentElement.setAttribute('lang', currentLang);
   
   // Theme toggle event listeners
   const themeToggleButtons = document.querySelectorAll('.theme-toggle, #theme-toggle, #theme-toggle-sidebar');
