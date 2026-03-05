@@ -11,15 +11,6 @@ function calculateAge(birthDate) {
   return age;
 }
 
-// Preloader
-function hidePreloader() {
-  const preloader = document.getElementById('preloader');
-  if (preloader && !preloader.classList.contains('hidden')) {
-    preloader.classList.add('hidden');
-    setTimeout(() => preloader.remove(), 300);
-  }
-}
-
 // Theme handling functions
 const getPreferredTheme = () => {
   const savedTheme = localStorage.getItem('theme');
@@ -457,7 +448,4 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // Initialize parallax effect with a small delay to ensure DOM is ready
   setTimeout(initParallaxEffect, 100);
-  
-  // Fallback: hide preloader on window load for pages without JSON data
-  window.addEventListener('load', hidePreloader);
 });

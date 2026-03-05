@@ -778,55 +778,6 @@ body.error-page {
   }
 }
 
-/* Benzene Resonance Preloader */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--bg-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.3s;
-}
-
-#preloader.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.benzene {
-  color: var(--text-color);
-}
-
-.benzene .kekule-a line,
-.benzene .kekule-b line {
-  stroke: currentColor;
-  stroke-width: 2;
-}
-
-.benzene .kekule-a {
-  animation: resonance-a 1.2s ease-in-out infinite;
-}
-
-.benzene .kekule-b {
-  animation: resonance-b 1.2s ease-in-out infinite;
-}
-
-@keyframes resonance-a {
-  0%, 45% { opacity: 1; }
-  50%, 95% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-@keyframes resonance-b {
-  0%, 45% { opacity: 0; }
-  50%, 95% { opacity: 1; }
-  100% { opacity: 0; }
-}
 
 @media print {
   #space-container,
