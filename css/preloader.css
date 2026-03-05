@@ -21,10 +21,8 @@
   height: 100%;
   background: var(--bg-color);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 24px;
   z-index: 9999;
   transition: opacity 0.3s;
 }
@@ -97,149 +95,71 @@
   50% { opacity: 0.35; }
 }
 
-/* ─── Pulsar — scientific instrument aesthetic ─── */
-
+/* Pulsar */
 .pulsar {
   color: var(--text-color);
   z-index: 1;
   overflow: visible;
-  width: 140px;
-  height: 140px;
 }
 
-/* Instrument guide ring and tick marks */
-.guide-ring {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 0.4;
-  opacity: 0.1;
-}
-
-.guide-tick {
-  stroke: currentColor;
-  stroke-width: 0.6;
-  opacity: 0.15;
-  stroke-linecap: round;
-}
-
-/* Rotating radiation beams */
 .pulsar-beams {
-  transform-origin: 100px 100px;
-  animation: beam-spin 0.75s linear infinite;
-  will-change: transform;
+  stroke: currentColor;
+  opacity: 0.5;
+  transform-origin: 50px 50px;
+  animation: pulsar-spin 3s linear infinite;
   filter: drop-shadow(0 0 3px currentColor);
 }
 
-/* Expanding radio emission rings */
 .pulse-ring {
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: 1;
   opacity: 0;
-  transform-origin: 100px 100px;
-  animation: ring-expand 1.5s ease-out infinite;
+  transform-origin: 50px 50px;
+  animation: ring-pulse 2.4s ease-out infinite;
 }
 
 .pulse-ring.d2 {
-  animation-delay: 0.5s;
+  animation-delay: 0.8s;
 }
 
 .pulse-ring.d3 {
-  animation-delay: 1s;
+  animation-delay: 1.6s;
 }
 
-/* Gravitational halo (static) */
-.pulsar-halo {
-  opacity: 0.8;
-}
-
-/* Core glow */
-.pulsar-core-glow {
-  opacity: 0.7;
-}
-
-/* Neutron star core */
 .pulsar-core {
-  transform-origin: 100px 100px;
-  animation: core-pulse 0.375s ease-in-out infinite;
-  will-change: transform;
-  filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px rgba(212, 160, 74, 0.3));
+  animation: core-glow 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
 }
 
-/* Loading text */
-.preloader-text {
-  color: var(--text-color);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.4;
-  animation: text-pulse 2.5s ease-in-out infinite;
-  z-index: 1;
-}
-
-/* Keyframes */
-
-@keyframes beam-spin {
+@keyframes pulsar-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-@keyframes ring-expand {
-  0% {
-    transform: scale(1);
-    opacity: 0.55;
-    stroke-width: 2;
-  }
-  100% {
-    transform: scale(3.85);
-    opacity: 0;
-    stroke-width: 0.4;
-  }
+@keyframes ring-pulse {
+  0% { opacity: 0.6; stroke-width: 1.5; }
+  100% { opacity: 0; stroke-width: 0.3; transform: scale(2.2); }
 }
 
-@keyframes core-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.1); opacity: 1; }
+@keyframes core-glow {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }
 
-@keyframes text-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .pulsar {
-    width: 90px;
-    height: 90px;
-  }
-
-  .preloader-text {
-    font-size: 11px;
-  }
-
-  #preloader {
-    gap: 18px;
-  }
-}
-
-/* Accessibility — reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .pulsar-beams,
   .pulse-ring,
-  .pulsar-core,
-  .preloader-text {
+  .pulsar-core {
     animation: none;
   }
   #preloader::before,
   #preloader::after {
     animation: none;
   }
-  .pulse-ring { opacity: 0.2; }
+  .pulse-ring { opacity: 0.3; }
   .pulsar-beams { opacity: 0.5; }
-  .pulsar-core { opacity: 1; }
-  .preloader-text { opacity: 0.5; }
+  .pulsar-core { opacity: 0.8; }
   #preloader::before,
   #preloader::after { opacity: 0.15; }
 }

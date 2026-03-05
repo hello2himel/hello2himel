@@ -11,47 +11,25 @@
   }
   document.documentElement.setAttribute('data-theme', theme);
 
-  // Pulsar SVG — scientific instrument visualization
+  // Pulsar SVG — simple 2D rotating neutron star
   var pulsarSVG =
-    '<svg class="pulsar" viewBox="0 0 200 200">' +
+    '<svg class="pulsar" viewBox="0 0 100 100" width="60" height="60">' +
       '<defs>' +
-        '<radialGradient id="pl-halo">' +
-          '<stop offset="0%" stop-color="currentColor" stop-opacity="0.12"/>' +
+        '<radialGradient id="pl-glow">' +
+          '<stop offset="0%" stop-color="currentColor" stop-opacity="0.35"/>' +
           '<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>' +
         '</radialGradient>' +
-        '<radialGradient id="pl-core-glow">' +
-          '<stop offset="0%" stop-color="#D4A04A" stop-opacity="0.4"/>' +
-          '<stop offset="40%" stop-color="currentColor" stop-opacity="0.1"/>' +
-          '<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>' +
-        '</radialGradient>' +
-        '<linearGradient id="pl-beam-up" x1="0" y1="1" x2="0" y2="0">' +
-          '<stop offset="0%" stop-color="currentColor" stop-opacity="0.8"/>' +
-          '<stop offset="50%" stop-color="currentColor" stop-opacity="0.2"/>' +
-          '<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>' +
-        '</linearGradient>' +
-        '<linearGradient id="pl-beam-dn" x1="0" y1="0" x2="0" y2="1">' +
-          '<stop offset="0%" stop-color="currentColor" stop-opacity="0.8"/>' +
-          '<stop offset="50%" stop-color="currentColor" stop-opacity="0.2"/>' +
-          '<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>' +
-        '</linearGradient>' +
       '</defs>' +
-      '<circle cx="100" cy="100" r="50" class="guide-ring"/>' +
-      '<line x1="100" y1="50" x2="100" y2="44" class="guide-tick"/>' +
-      '<line x1="150" y1="100" x2="156" y2="100" class="guide-tick"/>' +
-      '<line x1="100" y1="150" x2="100" y2="156" class="guide-tick"/>' +
-      '<line x1="50" y1="100" x2="44" y2="100" class="guide-tick"/>' +
-      '<circle cx="100" cy="100" r="37" fill="url(#pl-halo)" class="pulsar-halo"/>' +
-      '<circle cx="100" cy="100" r="26" class="pulse-ring"/>' +
-      '<circle cx="100" cy="100" r="26" class="pulse-ring d2"/>' +
-      '<circle cx="100" cy="100" r="26" class="pulse-ring d3"/>' +
+      '<circle cx="50" cy="50" r="20" class="pulse-ring"/>' +
+      '<circle cx="50" cy="50" r="20" class="pulse-ring d2"/>' +
+      '<circle cx="50" cy="50" r="20" class="pulse-ring d3"/>' +
       '<g class="pulsar-beams">' +
-        '<polygon points="98,92 93,29 107,29 102,92" fill="url(#pl-beam-up)"/>' +
-        '<polygon points="98,108 93,171 107,171 102,108" fill="url(#pl-beam-dn)"/>' +
+        '<line x1="50" y1="6" x2="50" y2="40" stroke-width="2.5" stroke-linecap="round"/>' +
+        '<line x1="50" y1="60" x2="50" y2="94" stroke-width="2.5" stroke-linecap="round"/>' +
       '</g>' +
-      '<circle cx="100" cy="100" r="16" fill="url(#pl-core-glow)" class="pulsar-core-glow"/>' +
-      '<circle cx="100" cy="100" r="5" fill="currentColor" class="pulsar-core"/>' +
-    '</svg>' +
-    '<span class="preloader-text">Calibrating instruments</span>';
+      '<circle cx="50" cy="50" r="12" fill="url(#pl-glow)"/>' +
+      '<circle cx="50" cy="50" r="4" fill="currentColor" class="pulsar-core"/>' +
+    '</svg>';
 
   document.addEventListener('DOMContentLoaded', function () {
     // Inject pulsar SVG into preloader container
