@@ -31,34 +31,7 @@
 </head>
 
 <body>
-  <div id="preloader" aria-label="Loading">
-    <svg class="pulsar" viewBox="0 0 100 100" width="80" height="80">
-      <defs>
-        <radialGradient id="core-glow-grad">
-          <stop offset="0%" stop-color="currentColor" stop-opacity="0.5"/>
-          <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="beam-fade-up" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0%" stop-color="currentColor" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="beam-fade-down" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="currentColor" stop-opacity="0.9"/>
-          <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <ellipse cx="50" cy="50" rx="20" ry="6" class="pulse-ring"/>
-      <ellipse cx="50" cy="50" rx="32" ry="9.6" class="pulse-ring d2"/>
-      <ellipse cx="50" cy="50" rx="44" ry="13.2" class="pulse-ring d3"/>
-      <g class="pulsar-beams">
-        <polygon points="46,40 50,4 54,40" fill="url(#beam-fade-up)"/>
-        <polygon points="46,60 50,96 54,60" fill="url(#beam-fade-down)"/>
-      </g>
-      <ellipse cx="50" cy="50" rx="18" ry="5" class="pulsar-disk"/>
-      <circle cx="50" cy="50" r="14" fill="url(#core-glow-grad)" class="pulsar-aura"/>
-      <circle cx="50" cy="50" r="4" fill="currentColor" class="pulsar-core"/>
-    </svg>
-  </div>
+  <div id="preloader" aria-label="Loading"></div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Space container for animation -->
   <div id="space-container"></div>
