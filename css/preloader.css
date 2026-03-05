@@ -1,0 +1,91 @@
+/* Preloader — loads first for instant visibility */
+
+/* Theme variables (duplicated from style.css so preloader renders correctly
+   even before the main stylesheet finishes loading) */
+:root {
+  --bg-color: #0a0a0a;
+  --text-color: #f0f0f0;
+}
+
+[data-theme="light"] {
+  --bg-color: #f5f5f5;
+  --text-color: #121212;
+}
+
+/* Preloader container */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.3s;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Pulsar animation */
+.pulsar {
+  color: var(--text-color);
+}
+
+.pulsar-beams {
+  stroke: currentColor;
+  opacity: 0.45;
+  transform-origin: 50px 50px;
+  animation: pulsar-spin 3s linear infinite;
+}
+
+.pulse-ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0;
+  animation: ring-pulse 2.4s ease-out infinite;
+}
+
+.pulse-ring.d2 {
+  animation-delay: 0.8s;
+}
+
+.pulse-ring.d3 {
+  animation-delay: 1.6s;
+}
+
+.pulsar-core {
+  animation: core-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulsar-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ring-pulse {
+  0% { opacity: 0.5; stroke-width: 1.5; }
+  100% { opacity: 0; stroke-width: 0.3; }
+}
+
+@keyframes core-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulsar-beams,
+  .pulse-ring,
+  .pulsar-core {
+    animation: none;
+  }
+  .pulse-ring { opacity: 0.3; }
+  .pulsar-beams { opacity: 0.45; }
+  .pulsar-core { opacity: 0.8; }
+}
