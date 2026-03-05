@@ -95,24 +95,24 @@
   50% { opacity: 0.35; }
 }
 
-/* Pulsar animation */
+/* Pulsar animation — 3D perspective */
 .pulsar {
   color: var(--text-color);
   z-index: 1;
+  overflow: visible;
 }
 
 .pulsar-beams {
-  stroke: currentColor;
-  opacity: 0.5;
+  opacity: 0.6;
   transform-origin: 50px 50px;
   animation: pulsar-spin 3s linear infinite;
-  filter: drop-shadow(0 0 3px currentColor);
+  filter: drop-shadow(0 0 4px currentColor);
 }
 
 .pulse-ring {
   fill: none;
   stroke: currentColor;
-  stroke-width: 1;
+  stroke-width: 0.8;
   opacity: 0;
   animation: ring-pulse 2.4s ease-out infinite;
 }
@@ -125,9 +125,22 @@
   animation-delay: 1.6s;
 }
 
+.pulsar-disk {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.6;
+  opacity: 0.25;
+  animation: disk-glow 3s ease-in-out infinite;
+}
+
+.pulsar-aura {
+  opacity: 0.5;
+  animation: aura-pulse 2s ease-in-out infinite;
+}
+
 .pulsar-core {
   animation: core-glow 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
+  filter: drop-shadow(0 0 3px currentColor) drop-shadow(0 0 8px currentColor);
 }
 
 @keyframes pulsar-spin {
@@ -136,19 +149,31 @@
 }
 
 @keyframes ring-pulse {
-  0% { opacity: 0.6; stroke-width: 1.5; }
-  100% { opacity: 0; stroke-width: 0.3; }
+  0% { opacity: 0.5; stroke-width: 1.2; }
+  100% { opacity: 0; stroke-width: 0.2; }
 }
 
 @keyframes core-glow {
-  0%, 100% { opacity: 0.7; }
+  0%, 100% { opacity: 0.8; }
   50% { opacity: 1; }
+}
+
+@keyframes disk-glow {
+  0%, 100% { opacity: 0.2; stroke-width: 0.6; }
+  50% { opacity: 0.4; stroke-width: 0.8; }
+}
+
+@keyframes aura-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .pulsar-beams,
   .pulse-ring,
-  .pulsar-core {
+  .pulsar-core,
+  .pulsar-disk,
+  .pulsar-aura {
     animation: none;
   }
   #preloader::before,
@@ -158,6 +183,8 @@
   .pulse-ring { opacity: 0.3; }
   .pulsar-beams { opacity: 0.5; }
   .pulsar-core { opacity: 0.8; }
+  .pulsar-disk { opacity: 0.25; }
+  .pulsar-aura { opacity: 0.5; }
   #preloader::before,
   #preloader::after { opacity: 0.15; }
 }
