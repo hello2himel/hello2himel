@@ -32,16 +32,81 @@
   pointer-events: none;
 }
 
+/* CSS-only starfield — two layers with staggered twinkle */
+#preloader::before,
+#preloader::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0.1;
+  animation: preloader-twinkle 4s ease-in-out infinite;
+}
+
+#preloader::before {
+  box-shadow:
+    12vw 5vh 0 0.5px var(--text-color),
+    87vw 12vh 0 0.5px var(--text-color),
+    35vw 8vh 0 1px var(--text-color),
+    63vw 3vh 0 0.5px var(--text-color),
+    5vw 25vh 0 0.5px var(--text-color),
+    78vw 30vh 0 1px var(--text-color),
+    22vw 18vh 0 0.5px var(--text-color),
+    95vw 22vh 0 0.5px var(--text-color),
+    8vw 42vh 0 1px var(--text-color),
+    68vw 48vh 0 0.5px var(--text-color),
+    15vw 55vh 0 0.5px var(--text-color),
+    82vw 60vh 0 1px var(--text-color),
+    92vw 52vh 0 0.5px var(--text-color),
+    25vw 80vh 0 0.5px var(--text-color),
+    72vw 85vh 0 1px var(--text-color),
+    3vw 70vh 0 0.5px var(--text-color),
+    58vw 92vh 0 0.5px var(--text-color),
+    88vw 78vh 0 0.5px var(--text-color),
+    30vw 95vh 0 1px var(--text-color);
+}
+
+#preloader::after {
+  box-shadow:
+    20vw 10vh 0 0.5px var(--text-color),
+    75vw 18vh 0 1px var(--text-color),
+    50vw 6vh 0 0.5px var(--text-color),
+    10vw 32vh 0 0.5px var(--text-color),
+    90vw 35vh 0 1px var(--text-color),
+    80vw 45vh 0 0.5px var(--text-color),
+    18vw 65vh 0 0.5px var(--text-color),
+    70vw 70vh 0 1px var(--text-color),
+    5vw 88vh 0 0.5px var(--text-color),
+    85vw 92vh 0 0.5px var(--text-color),
+    55vw 85vh 0 1px var(--text-color),
+    28vw 15vh 0 0.5px var(--text-color),
+    95vw 75vh 0 0.5px var(--text-color),
+    14vw 50vh 0 0.5px var(--text-color),
+    82vw 38vh 0 1px var(--text-color);
+  animation-delay: 2s;
+}
+
+@keyframes preloader-twinkle {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.35; }
+}
+
 /* Pulsar animation */
 .pulsar {
   color: var(--text-color);
+  z-index: 1;
 }
 
 .pulsar-beams {
   stroke: currentColor;
-  opacity: 0.45;
+  opacity: 0.5;
   transform-origin: 50px 50px;
   animation: pulsar-spin 3s linear infinite;
+  filter: drop-shadow(0 0 3px currentColor);
 }
 
 .pulse-ring {
@@ -62,6 +127,7 @@
 
 .pulsar-core {
   animation: core-glow 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
 }
 
 @keyframes pulsar-spin {
@@ -70,12 +136,12 @@
 }
 
 @keyframes ring-pulse {
-  0% { opacity: 0.5; stroke-width: 1.5; }
+  0% { opacity: 0.6; stroke-width: 1.5; }
   100% { opacity: 0; stroke-width: 0.3; }
 }
 
 @keyframes core-glow {
-  0%, 100% { opacity: 0.6; }
+  0%, 100% { opacity: 0.7; }
   50% { opacity: 1; }
 }
 
@@ -85,7 +151,13 @@
   .pulsar-core {
     animation: none;
   }
+  #preloader::before,
+  #preloader::after {
+    animation: none;
+  }
   .pulse-ring { opacity: 0.3; }
-  .pulsar-beams { opacity: 0.45; }
+  .pulsar-beams { opacity: 0.5; }
   .pulsar-core { opacity: 0.8; }
+  #preloader::before { opacity: 0.15; }
+  #preloader::after { opacity: 0.2; }
 }
