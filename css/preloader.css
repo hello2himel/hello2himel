@@ -158,6 +158,6 @@
   .pulse-ring { opacity: 0.3; }
   .pulsar-beams { opacity: 0.5; }
   .pulsar-core { opacity: 0.8; }
-  #preloader::before { opacity: 0.15; }
-  #preloader::after { opacity: 0.2; }
+  #preloader::before,
+  #preloader::after { opacity: 0.15; }
 }
