@@ -1,5 +1,14 @@
 /* Preloader — loads first for instant visibility */
 
+/* Remixicon font — loaded eagerly so the ship icon is available immediately.
+   The same @font-face is declared in remixicon.css (deferred); browsers deduplicate. */
+@font-face {
+  font-family: "remixicon";
+  src: url("../res/fonts/remixicon.woff2?t=1734404658139") format("woff2"),
+       url("../res/fonts/remixicon.woff?t=1734404658139") format("woff");
+  font-display: swap;
+}
+
 /* Theme variables (duplicated from style.css so preloader renders correctly
    even before the main stylesheet finishes loading) */
 :root {
@@ -40,36 +49,25 @@
   height: 80px;
 }
 
-/* Ship — minimal triangle pointing right */
+/* Ship — Remixicon ri-space-ship-line icon */
 .ship {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 0;
-  height: 0;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-left: 10px solid var(--text-color);
+  font-family: "remixicon";
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--text-color);
   transform: translate(-50%, -50%);
   opacity: 0;
   animation: ship-arrive 0.6s ease-out forwards, ship-drift 3s ease-in-out 0.6s infinite;
   z-index: 2;
 }
 
-/* Engine glow — tiny dot behind the ship */
-.ship::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  width: 2px;
-  height: 2px;
-  margin-top: -1px;
-  margin-right: 1px;
-  border-radius: 50%;
-  background: var(--text-color);
-  opacity: 0.5;
-  animation: glow-pulse 1.5s ease-in-out infinite;
+.ship::before {
+  content: "\f166";
 }
 
 @keyframes ship-arrive {
@@ -80,11 +78,6 @@
 @keyframes ship-drift {
   0%, 100% { transform: translate(-50%, -50%) translateY(0); }
   50% { transform: translate(-50%, -50%) translateY(-2px); }
-}
-
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
 }
 
 /* Star streaks — thin horizontal lines streaming past */
@@ -113,10 +106,6 @@
     animation: none;
     opacity: 0.85;
     transform: translate(-50%, -50%);
-  }
-  .ship::after {
-    animation: none;
-    opacity: 0.5;
   }
   .streak {
     animation: none;
