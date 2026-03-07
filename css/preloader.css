@@ -60,7 +60,7 @@
   font-size: 18px;
   line-height: 1;
   color: var(--text-color);
-  transform: translate(-50%, -50%) rotate(-90deg);
+  transform: translate(-50%, -50%) rotate(90deg);
   opacity: 0;
   animation: ship-arrive 0.6s ease-out forwards, ship-drift 3s ease-in-out 0.6s infinite;
   z-index: 2;
@@ -71,13 +71,13 @@
 }
 
 @keyframes ship-arrive {
-  0% { opacity: 0; transform: translate(-50%, -50%) rotate(-90deg) translateX(-20px); }
-  100% { opacity: 0.85; transform: translate(-50%, -50%) rotate(-90deg) translateX(0); }
+  0% { opacity: 0; transform: translate(-50%, -50%) rotate(90deg) translateX(-20px); }
+  100% { opacity: 0.85; transform: translate(-50%, -50%) rotate(90deg) translateX(0); }
 }
 
 @keyframes ship-drift {
-  0%, 100% { transform: translate(-50%, -50%) rotate(-90deg) translateY(0); }
-  50% { transform: translate(-50%, -50%) rotate(-90deg) translateY(-2px); }
+  0%, 100% { transform: translate(-50%, -50%) rotate(90deg) translateY(0); }
+  50% { transform: translate(-50%, -50%) rotate(90deg) translateY(-2px); }
 }
 
 /* Star streaks — thin horizontal lines streaming past */
@@ -105,7 +105,7 @@
   .ship {
     animation: none;
     opacity: 0.85;
-    transform: translate(-50%, -50%) rotate(-90deg);
+    transform: translate(-50%, -50%) rotate(90deg);
   }
   .streak {
     animation: none;
