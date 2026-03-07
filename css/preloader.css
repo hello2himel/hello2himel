@@ -32,62 +32,163 @@
   pointer-events: none;
 }
 
-/* Singularity — the origin point */
-.singularity {
+/* Big Bang container */
+.bigbang {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Flash — radial burst of light */
+.bigbang::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: bang-flash 0.7s ease-out 0.15s forwards;
+}
+
+@keyframes bang-flash {
+  0% {
+    opacity: 0;
+    box-shadow: 0 0 0 0 var(--text-color);
+  }
+  30% {
+    opacity: 0.6;
+    box-shadow: 0 0 60px 30px var(--text-color);
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+/* Core — singularity that survives the blast */
+.bang-core {
   width: 4px;
   height: 4px;
   border-radius: 50%;
   background: var(--text-color);
-  box-shadow: 0 0 6px 1px var(--text-color);
-  animation: singularity-pulse 2s ease-in-out infinite;
+  z-index: 2;
+  opacity: 0;
+  animation:
+    core-ignite 0.8s ease-out 0.1s forwards,
+    core-breathe 2s ease-in-out 1s infinite;
 }
 
-@keyframes singularity-pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; box-shadow: 0 0 10px 2px var(--text-color); }
+@keyframes core-ignite {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(3);
+    box-shadow: 0 0 20px 6px var(--text-color);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+    box-shadow: 0 0 6px 2px var(--text-color);
+  }
 }
 
-/* Expanding wavefronts */
+@keyframes core-breathe {
+  0%, 100% {
+    opacity: 0.5;
+    box-shadow: 0 0 4px 1px var(--text-color);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 8px 2px var(--text-color);
+  }
+}
+
+/* Burst rings — fast shock waves, play once */
+.bang-burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-color);
+  opacity: 0;
+  animation: ring-burst 0.8s ease-out 0.2s forwards;
+}
+
+.bang-burst.d2 {
+  border-width: 1px;
+  animation-delay: 0.35s;
+}
+
+@keyframes ring-burst {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(10);
+    opacity: 0;
+  }
+}
+
+/* Afterglow waves — gentle ripples, loop forever */
 .bang-wave {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 40px;
-  height: 40px;
-  margin: -20px 0 0 -20px;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
   border-radius: 50%;
   border: 1px solid var(--text-color);
   opacity: 0;
-  animation: wave-expand 3s ease-out infinite;
+  animation: wave-drift 3s ease-out 1s infinite;
 }
 
-.bang-wave:last-child {
-  animation-delay: 1.5s;
+.bang-wave.d2 {
+  animation-delay: 2.5s;
 }
 
-@keyframes wave-expand {
+@keyframes wave-drift {
   0% {
     transform: scale(0);
-    opacity: 0.35;
+    opacity: 0.2;
   }
   100% {
-    transform: scale(3.5);
+    transform: scale(4);
     opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .singularity {
+  .bigbang::before {
+    animation: none;
+  }
+  .bang-core {
     animation: none;
     opacity: 0.8;
+    box-shadow: 0 0 6px 2px var(--text-color);
+  }
+  .bang-burst {
+    animation: none;
+    opacity: 0.15;
+    transform: scale(3);
+  }
+  .bang-burst.d2 {
+    transform: scale(5);
   }
   .bang-wave {
     animation: none;
-    opacity: 0.15;
-    transform: scale(1.5);
+    opacity: 0.1;
+    transform: scale(2);
   }
-  .bang-wave:last-child {
-    transform: scale(2.5);
+  .bang-wave.d2 {
+    transform: scale(3.5);
   }
 }
