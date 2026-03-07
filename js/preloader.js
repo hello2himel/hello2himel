@@ -1,8 +1,8 @@
-// Preloader — Theme detection, Big Bang injection, and deferred stylesheet activation.
+// Preloader — Theme detection, scene injection, and deferred stylesheet activation.
 // This script runs first in <head> to ensure the preloader is immediately
 // visible with the correct theme colors, before any other styles load.
 
-var _blastDone = false;
+var _animDone = false;
 var _hideRequested = false;
 
 (function () {
@@ -14,21 +14,20 @@ var _hideRequested = false;
   }
   document.documentElement.setAttribute('data-theme', theme);
 
-  // Big Bang — singularity, blast, afterglow
-  var bangHTML =
-    '<div class="bigbang">' +
-      '<div class="bang-core"></div>' +
-      '<div class="bang-burst"></div>' +
-      '<div class="bang-burst d2"></div>' +
-      '<div class="bang-wave"></div>' +
-      '<div class="bang-wave d2"></div>' +
+  // Spaceship cruising through the void
+  var sceneHTML =
+    '<div class="void">' +
+      '<div class="ship"></div>' +
+      '<div class="streak s1"></div>' +
+      '<div class="streak s2"></div>' +
+      '<div class="streak s3"></div>' +
     '</div>';
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Inject Big Bang into preloader container
+    // Inject scene into preloader container
     var preloader = document.getElementById('preloader');
     if (preloader && !preloader.children.length) {
-      preloader.innerHTML = bangHTML;
+      preloader.innerHTML = sceneHTML;
     }
 
     // Activate deferred stylesheets
@@ -37,9 +36,9 @@ var _hideRequested = false;
       deferred[i].removeAttribute('media');
     }
 
-    // Minimum display time — let the blast animation complete
+    // Minimum display time — let the ship arrive and streaks play
     setTimeout(function () {
-      _blastDone = true;
+      _animDone = true;
       if (_hideRequested) hidePreloader();
     }, 1200);
   });
@@ -48,7 +47,7 @@ var _hideRequested = false;
 // Hide preloader (called by page scripts when content is ready)
 function hidePreloader() {
   _hideRequested = true;
-  if (!_blastDone) return;
+  if (!_animDone) return;
   var preloader = document.getElementById('preloader');
   if (preloader && !preloader.classList.contains('hidden')) {
     preloader.classList.add('hidden');

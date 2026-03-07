@@ -25,6 +25,7 @@
   justify-content: center;
   z-index: 9999;
   transition: opacity 0.3s;
+  overflow: hidden;
 }
 
 #preloader.hidden {
@@ -32,163 +33,94 @@
   pointer-events: none;
 }
 
-/* Big Bang container */
-.bigbang {
+/* Void — the scene */
+.void {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 200px;
+  height: 80px;
 }
 
-/* Flash — radial burst of light */
-.bigbang::before {
+/* Ship — minimal triangle pointing right */
+.ship {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 10px solid var(--text-color);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: ship-arrive 0.6s ease-out forwards, ship-drift 3s ease-in-out 0.6s infinite;
+  z-index: 2;
+}
+
+/* Engine glow — tiny dot behind the ship */
+.ship::after {
   content: '';
   position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  opacity: 0;
-  animation: bang-flash 0.7s ease-out 0.15s forwards;
-}
-
-@keyframes bang-flash {
-  0% {
-    opacity: 0;
-    box-shadow: 0 0 0 0 var(--text-color);
-  }
-  30% {
-    opacity: 0.6;
-    box-shadow: 0 0 60px 30px var(--text-color);
-  }
-  100% {
-    opacity: 0;
-    box-shadow: 0 0 0 0 transparent;
-  }
-}
-
-/* Core — singularity that survives the blast */
-.bang-core {
-  width: 4px;
-  height: 4px;
+  top: 50%;
+  right: 100%;
+  width: 2px;
+  height: 2px;
+  margin-top: -1px;
+  margin-right: 1px;
   border-radius: 50%;
   background: var(--text-color);
-  z-index: 2;
-  opacity: 0;
-  animation:
-    core-ignite 0.8s ease-out 0.1s forwards,
-    core-breathe 2s ease-in-out 1s infinite;
+  opacity: 0.5;
+  animation: glow-pulse 1.5s ease-in-out infinite;
 }
 
-@keyframes core-ignite {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  35% {
-    opacity: 1;
-    transform: scale(3);
-    box-shadow: 0 0 20px 6px var(--text-color);
-  }
-  100% {
-    opacity: 0.7;
-    transform: scale(1);
-    box-shadow: 0 0 6px 2px var(--text-color);
-  }
+@keyframes ship-arrive {
+  0% { opacity: 0; transform: translate(-50%, -50%) translateX(-20px); }
+  100% { opacity: 0.85; transform: translate(-50%, -50%) translateX(0); }
 }
 
-@keyframes core-breathe {
-  0%, 100% {
-    opacity: 0.5;
-    box-shadow: 0 0 4px 1px var(--text-color);
-  }
-  50% {
-    opacity: 1;
-    box-shadow: 0 0 8px 2px var(--text-color);
-  }
+@keyframes ship-drift {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-2px); }
 }
 
-/* Burst rings — fast shock waves, play once */
-.bang-burst {
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+/* Star streaks — thin horizontal lines streaming past */
+.streak {
   position: absolute;
   top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin: -10px 0 0 -10px;
-  border-radius: 50%;
-  border: 1.5px solid var(--text-color);
+  height: 1px;
+  background: var(--text-color);
   opacity: 0;
-  animation: ring-burst 0.8s ease-out 0.2s forwards;
+  animation: streak-fly 1.2s linear infinite;
 }
 
-.bang-burst.d2 {
-  border-width: 1px;
-  animation-delay: 0.35s;
-}
+.streak.s1 { width: 20px; top: 25%; left: 100%; animation-delay: 0s; }
+.streak.s2 { width: 14px; top: 45%; left: 100%; animation-delay: 0.4s; }
+.streak.s3 { width: 18px; top: 70%; left: 100%; animation-delay: 0.8s; }
 
-@keyframes ring-burst {
-  0% {
-    transform: scale(0);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(10);
-    opacity: 0;
-  }
-}
-
-/* Afterglow waves — gentle ripples, loop forever */
-.bang-wave {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 30px;
-  height: 30px;
-  margin: -15px 0 0 -15px;
-  border-radius: 50%;
-  border: 1px solid var(--text-color);
-  opacity: 0;
-  animation: wave-drift 3s ease-out 1s infinite;
-}
-
-.bang-wave.d2 {
-  animation-delay: 2.5s;
-}
-
-@keyframes wave-drift {
-  0% {
-    transform: scale(0);
-    opacity: 0.2;
-  }
-  100% {
-    transform: scale(4);
-    opacity: 0;
-  }
+@keyframes streak-fly {
+  0% { transform: translateX(0); opacity: 0; }
+  10% { opacity: 0.15; }
+  90% { opacity: 0.15; }
+  100% { transform: translateX(-260px); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bigbang::before {
+  .ship {
     animation: none;
+    opacity: 0.85;
+    transform: translate(-50%, -50%);
   }
-  .bang-core {
+  .ship::after {
     animation: none;
-    opacity: 0.8;
-    box-shadow: 0 0 6px 2px var(--text-color);
+    opacity: 0.5;
   }
-  .bang-burst {
-    animation: none;
-    opacity: 0.15;
-    transform: scale(3);
-  }
-  .bang-burst.d2 {
-    transform: scale(5);
-  }
-  .bang-wave {
+  .streak {
     animation: none;
     opacity: 0.1;
-    transform: scale(2);
-  }
-  .bang-wave.d2 {
-    transform: scale(3.5);
+    transform: translateX(-130px);
   }
 }
