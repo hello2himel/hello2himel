@@ -32,134 +32,62 @@
   pointer-events: none;
 }
 
-/* CSS-only starfield — two layers with staggered twinkle */
-#preloader::before,
-#preloader::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
+/* Singularity — the origin point */
+.singularity {
+  position: relative;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background: transparent;
-  opacity: 0.1;
-  animation: preloader-twinkle 4s ease-in-out infinite;
+  background: var(--text-color);
+  box-shadow: 0 0 6px 1px var(--text-color);
+  animation: singularity-pulse 2s ease-in-out infinite;
 }
 
-#preloader::before {
-  box-shadow:
-    12vw 5vh 0 0.5px var(--text-color),
-    87vw 12vh 0 0.5px var(--text-color),
-    35vw 8vh 0 1px var(--text-color),
-    63vw 3vh 0 0.5px var(--text-color),
-    5vw 25vh 0 0.5px var(--text-color),
-    78vw 30vh 0 1px var(--text-color),
-    22vw 18vh 0 0.5px var(--text-color),
-    95vw 22vh 0 0.5px var(--text-color),
-    8vw 42vh 0 1px var(--text-color),
-    68vw 48vh 0 0.5px var(--text-color),
-    15vw 55vh 0 0.5px var(--text-color),
-    82vw 60vh 0 1px var(--text-color),
-    92vw 52vh 0 0.5px var(--text-color),
-    25vw 80vh 0 0.5px var(--text-color),
-    72vw 85vh 0 1px var(--text-color),
-    3vw 70vh 0 0.5px var(--text-color),
-    58vw 92vh 0 0.5px var(--text-color),
-    88vw 78vh 0 0.5px var(--text-color),
-    30vw 95vh 0 1px var(--text-color);
-}
-
-#preloader::after {
-  box-shadow:
-    20vw 10vh 0 0.5px var(--text-color),
-    75vw 18vh 0 1px var(--text-color),
-    50vw 6vh 0 0.5px var(--text-color),
-    10vw 32vh 0 0.5px var(--text-color),
-    90vw 35vh 0 1px var(--text-color),
-    80vw 45vh 0 0.5px var(--text-color),
-    18vw 65vh 0 0.5px var(--text-color),
-    70vw 70vh 0 1px var(--text-color),
-    5vw 88vh 0 0.5px var(--text-color),
-    85vw 92vh 0 0.5px var(--text-color),
-    55vw 85vh 0 1px var(--text-color),
-    28vw 15vh 0 0.5px var(--text-color),
-    95vw 75vh 0 0.5px var(--text-color),
-    14vw 50vh 0 0.5px var(--text-color),
-    82vw 38vh 0 1px var(--text-color);
-  animation-delay: 2s;
-}
-
-@keyframes preloader-twinkle {
-  0%, 100% { opacity: 0.1; }
-  50% { opacity: 0.35; }
-}
-
-/* Pulsar */
-.pulsar {
-  color: var(--text-color);
-  z-index: 1;
-  overflow: visible;
-}
-
-.pulsar-beams {
-  stroke: currentColor;
-  opacity: 0.5;
-  transform-origin: 50px 50px;
-  animation: pulsar-spin 3s linear infinite;
-  filter: drop-shadow(0 0 3px currentColor);
-}
-
-.pulse-ring {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1;
-  opacity: 0;
-  transform-origin: 50px 50px;
-  animation: ring-pulse 2.4s ease-out infinite;
-}
-
-.pulse-ring.d2 {
-  animation-delay: 0.8s;
-}
-
-.pulse-ring.d3 {
-  animation-delay: 1.6s;
-}
-
-.pulsar-core {
-  animation: core-glow 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
-}
-
-@keyframes pulsar-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes ring-pulse {
-  0% { opacity: 0.6; stroke-width: 1.5; }
-  100% { opacity: 0; stroke-width: 0.3; transform: scale(2.2); }
-}
-
-@keyframes core-glow {
+@keyframes singularity-pulse {
   0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+  50% { opacity: 1; box-shadow: 0 0 10px 2px var(--text-color); }
+}
+
+/* Expanding wavefronts */
+.bang-wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  border: 1px solid var(--text-color);
+  opacity: 0;
+  animation: wave-expand 3s ease-out infinite;
+}
+
+.bang-wave:last-child {
+  animation-delay: 1.5s;
+}
+
+@keyframes wave-expand {
+  0% {
+    transform: scale(0);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pulsar-beams,
-  .pulse-ring,
-  .pulsar-core {
+  .singularity {
     animation: none;
+    opacity: 0.8;
   }
-  #preloader::before,
-  #preloader::after {
+  .bang-wave {
     animation: none;
+    opacity: 0.15;
+    transform: scale(1.5);
   }
-  .pulse-ring { opacity: 0.3; }
-  .pulsar-beams { opacity: 0.5; }
-  .pulsar-core { opacity: 0.8; }
-  #preloader::before,
-  #preloader::after { opacity: 0.15; }
+  .bang-wave:last-child {
+    transform: scale(2.5);
+  }
 }
