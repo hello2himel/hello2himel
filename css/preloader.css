@@ -1,5 +1,14 @@
 /* Preloader — loads first for instant visibility */
 
+/* Remixicon font — loaded eagerly so the ship icon is available immediately.
+   The same @font-face is declared in remixicon.css (deferred); browsers deduplicate. */
+@font-face {
+  font-family: "remixicon";
+  src: url("../res/fonts/remixicon.woff2?t=1734404658139") format("woff2"),
+       url("../res/fonts/remixicon.woff?t=1734404658139") format("woff");
+  font-display: swap;
+}
+
 /* Theme variables (duplicated from style.css so preloader renders correctly
    even before the main stylesheet finishes loading) */
 :root {
@@ -25,6 +34,7 @@
   justify-content: center;
   z-index: 9999;
   transition: opacity 0.3s;
+  overflow: hidden;
 }
 
 #preloader.hidden {
@@ -32,134 +42,74 @@
   pointer-events: none;
 }
 
-/* CSS-only starfield — two layers with staggered twinkle */
-#preloader::before,
-#preloader::after {
-  content: '';
+/* Void — the scene */
+.void {
+  position: relative;
+  width: 200px;
+  height: 80px;
+}
+
+/* Ship — Remixicon ri-space-ship-line icon */
+.ship {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
-  border-radius: 50%;
-  background: transparent;
-  opacity: 0.1;
-  animation: preloader-twinkle 4s ease-in-out infinite;
-}
-
-#preloader::before {
-  box-shadow:
-    12vw 5vh 0 0.5px var(--text-color),
-    87vw 12vh 0 0.5px var(--text-color),
-    35vw 8vh 0 1px var(--text-color),
-    63vw 3vh 0 0.5px var(--text-color),
-    5vw 25vh 0 0.5px var(--text-color),
-    78vw 30vh 0 1px var(--text-color),
-    22vw 18vh 0 0.5px var(--text-color),
-    95vw 22vh 0 0.5px var(--text-color),
-    8vw 42vh 0 1px var(--text-color),
-    68vw 48vh 0 0.5px var(--text-color),
-    15vw 55vh 0 0.5px var(--text-color),
-    82vw 60vh 0 1px var(--text-color),
-    92vw 52vh 0 0.5px var(--text-color),
-    25vw 80vh 0 0.5px var(--text-color),
-    72vw 85vh 0 1px var(--text-color),
-    3vw 70vh 0 0.5px var(--text-color),
-    58vw 92vh 0 0.5px var(--text-color),
-    88vw 78vh 0 0.5px var(--text-color),
-    30vw 95vh 0 1px var(--text-color);
-}
-
-#preloader::after {
-  box-shadow:
-    20vw 10vh 0 0.5px var(--text-color),
-    75vw 18vh 0 1px var(--text-color),
-    50vw 6vh 0 0.5px var(--text-color),
-    10vw 32vh 0 0.5px var(--text-color),
-    90vw 35vh 0 1px var(--text-color),
-    80vw 45vh 0 0.5px var(--text-color),
-    18vw 65vh 0 0.5px var(--text-color),
-    70vw 70vh 0 1px var(--text-color),
-    5vw 88vh 0 0.5px var(--text-color),
-    85vw 92vh 0 0.5px var(--text-color),
-    55vw 85vh 0 1px var(--text-color),
-    28vw 15vh 0 0.5px var(--text-color),
-    95vw 75vh 0 0.5px var(--text-color),
-    14vw 50vh 0 0.5px var(--text-color),
-    82vw 38vh 0 1px var(--text-color);
-  animation-delay: 2s;
-}
-
-@keyframes preloader-twinkle {
-  0%, 100% { opacity: 0.1; }
-  50% { opacity: 0.35; }
-}
-
-/* Pulsar */
-.pulsar {
+  top: 50%;
+  left: 50%;
+  font-family: "remixicon";
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  font-size: 18px;
+  line-height: 1;
   color: var(--text-color);
-  z-index: 1;
-  overflow: visible;
-}
-
-.pulsar-beams {
-  stroke: currentColor;
-  opacity: 0.5;
-  transform-origin: 50px 50px;
-  animation: pulsar-spin 3s linear infinite;
-  filter: drop-shadow(0 0 3px currentColor);
-}
-
-.pulse-ring {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1;
+  transform: translate(-50%, -50%) rotate(90deg);
   opacity: 0;
-  transform-origin: 50px 50px;
-  animation: ring-pulse 2.4s ease-out infinite;
+  animation: ship-arrive 0.6s ease-out forwards, ship-drift 3s ease-in-out 0.6s infinite;
+  z-index: 2;
 }
 
-.pulse-ring.d2 {
-  animation-delay: 0.8s;
+.ship::before {
+  content: "\f166";
 }
 
-.pulse-ring.d3 {
-  animation-delay: 1.6s;
+@keyframes ship-arrive {
+  0% { opacity: 0; transform: translate(-50%, -50%) rotate(90deg) translateX(-20px); }
+  100% { opacity: 0.85; transform: translate(-50%, -50%) rotate(90deg) translateX(0); }
 }
 
-.pulsar-core {
-  animation: core-glow 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor);
+@keyframes ship-drift {
+  0%, 100% { transform: translate(-50%, -50%) rotate(90deg) translateY(0); }
+  50% { transform: translate(-50%, -50%) rotate(90deg) translateY(-2px); }
 }
 
-@keyframes pulsar-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Star streaks — thin horizontal lines streaming past */
+.streak {
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  background: var(--text-color);
+  opacity: 0;
+  animation: streak-fly 1.2s linear infinite;
 }
 
-@keyframes ring-pulse {
-  0% { opacity: 0.6; stroke-width: 1.5; }
-  100% { opacity: 0; stroke-width: 0.3; transform: scale(2.2); }
-}
+.streak.s1 { width: 20px; top: 25%; left: 100%; animation-delay: 0s; }
+.streak.s2 { width: 14px; top: 45%; left: 100%; animation-delay: 0.4s; }
+.streak.s3 { width: 18px; top: 70%; left: 100%; animation-delay: 0.8s; }
 
-@keyframes core-glow {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+@keyframes streak-fly {
+  0% { transform: translateX(0); opacity: 0; }
+  10% { opacity: 0.15; }
+  90% { opacity: 0.15; }
+  100% { transform: translateX(-260px); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pulsar-beams,
-  .pulse-ring,
-  .pulsar-core {
+  .ship {
     animation: none;
+    opacity: 0.85;
+    transform: translate(-50%, -50%) rotate(90deg);
   }
-  #preloader::before,
-  #preloader::after {
+  .streak {
     animation: none;
+    opacity: 0.1;
+    transform: translateX(-130px);
   }
-  .pulse-ring { opacity: 0.3; }
-  .pulsar-beams { opacity: 0.5; }
-  .pulsar-core { opacity: 0.8; }
-  #preloader::before,
-  #preloader::after { opacity: 0.15; }
 }

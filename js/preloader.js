@@ -1,6 +1,9 @@
-// Preloader — Theme detection, SVG injection, and deferred stylesheet activation.
+// Preloader — Theme detection, scene injection, and deferred stylesheet activation.
 // This script runs first in <head> to ensure the preloader is immediately
 // visible with the correct theme colors, before any other styles load.
+
+var _animDone = false;
+var _hideRequested = false;
 
 (function () {
   // Detect and apply theme immediately to prevent flash of wrong theme
@@ -11,31 +14,20 @@
   }
   document.documentElement.setAttribute('data-theme', theme);
 
-  // Pulsar SVG — simple 2D rotating neutron star
-  var pulsarSVG =
-    '<svg class="pulsar" viewBox="0 0 100 100" width="60" height="60">' +
-      '<defs>' +
-        '<radialGradient id="pl-glow">' +
-          '<stop offset="0%" stop-color="currentColor" stop-opacity="0.35"/>' +
-          '<stop offset="100%" stop-color="currentColor" stop-opacity="0"/>' +
-        '</radialGradient>' +
-      '</defs>' +
-      '<circle cx="50" cy="50" r="20" class="pulse-ring"/>' +
-      '<circle cx="50" cy="50" r="20" class="pulse-ring d2"/>' +
-      '<circle cx="50" cy="50" r="20" class="pulse-ring d3"/>' +
-      '<g class="pulsar-beams">' +
-        '<line x1="50" y1="6" x2="50" y2="40" stroke-width="2.5" stroke-linecap="round"/>' +
-        '<line x1="50" y1="60" x2="50" y2="94" stroke-width="2.5" stroke-linecap="round"/>' +
-      '</g>' +
-      '<circle cx="50" cy="50" r="12" fill="url(#pl-glow)"/>' +
-      '<circle cx="50" cy="50" r="4" fill="currentColor" class="pulsar-core"/>' +
-    '</svg>';
+  // Spaceship cruising through the void
+  var sceneHTML =
+    '<div class="void">' +
+      '<div class="ship"></div>' +
+      '<div class="streak s1"></div>' +
+      '<div class="streak s2"></div>' +
+      '<div class="streak s3"></div>' +
+    '</div>';
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Inject pulsar SVG into preloader container
+    // Inject scene into preloader container
     var preloader = document.getElementById('preloader');
     if (preloader && !preloader.children.length) {
-      preloader.innerHTML = pulsarSVG;
+      preloader.innerHTML = sceneHTML;
     }
 
     // Activate deferred stylesheets
@@ -43,11 +35,19 @@
     for (var i = 0; i < deferred.length; i++) {
       deferred[i].removeAttribute('media');
     }
+
+    // Minimum display time — let the ship arrive and streaks play
+    setTimeout(function () {
+      _animDone = true;
+      if (_hideRequested) hidePreloader();
+    }, 1200);
   });
 })();
 
 // Hide preloader (called by page scripts when content is ready)
 function hidePreloader() {
+  _hideRequested = true;
+  if (!_animDone) return;
   var preloader = document.getElementById('preloader');
   if (preloader && !preloader.classList.contains('hidden')) {
     preloader.classList.add('hidden');
