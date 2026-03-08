@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hello2himel.github.io/</loc>
+    <loc>https://hello2himel.netlify.app/</loc>
   </url>
   <url>
-    <loc>https://hello2himel.github.io/donate.html</loc>
+    <loc>https://hello2himel.netlify.app/donate.html</loc>
   </url>
   <url>
-    <loc>https://hello2himel.github.io/blog/</loc>
+    <loc>https://hello2himel.netlify.app/blog/</loc>
   </url>
 </urlset>
