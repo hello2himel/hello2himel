@@ -41,9 +41,3 @@
 ###
 
 <br clear="both">
-
-<div align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=hello2himel.hello2himel&right_color=red"  />
-</div>
-
-###
