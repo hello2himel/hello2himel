@@ -50,14 +50,23 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Generate mailto link
-  function generateMailtoLink() {
-    let subject = 'Donation';
+  function generateMailtoLink(type = 'bank') {
+    let subject = type === 'large' ? 'Large Donation Inquiry' : 'Donation';
     if (projectName) subject += ` for ${projectName}`;
 
-    let body = `Dear Himel Das,\n\nI would like to know the details for a bank transfer to support`;
-    if (projectName) body += ` ${projectName}.`;
-    else body += `.`;
-    body += `\n\nCould you please provide the necessary bank transfer information?\n\nThank you.\n\nBest regards,\n[Your Name]\n\n--- This is an auto-generated mail.`;
+    let body;
+
+    if (type === 'large') {
+      body = `Dear Himel Das,\n\nI'd like to discuss a larger donation directly`;
+      if (projectName) body += ` to support ${projectName}`;
+      body += ` so that we can avoid third-party fees.\n\n[Your message here]\n\nBest regards,\n[Your Name]\n\n--- This is an auto-generated mail.`;
+    } else {
+      body = `Dear Himel Das,\n\nI would like to know the details for a bank transfer to support`;
+      if (projectName) body += ` ${projectName}.`;
+      else body += `.`;
+      body += `\n\nCould you please provide the necessary bank transfer information?\n\nThank you.\n\nBest regards,\n[Your Name]\n\n--- This is an auto-generated mail.`;
+    }
+
     if (sessionId) body += `\nSession ID: ${sessionId}`;
 
     const encodedSubject = encodeURIComponent(subject);
@@ -69,9 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Bank mail triggers
   document.querySelectorAll('.bank-mail-trigger').forEach(button => {
     button.addEventListener('click', () => {
-      window.location.href = generateMailtoLink();
+      window.location.href = generateMailtoLink('bank');
     });
   });
+
+  // Large donation link
+  const largeDonationLink = document.getElementById('large-donation-link');
+  if (largeDonationLink) {
+    largeDonationLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = generateMailtoLink('large');
+    });
+  }
 
   // Bangladesh button — redirect to SupportKori
   const bangladeshButton = document.querySelector('[data-target-step="step-bangladesh-redirect"]');
