@@ -69,8 +69,8 @@
     {
       "title": "Urochithi",
       "title_bn": "উরোচিঠি",
-      "description": "Privacy-focused anonymous letter platform with vintage paper aesthetic. Features two-factor authentication, zero data collection, and Google Sheets backend.",
-      "description_bn": "ভিন্টেজ কাগজের নান্দনিকতায় গোপনীয়তা-কেন্দ্রিক বেনামী চিঠি প্ল্যাটফর্ম। দুই-ধাপ প্রমাণীকরণ, শূন্য ডেটা সংগ্রহ এবং Google Sheets ব্যাকএন্ড।",
+      "description": "Privacy-focused anonymous letter platform with vintage paper aesthetic. Features two-factor authentication and zero data collection.",
+      "description_bn": "ভিন্টেজ কাগজের নান্দনিকতায় গোপনীয়তা-কেন্দ্রিক বেনামী চিঠি প্ল্যাটফর্ম। দুই-ধাপ প্রমাণীকরণ, এবং শূন্য ডেটা সংগ্রহ।",
       "link": "https://github.com/hello2himel/urochithi",
       "linkText": "Learn More",
       "linkText_bn": "আরও জানুন"
