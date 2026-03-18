@@ -16,18 +16,6 @@ function showToast(message, duration = 3000) {
   }
 }
 
-// Copy phone number
-function copyPhoneNumber(phoneNumber) {
-  navigator.clipboard.writeText(phoneNumber).then(() => {
-    const message = 'Phone number copied!';
-    showToast(message, getToastDuration(message));
-  }).catch(err => {
-    console.error('Failed to copy:', err);
-    const message = 'Failed to copy.';
-    showToast(message, getToastDuration(message));
-  });
-}
-
 // Main initialization
 document.addEventListener('DOMContentLoaded', () => {
   // Parse URL parameters
@@ -37,28 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const sessionId = urlParams.get('session_id') || null;
 
   // Update main title
-  const mainTitleElement = document.getElementById('main-title');
   const projectNameSpan = document.getElementById('project-name');
-  
   if (projectName) {
     projectNameSpan.textContent = `for ${projectName}`;
   } else {
     projectNameSpan.textContent = '';
   }
 
-  // Update project names in detail sections
-  const projectNameElements = [
-    'bkash-project-name',
-    'bank-project-name-bd',
-    'bank-project-name-int'
-  ];
-
-  projectNameElements.forEach(id => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.textContent = projectName || 'my work';
-    }
-  });
+  // Update project name in international detail section
+  const bankProjectNameInt = document.getElementById('bank-project-name-int');
+  if (bankProjectNameInt) {
+    bankProjectNameInt.textContent = projectName || 'my work';
+  }
 
   // Update session IDs
   const sessionIdElements = document.querySelectorAll('.session-id span');
@@ -95,16 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const copyPhoneButton = document.getElementById('copy-phone-button');
-  if (copyPhoneButton) {
-    copyPhoneButton.addEventListener('click', () => {
-      const encodedPhone = copyPhoneButton.dataset.phone || '';
-      try {
-        const phone = atob(encodedPhone);
-        copyPhoneNumber(phone);
-      } catch (error) {
-        console.error('Invalid phone number encoding:', error);
-      }
+  // Bangladesh button — redirect to SupportKori
+  const bangladeshButton = document.querySelector('[data-target-step="step-bangladesh-redirect"]');
+  if (bangladeshButton) {
+    bangladeshButton.addEventListener('click', () => {
+      window.open('https://supportkori.com/hello2himel', '_blank', 'noopener,noreferrer');
     });
   }
 
