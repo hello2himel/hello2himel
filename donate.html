@@ -91,7 +91,7 @@
           <h2>Choose Your Region</h2>
           
           <div class="step-options">
-            <button class="step-option" data-target-step="step-bangladesh-methods" aria-describedby="bd-option-subtext">
+            <button class="step-option" data-target-step="step-bangladesh-redirect" aria-describedby="bd-option-subtext">
               <div class="option-content">
                 <div class="option-main">
                   <i class="ri-flag-2-line"></i>
@@ -115,39 +115,6 @@
           <p class="session-id"><span id="session-id-main">N/A</span></p>
         </div>
 
-        <!-- Step 2: Bangladesh Methods -->
-        <div class="wizard-step" id="step-bangladesh-methods">
-          <button class="back-btn" data-back-target="step-region-select" title="Go back" aria-label="Go back">
-            <i class="ri-arrow-left-line"></i>
-          </button>
-          
-          <h2>Payment Method</h2>
-          
-          <div class="step-options">
-            <button class="step-option" data-target-step="step-bkash-details">
-              <div class="option-content">
-                <div class="option-main">
-                  <i class="ri-smartphone-line"></i>
-                  <span>bKash</span>
-                </div>
-                <div class="option-subtext">Instant mobile payment</div>
-              </div>
-            </button>
-            
-            <button class="step-option" data-target-step="step-bank-details-bd">
-              <div class="option-content">
-                <div class="option-main">
-                  <i class="ri-bank-line"></i>
-                  <span>Bank Transfer</span>
-                </div>
-                <div class="option-subtext">Direct bank deposit</div>
-              </div>
-            </button>
-          </div>
-
-          <p class="session-id"><span id="session-id-bd">N/A</span></p>
-        </div>
-
         <!-- Step 2: International Methods -->
         <div class="wizard-step" id="step-international-methods">
           <button class="back-btn" data-back-target="step-region-select" title="Go back" aria-label="Go back">
@@ -169,60 +136,6 @@
           </div>
 
           <p class="session-id"><span id="session-id-int">N/A</span></p>
-        </div>
-
-        <!-- Step 3: bKash Details -->
-        <div class="wizard-step" id="step-bkash-details">
-          <button class="back-btn" data-back-target="step-bangladesh-methods" title="Go back" aria-label="Go back">
-            <i class="ri-arrow-left-line"></i>
-          </button>
-          
-          <h2>bKash Payment</h2>
-          
-          <div class="payment-details">
-            <div class="qr-code">
-              <p class="detail-label">Scan QR Code</p>
-              <div class="qr-placeholder">
-                <img src="/res/bkash-qr.png" alt="bKash QR Code" class="qr-image" loading="lazy" width="180" height="180">
-              </div>
-            </div>
-
-            <div class="divider">or</div>
-
-            <div class="phone-details">
-              <p class="detail-label">Send money to</p>
-              <button class="phone-number" id="copy-phone-button" data-phone='MDE4Njg3MzUyNjk='>
-                <i class="ri-phone-line"></i>
-                <span>01868 735269</span>
-                <i class="ri-file-copy-line"></i>
-              </button>
-              <p class="detail-hint">Click to copy number</p>
-            </div>
-
-            <p class="support-text">Supporting <strong id="bkash-project-name">my work</strong></p>
-          </div>
-
-          <p class="session-id"><span id="session-id-bkash">N/A</span></p>
-        </div>
-
-        <!-- Step 3: Bank Transfer BD -->
-        <div class="wizard-step" id="step-bank-details-bd">
-          <button class="back-btn" data-back-target="step-bangladesh-methods" title="Go back" aria-label="Go back">
-            <i class="ri-arrow-left-line"></i>
-          </button>
-          
-          <h2>Bank Transfer</h2>
-          
-          <div class="payment-details">
-            <p class="bank-info">Request bank details via email to support <strong id="bank-project-name-bd">my work</strong>.</p>
-            
-            <button class="primary-btn bank-mail-trigger" data-email-type="bd">
-              <i class="ri-mail-line"></i>
-              Request Bank Details
-            </button>
-          </div>
-
-          <p class="session-id"><span id="session-id-bank-bd">N/A</span></p>
         </div>
 
         <!-- Step 3: Bank Transfer International -->
