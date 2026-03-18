@@ -390,9 +390,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin-top: 0.6rem;
-  padding: 0.35rem 0.8rem;
-  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.85rem;
   color: var(--text-color);
   background: transparent;
   border: 1px dashed var(--border-color);
@@ -400,6 +399,7 @@
   text-decoration: none;
   opacity: 0.7;
   transition: all 0.2s;
+  vertical-align: middle;
 }
 
 .large-donation-cta:hover {
@@ -410,7 +410,7 @@
 }
 
 .large-donation-cta i {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 /* Footer */
