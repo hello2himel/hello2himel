@@ -54,13 +54,7 @@ And vice versa.
 ## Graph 1 — Worldlines in Spacetime
 
 {{< figure 
-    src="/images/late-night-intuition-graph1.png" 
-    title="Worldlines in Spacetime — Graph 1"
-    caption="Friend at rest traces a vertical worldline; the traveller's worldline tilts toward the light cone as velocity increases."
->}}
-
-{{< figure 
-    src="/images/late-night-intuition-graph1.png" 
+    src="blog/static/images/late-night-intuition-graph1.png" 
     title="Worldlines in Spacetime — Graph 1"
     caption="Friend at rest traces a vertical worldline; the traveller's worldline tilts toward the light cone as velocity increases."
 >}}
@@ -70,7 +64,7 @@ And vice versa.
 
 <br>
 
-![Handwritten Graph 1](/images/late-night-intuition-handwritten-graph1.jpg)
+![Handwritten Graph 1](blog/static/images/late-night-intuition-handwritten-graph1.jpg)
 
 </details>
 
@@ -133,13 +127,7 @@ Claude কে জিজ্ঞেস করলাম।
 ## Graph 2 — “Extra Dimension” Intuition
 
 {{< figure 
-    src="/images/late-night-intuition-graph2.png" 
-    title="Hand-drawn 3D intuition sketch"
-    caption="2D spacetime intuition-কে 3D projection হিসেবে কল্পনা করার চেষ্টা।"
->}}
-
-{{< figure 
-    src="/images/late-night-intuition-graph2.png" 
+    src="blog/static/images/late-night-intuition-graph2.png" 
     title="Hand-drawn 3D intuition sketch"
     caption="2D spacetime intuition-কে 3D projection হিসেবে কল্পনা করার চেষ্টা।"
 >}}
@@ -149,7 +137,7 @@ Claude কে জিজ্ঞেস করলাম।
 
 <br>
 
-![Handwritten Graph 2](/images/late-night-intuition-handwritten-graph2.jpg)
+![Handwritten Graph 2](blog/static/images/late-night-intuition-handwritten-graph2.jpg)
 
 </details>
 
