@@ -8,6 +8,7 @@ translationKey: "late-night-intuition"
 summary: "রাত্রির নিস্তব্ধতায় রিলেটিভিটি, টাইম ডাইলেশন, টুইন প্যারাডক্স আর স্পেসটাইম নিয়ে এক আনকোড়া মানুষের বিস্ময়, বিভ্রান্তি ও আনন্দের লেখা।"
 autoTranslated: false
 originalLang: "bn"
+toc: false
 ---
 
 আমি আনকোড়া একজন মানুষ।  
@@ -58,15 +59,6 @@ And vice versa.
     title="Worldlines in Spacetime — Graph 1"
     caption="Friend at rest traces a vertical worldline; the traveller's worldline tilts toward the light cone as velocity increases."
 >}}
-
-<details>
-<summary><strong>View actual handwritten note</strong></summary>
-
-<br>
-
-![Handwritten Graph 1](/blog/images/late-night-intuition-handwritten-graph1.jpg)
-
-</details>
 
 গ্রাফে, আমার বন্ধুকে স্থির ধরে নিলে সে সময় অক্ষ বরাবর একটা সঞ্চারপথ তৈরি করছে।  
 আর আমি, যেহেতু spatial direction এ চলছি, তাই আমার worldline টা কাত হয়ে যাচ্ছে।
@@ -131,15 +123,6 @@ Claude কে জিজ্ঞেস করলাম।
     title="Hand-drawn 3D intuition sketch"
     caption="2D spacetime intuition-কে 3D projection হিসেবে কল্পনা করার চেষ্টা।"
 >}}
-
-<details>
-<summary><strong>View actual handwritten note</strong></summary>
-
-<br>
-
-![Handwritten Graph 2](/blog/images/late-night-intuition-handwritten-graph2.jpg)
-
-</details>
 
 আগের 2D spacetime intuition টাকে mentally 3D করার চেষ্টা করলাম।
 
