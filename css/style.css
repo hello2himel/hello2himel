@@ -310,6 +310,44 @@ body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .
   filter: blur(var(--dof-blur));
 }
 
+/* Touch devices and small screens: no pop-out, no blur, no motion.
+   Touch browsers keep :hover stuck on the last tapped element, so the
+   effect would latch on after a tap. Cards stay completely static and only
+   the border-color feedback remains. */
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .project-card,
+  .competition-card,
+  .leadership-item {
+    transition: border-color 0.2s;
+  }
+
+  #space-container,
+  .header-controls,
+  .profile-section,
+  .section,
+  .section > h2,
+  footer {
+    transition: none;
+  }
+
+  .project-card:hover,
+  .competition-card:hover,
+  .leadership-item:hover,
+  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) #space-container,
+  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .header-controls,
+  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .profile-section,
+  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) footer,
+  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .section:not(:has(.project-card:hover, .competition-card:hover, .leadership-item:hover)),
+  .section:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) > h2,
+  .projects-grid:has(.project-card:hover) .project-card:not(:hover),
+  .competitions-grid:has(.competition-card:hover) .competition-card:not(:hover),
+  .leadership-list:has(.leadership-item:hover) .leadership-item:not(:hover) {
+    transform: none;
+    filter: none;
+    box-shadow: none;
+  }
+}
+
 /* Footer */
 footer {
   margin-top: 4rem;

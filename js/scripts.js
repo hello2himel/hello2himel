@@ -269,7 +269,13 @@ function renderTechnicalSkills(skills) {
     `
     : '';
   
-  container.innerHTML = group('Languages', skills.languages) + group('Interests', skills.interests);
+  // Preferred shape: { groups: [{ label, items: [...] }, ...] }
+  // Falls back to the older { languages, interests } shape.
+  const groups = Array.isArray(skills.groups)
+    ? skills.groups.map(g => group(t(g, 'label'), tArr(g, 'items')))
+    : [group('Languages', skills.languages), group('Interests', skills.interests)];
+  
+  container.innerHTML = groups.join('');
 }
 
 // Render vision
