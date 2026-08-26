@@ -149,11 +149,24 @@ p {
   border: 1px solid var(--border-color);
   padding: 1.5rem;
   border-radius: 6px;
-  transition: transform 0.2s;
+  position: relative;
+  transform-origin: center;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+/* Depth-of-field: blur the siblings, not the card under the cursor.
+   :not(:hover) is required — .achievements-grid:hover .achievement-card
+   outranks .achievement-card:hover on specificity, so without it the
+   hovered card would blur too. */
+.achievements-grid:hover .achievement-card:not(:hover) {
+  filter: blur(3px);
 }
 
 .achievement-card:hover {
-  transform: translateY(-4px);
+  transform: scale(1.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  filter: blur(0);
+  z-index: 2;
 }
 
 .achievement-title {
@@ -187,12 +200,21 @@ p {
   border: 1px solid var(--border-color);
   padding: 1.5rem;
   border-radius: 6px;
-  transition: all 0.2s;
+  position: relative;
+  transform-origin: center;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s, border-color 0.2s;
+}
+
+.projects-grid:hover .project-card:not(:hover) {
+  filter: blur(3px);
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
+  transform: scale(1.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  filter: blur(0);
   border-color: var(--card-hover-border);
+  z-index: 2;
 }
 
 .project-title {
@@ -214,6 +236,21 @@ p {
   border: 1px solid var(--border-color);
   padding: 1.5rem;
   border-radius: 6px;
+  position: relative;
+  transform-origin: center;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s, border-color 0.2s;
+}
+
+.leadership-list:hover .leadership-item:not(:hover) {
+  filter: blur(3px);
+}
+
+.leadership-item:hover {
+  transform: scale(1.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  filter: blur(0);
+  border-color: var(--card-hover-border);
+  z-index: 2;
 }
 
 .leadership-title {
@@ -764,6 +801,25 @@ body.error-page {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Zero movement, scaling, or blur on cards. Only the border-color
+     change on hover survives (project-card / leadership-item). */
+  .achievement-card,
+  .project-card,
+  .leadership-item,
+  .achievement-card:hover,
+  .project-card:hover,
+  .leadership-item:hover,
+  .achievements-grid:hover .achievement-card,
+  .achievements-grid:hover .achievement-card:not(:hover),
+  .projects-grid:hover .project-card,
+  .projects-grid:hover .project-card:not(:hover),
+  .leadership-list:hover .leadership-item,
+  .leadership-list:hover .leadership-item:not(:hover) {
+    transform: none !important;
+    filter: none !important;
+    box-shadow: none !important;
   }
 }
 
