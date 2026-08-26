@@ -142,7 +142,6 @@ p {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-top: 1.5rem;
-  perspective: 1000px;
 }
 
 .achievement-card {
@@ -151,11 +150,11 @@ p {
   padding: 1.5rem;
   border-radius: 6px;
   transition: transform 0.2s, box-shadow 0.2s;
-  transform: translateZ(0);
+  transform-origin: center;
 }
 
 .achievement-card:hover {
-  transform: translateZ(40px);
+  transform: scale(1.06);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -183,7 +182,6 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-  perspective: 1000px;
 }
 
 .project-card {
@@ -192,11 +190,11 @@ p {
   padding: 1.5rem;
   border-radius: 6px;
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-  transform: translateZ(0);
+  transform-origin: center;
 }
 
 .project-card:hover {
-  transform: translateZ(40px);
+  transform: scale(1.06);
   border-color: var(--card-hover-border);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
