@@ -200,20 +200,74 @@
     }
   ],
   "technicalSkills": {
-    "languages": [
-      "Python",
-      "C",
-      "JavaScript",
-      "HTML",
-      "CSS"
-    ],
-    "interests": [
-      "Computational Astronomy",
-      "Data Analysis",
-      "Scientific Computing",
-      "Linux",
-      "FOSS",
-      "Web Development"
+    "groups": [
+      {
+        "label": "Scientific Computing",
+        "label_bn": "সায়েন্টিফিক কম্পিউটিং",
+        "items": [
+          "Python",
+          "NumPy",
+          "SciPy",
+          "Matplotlib",
+          "Lightkurve",
+          "Astropy"
+        ]
+      },
+      {
+        "label": "Programming",
+        "label_bn": "প্রোগ্রামিং",
+        "items": [
+          "C",
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ]
+      },
+      {
+        "label": "Methods",
+        "label_bn": "পদ্ধতি",
+        "items": [
+          "χ² fitting",
+          "Gaussian regression",
+          "Log-log analysis",
+          "Event selection",
+          "Aperture photometry"
+        ]
+      },
+      {
+        "label": "Tools",
+        "label_bn": "টুল",
+        "items": [
+          "Linux",
+          "Git/GitHub",
+          "Jupyter Notebook"
+        ]
+      },
+      {
+        "label": "General",
+        "label_bn": "সাধারণ",
+        "items": [
+          "Scientific writing",
+          "Public speaking",
+          "Robotics"
+        ]
+      },
+      {
+        "label": "Certifications",
+        "label_bn": "সার্টিফিকেশন",
+        "items": [
+          "CS50: Introduction to Computer Science — HarvardX, 2026"
+        ]
+      },
+      {
+        "label": "Languages",
+        "label_bn": "ভাষা",
+        "items": [
+          "Bengali (native)",
+          "English (C1, fluent)",
+          "Hindi (conversational)"
+        ]
+      }
     ]
   },
   "vision": {
@@ -233,8 +287,8 @@
     "competitions_bn": "প্রতিযোগিতা ও পুরস্কার",
     "leadership": "Leadership",
     "leadership_bn": "নেতৃত্ব",
-    "technicalSkills": "Technical Skills",
-    "technicalSkills_bn": "প্রযুক্তিগত দক্ষতা",
+    "technicalSkills": "Skills and Qualifications",
+    "technicalSkills_bn": "দক্ষতা ও যোগ্যতা",
     "vision": "Vision",
     "vision_bn": "ভবিষ্যৎ পরিকল্পনা"
   }
