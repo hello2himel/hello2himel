@@ -49,10 +49,11 @@ const tArr = (obj, field) => {
 
 function renderAllContent(data) {
   renderProfile(data.profile);
+  renderSectionHeadings(data.sectionHeadings);
   renderProjects(data.projects);
-  renderPublications(data.publications);
+  renderCompetitions(data.competitions);
   renderLeadership(data.leadership);
-  renderAchievements(data.achievements);
+  renderTechnicalSkills(data.technicalSkills);
   renderVision(data.vision);
 }
 
@@ -65,7 +66,7 @@ async function loadPortfolioData() {
       throw new Error(`Failed to load data (${response.status})`);
     }
     const data = await response.json();
-    if (!data?.profile || !Array.isArray(data.projects) || !Array.isArray(data.publications)) {
+    if (!data?.profile || !Array.isArray(data.projects) || !Array.isArray(data.competitions)) {
       throw new Error('Portfolio data is incomplete.');
     }
     
@@ -79,13 +80,18 @@ async function loadPortfolioData() {
   }
 }
 
+const CONTENT_SECTIONS = ['projects', 'competitions', 'leadership', 'skills', 'vision'];
+
+function sectionContainer(section) {
+  return section.querySelector('.projects-grid, .competitions-grid, .leadership-list, .skills-content') || section;
+}
+
 function setLoadingState(isLoading) {
-  const sections = ['projects', 'publications', 'leadership', 'achievements', 'vision'];
-  sections.forEach((id) => {
+  CONTENT_SECTIONS.forEach((id) => {
     const section = document.getElementById(id);
     if (!section) return;
     section.setAttribute('aria-busy', isLoading ? 'true' : 'false');
-    const container = section.querySelector('.projects-grid, .leadership-list') || section;
+    const container = sectionContainer(section);
     if (isLoading) {
       if (!container.querySelector('.loading-text')) {
         const loading = document.createElement('p');
@@ -100,11 +106,10 @@ function setLoadingState(isLoading) {
 }
 
 function showPortfolioError(message) {
-  const sections = ['projects', 'publications', 'leadership', 'achievements', 'vision'];
-  sections.forEach((id) => {
+  CONTENT_SECTIONS.forEach((id) => {
     const section = document.getElementById(id);
     if (!section) return;
-    const container = section.querySelector('.projects-grid, .leadership-list') || section;
+    const container = sectionContainer(section);
     container.textContent = '';
     const error = document.createElement('p');
     error.className = 'error-text';
@@ -145,6 +150,40 @@ function renderProfile(profile) {
   }
 }
 
+// Escape untrusted text before interpolating into markup
+const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (ch) => ({
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
+}[ch]));
+
+// Render section headings from data
+function renderSectionHeadings(headings) {
+  if (!headings) return;
+  const map = {
+    projects: '#projects h2',
+    competitions: '#competitions h2',
+    leadership: '#leadership h2',
+    technicalSkills: '#skills h2',
+    vision: '#vision h2'
+  };
+  Object.entries(map).forEach(([key, selector]) => {
+    const heading = document.querySelector(selector);
+    const text = t(headings, key);
+    if (heading && text) heading.textContent = text;
+  });
+}
+
+// Optional card badges: status, result, organization, team, period
+function cardBadges(item) {
+  return ['status', 'result', 'team', 'period']
+    .filter(field => item[field])
+    .map(field => `<span class="card-badge">${esc(t(item, field))}</span>`)
+    .join('');
+}
+
 // Render projects
 function renderProjects(projects) {
   const projectsGrid = document.querySelector('#projects .projects-grid');
@@ -153,11 +192,13 @@ function renderProjects(projects) {
   projectsGrid.innerHTML = projects
     .map(project => `
       <article class="project-card bottom-align">
-        <div class="project-title">${t(project, 'title')}</div>
-        <p>${t(project, 'description')}</p>
+        <div class="project-title">${esc(t(project, 'title'))}</div>
+        ${project.organization ? `<div class="card-meta">${esc(t(project, 'organization'))}</div>` : ''}
+        <p>${esc(t(project, 'description'))}</p>
+        <div>${cardBadges(project)}</div>
         ${project.link ? `
-          <a class="learn-more-btn" href="${project.link}" target="_blank" rel="noopener noreferrer" aria-label="Learn more about ${project.title} (opens in a new tab)">
-            ${t(project, 'linkText')}
+          <a class="learn-more-btn" href="${esc(project.link)}" target="_blank" rel="noopener noreferrer" aria-label="Learn more about ${esc(project.title)} (opens in a new tab)">
+            ${esc(t(project, 'linkText'))}
             <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
               <line x1="5" y1="12" x2="19" y2="12" />
@@ -170,19 +211,21 @@ function renderProjects(projects) {
     .join('');
 }
 
-// Render publications
-function renderPublications(publications) {
-  const publicationsGrid = document.querySelector('#publications .projects-grid');
-  if (!publicationsGrid || !publications) return;
+// Render competitions & awards
+function renderCompetitions(competitions) {
+  const competitionsGrid = document.querySelector('#competitions .competitions-grid');
+  if (!competitionsGrid || !competitions) return;
   
-  publicationsGrid.innerHTML = publications
-    .map(publication => `
-      <article class="project-card bottom-align">
-        <div class="project-title">${t(publication, 'title')}</div>
-        <p>${t(publication, 'description')}</p>
-        ${publication.link ? `
-          <a class="learn-more-btn" href="${publication.link}" target="_blank" rel="noopener noreferrer" aria-label="Learn more about ${publication.title} (opens in a new tab)">
-            ${t(publication, 'linkText')}
+  competitionsGrid.innerHTML = competitions
+    .map(competition => `
+      <article class="competition-card">
+        <div class="competition-title">${esc(t(competition, 'title'))}</div>
+        ${competition.organization ? `<div class="card-meta">${esc(t(competition, 'organization'))}</div>` : ''}
+        <p>${esc(t(competition, 'description'))}</p>
+        <div>${cardBadges(competition)}</div>
+        ${competition.link ? `
+          <a class="learn-more-btn" href="${esc(competition.link)}" target="_blank" rel="noopener noreferrer" aria-label="Learn more about ${esc(competition.title)} (opens in a new tab)">
+            ${esc(t(competition, 'linkText')) || 'Learn More'}
             <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
               <line x1="5" y1="12" x2="19" y2="12" />
@@ -203,29 +246,30 @@ function renderLeadership(leadership) {
   leadershipList.innerHTML = leadership
     .map(item => `
       <article class="leadership-item">
-        <div class="leadership-title">${t(item, 'title')}</div>
-        <div class="leadership-org">${t(item, 'organization')}</div>
-        <p>${t(item, 'description')}</p>
+        <div class="leadership-title">${esc(t(item, 'title'))}</div>
+        <div class="leadership-org">${esc(t(item, 'organization'))}</div>
+        <p>${esc(t(item, 'description'))}</p>
+        <div>${cardBadges(item)}</div>
       </article>
     `)
     .join('');
 }
 
-// Render achievements
-function renderAchievements(achievements) {
-  const achievementsGrid = document.querySelector('#achievements .achievements-grid');
-  if (!achievementsGrid || !achievements) return;
+// Render technical skills
+function renderTechnicalSkills(skills) {
+  const container = document.querySelector('#skills .skills-content');
+  if (!container || !skills) return;
   
-  achievementsGrid.innerHTML = achievements
-    .map(achievement => `
-      <article class="achievement-card">
-        <div class="achievement-title">
-          <span class="medal">${achievement.medal}</span>${t(achievement, 'title')}
-        </div>
-        <p>${t(achievement, 'description')}</p>
-      </article>
-    `)
-    .join('');
+  const group = (label, items) => (Array.isArray(items) && items.length)
+    ? `
+      <div class="skills-group">
+        <h3 class="skills-group-title">${esc(label)}</h3>
+        <div class="tags">${items.map(item => `<span class="tag">${esc(item)}</span>`).join('')}</div>
+      </div>
+    `
+    : '';
+  
+  container.innerHTML = group('Languages', skills.languages) + group('Interests', skills.interests);
 }
 
 // Render vision
