@@ -9,7 +9,6 @@
   --sidebar-width: 250px;
   --profile-image-size: 150px;
   --min-touch-target-size: 48px;
-  --dof-blur: 3px;
 }
 
 [data-theme="light"] {
@@ -150,16 +149,11 @@ p {
   border: 1px solid var(--border-color);
   padding: 1.5rem;
   border-radius: 6px;
-  position: relative;
-  transform-origin: center;
-  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s, border-color 0.2s;
+  transition: border-color 0.2s;
 }
 
 .competition-card:hover {
-  transform: scale(1.06);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border-color: var(--card-hover-border);
-  z-index: 2;
 }
 
 .competition-title {
@@ -221,16 +215,11 @@ p {
   border: 1px solid var(--border-color);
   padding: 1.5rem;
   border-radius: 6px;
-  position: relative;
-  transform-origin: center;
-  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s, border-color 0.2s;
+  transition: border-color 0.2s;
 }
 
 .project-card:hover {
-  transform: scale(1.06);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border-color: var(--card-hover-border);
-  z-index: 2;
 }
 
 .project-title {
@@ -252,16 +241,11 @@ p {
   border: 1px solid var(--border-color);
   padding: 1.5rem;
   border-radius: 6px;
-  position: relative;
-  transform-origin: center;
-  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s, border-color 0.2s;
+  transition: border-color 0.2s;
 }
 
 .leadership-item:hover {
-  transform: scale(1.06);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border-color: var(--card-hover-border);
-  z-index: 2;
 }
 
 .leadership-title {
@@ -273,79 +257,6 @@ p {
   font-size: 0.9rem;
   opacity: 0.7;
   margin-bottom: 1rem;
-}
-
-/* ===== Depth-of-field on card hover =====
-   Hovering any card keeps that one card sharp and blurs the entire rest of
-   the screen: the star field, the fixed header controls, the profile block,
-   the footer, every other section, the hovered section's own heading, and
-   all sibling cards. filter on an ancestor blurs its whole subtree, so the
-   hovered card stays sharp simply by never having a blurred ancestor. */
-#space-container,
-.header-controls,
-.profile-section,
-.section,
-.section > h2,
-footer {
-  transition: filter 0.2s;
-}
-
-body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) #space-container,
-body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .header-controls,
-body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .profile-section,
-body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) footer,
-body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .section:not(:has(.project-card:hover, .competition-card:hover, .leadership-item:hover)) {
-  filter: blur(var(--dof-blur));
-}
-
-/* Heading of the section being hovered */
-.section:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) > h2 {
-  filter: blur(var(--dof-blur));
-}
-
-/* Sibling cards inside the hovered grid */
-.projects-grid:has(.project-card:hover) .project-card:not(:hover),
-.competitions-grid:has(.competition-card:hover) .competition-card:not(:hover),
-.leadership-list:has(.leadership-item:hover) .leadership-item:not(:hover) {
-  filter: blur(var(--dof-blur));
-}
-
-/* Touch devices and small screens: no pop-out, no blur, no motion.
-   Touch browsers keep :hover stuck on the last tapped element, so the
-   effect would latch on after a tap. Cards stay completely static and only
-   the border-color feedback remains. */
-@media (hover: none), (pointer: coarse), (max-width: 768px) {
-  .project-card,
-  .competition-card,
-  .leadership-item {
-    transition: border-color 0.2s;
-  }
-
-  #space-container,
-  .header-controls,
-  .profile-section,
-  .section,
-  .section > h2,
-  footer {
-    transition: none;
-  }
-
-  .project-card:hover,
-  .competition-card:hover,
-  .leadership-item:hover,
-  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) #space-container,
-  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .header-controls,
-  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .profile-section,
-  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) footer,
-  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .section:not(:has(.project-card:hover, .competition-card:hover, .leadership-item:hover)),
-  .section:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) > h2,
-  .projects-grid:has(.project-card:hover) .project-card:not(:hover),
-  .competitions-grid:has(.competition-card:hover) .competition-card:not(:hover),
-  .leadership-list:has(.leadership-item:hover) .leadership-item:not(:hover) {
-    transform: none;
-    filter: none;
-    box-shadow: none;
-  }
 }
 
 /* Footer */
@@ -887,33 +798,8 @@ body.error-page {
     scroll-behavior: auto !important;
   }
 
-  /* Zero movement, scaling, or blur anywhere. Only the border-color
-     change on card hover survives. */
-  .competition-card,
-  .project-card,
-  .leadership-item,
-  .competition-card:hover,
-  .project-card:hover,
-  .leadership-item:hover,
-  #space-container,
-  .header-controls,
-  .profile-section,
-  .section,
-  .section > h2,
-  footer,
-  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) #space-container,
-  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .header-controls,
-  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .profile-section,
-  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) footer,
-  body:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) .section:not(:has(.project-card:hover, .competition-card:hover, .leadership-item:hover)),
-  .section:has(.project-card:hover, .competition-card:hover, .leadership-item:hover) > h2,
-  .projects-grid:has(.project-card:hover) .project-card:not(:hover),
-  .competitions-grid:has(.competition-card:hover) .competition-card:not(:hover),
-  .leadership-list:has(.leadership-item:hover) .leadership-item:not(:hover) {
-    transform: none !important;
-    filter: none !important;
-    box-shadow: none !important;
-  }
+  /* Cards have no transform, blur, or shadow to reset; only the
+     border-color change remains, which is safe under reduced motion. */
 }
 
 @media print {
