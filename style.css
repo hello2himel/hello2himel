@@ -149,13 +149,18 @@ p {
   border: 1px solid var(--border-color);
   padding: 1.5rem;
   border-radius: 6px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
   transform-origin: center;
+}
+
+.achievements-grid:hover .achievement-card {
+  filter: blur(3px);
 }
 
 .achievement-card:hover {
   transform: scale(1.06);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  filter: blur(0);
 }
 
 .achievement-title {
@@ -189,14 +194,19 @@ p {
   border: 1px solid var(--border-color);
   padding: 1.5rem;
   border-radius: 6px;
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, filter 0.2s;
   transform-origin: center;
+}
+
+.projects-grid:hover .project-card {
+  filter: blur(3px);
 }
 
 .project-card:hover {
   transform: scale(1.06);
   border-color: var(--card-hover-border);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  filter: blur(0);
 }
 
 .project-title {
@@ -222,6 +232,11 @@ p {
   .achievement-card:hover,
   .project-card:hover {
     transform: none;
+  }
+
+  .achievements-grid:hover .achievement-card,
+  .projects-grid:hover .project-card {
+    filter: none;
   }
 }
 
