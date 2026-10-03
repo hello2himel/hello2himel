@@ -1,43 +1,63 @@
 {{ define "main" }}
+<h1 class="sr-only">{{ .Site.Title }}</h1>
 <div class="home-intro">
   {{ .Content }}
 </div>
 
-{{ $pages := where .Site.RegularPages "Type" "posts" }}
-{{ if $pages }}
+{{ $all := (where .Site.RegularPages "Type" "posts").ByDate.Reverse }}
+{{ $paginator := .Paginate $all }}
+{{ if $paginator.Pages }}
 
-{{ $latest := index $pages 0 }}
-<section class="featured-post">
-  <a href="{{ $latest.Permalink }}">
-    <div class="featured-post-title">{{ $latest.Title }}</div>
-    {{ with $latest.Params.summary }}<div class="featured-post-summary">{{ . }}</div>{{ end }}
-    <div class="featured-post-meta">
-      <span>{{ $latest.Date.Format "Jan 2, 2006" }}</span>
-      <span>{{ $latest.ReadingTime }} min read</span>
-    </div>
-  </a>
-</section>
+{{/* Featured: most recent flagged post, else most recent overall (first page only) */}}
+{{ $featured := false }}
+{{ if eq $paginator.PageNumber 1 }}
+  {{ $flagged := where $all "Params.featured" true }}
+  {{ if $flagged }}{{ $featured = index ($flagged.ByDate.Reverse) 0 }}{{ else }}{{ $featured = index ($all.ByDate.Reverse) 0 }}{{ end }}
+  {{ with $featured }}
+  <section class="featured-post" aria-label="{{ if eq $.Language.Lang "bn" }}নির্বাচিত লেখা{{ else }}Featured post{{ end }}">
+    <a href="{{ .Permalink }}">
+      <h2 class="featured-post-title">{{ .Title }}</h2>
+      {{ with .Params.summary }}<div class="featured-post-summary">{{ . }}</div>{{ end }}
+      <div class="featured-post-meta">
+        <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+        <span>{{ .ReadingTime }} min read</span>
+        {{ with .Params.tags }}<span class="card-tags">{{ range first 3 . }}<span class="mini-tag">{{ . }}</span>{{ end }}</span>{{ end }}
+      </div>
+    </a>
+  </section>
+  {{ end }}
+{{ end }}
 
-{{ $rest := after 1 $pages }}
+{{ $rest := $paginator.Pages }}
+{{ if and $featured (eq $paginator.PageNumber 1) }}
+  {{ $rest = where $paginator.Pages "Permalink" "ne" $featured.Permalink }}
+{{ end }}
 {{ if $rest }}
-<h2 class="section-title">More Posts</h2>
+<h2 class="section-title">{{ if eq .Language.Lang "bn" }}সব লেখা{{ else }}All Posts{{ end }}</h2>
 <div class="post-grid">
   {{ range $rest }}
   <article class="post-grid-item">
     <a href="{{ .Permalink }}">
-      <div class="post-entry-title">{{ .Title }}</div>
+      <h3 class="post-entry-title">{{ .Title }}</h3>
       {{ with .Params.summary }}<div class="post-entry-summary">{{ . }}</div>{{ end }}
       <div class="post-entry-meta">
         <span>{{ .Date.Format "Jan 2, 2006" }}</span>
         <span>{{ .ReadingTime }} min read</span>
       </div>
+      {{ with .Params.tags }}<div class="card-tags">{{ range first 3 . }}<span class="mini-tag">{{ . }}</span>{{ end }}</div>{{ end }}
     </a>
   </article>
   {{ end }}
 </div>
 {{ end }}
 
+{{ if gt $paginator.TotalPages 1 }}
+<nav class="pagination" aria-label="Pagination">
+  {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">← {{ if eq .Language.Lang "bn" }}আগে{{ else }}Newer{{ end }}</a>{{ end }}
+  <span class="page-info">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+  {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">{{ if eq .Language.Lang "bn" }}পরে{{ else }}Older{{ end }} →</a>{{ end }}
+</nav>
 {{ end }}
 
-{{ template "_internal/pagination.html" . }}
+{{ end }}
 {{ end }}

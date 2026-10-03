@@ -2,14 +2,13 @@
 title: "Theorem 2"
 date: 2025-04-19
 author: "Himel Das"
-tags: ["Journal", "School"]
+tags: ["School"]
 categories: ["Memoir"]
 translationKey: "uppoddy-2"
 summary: "A funny experience with geometry theorems during online classes in the COVID era."
 autoTranslated: true
 originalLang: "bn"
 ---
-
 It was during COVID times. I was in class six or seven. The school had just started taking online classes. Fun.
 One day, the teacher was teaching geometry. Theorems. Let's say the teacher's name was Spitting Cobra.
 On paper, the class duration was one hour, but my financially struggling school couldn't afford premium software. So whatever had to be done had to fit within Zoom's forty-minute free time limit. Twenty minutes were already gone just fixing everyone's mics and getting the teacher's camera working.

@@ -1,16 +1,14 @@
 ---
 title: "Late Night Intuition"
 date: 2026-05-26T03:43:00+06:00
-author: "হিমেল দাস"
-tags: ["ফিজিক্স", "রিলেটিভিটি", "স্পেসটাইম", "মিনকোভস্কি", "লেট নাইট থটস", "পপ সায়েন্স"]
-categories: ["জার্নাল", "ফিজিক্স", "দর্শন"]
+author: "Himel Das"
+tags: ["পদার্থবিদ্যা", "আপেক্ষিকতা", "স্পেসটাইম", "মিনকোভস্কি"]
+categories: ["নিউরণের তৃষ্ণা"]
 translationKey: "late-night-intuition"
 summary: "রাত্রির নিস্তব্ধতায় রিলেটিভিটি, টাইম ডাইলেশন, টুইন প্যারাডক্স আর স্পেসটাইম নিয়ে এক আনকোড়া মানুষের বিস্ময়, বিভ্রান্তি ও আনন্দের লেখা।"
-autoTranslated: false
-originalLang: "bn"
-toc: false
+images: ["/blog/images/late-night-intuition-graph1.png"]
+featured: true
 ---
-
 আমি আনকোড়া একজন মানুষ। ফিজিক্স ভালোবাসি বটে, তবে এর কিছুই বুঝিনা। পপ সায়েন্সে আটকে আছি। রাত-বিরাতে কোয়ান্টাম দুনিয়া, 'Extra-dimensional দুনিয়া' ইত্যাদি নিয়ে চিন্তা মাথায় আসে, ঘুমাতে পারিনা। মাঝেসাঝে কেলভিন স্কেলের নেগেটিভ সাইডে চলে গিয়ে ঋণাত্মক আয়তনযুক্ত অসাধ্য সাধন করতে মন চায়।
 
 যাইহোক, আজ সন্ধ্যায় রিলেটিভিটি নিয়ে কিছু কন্টেন্ট কনজিউম করা হয়েছে। ভাবতেই অবাক লাগে, যতবার ভাবি, ততোবারই, আমার বেগ বাড়ালে, স্বয়ং সময়ই আমার জন্য 'ধীরে' চলা শুরু করবে!!!
@@ -25,7 +23,7 @@ toc: false
 আলাপচারিতার এই পর্যায়ে একটা কথা মাথায় আসলো।
 
 {{< figure 
-    src="/blog/images/late-night-intuition-graph1.png" 
+    src="/blog/images/late-night-intuition-graph1.png" alt="Spacetime diagram: a friend at rest traces a vertical worldline while the traveller worldline tilts toward the light cone" 
     title="Worldlines in Spacetime — Graph 1"
     caption="Friend at rest traces a vertical worldline; the traveller's worldline tilts toward the light cone as velocity increases."
 >}}
@@ -42,7 +40,7 @@ toc: false
 আগের 2D গ্রাফটাকে যদি 3D বানাই,
 
 {{< figure 
-    src="/blog/images/late-night-intuition-graph2.png" 
+    src="/blog/images/late-night-intuition-graph2.png" alt="Hand-drawn sketch imagining 2D spacetime intuition as a 3D projection" 
     title="Hand-drawn 3D intuition sketch"
     caption="2D spacetime intuition-কে 3D projection হিসেবে কল্পনা করার চেষ্টা।"
 >}}

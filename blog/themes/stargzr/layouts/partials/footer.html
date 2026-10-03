@@ -1,4 +1,10 @@
 <footer class="site-footer">
-  &copy; {{ now.Year }} {{ .Site.Params.author }} &middot;
-  <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+  <nav class="footer-links" aria-label="{{ if eq .Language.Lang "bn" }}ফুটার{{ else }}Footer{{ end }}">
+    <a href="/">{{ if eq .Language.Lang "bn" }}পোর্টফোলিও{{ else }}Portfolio{{ end }}</a>
+    <a href="/cv.html">CV</a>
+    <a href="/donate.html">{{ if eq .Language.Lang "bn" }}ডোনেট{{ else }}Donate{{ end }}</a>
+    <a href="https://github.com/hello2himel" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+  <p>&copy; {{ now.Year }} {{ .Site.Params.author }} &middot;
+  <a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></p>
 </footer>

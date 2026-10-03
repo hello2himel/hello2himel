@@ -2,14 +2,13 @@
 title: "The Three Musketeers"
 date: 2025-05-23
 author: "Himel Das"
-tags: ["Journal", "Books"]
+tags: ["Books"]
 categories: ["Review"]
 translationKey: "three-musketeers"
 summary: "Reflections after listening to The Three Musketeers audiobook."
 autoTranslated: true
 originalLang: "bn"
 ---
-
 I am an emotionless, robotic person. But listening to The Three Musketeers, I see this hydrophobic heart getting drenched.
 What doesn't this story have! Heroism, patriotism, love, betrayal, deception, foresight, adultery, friendship, sense of duty, forgiveness, unfulfillment — you'll find a beautiful mix of everything.
 

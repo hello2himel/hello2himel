@@ -2,14 +2,14 @@
 title: "Eureka — The Mystery of 2n²"
 date: 2025-10-16
 author: "Himel Das"
-tags: ["Journal", "Science"]
+tags: ["Science"]
 categories: ["Curious Mind"]
 translationKey: "aufbau-eureka"
 summary: "Uncovering the mathematical mystery behind chemistry's 2n² formula."
+featured: true
 autoTranslated: true
 originalLang: "bn"
 ---
-
 My journey of learning chemistry has never been smooth. I've rarely had the opportunity to question the fundamentals. The reactions, theories, 'exceptions' — I've had to take them for granted. Why is the maximum electron capacity of an orbit 2n²? Why not 3n³? Why not n!? Why do we get these specific compounds as products in a reaction? Even with a stone weighing on my chest, I memorized them.
 
 ----

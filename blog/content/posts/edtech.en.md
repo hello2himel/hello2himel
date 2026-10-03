@@ -2,16 +2,13 @@
 title: "edTech"
 date: 2024-03-02
 author: "Himel Das"
-tags: ["Journal", "Education", "Society"]
+tags: ["Education", "Society"]
 categories: ["Musings"]
 translationKey: "edtech"
 summary: "Thoughts on the deplorable state of ed-tech platforms in the country."
 autoTranslated: true
 originalLang: "bn"
 ---
-
-
-
 The state of the country's ed-tech platforms shouldn't have been this deplorable. It's time for all of us to get serious about who an entire generation is learning from and who they're idolizing.
 
 Sometimes the teacher themselves comes to live class and flirts with students, argues, tells tasteless jokes from 2012, and sometimes shares stories about how his girlfriend once sat at TSC and cut his toenails. Some even think of themselves as the Andrew Tate of Dinajpur and upload videos of vulgar abuse on Facebook. All of them are self-proclaimed teachers! All of them have not thousands, but lakhs of students.

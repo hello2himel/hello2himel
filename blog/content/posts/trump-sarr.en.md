@@ -2,16 +2,13 @@
 title: "Trump 'Sirrr'"
 date: 2025-09-07
 author: "Himel Das"
-tags: ["Journal", "Politics", "Geopolitics"]
+tags: ["Politics", "Geopolitics"]
 categories: ["Musings"]
 translationKey: "trump-sarr"
 summary: "Indian Trump devotion, tariff wars, and geopolitical realities."
 autoTranslated: true
 originalLang: "bn"
 ---
-
-
-
 As a nation, Indians are, in general, a bit too delusional.
 Before the election, 'Trump sirr' 'Trump saaarr' was on everyone's lips. As if that bloody maggot was gonna do their chores. Some states even started worshiping 'Trump the deity.'
 

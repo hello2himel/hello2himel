@@ -2,14 +2,14 @@
 title: "2ⁿ: How Does This Formula for Finding Subsets of a Power Set Work?"
 date: 2023-05-02
 author: "Himel Das"
-tags: ["Math Basics", "Curious Mind"]
-categories: ["Mathematics"]
-summary: "A simple explanation of how the 2ⁿ formula determines the subsets of a set."
+tags: ["Math"]
+categories: ["Curious Mind"]
 translationKey: "power-set-alg"
+summary: "A simple explanation of how the 2ⁿ formula determines the subsets of a set."
+featured: true
 autoTranslated: true
 originalLang: "bn"
 ---
-
 Perhaps all of us reading this article already know what a set is. In textbook language, a set is a well-defined collection of objects from the real or conceptual world. The first idea of sets was introduced by the German mathematician **Georg Cantor**. It was a groundbreaking event in the history of mathematics!
 
 Now let's get back to the main topic with a different example. Enough theory.

@@ -2,14 +2,11 @@
 title: "College Lost My Paper"
 date: 2026-05-17
 author: "Himel Das"
-tags: ["Journal", "School", "Poetry", "Memoir"]
-categories: ["Memoir", "Protest Poem"]
+tags: ["School", "Poetry", "Memoir"]
+categories: ["Memoir"]
 translationKey: "college-lost-my-paper"
 summary: "A narrative protest poem about an academic grading failure and institutional negligence."
-autoTranslated: true
-originalLang: "en"
 ---
-
 It was midterms, eleventh grade  
 One evening, the group chat said  
 "The results dropped, go check the site"  

@@ -2,16 +2,13 @@
 title: "Roman Circus"
 date: 2025-12-15
 author: "Himel Das"
-tags: ["Journal", "Politics", "Society"]
+tags: ["Politics", "Society"]
 categories: ["Musings"]
 translationKey: "roman-circus"
 summary: "Bread and circuses — from ancient Rome to modern civilization."
 autoTranslated: true
 originalLang: "bn"
 ---
-
-
-
 "Give them bread and circuses, and they will never revolt"
 
 When the Roman Empire was on the brink of collapse, the public was engrossed in watching circuses.

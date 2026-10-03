@@ -1,15 +1,13 @@
 ---
 title: "কলেজ লস্ট মাই পেপার"
 date: 2026-05-17
-author: "হিমেল দাস"
-tags: ["জার্নাল", "স্কুল", "কবিতা", "মেমোয়ার"]
-categories: ["মেমোয়ার", "প্রতিবাদ কবিতা"]
+author: "Himel Das"
+tags: ["স্কুল", "কবিতা", "স্মৃতিকথা"]
+categories: ["স্মৃতিকথা"]
 translationKey: "college-lost-my-paper"
 summary: "একটি পরীক্ষার ফল হারিয়ে যাওয়া এবং প্রশাসনিক অবহেলার উপর ভিত্তি করে একটি প্রতিবাদমূলক কবিতা।"
-autoTranslated: true
-originalLang: "en"
+untranslated: true
 ---
-
 It was midterms, eleventh grade  
 One evening, the group chat said  
 "The results dropped, go check the site"  

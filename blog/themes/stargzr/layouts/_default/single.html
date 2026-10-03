@@ -1,11 +1,17 @@
 {{ define "main" }}
 <article>
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
+    <span aria-hidden="true">/</span>
+    {{ with .Parent }}{{ if ne .Permalink $.Site.Home.Permalink }}<a href="{{ .Permalink }}">{{ .Title }}</a><span aria-hidden="true">/</span>{{ end }}{{ end }}
+    <span aria-current="page">{{ .Title }}</span>
+  </nav>
   <div class="post-header">
     <h1 class="post-title">{{ .Title }}</h1>
     <div class="post-meta">
       {{ with .Params.author }}<span>{{ . }}</span>{{ end }}
-      <span>{{ .Date.Format "Jan 2, 2006" }}</span>
-      <span class="reading-time">{{ .ReadingTime }} min read</span>
+      <span><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></span>
+      <span class="reading-time">{{ .ReadingTime }} min read · {{ .WordCount }} words</span>
     </div>
   </div>
 
@@ -14,10 +20,16 @@
   {{ if .Site.Params.ShowToc }}
   {{ if .TableOfContents }}
   <details class="toc" {{ if .Site.Params.TocOpen }}open{{ end }}>
-    <summary>Table of Contents</summary>
+    <summary>{{ if eq .Language.Lang "bn" }}সূচিপত্র{{ else }}Table of Contents{{ end }}</summary>
     <nav>{{ .TableOfContents }}</nav>
   </details>
   {{ end }}
+  {{ end }}
+
+  {{ with .Params.images }}
+  <figure class="post-cover">
+    <img src="{{ index . 0 }}" alt="{{ $.Title }}">
+  </figure>
   {{ end }}
 
   <div class="post-content">
@@ -25,15 +37,60 @@
   </div>
 
   {{ with .Params.tags }}
-  <div class="post-tags">
+  <div class="post-tags" aria-label="Tags">
     {{ range . }}
-    <a href="{{ "tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+    <a href="{{ "tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
     {{ end }}
   </div>
   {{ end }}
 
+  <div class="share-row">
+    <button type="button" class="share-btn" id="copy-link-btn">{{ if eq .Language.Lang "bn" }}লিংক কপি করুন{{ else }}Copy link{{ end }}</button>
+    <a class="share-btn" href="mailto:?subject={{ .Title | urlquery }}&body={{ .Permalink | urlquery }}">{{ if eq .Language.Lang "bn" }}ইমেইলে পাঠান{{ else }}Share via email{{ end }}</a>
+  </div>
+  <script>
+  (function() {
+    var btn = document.getElementById('copy-link-btn');
+    if (!btn || !navigator.clipboard) { if (btn) btn.style.display = 'none'; return; }
+    var original = btn.textContent;
+    var doneText = document.documentElement.lang === 'bn' ? 'কপি হয়েছে ✓' : 'Copied ✓';
+    btn.addEventListener('click', function() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        btn.textContent = doneText;
+        setTimeout(function() { btn.textContent = original; }, 2000);
+      });
+    });
+  })();
+  </script>
+
+  {{ $related := slice }}
+  {{ with .Params.tags }}
+    {{ $tags := . }}
+    {{ $related = where (where $.Site.RegularPages "Type" "posts") "Permalink" "ne" $.Permalink }}
+    {{ $related = where $related "Params.tags" "intersect" $tags }}
+  {{ end }}
+  {{ with $related }}
+  <section class="related-posts" aria-label="{{ if eq $.Language.Lang "bn" }}সম্পর্কিত লেখা{{ else }}Related posts{{ end }}">
+    <h2 class="section-title">{{ if eq $.Language.Lang "bn" }}সম্পর্কিত লেখা{{ else }}Related posts{{ end }}</h2>
+    <ul class="post-list">
+      {{ range first 3 .ByDate.Reverse }}
+      <li class="post-entry">
+        <a href="{{ .Permalink }}">
+          <h3 class="post-entry-title">{{ .Title }}</h3>
+          {{ with .Params.summary }}<div class="post-entry-summary">{{ . }}</div>{{ end }}
+          <div class="post-entry-meta">
+            <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+            <span>{{ .ReadingTime }} min read</span>
+          </div>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
   {{ if .Site.Params.ShowPostNavLinks }}
-  <nav class="post-nav">
+  <nav class="post-nav" aria-label="Post navigation">
     {{ with .PrevInSection }}
     <a href="{{ .Permalink }}">&larr; {{ .Title }}</a>
     {{ end }}
