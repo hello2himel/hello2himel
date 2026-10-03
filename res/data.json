@@ -93,15 +93,6 @@
       "linkText_bn": "গিটহাবে দেখুন"
     },
     {
-      "title": "Takla Bangla Converter",
-      "title_bn": "তাকলা বাংলা কনভার্টার",
-      "description": "An AI-assisted tool for converting phonetic Bangla written in Latin characters into Bengali script, with a web interface and Telegram bot.",
-      "description_bn": "Latin অক্ষরে লেখা phonetic Bangla-কে বাংলা লিপিতে রূপান্তরের জন্য একটি AI-assisted tool, যার web interface ও Telegram bot রয়েছে।",
-      "link": "https://github.com/hello2himel/takla-onubad",
-      "linkText": "View on GitHub",
-      "linkText_bn": "গিটহাবে দেখুন"
-    },
-    {
       "title": "JustVocals",
       "title_bn": "JustVocals",
       "description": "An audio-processing project for separating vocals from instrumental components in audio clips.",
