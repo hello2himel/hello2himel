@@ -433,16 +433,18 @@
 }
 
 .large-donation-cta .large-cta-arrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   opacity: 0;
   width: 0;
   overflow: hidden;
+  white-space: nowrap;
   transition: opacity 0.2s, width 0.2s;
 }
 
 .large-donation-cta:hover .large-cta-arrow {
   opacity: 1;
-  width: 1em;
+  width: 1.25em;
 }
 
 /* Footer */

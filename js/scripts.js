@@ -143,7 +143,7 @@ function renderProfile(profile) {
     contactButtonsContainer.innerHTML = profile.contacts
       .map(contact => `
         <a href="${esc(contact.url)}" class="contact-button" ${contact.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
-          <i class="ri-lg ${esc(contact.icon)}" aria-hidden="true"></i> ${esc(t(contact, 'label'))} <span class="contact-arrow" aria-hidden="true">→</span>
+          <i class="ri-lg ${esc(contact.icon)}" aria-hidden="true"></i> ${esc(t(contact, 'label'))} <span class="contact-arrow" aria-hidden="true"><i class="ri-lg ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
       `)
       .join('');
