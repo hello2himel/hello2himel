@@ -320,10 +320,23 @@ function initReveals() {
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  const revealIfVisible = () => {
+    sections.forEach((s) => {
+      if (s.classList.contains('is-visible')) return;
+      const r = s.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.92 && r.bottom > 0) {
+        s.classList.add('is-visible');
+        observer.unobserve(s);
+      }
+    });
+  };
   sections.forEach((s) => {
     s.classList.add('reveal');
     observer.observe(s);
   });
+  revealIfVisible();
+  window.addEventListener('scroll', revealIfVisible, { passive: true });
+  window.addEventListener('resize', revealIfVisible);
   // Keyboard users tabbing into a not-yet-visible section reveal it.
   document.addEventListener('focusin', (e) => {
     const section = e.target.closest && e.target.closest('main .section.reveal');
