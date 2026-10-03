@@ -8,7 +8,7 @@
   --muted: #a8a8a8;
   --overlay-bg: rgba(0, 0, 0, 0.8);
   --sidebar-width: 250px;
-  --profile-image-size: 120px;
+  --profile-image-size: 168px;
   --min-touch-target-size: 48px;
 }
 
@@ -90,7 +90,7 @@ body {
 }
 
 .profile-name-title h1 {
-  margin-bottom: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .profile-content {
@@ -190,7 +190,6 @@ p {
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--muted);
-  border: 1px solid var(--border-color);
 }
 
 /* Competitions */
@@ -291,11 +290,27 @@ p {
   margin-top: 0;
 }
 
+.project-card,
+.competition-card {
+  display: flex;
+  flex-direction: column;
+}
+
 .project-card p,
 .competition-card p,
 .leadership-item p {
   font-size: 0.95rem;
   line-height: 1.65;
+}
+
+.project-title,
+.competition-title {
+  margin-bottom: 0.75rem;
+}
+
+.learn-more-btn {
+  margin-top: auto;
+  padding-top: 0.75rem;
 }
 
 /* Leadership: quiet resume rows */
@@ -305,7 +320,7 @@ p {
 }
 
 .leadership-item {
-  padding: 1.25rem 0;
+  padding: 1rem 0;
   border-top: 1px solid var(--border-color);
 }
 
@@ -315,7 +330,7 @@ p {
 
 .leadership-title {
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;
   margin-top: 0;
   font-size: 1.05rem;
 }
@@ -359,6 +374,7 @@ footer {
 footer p {
   opacity: 0.7;
   margin-bottom: 0;
+  padding-bottom: 1.5rem;
 }
 
 /* Contact Buttons */
@@ -424,8 +440,8 @@ footer p {
 /* Header Controls */
 .header-controls {
   position: fixed;
-  top: calc(0.75rem + env(safe-area-inset-top, 0px));
-  right: calc(0.75rem + env(safe-area-inset-right, 0px));
+  top: calc(1rem + env(safe-area-inset-top, 0px));
+  right: calc(1rem + env(safe-area-inset-right, 0px));
   display: flex;
   gap: 0.75rem;
   z-index: 900;
