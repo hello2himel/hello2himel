@@ -1,18 +1,19 @@
-// Donate Page JavaScript - Clean & Simple
-const TOAST_MS_PER_CHAR = 120;
-const getToastDuration = (message) => Math.max(3000, message.length * TOAST_MS_PER_CHAR);
+// Donate Page JavaScript: wizard navigation + personalized mailto links.
+// All actions have plain href fallbacks so the page works without JS.
 
-// Toast notification
-function showToast(message, duration = 3000) {
-  const toast = document.getElementById('toast');
-  if (toast) {
-    const messageElement = toast.querySelector('span');
-    messageElement.textContent = message;
-    toast.classList.add('show');
-    
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, duration);
+// Step navigation: instant swap, no slide animation.
+function showStep(targetStepId) {
+  const steps = document.querySelectorAll('.wizard-step');
+  steps.forEach((step) => {
+    step.classList.toggle('active', step.id === targetStepId);
+  });
+  const target = document.getElementById(targetStepId);
+  if (target) {
+    const heading = target.querySelector('h2');
+    if (heading) {
+      heading.setAttribute('tabindex', '-1');
+      heading.focus({ preventScroll: true });
+    }
   }
 }
 
@@ -24,12 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // session_id is an optional tracking token from inbound links; when present it is displayed and appended to generated support emails.
   const sessionId = urlParams.get('session_id') || null;
 
-  // Update main title
+  // Hide empty project suffix so the title never shows a trailing blank.
   const projectNameSpan = document.getElementById('project-name');
-  if (projectName) {
-    projectNameSpan.textContent = `for ${projectName}`;
-  } else {
-    projectNameSpan.textContent = '';
+  if (projectNameSpan) {
+    projectNameSpan.textContent = projectName ? `for ${projectName}` : '';
   }
 
   // Update project name in international detail section
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bankProjectNameInt.textContent = projectName || 'my work';
   }
 
-  // Update session IDs
+  // Update session IDs (hidden by default in CSS; shown only when provided)
   const sessionIdElements = document.querySelectorAll('.session-id span');
   sessionIdElements.forEach(element => {
     if (sessionId) {
@@ -59,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (type === 'large') {
       body = `Dear Himel Das,\n\nI'd like to discuss a larger donation directly`;
       if (projectName) body += ` to support ${projectName}`;
-      body += ` so that we can avoid third-party fees.\n\n[Your message here]\n\nBest regards,\n[Your Name]\n\n--- This is an auto-generated mail.`;
+      body += ` to avoid platform fees.\n\n[Your message here]\n\nBest regards,\n[Your Name]\n\n--- This is an auto-generated mail.`;
     } else {
       body = `Dear Himel Das,\n\nI would like to know the details for a bank transfer to support`;
       if (projectName) body += ` ${projectName}.`;
@@ -75,110 +74,40 @@ document.addEventListener('DOMContentLoaded', () => {
     return `mailto:hello2himel@proton.me?subject=${encodedSubject}&body=${encodedBody}`;
   }
 
-  // Bank mail triggers
-  document.querySelectorAll('.bank-mail-trigger').forEach(button => {
-    button.addEventListener('click', () => {
-      window.location.href = generateMailtoLink('bank');
-    });
+  // Enhance static mailto fallbacks with personalized links
+  document.querySelectorAll('.bank-mail-trigger').forEach(anchor => {
+    anchor.href = generateMailtoLink('bank');
   });
 
   // Large donation link
   const largeDonationLink = document.getElementById('large-donation-link');
   if (largeDonationLink) {
-    largeDonationLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = generateMailtoLink('large');
-    });
+    largeDonationLink.href = generateMailtoLink('large');
   }
 
-  // Bangladesh button — redirect to SupportKori (external, no wizard step)
+  // Bangladesh option: keep plain-href fallback, append tracking params when present
   const bangladeshButton = document.getElementById('bangladesh-option');
-  if (bangladeshButton) {
-    bangladeshButton.addEventListener('click', () => {
-      window.open('https://supportkori.com/hello2himel', '_blank', 'noopener,noreferrer');
-    });
+  if (bangladeshButton && (projectName || sessionId)) {
+    const url = new URL(bangladeshButton.href);
+    if (projectName) url.searchParams.set('source', projectName);
+    if (sessionId) url.searchParams.set('session_id', sessionId);
+    bangladeshButton.href = url.toString();
   }
 
-  // Step navigation
-  const wizardSteps = document.querySelectorAll('.wizard-step');
-  let currentActiveStep = document.querySelector('.wizard-step.active');
-  const donationWizard = document.querySelector('.donation-wizard');
-
-  // Set wizard height based on step
-  function setWizardHeight(stepElement) {
-    stepElement.style.position = 'static';
-    stepElement.style.visibility = 'hidden';
-    stepElement.style.opacity = '0';
-    stepElement.style.transform = 'translateX(0%)';
-    stepElement.style.display = 'flex';
-
-    void stepElement.offsetWidth;
-
-    const targetHeight = stepElement.scrollHeight;
-    donationWizard.style.minHeight = targetHeight + 'px';
-
-    stepElement.style.position = 'absolute';
-    stepElement.style.opacity = '0';
-    stepElement.style.visibility = 'hidden';
-  }
-
-  // Initial setup
-  if (donationWizard && currentActiveStep) {
-    setWizardHeight(currentActiveStep);
-    currentActiveStep.style.position = 'static';
-    currentActiveStep.style.visibility = 'visible';
-    currentActiveStep.style.opacity = '1';
-    currentActiveStep.style.transform = 'translateX(0%)';
-    currentActiveStep.style.display = 'flex';
-  }
-
-  // Show step function
-  function showStep(targetStepId) {
-    const targetStep = document.getElementById(targetStepId);
-    if (!targetStep || targetStep === currentActiveStep) return;
-
-    // Determine direction
-    const currentStepIndex = Array.from(wizardSteps).indexOf(currentActiveStep);
-    const targetStepIndex = Array.from(wizardSteps).indexOf(targetStep);
-    const direction = (targetStepIndex < currentStepIndex) ? '-100%' : '100%';
-
-    // Set height
-    setWizardHeight(targetStep);
-
-    // Animate out
-    currentActiveStep.classList.remove('active');
-    currentActiveStep.classList.add('exit');
-    currentActiveStep.style.transform = `translateX(${-parseInt(direction)}%)`;
-
-    // Animate in
-    currentActiveStep.addEventListener('transitionend', function handler() {
-      currentActiveStep.style.display = 'none';
-      currentActiveStep.removeEventListener('transitionend', handler);
-
-      targetStep.style.display = 'flex';
-      void targetStep.offsetWidth;
-      targetStep.classList.add('active');
-      targetStep.classList.remove('exit');
-      targetStep.style.transform = 'translateX(0%)';
-      targetStep.style.opacity = '1';
-      targetStep.style.visibility = 'visible';
-
-      currentActiveStep = targetStep;
-    }, { once: true });
-  }
-
-  // Navigation listeners
-  document.querySelectorAll('[data-target-step]').forEach(button => {
-    button.addEventListener('click', (event) => {
-      const targetStepId = event.currentTarget.dataset.targetStep;
-      showStep(targetStepId);
+  // Step navigation (anchors would also work via :target, but explicit is clearer)
+  document.querySelectorAll('[data-target-step]').forEach(control => {
+    control.addEventListener('click', (event) => {
+      // Let real links behave as links; only buttons need manual stepping.
+      if (control.tagName.toLowerCase() === 'a' && control.getAttribute('href')) return;
+      event.preventDefault();
+      showStep(control.dataset.targetStep);
     });
   });
 
-  document.querySelectorAll('[data-back-target]').forEach(button => {
-    button.addEventListener('click', (event) => {
-      const backTargetStepId = event.currentTarget.dataset.backTarget;
-      showStep(backTargetStepId);
+  document.querySelectorAll('[data-back-target]').forEach(control => {
+    control.addEventListener('click', (event) => {
+      event.preventDefault();
+      showStep(control.dataset.backTarget);
     });
   });
 });

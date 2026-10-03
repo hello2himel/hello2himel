@@ -14,8 +14,8 @@
       "বৈজ্ঞানিক গবেষণা",
       "লিনাক্স ও FOSS"
     ],
-    "bio": "An aspiring astrophysicist from Bangladesh exploring astrophysics, computational science, scientific research, and open-source technology.",
-    "bio_bn": "বাংলাদেশের একজন জ্যোতির্পদার্থবিদ্যা-প্রত্যাশী, জ্যোতির্পদার্থবিদ্যা, কম্পিউটেশনাল সায়েন্স, বৈজ্ঞানিক গবেষণা এবং ওপেন-সোর্স প্রযুক্তি নিয়ে কাজ করছি।",
+    "bio": "HSC Science student from Bogura, Bangladesh, interested in astrophysics, computational methods, and open-source tools.",
+    "bio_bn": "বগুড়ার একজন HSC বিজ্ঞান বিভাগের শিক্ষার্থী — জ্যোতির্পদার্থবিদ্যা, computational methods এবং open-source tools নিয়ে আগ্রহী।",
     "contacts": [
       {
         "type": "email",
@@ -51,15 +51,15 @@
     {
       "title": "DISHARI",
       "title_bn": "দিশারী",
-      "description": "A physics-grounded, verifier-bounded mission-resilience architecture developed for the NASA International Space Apps Challenge 2026.",
-      "description_bn": "NASA International Space Apps Challenge 2026-এর জন্য তৈরি একটি physics-grounded, verifier-bounded mission-resilience architecture।",
+      "description": "Our team's proposal for the NASA International Space Apps Challenge 2026 on planning safer space missions with physics-based checks.",
+      "description_bn": "NASA International Space Apps Challenge 2026-এর জন্য আমাদের দলের প্রস্তাব — physics-based checks দিয়ে নিরাপদ মহাকাশ মিশন পরিকল্পনা।",
       "status": "NASA Space Apps 2026"
     },
     {
       "title": "Project ARGUS",
       "title_bn": "প্রজেক্ট ARGUS",
-      "description": "A satellite-based environmental monitoring project developed for ESTEM, using remote-sensing data to monitor environmental changes.",
-      "description_bn": "ESTEM-এর জন্য তৈরি একটি satellite-based environmental monitoring project, যেখানে remote-sensing data ব্যবহার করে পরিবেশগত পরিবর্তন পর্যবেক্ষণ করা হয়।",
+      "description": "Team project for ESTEM: used satellite remote-sensing data to track environmental changes.",
+      "description_bn": "ESTEM-এর জন্য দলগত project: satellite remote-sensing data দিয়ে পরিবেশগত পরিবর্তন পর্যবেক্ষণ।",
       "organization": "ESTEM",
       "result": "Top 4 Teams",
       "result_bn": "সেরা ৪ দল",
@@ -77,7 +77,7 @@
     {
       "title": "Cordata",
       "title_bn": "Cordata",
-      "description": "A computational geometry tool for calculating the area, circumference, and centroid of polygons using coordinate geometry.",
+      "description": "A computational geometry tool for calculating the area, perimeter, and centroid of polygons using coordinate geometry.",
       "description_bn": "স্থানাঙ্ক জ্যামিতি ব্যবহার করে বহুভুজের ক্ষেত্রফল, পরিধি এবং centroid গণনার একটি computational geometry tool।",
       "link": "https://github.com/hello2himel/cordata",
       "linkText": "View on GitHub",
@@ -86,8 +86,8 @@
     {
       "title": "Urochithi",
       "title_bn": "উরোচিঠি",
-      "description": "A privacy-focused anonymous letter platform designed around minimal data collection and a vintage paper aesthetic.",
-      "description_bn": "ন্যূনতম ডেটা সংগ্রহ এবং vintage paper aesthetic-কে কেন্দ্র করে তৈরি একটি privacy-focused anonymous letter platform।",
+      "description": "An anonymous letter web app that stores as little data as possible, designed like vintage paper.",
+      "description_bn": "যথাসম্ভব কম data সংরক্ষণ করে এমন একটি anonymous letter web app, দেখতে পুরনো কাগজের মতো।",
       "link": "https://github.com/hello2himel/urochithi",
       "linkText": "View on GitHub",
       "linkText_bn": "গিটহাবে দেখুন"
@@ -109,6 +109,13 @@
       "link": "https://github.com/hello2himel/justvocals",
       "linkText": "View on GitHub",
       "linkText_bn": "গিটহাবে দেখুন"
+    },
+    {
+      "title": "DocSafe — Hospital Emergency Alarm System",
+      "title_bn": "DocSafe — হাসপাতাল জরুরি অ্যালার্ম সিস্টেম",
+      "description": "Prototype of a networked hospital call system using ESP32, OLED displays, call buttons, MQTT/TLS, FastAPI, and PostgreSQL.",
+      "description_bn": "ESP32, OLED display, call button, MQTT/TLS, FastAPI ও PostgreSQL দিয়ে তৈরি networked hospital call system-এর prototype।",
+      "status": "Prototype"
     }
   ],
   "competitions": [
@@ -116,8 +123,8 @@
       "title": "CERN Beamline for Schools 2026",
       "title_bn": "CERN Beamline for Schools 2026",
       "team": "Konatori-135",
-      "description": "Analyzed experimental particle-physics data from CERN Beamline for Schools and reconstructed the invariant mass of neutral pions.",
-      "description_bn": "CERN Beamline for Schools-এর experimental particle-physics data বিশ্লেষণ করে neutral pion-এর invariant mass পুনর্গঠন করেছি।",
+      "description": "With six teammates (Konatori-135), analyzed sample BL4S calorimeter data and reconstructed the neutral pion invariant mass for our proposal, shortlisted among the global Top 50.",
+      "description_bn": "ছয়জন সতীর্থের সাথে (Konatori-135) BL4S-এর নমুনা calorimeter data বিশ্লেষণ করে neutral pion-এর invariant mass পুনর্গঠন করেছি; আমাদের প্রস্তাব global Top 50-এ স্থান পেয়েছে।",
       "result": "Global Top 50",
       "result_bn": "Global Top 50"
     },
@@ -195,6 +202,14 @@
       "organization_bn": "ট্যাকিয়ন",
       "description": "Contributed science and technology articles and content.",
       "description_bn": "বিজ্ঞান ও প্রযুক্তিবিষয়ক article ও content-এ অবদান রেখেছি।"
+    },
+    {
+      "title": "Physics Tutor (Grades 9–10)",
+      "title_bn": "পদার্থবিজ্ঞান শিক্ষক (৯ম–১০ম শ্রেণি)",
+      "organization": "Unique Public School and College",
+      "organization_bn": "Unique Public School and College",
+      "description": "Taught physics to Grades 9–10 students with an emphasis on physical intuition and demonstrations.",
+      "description_bn": "নবম–দশম শ্রেণির শিক্ষার্থীদের physical intuition ও demonstration-এর উপর জোর দিয়ে পদার্থবিজ্ঞান পড়িয়েছি।"
     }
   ],
   "technicalSkills": {
@@ -226,7 +241,7 @@
         "label_bn": "পদ্ধতি",
         "items": [
           "χ² fitting",
-          "Gaussian regression",
+          "Gaussian fitting",
           "Log-log analysis",
           "Event selection",
           "Aperture photometry"
@@ -247,7 +262,7 @@
         "items": [
           "Scientific writing",
           "Public speaking",
-          "Robotics"
+          "Embedded (ESP32)"
         ]
       },
       {
@@ -262,7 +277,7 @@
         "label_bn": "ভাষা",
         "items": [
           "Bengali (native)",
-          "English (C1, fluent)",
+          "English (fluent)",
           "Hindi (conversational)"
         ]
       }
@@ -270,12 +285,12 @@
   },
   "vision": {
     "paragraphs": [
-      "I want to study astrophysics and use computational methods to investigate questions about the universe that can be approached through observation, data, and physical modelling.",
-      "Alongside research, I want to build open and accessible scientific tools, contribute to scientific communities, and make technical knowledge easier to explore beyond traditional institutional boundaries."
+      "I want to study astrophysics, using observations, data, and modelling to answer questions about stars and the universe.",
+      "Alongside research, I want to build free, open tools and write explanations that students outside big universities can actually use."
     ],
     "paragraphs_bn": [
-      "আমি জ্যোতির্পদার্থবিদ্যা নিয়ে পড়াশোনা করতে চাই এবং পর্যবেক্ষণ, ডেটা ও physical modelling-এর মাধ্যমে মহাবিশ্বের যেসব প্রশ্ন অনুসন্ধান করা সম্ভব, সেগুলো নিয়ে computational methods ব্যবহার করে কাজ করতে চাই।",
-      "গবেষণার পাশাপাশি আমি open ও accessible scientific tools তৈরি করতে, scientific community-তে অবদান রাখতে এবং প্রাতিষ্ঠানিক সীমার বাইরেও প্রযুক্তিগত জ্ঞানকে আরও সহজলভ্য করতে চাই।"
+      "আমি জ্যোতির্পদার্থবিদ্যা পড়তে চাই — পর্যবেক্ষণ, data ও modelling দিয়ে তারা ও মহাবিশ্ব সম্পর্কে প্রশ্নের উত্তর খুঁজতে।",
+      "গবেষণার পাশাপাশি আমি বিনামূল্যের open tools বানাতে এবং বড় বিশ্ববিদ্যালয়ের বাইরের শিক্ষার্থীদের কাজে লাগে এমন ব্যাখ্যা লিখতে চাই।"
     ]
   },
   "sectionHeadings": {
