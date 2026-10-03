@@ -66,11 +66,13 @@ async function loadPortfolioData() {
     
     renderAllContent(data);
     setLoadingState(false);
+    initReveals();
     
   } catch (error) {
     console.error('Error loading portfolio data:', error);
     showPortfolioError('Sorry, portfolio data is currently unavailable. Please try again later.');
     setLoadingState(false);
+    initReveals();
   }
 }
 
@@ -299,9 +301,41 @@ function renderVision(vision) {
   });
 }
 
+// Scroll reveal: one subtle rise per section. Hidden state is JS-gated
+// (CSS scopes it under .js), so no-JS and crawlers see everything.
+function initReveals() {
+  const sections = document.querySelectorAll('main .section');
+  if (!sections.length) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    sections.forEach((s) => s.classList.add('is-visible'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  sections.forEach((s) => {
+    s.classList.add('reveal');
+    observer.observe(s);
+  });
+  // Keyboard users tabbing into a not-yet-visible section reveal it.
+  document.addEventListener('focusin', (e) => {
+    const section = e.target.closest && e.target.closest('main .section.reveal');
+    if (section && !section.classList.contains('is-visible')) {
+      section.classList.add('is-visible');
+      observer.unobserve(section);
+    }
+  });
+}
+
 // Initialize on DOM content loaded
 document.addEventListener('DOMContentLoaded', function () {
-  // Initial theme setup
+  document.documentElement.classList.add('js');
   applyTheme(getPreferredTheme());
 
   // Load portfolio data (no-op on pages without portfolio sections)
