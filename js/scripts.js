@@ -22,6 +22,8 @@ const getPreferredTheme = () => {
 
 const applyTheme = (theme) => {
   document.documentElement.setAttribute('data-theme', theme);
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#f5f5f5');
   // Update all theme icons
   const themeIcons = document.querySelectorAll('.theme-toggle i, #theme-toggle i, #theme-toggle-sidebar i');
   themeIcons.forEach(icon => {
@@ -125,16 +127,14 @@ function renderProfile(profile) {
   if (tagsContainer && profile.tags) {
     const tags = tArr(profile, 'tags');
     tagsContainer.innerHTML = tags
-      .map(tag => `<span class="tag">${tag}</span>`)
+      .map(tag => `<span class="tag">${esc(tag)}</span>`)
       .join('');
   }
   
-  // Update bio with calculated age
+  // Update bio (plain text; bio contains no placeholders)
   const bioElement = document.querySelector('.bio-highlight');
   if (bioElement && profile.bio) {
-    const age = calculateAge(profile.birthDate);
-    const bio = t(profile, 'bio');
-    bioElement.innerHTML = bio.replace('{age}', `<span id="age">${age ?? 'N/A'}</span>`);
+    bioElement.textContent = t(profile, 'bio');
   }
   
   // Update contact buttons
@@ -142,8 +142,8 @@ function renderProfile(profile) {
   if (contactButtonsContainer && profile.contacts) {
     contactButtonsContainer.innerHTML = profile.contacts
       .map(contact => `
-        <a href="${contact.url}" class="contact-button" ${contact.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
-          <i class="ri-lg ${contact.icon}"></i> ${t(contact, 'label')} <i class="ri-lg ri-arrow-right-s-line"></i>
+        <a href="${esc(contact.url)}" class="contact-button" ${contact.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+          <i class="ri-lg ${esc(contact.icon)}" aria-hidden="true"></i> ${esc(t(contact, 'label'))} <span class="contact-arrow" aria-hidden="true">→</span>
         </a>
       `)
       .join('');
@@ -178,10 +178,14 @@ function renderSectionHeadings(headings) {
 
 // Optional card badges: status, result, organization, team, period
 function cardBadges(item) {
-  return ['status', 'result', 'team', 'period']
+  const neutral = ['status', 'team', 'period']
     .filter(field => item[field])
     .map(field => `<span class="card-badge">${esc(t(item, field))}</span>`)
     .join('');
+  const result = item.result
+    ? `<span class="card-badge card-badge-result">${esc(t(item, 'result'))}</span>`
+    : '';
+  return result + neutral;
 }
 
 // Render projects
@@ -192,7 +196,7 @@ function renderProjects(projects) {
   projectsGrid.innerHTML = projects
     .map(project => `
       <article class="project-card bottom-align">
-        <div class="project-title">${esc(t(project, 'title'))}</div>
+        <h3 class="project-title">${esc(t(project, 'title'))}</h3>
         ${project.organization ? `<div class="card-meta">${esc(t(project, 'organization'))}</div>` : ''}
         <p>${esc(t(project, 'description'))}</p>
         <div>${cardBadges(project)}</div>
@@ -219,7 +223,7 @@ function renderCompetitions(competitions) {
   competitionsGrid.innerHTML = competitions
     .map(competition => `
       <article class="competition-card">
-        <div class="competition-title">${esc(t(competition, 'title'))}</div>
+        <h3 class="competition-title">${esc(t(competition, 'title'))}</h3>
         ${competition.organization ? `<div class="card-meta">${esc(t(competition, 'organization'))}</div>` : ''}
         <p>${esc(t(competition, 'description'))}</p>
         <div>${cardBadges(competition)}</div>
@@ -246,7 +250,7 @@ function renderLeadership(leadership) {
   leadershipList.innerHTML = leadership
     .map(item => `
       <article class="leadership-item">
-        <div class="leadership-title">${esc(t(item, 'title'))}</div>
+        <h3 class="leadership-title">${esc(t(item, 'title'))}</h3>
         <div class="leadership-org">${esc(t(item, 'organization'))}</div>
         <p>${esc(t(item, 'description'))}</p>
         <div>${cardBadges(item)}</div>
@@ -278,7 +282,7 @@ function renderTechnicalSkills(skills) {
   container.innerHTML = groups.join('');
 }
 
-// Render vision
+// Render vision (preserve source order)
 function renderVision(vision) {
   const visionSection = document.querySelector('#vision');
   if (!visionSection || !vision || !vision.paragraphs) return;
@@ -287,13 +291,15 @@ function renderVision(vision) {
   const existingParagraphs = visionSection.querySelectorAll('p');
   existingParagraphs.forEach(p => p.remove());
   
-  // Add new paragraphs
+  // Add new paragraphs in order
   const h2 = visionSection.querySelector('h2');
   const paragraphs = tArr(vision, 'paragraphs');
+  let anchor = h2;
   paragraphs.forEach(text => {
     const p = document.createElement('p');
     p.textContent = text;
-    h2.insertAdjacentElement('afterend', p);
+    anchor.insertAdjacentElement('afterend', p);
+    anchor = p;
   });
 }
 
@@ -358,30 +364,35 @@ function initParallaxEffect() {
   // Check on resize
   window.addEventListener('resize', updatePlanetVisibility);
   
-  // For larger screens - mouse parallax
+  // For larger screens - mouse parallax (rAF-throttled)
   if (window.innerWidth > 768) {
+    let pending = null;
     // Mouse move event for parallax
     document.addEventListener('mousemove', (e) => {
-      // Calculate center-relative position (-1 to 1 range)
-      const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-      
-      // Apply to each star with different depths
-      stars.forEach((star, index) => {
-        // Different depths based on star size
-        let depth = 0.5;
-        if (star.classList.contains('small')) depth = 0.3;
-        if (star.classList.contains('medium')) depth = 0.5;
-        if (star.classList.contains('large')) depth = 0.7;
+      if (pending) return;
+      pending = requestAnimationFrame(() => {
+        pending = null;
+        // Calculate center-relative position (-1 to 1 range)
+        const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
         
-        // Apply movement based on mouse position and depth
-        const moveX = -mouseX * depth * 50; // Increase for more movement
-        const moveY = -mouseY * depth * 50;
-        
-        // Apply transform
-        star.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        // Apply to each star with different depths
+        stars.forEach((star) => {
+          // Different depths based on star size
+          let depth = 0.5;
+          if (star.classList.contains('small')) depth = 0.3;
+          if (star.classList.contains('medium')) depth = 0.5;
+          if (star.classList.contains('large')) depth = 0.7;
+          
+          // Apply movement based on mouse position and depth
+          const moveX = -mouseX * depth * 50; // Increase for more movement
+          const moveY = -mouseY * depth * 50;
+          
+          // Apply transform
+          star.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
       });
-    });
+    }, { passive: true });
   } 
   // For smaller screens - gyroscope parallax
   else {
@@ -454,11 +465,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const overlay = document.getElementById('overlay');
   
   if (menuToggle && sidebar && sidebarCollapse && overlay) {
+    const closeSidebar = () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      sidebarCollapse.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menuToggle.focus({ preventScroll: true });
+    };
+
     menuToggle.addEventListener('click', () => {
       sidebar.classList.add('active');
       overlay.classList.add('active');
       sidebarCollapse.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      sidebarCollapse.focus({ preventScroll: true });
     });
     
     sidebarCollapse.addEventListener('click', () => {
@@ -466,6 +486,7 @@ document.addEventListener('DOMContentLoaded', function () {
       overlay.classList.remove('active');
       sidebarCollapse.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      menuToggle.focus({ preventScroll: true });
     });
     
     overlay.addEventListener('click', () => {
@@ -473,6 +494,12 @@ document.addEventListener('DOMContentLoaded', function () {
       overlay.classList.remove('active');
       sidebarCollapse.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+        closeSidebar();
+      }
     });
     
     document.querySelectorAll('.sidebar-link').forEach(link => {

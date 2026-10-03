@@ -53,8 +53,6 @@
       "title_bn": "দিশারী",
       "description": "A physics-grounded, verifier-bounded mission-resilience architecture developed for the NASA International Space Apps Challenge 2026.",
       "description_bn": "NASA International Space Apps Challenge 2026-এর জন্য তৈরি একটি physics-grounded, verifier-bounded mission-resilience architecture।",
-      "linkText": "Project Details",
-      "linkText_bn": "প্রকল্পের বিস্তারিত",
       "status": "NASA Space Apps 2026"
     },
     {
@@ -126,32 +124,32 @@
     {
       "title": "Bangladesh Olympiad on Astronomy and Astrophysics",
       "title_bn": "বাংলাদেশ জ্যোতির্বিদ্যা ও জ্যোতির্পদার্থবিদ্যা অলিম্পিয়াড",
-      "description": "Participated in the regional round of the Bangladesh Olympiad on Astronomy and Astrophysics.",
-      "description_bn": "বাংলাদেশ জ্যোতির্বিদ্যা ও জ্যোতির্পদার্থবিদ্যা অলিম্পিয়াডের আঞ্চলিক পর্বে অংশগ্রহণ।",
+      "description": "Earned a Silver Medal in the regional round of the Bangladesh Olympiad on Astronomy and Astrophysics.",
+      "description_bn": "বাংলাদেশ জ্যোতির্বিদ্যা ও জ্যোতির্পদার্থবিদ্যা অলিম্পিয়াডের আঞ্চলিক পর্বে রৌপ্য পদক অর্জন।",
       "result": "Silver Medal",
       "result_bn": "রৌপ্য পদক"
     },
     {
       "title": "National Science Fair 2024",
       "title_bn": "জাতীয় বিজ্ঞান মেলা ২০২৪",
-      "description": "Participated in the National Science Fair.",
-      "description_bn": "জাতীয় বিজ্ঞান মেলায় অংশগ্রহণ।",
+      "description": "Won 1st Prize at the National Science Fair 2024.",
+      "description_bn": "জাতীয় বিজ্ঞান মেলা ২০২৪-এ ১ম পুরস্কার অর্জন।",
       "result": "1st Prize",
       "result_bn": "১ম পুরস্কার"
     },
     {
       "title": "National Science Quiz 2024",
       "title_bn": "জাতীয় বিজ্ঞান কুইজ ২০২৪",
-      "description": "Participated in the National Science Quiz.",
-      "description_bn": "জাতীয় বিজ্ঞান কুইজে অংশগ্রহণ।",
+      "description": "Secured 2nd Prize at the National Science Quiz 2024.",
+      "description_bn": "জাতীয় বিজ্ঞান কুইজ ২০২৪-এ ২য় পুরস্কার অর্জন।",
       "result": "2nd Prize",
       "result_bn": "২য় পুরস্কার"
     },
     {
       "title": "Digital Innovation Fair 2023",
       "title_bn": "ডিজিটাল ইনোভেশন ফেয়ার ২০২৩",
-      "description": "Participated in the regional Digital Innovation Fair.",
-      "description_bn": "আঞ্চলিক ডিজিটাল ইনোভেশন ফেয়ারে অংশগ্রহণ।",
+      "description": "Won the regional Digital Innovation Fair 2023.",
+      "description_bn": "আঞ্চলিক ডিজিটাল ইনোভেশন ফেয়ার ২০২৩-এ বিজয়ী।",
       "result": "Winner",
       "result_bn": "বিজয়ী"
     }

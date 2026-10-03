@@ -14,11 +14,17 @@
 [data-theme="light"] {
   --bg-color: #f5f5f5;
   --text-color: #121212;
-  --border-color: #ddd;
+  --border-color: #d0d0d0;
   --card-bg: #fff;
-  --card-hover-border: #999;
+  --card-hover-border: #888;
   --tag-bg: #e9e9e9;
   --overlay-bg: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="light"] p,
+[data-theme="light"] .card-meta,
+[data-theme="light"] .leadership-org {
+  opacity: 0.95;
 }
 
 * {
@@ -81,6 +87,12 @@ header {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--border-color);
+  display: block;
+}
+
+.profile-img-container picture {
+  display: block;
+  line-height: 0;
 }
 
 .profile-name-title {
@@ -160,6 +172,7 @@ p {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  margin-top: 0;
 }
 
 /* Card metadata & badges */
@@ -178,6 +191,12 @@ p {
   font-size: 0.8rem;
   margin-top: 0.25rem;
   margin-right: 0.35rem;
+}
+
+/* Emphasize results (prizes, Top 50, Winner) over neutral metadata */
+.card-badge-result {
+  border-color: var(--card-hover-border);
+  font-weight: 600;
 }
 
 /* Technical Skills */
@@ -226,6 +245,7 @@ p {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+  margin-top: 0;
 }
 
 /* Leadership */
@@ -251,6 +271,8 @@ p {
 .leadership-title {
   font-weight: 600;
   margin-bottom: 0.5rem;
+  margin-top: 0;
+  font-size: 1.05rem;
 }
 
 .leadership-org {
@@ -266,7 +288,30 @@ footer {
   border-top: 1px solid var(--border-color);
   text-align: center;
   font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+}
+
+.footer-links a:hover {
+  border-bottom-color: var(--card-hover-border);
+}
+
+footer p {
   opacity: 0.7;
+  margin-bottom: 0;
 }
 
 /* Contact Buttons */
@@ -279,7 +324,7 @@ footer {
 }
 
 .contact-button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
@@ -288,29 +333,26 @@ footer {
   border-radius: 4px;
   color: var(--text-color);
   text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.2s;
+  transition: border-color 0.2s, transform 0.2s;
 }
 
 .contact-button:hover {
   border-color: var(--card-hover-border);
+  transform: translateY(-1px);
 }
 
-.contact-button i.ri-arrow-right-s-line {
+.contact-button .contact-arrow {
+  display: inline-block;
   opacity: 0;
-  position: absolute;
-  right: -20px;
-  transition: opacity 0.2s, right 0.2s;
+  width: 0;
+  overflow: hidden;
+  transition: opacity 0.2s, width 0.2s, margin 0.2s;
 }
 
-.contact-button:hover i.ri-arrow-right-s-line {
+.contact-button:hover .contact-arrow,
+.contact-button:focus-visible .contact-arrow {
   opacity: 1;
-  right: 10px;
-}
-
-.contact-button:hover {
-  padding-right: 2.25rem;
+  width: 1em;
 }
 
 .learn-more-btn {
@@ -541,7 +583,7 @@ body.error-page {
 }
 
 .button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.7rem 1.5rem;
@@ -550,30 +592,12 @@ body.error-page {
   border-radius: 6px;
   color: var(--text-color);
   text-decoration: none;
-  transition: all 0.2s;
-  position: relative;
-  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
 }
 
 .button:hover {
   transform: translateY(-3px);
   border-color: var(--card-hover-border);
-}
-
-.button i.ri-arrow-right-s-line {
-  opacity: 0;
-  position: absolute;
-  right: -20px;
-  transition: opacity 0.2s, right 0.2s;
-}
-
-.button:hover i.ri-arrow-right-s-line {
-  opacity: 1;
-  right: 10px;
-}
-
-.button:hover {
-  padding-right: 2.5rem;
 }
 
 /* Space Container & Elements - Enhanced with Parallax */
