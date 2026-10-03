@@ -370,21 +370,6 @@ footer p {
   justify-content: flex-start;
 }
 
-.hero-cta {
-  display: inline-block;
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--muted);
-  text-decoration: none;
-}
-
-.hero-cta:hover {
-  color: var(--text-color);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 .contact-button {
   display: inline-flex;
   align-items: center;
