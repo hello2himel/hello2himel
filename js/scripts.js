@@ -1,16 +1,3 @@
-// Age calculation function
-function calculateAge(birthDate) {
-  if (Number.isNaN(new Date(birthDate).getTime())) return null;
-  const today = new Date();
-  const birth = new Date(birthDate);
-  let age = today.getFullYear() - birth.getFullYear();
-  const monthDiff = today.getMonth() - birth.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-    age--;
-  }
-  return age;
-}
-
 // Theme handling functions
 const getPreferredTheme = () => {
   const savedTheme = localStorage.getItem('theme');
@@ -25,7 +12,7 @@ const applyTheme = (theme) => {
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#f5f5f5');
   // Update all theme icons
-  const themeIcons = document.querySelectorAll('.theme-toggle i, #theme-toggle i, #theme-toggle-sidebar i');
+  const themeIcons = document.querySelectorAll('.theme-toggle i, #theme-toggle i');
   themeIcons.forEach(icon => {
     icon.className = theme === 'dark' ? 'ri-lg ri-sun-fill' : 'ri-lg ri-moon-clear-fill';
   });
@@ -59,8 +46,9 @@ function renderAllContent(data) {
   renderVision(data.vision);
 }
 
-// Function to load and render portfolio data
+// Function to load and render portfolio data (index only)
 async function loadPortfolioData() {
+  if (!document.querySelector('#projects .projects-grid')) return;
   setLoadingState(true);
   try {
     const response = await fetch('/res/data.json');
@@ -68,8 +56,13 @@ async function loadPortfolioData() {
       throw new Error(`Failed to load data (${response.status})`);
     }
     const data = await response.json();
+    const missing = ['profile', 'projects', 'competitions', 'leadership', 'technicalSkills', 'vision']
+      .filter(k => data?.[k] == null || (Array.isArray(data[k]) && data[k].length === 0 && k !== 'projects' && k !== 'competitions' && k !== 'leadership'));
     if (!data?.profile || !Array.isArray(data.projects) || !Array.isArray(data.competitions)) {
       throw new Error('Portfolio data is incomplete.');
+    }
+    if (missing.length) {
+      console.warn('Portfolio sections missing:', missing.join(', '));
     }
     
     renderAllContent(data);
@@ -112,11 +105,14 @@ function showPortfolioError(message) {
     const section = document.getElementById(id);
     if (!section) return;
     const container = sectionContainer(section);
-    container.textContent = '';
-    const error = document.createElement('p');
-    error.className = 'error-text';
-    error.textContent = message;
-    container.appendChild(error);
+    // Preserve headings: only clear previous dynamic content, never the h2.
+    container.querySelectorAll('article, .skills-group, .loading-text, p:not(.error-text)').forEach((el) => el.remove());
+    if (!container.querySelector('.error-text')) {
+      const error = document.createElement('p');
+      error.className = 'error-text';
+      error.textContent = message;
+      container.appendChild(error);
+    }
   });
 }
 
@@ -139,13 +135,24 @@ function renderProfile(profile) {
   
   // Update contact buttons
   const contactButtonsContainer = document.querySelector('.contact-buttons');
-  if (contactButtonsContainer && profile.contacts) {
+  if (contactButtonsContainer && Array.isArray(profile.contacts)) {
+    const safeHref = (url) => {
+      const u = String(url || '');
+      if (/^(https?:|mailto:|tel:)/i.test(u)) return u;
+      if (u.startsWith('/') || u.startsWith('#')) return u;
+      return '#';
+    };
     contactButtonsContainer.innerHTML = profile.contacts
-      .map(contact => `
-        <a href="${esc(contact.url)}" class="contact-button" ${contact.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
-          <i class="ri-lg ${esc(contact.icon)}" aria-hidden="true"></i> ${esc(t(contact, 'label'))} <span class="contact-arrow" aria-hidden="true"><i class="ri-lg ri-arrow-right-s-line" aria-hidden="true"></i></span>
+      .filter(contact => contact && (contact.url || contact.label))
+      .map(contact => {
+        const href = safeHref(contact.url);
+        const external = /^https?:/i.test(href);
+        return `
+        <a href="${esc(href)}" class="contact-button"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>
+          <i class="ri-lg ${esc(contact.icon || 'ri-link')}" aria-hidden="true"></i> ${esc(t(contact, 'label'))} <span class="contact-arrow" aria-hidden="true"><i class="ri-lg ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
-      `)
+        `;
+      })
       .join('');
   }
 }
@@ -176,9 +183,9 @@ function renderSectionHeadings(headings) {
   });
 }
 
-// Optional card badges: status, result, organization, team, period
+// Optional card badges: result first, then status. Team/period stay in data only.
 function cardBadges(item) {
-  const neutral = ['status', 'team', 'period']
+  const neutral = ['status']
     .filter(field => item[field])
     .map(field => `<span class="card-badge">${esc(t(item, field))}</span>`)
     .join('');
@@ -188,11 +195,17 @@ function cardBadges(item) {
   return result + neutral;
 }
 
+const emptyNote = (isBn) => isBn ? 'শীঘ্রই আসছে।' : 'Nothing here yet.';
+
 // Render projects
 function renderProjects(projects) {
   const projectsGrid = document.querySelector('#projects .projects-grid');
   if (!projectsGrid || !projects) return;
   
+  if (!projects.length) {
+    projectsGrid.innerHTML = `<p class="muted-text">${emptyNote()}</p>`;
+    return;
+  }
   projectsGrid.innerHTML = projects
     .map(project => `
       <article class="project-card bottom-align">
@@ -220,6 +233,10 @@ function renderCompetitions(competitions) {
   const competitionsGrid = document.querySelector('#competitions .competitions-grid');
   if (!competitionsGrid || !competitions) return;
   
+  if (!competitions.length) {
+    competitionsGrid.innerHTML = `<p class="muted-text">${emptyNote()}</p>`;
+    return;
+  }
   competitionsGrid.innerHTML = competitions
     .map(competition => `
       <article class="competition-card">
@@ -247,6 +264,10 @@ function renderLeadership(leadership) {
   const leadershipList = document.querySelector('#leadership .leadership-list');
   if (!leadershipList || !leadership) return;
   
+  if (!leadership.length) {
+    leadershipList.innerHTML = `<p class="muted-text">${emptyNote()}</p>`;
+    return;
+  }
   leadershipList.innerHTML = leadership
     .map(item => `
       <article class="leadership-item">
@@ -279,7 +300,8 @@ function renderTechnicalSkills(skills) {
     ? skills.groups.map(g => group(t(g, 'label'), tArr(g, 'items')))
     : [group('Languages', skills.languages), group('Interests', skills.interests)];
   
-  container.innerHTML = groups.join('');
+  const html = groups.join('');
+  container.innerHTML = html || `<p class="muted-text">${emptyNote()}</p>`;
 }
 
 // Render vision (preserve source order)
@@ -303,174 +325,42 @@ function renderVision(vision) {
   });
 }
 
-// Create stars for parallax effect
-function createStars() {
-  const spaceContainer = document.getElementById('space-container');
-  if (!spaceContainer) return;
-  
-  // Clear any existing stars
-  spaceContainer.innerHTML = '';
-  
-  // Create stars with different sizes
-  const starSizes = ['small', 'medium', 'large'];
-  const starCount = window.innerWidth <= 768 ? 35 : 70;
-  for (let i = 0; i < starCount; i++) {
-    const star = document.createElement('div');
-    star.classList.add('space-element', 'star');
-    
-    // Add random size class
-    const sizeClass = starSizes[Math.floor(Math.random() * starSizes.length)];
-    star.classList.add(sizeClass);
-    
-    // Position randomly
-    star.style.left = `${Math.random() * 100}%`;
-    star.style.top = `${Math.random() * 100}%`;
-    star.style.animationDelay = `${Math.random() * 3}s`;
-    
-    // Store original position for parallax calculation
-    star.dataset.origLeft = star.style.left;
-    star.dataset.origTop = star.style.top;
-    
-    spaceContainer.appendChild(star);
-  }
-  
-  // Create planet - only shown on mobile
-  const planet = document.createElement('div');
-  planet.classList.add('space-element', 'planet');
-  planet.style.left = '75%';
-  planet.style.top = '20%';
-  planet.style.display = window.innerWidth <= 768 ? 'block' : 'none';
-  spaceContainer.appendChild(planet);
-}
-
-// Parallax effect function for stars
-function initParallaxEffect() {
-  const stars = document.querySelectorAll('.star');
-  const planet = document.querySelector('.planet');
-  
-  // Exit if no stars found
-  if (!stars.length) return;
-  
-  // Update planet visibility based on screen size
-  function updatePlanetVisibility() {
-    if (planet) {
-      planet.style.display = window.innerWidth <= 768 ? 'block' : 'none';
-    }
-  }
-  
-  // Initial check
-  updatePlanetVisibility();
-  
-  // Check on resize
-  window.addEventListener('resize', updatePlanetVisibility);
-  
-  // For larger screens - mouse parallax (rAF-throttled)
-  if (window.innerWidth > 768) {
-    let pending = null;
-    // Mouse move event for parallax
-    document.addEventListener('mousemove', (e) => {
-      if (pending) return;
-      pending = requestAnimationFrame(() => {
-        pending = null;
-        // Calculate center-relative position (-1 to 1 range)
-        const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-        const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-        
-        // Apply to each star with different depths
-        stars.forEach((star) => {
-          // Different depths based on star size
-          let depth = 0.5;
-          if (star.classList.contains('small')) depth = 0.3;
-          if (star.classList.contains('medium')) depth = 0.5;
-          if (star.classList.contains('large')) depth = 0.7;
-          
-          // Apply movement based on mouse position and depth
-          const moveX = -mouseX * depth * 50; // Increase for more movement
-          const moveY = -mouseY * depth * 50;
-          
-          // Apply transform
-          star.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
-      });
-    }, { passive: true });
-  } 
-  // For smaller screens - gyroscope parallax
-  else {
-    if (window.DeviceOrientationEvent) {
-      const enableDeviceMotion = () => window.addEventListener('deviceorientation', (e) => {
-        const tiltX = e.beta ? (e.beta - 45) * 0.5 : 0;  // Adjust for typical holding angle
-        const tiltY = e.gamma ? e.gamma * 0.5 : 0;
-        
-        stars.forEach((star) => {
-          let depth = 0.5;
-          if (star.classList.contains('small')) depth = 0.2;
-          if (star.classList.contains('medium')) depth = 0.4;
-          if (star.classList.contains('large')) depth = 0.6;
-          
-          const moveX = tiltY * depth * 3;
-          const moveY = tiltX * depth * 3;
-          
-          star.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
-        
-        // Move planet in opposite direction for added depth
-        if (planet && window.innerWidth <= 768) {
-          const planetMoveX = -tiltY * 0.8 * 2;
-          const planetMoveY = -tiltX * 0.8 * 2;
-          planet.style.transform = `translate(${planetMoveX}px, ${planetMoveY}px)`;
-        }
-      });
-
-      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        const request = () => DeviceOrientationEvent.requestPermission()
-          .then((permissionState) => {
-            if (permissionState === 'granted') enableDeviceMotion();
-          })
-          .catch(() => {});
-        window.addEventListener('click', request, { once: true });
-      } else {
-        enableDeviceMotion();
-      }
-    }
-  }
-}
-
 // Initialize on DOM content loaded
 document.addEventListener('DOMContentLoaded', function () {
   // Initial theme setup
   applyTheme(getPreferredTheme());
-  
-  // Load portfolio data
+
+  // Load portfolio data (no-op on pages without portfolio sections)
   loadPortfolioData();
-  
+
   // Theme toggle event listeners
-  const themeToggleButtons = document.querySelectorAll('.theme-toggle, #theme-toggle, #theme-toggle-sidebar');
+  const themeToggleButtons = document.querySelectorAll('.theme-toggle, #theme-toggle');
   themeToggleButtons.forEach(button => {
     if (button) {
       button.addEventListener('click', toggleTheme);
     }
   });
-  
+
   // Listen for system theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
     if (!localStorage.getItem('theme')) {
       applyTheme(e.matches ? 'dark' : 'light');
     }
   });
-  
+
   // Sidebar functionality
   const menuToggle = document.getElementById('menu-toggle');
   const sidebar = document.getElementById('sidebar');
   const sidebarCollapse = document.getElementById('sidebar-collapse');
   const overlay = document.getElementById('overlay');
-  
+
   if (menuToggle && sidebar && sidebarCollapse && overlay) {
-    const closeSidebar = () => {
+    const closeSidebar = (refocus) => {
       sidebar.classList.remove('active');
       overlay.classList.remove('active');
       sidebarCollapse.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
-      menuToggle.focus({ preventScroll: true });
+      if (refocus) menuToggle.focus({ preventScroll: true });
     };
 
     menuToggle.addEventListener('click', () => {
@@ -480,47 +370,22 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.style.overflow = 'hidden';
       sidebarCollapse.focus({ preventScroll: true });
     });
-    
-    sidebarCollapse.addEventListener('click', () => {
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
-      sidebarCollapse.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      menuToggle.focus({ preventScroll: true });
-    });
-    
-    overlay.addEventListener('click', () => {
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
-      sidebarCollapse.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
+
+    sidebarCollapse.addEventListener('click', () => closeSidebar(true));
+    overlay.addEventListener('click', () => closeSidebar(false));
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && sidebar.classList.contains('active')) {
-        closeSidebar();
+        closeSidebar(true);
       }
     });
-    
+
     document.querySelectorAll('.sidebar-link').forEach(link => {
       link.addEventListener('click', () => {
-        if (link.getAttribute('href').startsWith('#')) {
-          sidebar.classList.remove('active');
-          overlay.classList.remove('active');
-          sidebarCollapse.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
+        if ((link.getAttribute('href') || '').startsWith('#')) {
+          closeSidebar(false);
         }
       });
     });
   }
-  
-  // Create space elements
-  try {
-    createStars();
-  } catch (error) {
-    console.error('Error creating stars:', error);
-  }
-  
-  // Initialize parallax effect with a small delay to ensure DOM is ready
-  setTimeout(initParallaxEffect, 100);
 });

@@ -1,5 +1,7 @@
 #!/bin/bash
-# Create public directory
+set -euo pipefail
+# Clean previous output so failed builds never leave stale files
+rm -rf public
 mkdir -p public
 
 # Copy portfolio files to public
@@ -10,6 +12,4 @@ cp -f robots.txt sitemap.xml public/ 2>/dev/null || true
 cd blog
 hugo --minify
 cd ..
-if [ -d blog/public ]; then
-    cp -r blog/public public/blog
-fi
+cp -r blog/public public/blog
