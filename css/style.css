@@ -185,21 +185,6 @@ p {
   font-weight: 600;
 }
 
-/* Technical Skills */
-.skills-content {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.skills-group-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--muted);
-}
-
 /* Sections */
 .section {
   margin-bottom: 2.5rem;

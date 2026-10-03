@@ -212,77 +212,6 @@
       "description_bn": "নবম–দশম শ্রেণির শিক্ষার্থীদের physical intuition ও demonstration-এর উপর জোর দিয়ে পদার্থবিজ্ঞান পড়িয়েছি।"
     }
   ],
-  "technicalSkills": {
-    "groups": [
-      {
-        "label": "Scientific Computing",
-        "label_bn": "সায়েন্টিফিক কম্পিউটিং",
-        "items": [
-          "Python",
-          "NumPy",
-          "SciPy",
-          "Matplotlib",
-          "Lightkurve",
-          "Astropy"
-        ]
-      },
-      {
-        "label": "Programming",
-        "label_bn": "প্রোগ্রামিং",
-        "items": [
-          "C",
-          "JavaScript",
-          "HTML",
-          "CSS"
-        ]
-      },
-      {
-        "label": "Methods",
-        "label_bn": "পদ্ধতি",
-        "items": [
-          "χ² fitting",
-          "Gaussian fitting",
-          "Log-log analysis",
-          "Event selection",
-          "Aperture photometry"
-        ]
-      },
-      {
-        "label": "Tools",
-        "label_bn": "টুল",
-        "items": [
-          "Linux",
-          "Git/GitHub",
-          "Jupyter Notebook"
-        ]
-      },
-      {
-        "label": "General",
-        "label_bn": "সাধারণ",
-        "items": [
-          "Scientific writing",
-          "Public speaking",
-          "Embedded (ESP32)"
-        ]
-      },
-      {
-        "label": "Certifications",
-        "label_bn": "সার্টিফিকেশন",
-        "items": [
-          "CS50: Introduction to Computer Science — HarvardX, 2026"
-        ]
-      },
-      {
-        "label": "Languages",
-        "label_bn": "ভাষা",
-        "items": [
-          "Bengali (native)",
-          "English (fluent)",
-          "Hindi (conversational)"
-        ]
-      }
-    ]
-  },
   "vision": {
     "paragraphs": [
       "I want to study astrophysics, using observations, data, and modelling to answer questions about stars and the universe.",
@@ -300,8 +229,6 @@
     "competitions_bn": "প্রতিযোগিতা ও পুরস্কার",
     "leadership": "Leadership",
     "leadership_bn": "নেতৃত্ব",
-    "technicalSkills": "Skills and Qualifications",
-    "technicalSkills_bn": "দক্ষতা ও যোগ্যতা",
     "vision": "Vision",
     "vision_bn": "ভবিষ্যৎ পরিকল্পনা"
   }

@@ -42,7 +42,6 @@ function renderAllContent(data) {
   renderProjects(data.projects);
   renderCompetitions(data.competitions);
   renderLeadership(data.leadership);
-  renderTechnicalSkills(data.technicalSkills);
   renderVision(data.vision);
 }
 
@@ -56,7 +55,7 @@ async function loadPortfolioData() {
       throw new Error(`Failed to load data (${response.status})`);
     }
     const data = await response.json();
-    const missing = ['profile', 'projects', 'competitions', 'leadership', 'technicalSkills', 'vision']
+    const missing = ['profile', 'projects', 'competitions', 'leadership', 'vision']
       .filter(k => data?.[k] == null || (Array.isArray(data[k]) && data[k].length === 0 && k !== 'projects' && k !== 'competitions' && k !== 'leadership'));
     if (!data?.profile || !Array.isArray(data.projects) || !Array.isArray(data.competitions)) {
       throw new Error('Portfolio data is incomplete.');
@@ -75,10 +74,10 @@ async function loadPortfolioData() {
   }
 }
 
-const CONTENT_SECTIONS = ['projects', 'competitions', 'leadership', 'skills', 'vision'];
+const CONTENT_SECTIONS = ['projects', 'competitions', 'leadership', 'vision'];
 
 function sectionContainer(section) {
-  return section.querySelector('.projects-grid, .competitions-grid, .leadership-list, .skills-content') || section;
+  return section.querySelector('.projects-grid, .competitions-grid, .leadership-list') || section;
 }
 
 function setLoadingState(isLoading) {
@@ -106,7 +105,7 @@ function showPortfolioError(message) {
     if (!section) return;
     const container = sectionContainer(section);
     // Preserve headings: only clear previous dynamic content, never the h2.
-    container.querySelectorAll('article, .skills-group, .loading-text, p:not(.error-text)').forEach((el) => el.remove());
+    container.querySelectorAll('article, .loading-text, p:not(.error-text)').forEach((el) => el.remove());
     if (!container.querySelector('.error-text')) {
       const error = document.createElement('p');
       error.className = 'error-text';
@@ -173,7 +172,6 @@ function renderSectionHeadings(headings) {
     projects: '#projects h2',
     competitions: '#competitions h2',
     leadership: '#leadership h2',
-    technicalSkills: '#skills h2',
     vision: '#vision h2'
   };
   Object.entries(map).forEach(([key, selector]) => {
@@ -278,30 +276,6 @@ function renderLeadership(leadership) {
       </article>
     `)
     .join('');
-}
-
-// Render technical skills
-function renderTechnicalSkills(skills) {
-  const container = document.querySelector('#skills .skills-content');
-  if (!container || !skills) return;
-  
-  const group = (label, items) => (Array.isArray(items) && items.length)
-    ? `
-      <div class="skills-group">
-        <h3 class="skills-group-title">${esc(label)}</h3>
-        <div class="tags">${items.map(item => `<span class="tag">${esc(item)}</span>`).join('')}</div>
-      </div>
-    `
-    : '';
-  
-  // Preferred shape: { groups: [{ label, items: [...] }, ...] }
-  // Falls back to the older { languages, interests } shape.
-  const groups = Array.isArray(skills.groups)
-    ? skills.groups.map(g => group(t(g, 'label'), tArr(g, 'items')))
-    : [group('Languages', skills.languages), group('Interests', skills.interests)];
-  
-  const html = groups.join('');
-  container.innerHTML = html || `<p class="muted-text">${emptyNote()}</p>`;
 }
 
 // Render vision (preserve source order)
