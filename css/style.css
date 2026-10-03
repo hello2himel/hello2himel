@@ -47,21 +47,27 @@ body {
   width: 100%;
 }
 
-/* Profile Section */
+/* Profile Section: full-viewport centered hero */
 .profile-section {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  min-height: 100svh;
   margin-bottom: 2rem;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  padding-bottom: 4rem;
 }
 
 .profile-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
@@ -86,7 +92,7 @@ body {
 .profile-name-title {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .profile-name-title h1 {
@@ -95,7 +101,69 @@ body {
 
 .profile-content {
   width: 100%;
-  text-align: left;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Scroll cue: static, no animation */
+.scroll-cue {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.scroll-cue::after {
+  content: '';
+  width: 1px;
+  height: 36px;
+  background: var(--border-color);
+}
+
+/* Scroll reveal: one subtle rise per section, JS-gated only */
+.js .section.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  visibility: hidden;
+}
+
+.js .section.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .section.reveal,
+  .js .section.reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
+
+@media print {
+  .js .section.reveal,
+  .js .section.reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
+  .scroll-cue {
+    display: none !important;
+  }
 }
 
 /* Typography */
@@ -533,7 +601,7 @@ body.error-page {
 @media (max-width: 768px) {
   .profile-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .error-code {
