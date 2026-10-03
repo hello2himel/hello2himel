@@ -2,14 +2,13 @@
 title: "9.8 m/s² — An Unknown Dimension?"
 date: 2025-12-24
 author: "Himel Das"
-tags: ["Journal", "Science", "Physics"]
+tags: ["Science", "Physics"]
 categories: ["Curious Mind"]
 translationKey: "gravity-dimension"
 summary: "Gravity, flat earth, and thoughts about unknown dimensions."
 autoTranslated: true
 originalLang: "bn"
 ---
-
 That day in class, we were discussing force. Whenever gravity comes up, the classic example follows — if a spaceship accelerates upward at 9.8 m/s², it would feel as if you're on Earth.
 Then came the elevator example. There too, the elevator was moving at some acceleration, and we got force from the product of mass and acceleration.
 

@@ -2,15 +2,15 @@
 title: "Late Night Intuition"
 date: 2026-05-26T03:43:00+06:00
 author: "Himel Das"
-tags: ["physics", "relativity", "spacetime", "minkowski", "late-night-thoughts", "pop-science"]
-categories: ["journal", "physics", "philosophy"]
+tags: ["Physics", "Relativity", "Spacetime", "Minkowski"]
+categories: ["Curious Mind"]
 translationKey: "late-night-intuition"
 summary: "A layperson's wonder, confusion, and joy about relativity, time dilation, the twin paradox, and spacetime -- written in the stillness of the night."
+images: ["/blog/images/late-night-intuition-graph1.png"]
+featured: true
 autoTranslated: false
 originalLang: "en"
-toc: false
 ---
-
 I'm just some guy who knows nothing. I love physics, sure, but I don't actually understand any of it. I'm stuck in pop science. Late at night, thoughts about quantum worlds and extra-dimensional universes start crawling into my head and I can't sleep. Sometimes I get this urge to go to the negative side of the Kelvin scale and pull off the impossible -- like achieving negative volume or something.
 
 Anyway. This evening I consumed some content on relativity. And every single time I think about it, it hits me the same way -- if I increase my speed, time itself will start moving "slower" for me!!!
@@ -28,7 +28,7 @@ Got it. That's the twin paradox.
 At this point in the conversation, something clicked.
 
 {{< figure 
-    src="/blog/images/late-night-intuition-graph1.png" 
+    src="/blog/images/late-night-intuition-graph1.png" alt="Spacetime diagram: a friend at rest traces a vertical worldline while the traveller worldline tilts toward the light cone" 
     title="Worldlines in Spacetime -- Graph 1"
     caption="Friend at rest traces a vertical worldline; the traveller's worldline tilts toward the light cone as velocity increases."
 >}}
@@ -49,7 +49,7 @@ He also said my setup was mostly right. I did make a mistake though -- I assumed
 If I take that 2D graph and make it 3D --
 
 {{< figure 
-    src="/blog/images/late-night-intuition-graph2.png" 
+    src="/blog/images/late-night-intuition-graph2.png" alt="Hand-drawn sketch imagining 2D spacetime intuition as a 3D projection" 
     title="Hand-drawn 3D intuition sketch"
     caption="An attempt at imagining the 2D spacetime intuition as a 3D projection."
 >}}

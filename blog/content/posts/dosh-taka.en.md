@@ -2,14 +2,13 @@
 title: "Ten Taka"
 date: 2025-08-03T03:01:00
 author: "Himel Das"
-tags: ["Journal", "School"]
+tags: ["School"]
 categories: ["Memoir"]
 translationKey: "dosh-taka"
 summary: "Trying to save ten taka on a book, ending up spending one hundred ninety on food."
 autoTranslated: true
 originalLang: "bn"
 ---
-
 SSC was over. Before I could chill for a few days, intermediate math studies had to begin. Tutoring starting at 6:30 AM at that. The teacher was teaching matrices. "All of you buy Ketab Sir's First Paper," he said.
 We all said "Yes sir" in unison like good boys. Yet we all knew none of us would buy the book. It had been barely eight days since SSC ended. What's the rush to buy books?
 

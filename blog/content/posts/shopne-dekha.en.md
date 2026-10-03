@@ -2,14 +2,13 @@
 title: "Seen in a Dream"
 date: 2025-06-01
 author: "Himel Das"
-tags: ["Journal", "Story"]
+tags: ["Story"]
 categories: ["Creative"]
 translationKey: "shopne-dekha"
 summary: "A surreal dream — an unknown place, a girl, and a mysterious train."
 autoTranslated: true
 originalLang: "bn"
 ---
-
 I'm sitting in a chair somewhere. I can see grass all around. Green grass. While sitting, my feet are almost touching the small footpath in front of me.
 A girl was walking that way. She looked like she was in class seven or eight. Wearing a uniform. A color somewhere between green and sky blue. A pastel shade. Since my feet were on the path, she couldn't pass. She politely asked for space to walk by. I paid no attention. Who was she? Why should I move my feet for her?
 Wait, why am I sitting here? Where is this place?

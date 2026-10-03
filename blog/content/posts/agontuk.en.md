@@ -2,14 +2,13 @@
 title: "The Stranger"
 date: 2025-08-26
 author: "Himel Das"
-tags: ["Journal", "School"]
+tags: ["School"]
 categories: ["Memoir"]
 translationKey: "agontuk"
 summary: "The story of meeting a stranger teacher on the first day of class three."
 autoTranslated: true
 originalLang: "bn"
 ---
-
 It was 2017. I had just been admitted to my dream school, in class three.
 It was some date in early March. Our school hosted the SSC exam center, so February was always a holiday. January had passed with various formalities and fests.
 The school was completely new to me. Huuuge classrooms, colorful teachers, familiar and unfamiliar classmates. That day was the first class after a long break. We were taken to a new building and seated. Two sections together, and two teachers entered the class. Together.

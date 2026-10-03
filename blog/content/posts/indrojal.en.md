@@ -2,14 +2,13 @@
 title: "Indrojal — The Magic of Imagination"
 date: 2025-03-02
 author: "Himel Das"
-tags: ["Journal", "Story"]
+tags: ["Story"]
 categories: ["Musings"]
 translationKey: "indrojal"
 summary: "A story about the world of imagination between an old man and his dog."
 autoTranslated: true
 originalLang: "bn"
 ---
-
 "Sitting like a maharaja! Basking in the sun, are we?"
 
 The sun had just won its battle against the fog, announcing its sweet, warm glow. What time was it? Eight, nine? I couldn't quite remember the exact time, but I knew I was already late for class. A winter morning. I was supposed to study physics at my tutor's place starting at eight. I woke up to my friend Rupom's phone call — the clock read 8:11. I got ready in exactly four minutes and left home at 8:15.

@@ -2,10 +2,9 @@
 title: "অপরাধবোধ"
 date: 2025-04-03
 author: "Himel Das"
-tags: ["জার্নাল"]
-categories: ["অবান্তর"]
+tags: ["জীবনবোধ"]
+categories: ["ভাবনা"]
 translationKey: "guilt"
 summary: "যখন দোষ আমার না, তবুও অপরাধবোধ কাজ করে।"
 ---
-
-I feel guilty. Even though it was not my fault.
+অপরাধবোধ হচ্ছে। যদিও দোষটা আমার ছিল না।

@@ -12,12 +12,20 @@
 [data-theme="light"] {
   --bg-color: #f5f5f5;
   --text-color: #121212;
-  --border-color: #ddd;
+  --border-color: #d0d0d0;
   --card-bg: #fff;
-  --card-hover-border: #999;
+  --card-hover-border: #888;
   --tag-bg: #e9e9e9;
   --code-bg: #eaeaea;
   --link-color: #222;
+}
+
+[data-theme="light"] .post-entry-summary,
+[data-theme="light"] .featured-post-summary,
+[data-theme="light"] .post-entry-meta,
+[data-theme="light"] .featured-post-meta,
+[data-theme="light"] .post-meta {
+  opacity: 0.85;
 }
 
 * {
@@ -168,7 +176,6 @@ a:hover {
 
 .rss-toggle:hover,
 .theme-toggle:hover {
-  transform: translateY(-2px);
   border-color: var(--card-hover-border);
 }
 
@@ -205,11 +212,10 @@ a:hover {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 1.25rem 1.5rem;
-  transition: transform 0.2s, border-color 0.2s;
+  transition: border-color 0.2s;
 }
 
 .post-entry:hover {
-  transform: translateY(-3px);
   border-color: var(--card-hover-border);
 }
 
@@ -220,6 +226,7 @@ a:hover {
 .post-entry-title {
   font-size: 1.15rem;
   font-weight: 600;
+  margin-top: 0;
   margin-bottom: 0.4rem;
 }
 
@@ -244,11 +251,10 @@ a:hover {
   border-radius: 8px;
   padding: 2rem 2.25rem;
   margin-bottom: 2.5rem;
-  transition: transform 0.2s, border-color 0.2s;
+  transition: border-color 0.2s;
 }
 
 .featured-post:hover {
-  transform: translateY(-3px);
   border-color: var(--card-hover-border);
 }
 
@@ -259,6 +265,7 @@ a:hover {
 .featured-post-title {
   font-size: 1.5rem;
   font-weight: 700;
+  margin-top: 0;
   margin-bottom: 0.6rem;
   letter-spacing: -0.01em;
 }
@@ -290,11 +297,10 @@ a:hover {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 1.25rem 1.5rem;
-  transition: transform 0.2s, border-color 0.2s;
+  transition: border-color 0.2s;
 }
 
 .post-grid-item:hover {
-  transform: translateY(-3px);
   border-color: var(--card-hover-border);
 }
 
@@ -332,12 +338,11 @@ a:hover {
   font-size: 0.85rem;
   border: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s;
 }
 
 .tag-item a:hover {
   border-color: var(--card-hover-border);
-  transform: translateY(-2px);
 }
 
 /* Single post */
@@ -700,6 +705,211 @@ a:hover {
   border-bottom: 1px solid var(--card-hover-border);
 }
 
+/* Accessibility: skip link, screen-reader text, focus */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  z-index: 2000;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  border-bottom-style: solid;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--card-hover-border);
+  outline-offset: 2px;
+}
+
+/* Reading progress */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 1500;
+  pointer-events: none;
+}
+
+.reading-progress span {
+  display: block;
+  height: 100%;
+  background: var(--card-hover-border);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.breadcrumbs a {
+  border-bottom: none;
+}
+
+/* Card tag chips */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.mini-tag {
+  display: inline-block;
+  background: var(--tag-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+/* Cover image */
+.post-cover {
+  margin: 0 0 2rem;
+}
+
+.post-cover img {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Share row */
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--tag-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.share-btn:hover {
+  border-color: var(--card-hover-border);
+  border-bottom-style: solid;
+}
+
+/* Code copy */
+.code-wrap {
+  position: relative;
+}
+
+.code-wrap pre {
+  margin-bottom: 0;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--tag-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-size: 0.75rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s, border-color 0.2s;
+  font-family: inherit;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+  border-color: var(--card-hover-border);
+}
+
+/* Related posts */
+.related-posts {
+  margin-top: 2.5rem;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.page-info {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* Search status */
+.search-status {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+
+.search-status:empty {
+  display: none;
+}
+
+/* Footer nav */
+.site-footer .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
 /* Print */
 @media print {
   body {
@@ -709,7 +919,11 @@ a:hover {
 
   .site-nav,
   .theme-toggle,
-  .search-input {
+  .search-input,
+  .reading-progress,
+  .share-row,
+  .copy-btn,
+  .post-nav {
     display: none !important;
   }
 }

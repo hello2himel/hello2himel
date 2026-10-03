@@ -16,4 +16,18 @@
   {{ end }}
   {{ end }}
 </div>
+{{ else if .Params.untranslated }}
+<div class="translation-notice">
+  {{ if eq .Language.Lang "en" }}
+  ℹ️ This piece is presented in its original language.
+  {{ range .Translations }}
+  <a href="{{ .Permalink }}">Read the translation →</a>
+  {{ end }}
+  {{ else }}
+  ℹ️ এই লেখাটি মূল ভাষাতেই প্রকাশিত।
+  {{ range .Translations }}
+  <a href="{{ .Permalink }}">অনুবাদ পড়ুন →</a>
+  {{ end }}
+  {{ end }}
+</div>
 {{ end }}

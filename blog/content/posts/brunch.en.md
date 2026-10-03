@@ -2,14 +2,13 @@
 title: "Brunch"
 date: 2025-08-03T02:32:00
 author: "Himel Das"
-tags: ["Journal", "School"]
+tags: ["School"]
 categories: ["Memoir"]
 translationKey: "brunch"
 summary: "The eternal problem of finding a place to eat at school."
 autoTranslated: true
 originalLang: "bn"
 ---
-
 It was probably a class nine incident. Or ten. I studied in the day shift at school, so mornings from seven to eleven were for private tutoring. After tutoring, brunch was necessary. We'd show up at school around 11:30. Many kids' mothers would bring food themselves. Due to various complications, my mother rarely brought food to school herself; I'd carry food in a tiffin box in the morning.
 So the food was brought — now it needed to be eaten! The morning shift ended at 11:50. Our classes started right after twelve. Where do we eat?
 We had a cheat code for this problem. Although classes six through ten ended late, classes three through five got out around ten. While classes were still going on for us big kids, the primary rooms were empty. We'd go to their rooms like refugees with our bags, just to eat. Some day-shift juniors would leave their bags and go play on the field, while many would sit in the room staring at us with their mouths open. They probably thought, 'Why do these big oafs come to our room every day?'

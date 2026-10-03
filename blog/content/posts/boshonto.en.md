@@ -2,14 +2,13 @@
 title: "Autumn After Spring"
 date: 2025-09-04
 author: "Himel Das"
-tags: ["Journal", "Politics"]
+tags: ["Politics"]
 categories: ["Musings"]
 translationKey: "boshonto"
 summary: "Spring, nor'westers, tall tales, and the wait for autumn."
 autoTranslated: true
 originalLang: "bn"
 ---
-
 As a season, spring is truly regal. Much awaited, too. Spring came to this country a few days ago. Not Zahir Raihan's "Another February." In July.
 
 Spring comes. With it comes a wave of hope. Birds begin their chorus, dreaming of new days. How many can bear that chirping? You can start weaving dreams in spring, but to make those dreams real, to catch the fragrance of autumn, you must be resolute.

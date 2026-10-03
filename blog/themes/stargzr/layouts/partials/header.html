@@ -1,32 +1,27 @@
 <header class="site-header">
-  <div class="site-title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></div>
-  <nav class="site-nav">
+  <div class="site-title"><a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></div>
+  <nav class="site-nav" aria-label="{{ if eq .Language.Lang "bn" }}প্রধান{{ else }}Main{{ end }}">
     {{- range .Site.Menus.main }}
-    {{- if eq .Name "হোম" "Home" }}
-    <a href="{{ .URL }}" class="home-link" data-home="true">{{ .Name }}</a>
+    {{- if or (eq .Name "হোম") (eq .Name "Home") }}
+    <a href="/">{{ .Name }}</a>
     {{- else }}
-    <a href="{{ .URL }}">{{ .Name }}</a>
+    <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
     {{- end }}
     {{- end }}
     <span class="lang-switcher">
+    {{- $other := "" }}
+    {{- range .Site.Sites }}{{ if ne .Language.Lang $.Language.Lang }}{{ $other = . }}{{ end }}{{ end }}
     {{- if eq .Language.Lang "bn" -}}
-      <a href="{{ with .Translations }}{{ (index . 0).Permalink }}{{ else }}/en/{{ end }}" class="lang-switch" title="English">EN</a> | <span class="lang-active">বাং</span>
+      <span class="lang-active" aria-current="true">বাং</span> | <a href="{{ with .Translations }}{{ (index . 0).Permalink }}{{ else }}{{ $other.Home.RelPermalink }}{{ end }}" class="lang-switch" title="English" hreflang="en">EN</a>
     {{- else -}}
-      <span class="lang-active">EN</span> | <a href="{{ with .Translations }}{{ (index . 0).Permalink }}{{ else }}/{{ end }}" class="lang-switch" title="বাংলা">বাং</a>
+      <a href="{{ with .Translations }}{{ (index . 0).Permalink }}{{ else }}{{ $other.Home.RelPermalink }}{{ end }}" class="lang-switch" title="বাংলা" hreflang="bn">বাং</a> | <span class="lang-active" aria-current="true">EN</span>
     {{- end -}}
     </span>
     {{- with .Site.Home.OutputFormats.Get "RSS" }}
-    <a class="rss-toggle" href="{{ .Permalink }}" title="RSS Feed" aria-label="RSS Feed" target="_blank" rel="noopener">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+    <a class="rss-toggle" href="{{ .Permalink }}" title="RSS Feed" aria-label="RSS Feed">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
     </a>
     {{- end }}
-    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">☾</button>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme" aria-pressed="false">☾</button>
   </nav>
 </header>
-<script>
-(function() {
-  var homeLinks = document.querySelectorAll('a[data-home="true"]');
-  var origin = window.location.origin || (window.location.protocol + '//' + window.location.host);
-  homeLinks.forEach(function(a) { a.href = origin + '/'; });
-})();
-</script>
