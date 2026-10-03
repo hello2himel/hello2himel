@@ -148,9 +148,10 @@ function renderProfile(profile) {
       .map(contact => {
         const href = safeHref(contact.url);
         const external = /^https?:/i.test(href);
+        const label = esc(t(contact, 'label')) || 'Link';
         return `
-        <a href="${esc(href)}" class="contact-button"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>
-          <i class="ri-lg ${esc(contact.icon || 'ri-link')}" aria-hidden="true"></i> ${esc(t(contact, 'label'))} <span class="contact-arrow" aria-hidden="true"><i class="ri-lg ri-arrow-right-s-line" aria-hidden="true"></i></span>
+        <a href="${esc(href)}" class="contact-button contact-icon" aria-label="${label}" title="${label}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>
+          <i class="ri-lg ${esc(contact.icon || 'ri-link')}" aria-hidden="true"></i>
         </a>
         `;
       })

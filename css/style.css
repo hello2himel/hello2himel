@@ -418,20 +418,12 @@ footer p {
   border-color: var(--card-hover-border);
 }
 
-.contact-button .contact-arrow {
-  display: inline-flex;
-  align-items: center;
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  transition: opacity 0.2s, width 0.2s;
-}
-
-.contact-button:hover .contact-arrow,
-.contact-button:focus-visible .contact-arrow {
-  opacity: 1;
-  width: 1.25em;
+.contact-button.contact-icon {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .learn-more-btn {
