@@ -334,6 +334,22 @@ function initReveals() {
   });
 }
 
+// Static starfield: faint fixed dots, no twinkle, no parallax.
+function createStars() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const container = document.getElementById('space-container');
+  if (!container || container.childElementCount) return;
+  const sizes = ['tiny', 'tiny', 'small', 'small', 'medium', 'bright'];
+  const count = Math.min(110, Math.floor((window.innerWidth * window.innerHeight) / 14000));
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement('div');
+    star.className = 'star ' + sizes[Math.floor(Math.random() * sizes.length)];
+    star.style.left = (Math.random() * 100).toFixed(2) + '%';
+    star.style.top = (Math.random() * 100).toFixed(2) + '%';
+    container.appendChild(star);
+  }
+}
+
 // Initialize on DOM content loaded
 document.addEventListener('DOMContentLoaded', function () {
   document.documentElement.classList.add('js');
@@ -341,6 +357,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load portfolio data (no-op on pages without portfolio sections)
   loadPortfolioData();
+
+  // Static stars (skipped under reduced motion)
+  createStars();
 
   // Theme toggle event listeners
   const themeToggleButtons = document.querySelectorAll('.theme-toggle, #theme-toggle');

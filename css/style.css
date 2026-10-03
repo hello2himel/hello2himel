@@ -637,6 +637,45 @@ body.error-page {
   transition: border-color 0.2s;
 }
 
+/* Starfield: static night sky, no motion */
+#space-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background-color: var(--text-color);
+  border-radius: 50%;
+}
+
+.star.tiny {
+  width: 1px;
+  height: 1px;
+  opacity: 0.25;
+}
+
+.star.small {
+  width: 2px;
+  height: 2px;
+  opacity: 0.35;
+}
+
+.star.medium {
+  width: 2px;
+  height: 2px;
+  opacity: 0.55;
+}
+
+.star.bright {
+  width: 3px;
+  height: 3px;
+  opacity: 0.8;
+}
+
 .button:hover {
   border-color: var(--card-hover-border);
 }
@@ -807,6 +846,7 @@ body.error-page {
 }
 
 @media print {
+  #space-container,
   .header-controls,
   .sidebar,
   .overlay,
