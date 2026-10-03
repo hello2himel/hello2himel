@@ -56,7 +56,7 @@
         <i class="ri-lg ri-group-line"></i> <span>Leadership</span>
       </a>
       <a href="#skills" class="sidebar-link">
-        <i class="ri-lg ri-code-s-slash-line"></i> <span>Technical Skills</span>
+        <i class="ri-lg ri-code-s-slash-line"></i> <span>Skills and Qualifications</span>
       </a>
       <a href="#vision" class="sidebar-link">
         <i class="ri-lg ri-eye-line"></i> <span>Vision</span>
@@ -64,6 +64,12 @@
       <div class="sidebar-divider"></div>
       <a href="/blog/" class="sidebar-link" aria-label="Read Blog">
         <i class="ri-lg ri-quill-pen-ai-line"></i> <span>Read Blog</span>
+      </a>
+      <a href="/cv.html" class="sidebar-link" aria-label="View CV">
+        <i class="ri-lg ri-file-text-line"></i> <span>CV</span>
+      </a>
+      <a href="/donate.html" class="sidebar-link" aria-label="Donate">
+        <i class="ri-lg ri-heart-line"></i> <span>Donate</span>
       </a>
       <a href="mailto:hello2himel@proton.me" class="sidebar-link">
         <i class="ri-lg ri-mail-line"></i> <span>Contact Me</span>
@@ -86,7 +92,10 @@
     <div class="profile-section">
       <div class="profile-header">
         <div class="profile-img-container">
-          <img src="/res/himel_portfolio_profile.png" alt="Himel Das" class="profile-img" loading="lazy" width="150" height="150">
+          <picture>
+            <source srcset="/res/himel_portfolio_profile.webp" type="image/webp">
+            <img src="/res/himel_portfolio_profile.png" alt="Portrait of Himel Das" class="profile-img" loading="eager" fetchpriority="high" width="150" height="150">
+          </picture>
         </div>
         <div class="profile-name-title">
           <h1>Himel Das</h1>
@@ -133,7 +142,14 @@
       <!-- Vision paragraphs will be loaded from /res/data.json -->
     </section>
     <footer>
-      &copy; 2026 Himel Das - Bogura, Bangladesh
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/blog/">Blog</a>
+        <a href="/cv.html">CV</a>
+        <a href="/donate.html">Donate</a>
+        <a href="mailto:hello2himel@proton.me">Contact</a>
+        <a href="https://github.com/hello2himel" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+      <p>&copy; 2026 Himel Das - Bogura, Bangladesh</p>
     </footer>
   </main>
   <script src="/js/scripts.js"></script>

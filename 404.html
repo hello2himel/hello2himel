@@ -15,7 +15,7 @@
     <meta name="twitter:title" content="Page Not Found | Himel Das">
     <meta name="twitter:description" content="The page you requested could not be found.">
     <meta name="twitter:image" content="/res/himel_portfolio_profile.png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self';">
     <title>Page Not Found | Himel Das</title>
     <link href="/res/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
@@ -38,14 +38,23 @@
         
         <div class="buttons-container">
             <a href="/" class="button">
-                <i class="ri-home-4-line"></i> Return Home <i class="ri-arrow-right-line"></i>
+                <i class="ri-home-4-line" aria-hidden="true"></i> Return Home
+            </a>
+            <a href="/blog/" class="button">
+                <i class="ri-quill-pen-ai-line" aria-hidden="true"></i> Read Blog
             </a>
             <a href="mailto:hello2himel@proton.me" class="button">
-                <i class="ri-mail-line"></i> Contact Me <i class="ri-arrow-right-line"></i>
+                <i class="ri-mail-line" aria-hidden="true"></i> Contact Me
             </a>
         </div>
         
         <div class="home-link">
+            <nav class="footer-links" aria-label="Footer">
+                <a href="/">Home</a>
+                <a href="/blog/">Blog</a>
+                <a href="/cv.html">CV</a>
+                <a href="/donate.html">Donate</a>
+            </nav>
             <p>&copy; 2026 Himel Das - <a href="/">Bogura, Bangladesh</a></p>
         </div>
     </main>

@@ -15,7 +15,7 @@
   <meta name="twitter:title" content="Donate | Himel Das" />
   <meta name="twitter:description" content="Support Himel Das's work through secure donation options." />
   <meta name="twitter:image" content="/res/bkash-qr.png" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self';" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self';" />
   <title>Donate | Himel Das</title>
   <link href="/res/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
@@ -39,29 +39,35 @@
 
     <div class="sidebar-menu">
       <a href="/" class="sidebar-link">
-        <i class="ri-lg ri-home-4-line"></i> Home
-      </a>
-      <a href="/#competitions" class="sidebar-link">
-        <i class="ri-lg ri-trophy-line"></i> Competitions
-      </a>
-      <a href="/#leadership" class="sidebar-link">
-        <i class="ri-lg ri-group-line"></i> Leadership
+        <i class="ri-lg ri-home-4-line"></i> <span>Home</span>
       </a>
       <a href="/#projects" class="sidebar-link">
-        <i class="ri-lg ri-git-branch-line"></i> Projects
+        <i class="ri-lg ri-git-branch-line"></i> <span>Projects</span>
+      </a>
+      <a href="/#competitions" class="sidebar-link">
+        <i class="ri-lg ri-trophy-line"></i> <span>Competitions</span>
+      </a>
+      <a href="/#leadership" class="sidebar-link">
+        <i class="ri-lg ri-group-line"></i> <span>Leadership</span>
+      </a>
+      <a href="/#skills" class="sidebar-link">
+        <i class="ri-lg ri-code-s-slash-line"></i> <span>Skills and Qualifications</span>
       </a>
       <a href="/#vision" class="sidebar-link">
-        <i class="ri-lg ri-eye-line"></i> Vision
+        <i class="ri-lg ri-eye-line"></i> <span>Vision</span>
       </a>
       <div class="sidebar-divider"></div>
       <a href="/blog/" class="sidebar-link" aria-label="Read Blog">
-        <i class="ri-lg ri-article-line"></i> Read Blog
+        <i class="ri-lg ri-quill-pen-ai-line"></i> <span>Read Blog</span>
+      </a>
+      <a href="/cv.html" class="sidebar-link" aria-label="View CV">
+        <i class="ri-lg ri-file-text-line"></i> <span>CV</span>
       </a>
       <a href="mailto:hello2himel@proton.me" class="sidebar-link">
-        <i class="ri-lg ri-mail-line"></i> Contact Me
+        <i class="ri-lg ri-mail-line"></i> <span>Contact Me</span>
       </a>
       <a href="https://github.com/hello2himel" class="sidebar-link" target="_blank" rel="noopener noreferrer" aria-label="View Projects (opens in a new tab)">
-        <i class="ri-lg ri-github-line"></i> View Projects
+        <i class="ri-lg ri-github-line"></i> <span>View Projects</span>
       </a>
     </div>
   </div>
@@ -80,7 +86,7 @@
       <!-- Header -->
       <div class="donate-header">
         <h1 id="main-title">Donate <span id="project-name"></span></h1>
-        <p class="donate-description">Thank you for supporting my work and passion for advancing scientific discovery.</p>
+        <p class="donate-description">Your support funds open research, science outreach in Bangladesh, and free educational tools. Donations cover equipment, travel for field demonstrations, and hosting costs.</p>
       </div>
 
       <!-- Donation Wizard -->
@@ -88,16 +94,17 @@
         
         <!-- Step 1: Region Selection -->
         <div class="wizard-step active" id="step-region-select">
+          <p class="step-progress">Step 1 of 2 — Choose your region</p>
           <h2>Choose Your Region</h2>
           
           <div class="step-options">
-            <button class="step-option" data-target-step="step-bangladesh-redirect" aria-describedby="bd-option-subtext">
+            <button class="step-option" id="bangladesh-option" aria-describedby="bd-option-subtext">
               <div class="option-content">
                 <div class="option-main">
                   <i class="ri-flag-2-line"></i>
                   <span>Bangladesh</span>
                 </div>
-                <div class="option-subtext" id="bd-option-subtext">bKash, Bank Transfer</div>
+                <div class="option-subtext" id="bd-option-subtext">bKash, Bank Transfer via SupportKori (opens in new tab)</div>
               </div>
             </button>
             
@@ -114,9 +121,9 @@
 
           <div class="large-donation-note">
   <p>Or, reach out directly so that we can avoid the third-party fees.</p>
-  <a id="large-donation-link" href="#" class="large-donation-cta">
-    <i class="ri-mail-line"></i> Drop me a message
-    <i class="ri-arrow-right-s-line"></i>
+  <a id="large-donation-link" href="mailto:hello2himel@proton.me?subject=Large%20Donation%20Inquiry" class="large-donation-cta">
+    <i class="ri-mail-line" aria-hidden="true"></i> Drop me a message
+    <span class="large-cta-arrow" aria-hidden="true">→</span>
   </a>
 </div>
 
@@ -125,10 +132,11 @@
 
         <!-- Step 2: International Methods -->
         <div class="wizard-step" id="step-international-methods">
-          <button class="back-btn" data-back-target="step-region-select" title="Go back" aria-label="Go back">
-            <i class="ri-arrow-left-line"></i>
+          <button class="back-btn" data-back-target="step-region-select" title="Go back" aria-label="Go back to region selection">
+            <i class="ri-arrow-left-line" aria-hidden="true"></i><span class="back-label">Back</span>
           </button>
           
+          <p class="step-progress">Step 2 of 2 — Payment method</p>
           <h2>Payment Method</h2>
           
           <div class="step-options">
@@ -148,10 +156,11 @@
 
         <!-- Step 3: Bank Transfer International -->
         <div class="wizard-step" id="step-bank-details-int">
-          <button class="back-btn" data-back-target="step-international-methods" title="Go back" aria-label="Go back">
-            <i class="ri-arrow-left-line"></i>
+          <button class="back-btn" data-back-target="step-international-methods" title="Go back" aria-label="Go back to payment methods">
+            <i class="ri-arrow-left-line" aria-hidden="true"></i><span class="back-label">Back</span>
           </button>
           
+          <p class="step-progress">Step 2 of 2 — Bank transfer</p>
           <h2>Bank Transfer</h2>
           
           <div class="payment-details">
@@ -170,7 +179,14 @@
     </div>
 
     <footer>
-      © 2026 Himel Das - Bogura, Bangladesh
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/cv.html">CV</a>
+        <a href="mailto:hello2himel@proton.me">Contact</a>
+        <a href="https://github.com/hello2himel" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+      <p>© 2026 Himel Das - Bogura, Bangladesh</p>
     </footer>
   </main>
 

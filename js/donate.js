@@ -91,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Bangladesh button — redirect to SupportKori
-  const bangladeshButton = document.querySelector('[data-target-step="step-bangladesh-redirect"]');
+  // Bangladesh button — redirect to SupportKori (external, no wizard step)
+  const bangladeshButton = document.getElementById('bangladesh-option');
   if (bangladeshButton) {
     bangladeshButton.addEventListener('click', () => {
       window.open('https://supportkori.com/hello2himel', '_blank', 'noopener,noreferrer');
