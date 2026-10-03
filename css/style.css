@@ -47,28 +47,22 @@ body {
   width: 100%;
 }
 
-/* Profile Section: full-viewport centered hero */
+/* Profile Section: 60vh side-by-side hero */
 .profile-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
-  justify-content: center;
-  min-height: 100svh;
+  gap: 2.5rem;
+  min-height: 60svh;
   margin-bottom: 2rem;
-  max-width: 640px;
+  max-width: 880px;
   margin-left: auto;
   margin-right: auto;
-  position: relative;
-  padding-bottom: 4rem;
 }
 
-.profile-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
+.profile-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .profile-img-container {
@@ -92,7 +86,7 @@ body {
 .profile-name-title {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .profile-name-title h1 {
@@ -101,33 +95,10 @@ body {
 
 .profile-content {
   width: 100%;
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-/* Scroll cue: static, no animation */
-.scroll-cue {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--muted);
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.scroll-cue::after {
-  content: '';
-  width: 1px;
-  height: 36px;
-  background: var(--border-color);
+  align-items: flex-start;
 }
 
 /* Scroll reveal: one subtle rise per section, JS-gated only */
@@ -161,9 +132,6 @@ body {
     visibility: visible !important;
   }
 
-  .scroll-cue {
-    display: none !important;
-  }
 }
 
 /* Typography */
@@ -393,8 +361,8 @@ footer p {
 .contact-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  margin: 1.5rem 0;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0;
   justify-content: flex-start;
 }
 
@@ -685,9 +653,21 @@ body.error-page {
     padding: 1.25rem;
   }
 
-  .profile-header {
+  .profile-section {
     flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    min-height: 60svh;
+  }
+
+  .profile-name-title,
+  .profile-content {
     align-items: center;
+    text-align: center;
+  }
+
+  .contact-buttons {
+    justify-content: center;
   }
 
   h1 {
@@ -732,7 +712,7 @@ body.error-page {
   }
 }
 
-/* Landscape phones: compact hero, cue off, grids when wide enough */
+/* Landscape phones: compact hero */
 @media (min-width: 700px) and (max-height: 500px) {
   :root {
     --profile-image-size: 96px;
@@ -741,10 +721,6 @@ body.error-page {
   .profile-section {
     min-height: 0;
     padding-top: 4rem;
-  }
-
-  .scroll-cue {
-    display: none;
   }
 }
 
