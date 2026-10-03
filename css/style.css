@@ -42,7 +42,7 @@ body {
 /* Main Layout */
 .main-container {
   padding: 2rem;
-  max-width: 860px;
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
 }
@@ -53,7 +53,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 2rem;
-  max-width: 100%;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -117,10 +117,11 @@ p {
 }
 
 .bio-highlight {
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 1.3rem;
+  line-height: 1.8;
   margin: 0.5rem 0 1.5rem;
-  max-width: 65ch;
+  opacity: 0.9;
+  max-width: 800px;
 }
 
 /* Tags */
@@ -188,7 +189,7 @@ p {
 /* Sections */
 .section {
   margin-bottom: 2.5rem;
-  max-width: 100%;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
