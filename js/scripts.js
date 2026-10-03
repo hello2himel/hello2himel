@@ -150,8 +150,8 @@ function renderProfile(profile) {
         const external = /^https?:/i.test(href);
         const label = esc(t(contact, 'label')) || 'Link';
         return `
-        <a href="${esc(href)}" class="contact-button contact-icon" aria-label="${label}" title="${label}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>
-          <i class="ri-lg ${esc(contact.icon || 'ri-link')}" aria-hidden="true"></i>
+        <a href="${esc(href)}" class="contact-button" aria-label="${label}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>
+          <i class="ri-lg ${esc(contact.icon || 'ri-link')}" aria-hidden="true"></i> ${label} <span class="contact-arrow" aria-hidden="true"><i class="ri-lg ri-arrow-right-s-line" aria-hidden="true"></i></span>
         </a>
         `;
       })

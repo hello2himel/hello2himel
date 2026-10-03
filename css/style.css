@@ -390,26 +390,20 @@ footer p {
   border-color: var(--card-hover-border);
 }
 
-.contact-button.contact-icon {
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  justify-content: center;
-  background: none;
-  border: none;
-  border-radius: 0;
-  color: var(--text-color);
-  opacity: 0.85;
+.contact-button .contact-arrow {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity 0.2s, width 0.2s;
 }
 
-.contact-button.contact-icon:hover {
-  border: none;
-  color: var(--text-color);
+.contact-button:hover .contact-arrow,
+.contact-button:focus-visible .contact-arrow {
   opacity: 1;
-}
-
-.contact-button.contact-icon i {
-  font-size: 1.4rem;
+  width: 1.25em;
 }
 
 .learn-more-btn {
