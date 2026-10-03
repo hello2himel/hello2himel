@@ -191,7 +191,7 @@ function cardBadges(item) {
     .map(field => `<span class="card-badge">${esc(t(item, field))}</span>`)
     .join('');
   const result = item.result
-    ? `<span class="card-badge card-badge-result">${esc(t(item, 'result'))}</span>`
+    ? `<span class="card-badge">${esc(t(item, 'result'))}</span>`
     : '';
   return result + neutral;
 }
