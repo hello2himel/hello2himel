@@ -333,12 +333,11 @@ footer p {
   border-radius: 4px;
   color: var(--text-color);
   text-decoration: none;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s;
 }
 
 .contact-button:hover {
   border-color: var(--card-hover-border);
-  transform: translateY(-1px);
 }
 
 .contact-button .contact-arrow {
@@ -414,11 +413,10 @@ footer p {
   border: 1px solid var(--border-color);
   color: var(--text-color);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s;
 }
 
 .header-button:hover {
-  transform: translateY(-3px);
   border-color: var(--card-hover-border);
 }
 
@@ -458,12 +456,11 @@ footer p {
   justify-content: center;
   color: var(--text-color);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s;
 }
 
 .sidebar-button:hover {
   border-color: var(--card-hover-border);
-  transform: translateY(-2px);
 }
 
 .sidebar-menu {
@@ -592,11 +589,10 @@ body.error-page {
   border-radius: 6px;
   color: var(--text-color);
   text-decoration: none;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s;
 }
 
 .button:hover {
-  transform: translateY(-3px);
   border-color: var(--card-hover-border);
 }
 
@@ -735,12 +731,11 @@ body.error-page {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s;
   z-index: 100;
 }
 
 .theme-toggle:hover {
-  transform: translateY(-3px);
   border-color: var(--card-hover-border);
 }
 

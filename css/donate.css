@@ -112,12 +112,11 @@
   border-radius: 999px;
   color: var(--text-color);
   cursor: pointer;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s;
   padding: 0 1rem;
 }
 
 .back-btn:hover {
-  transform: translateY(-2px);
   border-color: var(--card-hover-border);
 }
 
@@ -149,13 +148,12 @@
   border: 1px solid var(--border-color);
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s;
   text-align: left;
   width: 100%;
 }
 
 .step-option:hover {
-  transform: translateY(-2px);
   border-color: var(--card-hover-border);
 }
 
@@ -340,7 +338,7 @@
   border-radius: 4px;
   color: var(--text-color);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s;
   font-weight: 500;
   font-size: 1rem;
   width: 100%;
@@ -348,7 +346,6 @@
 
 .primary-btn:hover {
   border-color: var(--card-hover-border);
-  transform: translateY(-2px);
 }
 
 /* Session ID */
@@ -428,12 +425,11 @@
   color: var(--text-color);
   text-decoration: none;
   font-size: 0.8rem;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s;
 }
 
 .large-donation-cta:hover {
   border-color: var(--card-hover-border);
-  transform: translateY(-1px);
 }
 
 .large-donation-cta .large-cta-arrow {
