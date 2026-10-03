@@ -175,14 +175,21 @@ p {
 }
 
 /* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
 .tag {
   display: inline-block;
   background: var(--tag-bg);
-  padding: 0.35rem 0.75rem;
+  padding: 0.3rem 0.65rem;
   border-radius: 999px;
-  margin: 0.25rem;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 500;
+  color: var(--muted);
   border: 1px solid var(--border-color);
 }
 
@@ -218,6 +225,7 @@ p {
 .card-meta {
   font-size: 0.8125rem;
   line-height: 1.5;
+  min-height: 1.5em;
   color: var(--muted);
   margin-bottom: 0.5rem;
 }
@@ -235,11 +243,7 @@ p {
   margin-right: 0.35rem;
 }
 
-/* Emphasize results (prizes, Top 50, Winner) over neutral metadata */
-.card-badge-result {
-  border-color: var(--card-hover-border);
-  font-weight: 600;
-}
+/* Single badge style for all card metadata */
 
 /* Sections */
 .section {
@@ -366,6 +370,21 @@ footer p {
   justify-content: flex-start;
 }
 
+.hero-cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.hero-cta:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .contact-button {
   display: inline-flex;
   align-items: center;
@@ -394,12 +413,14 @@ footer p {
   background: none;
   border: none;
   border-radius: 0;
-  color: var(--muted);
+  color: var(--text-color);
+  opacity: 0.85;
 }
 
 .contact-button.contact-icon:hover {
   border: none;
   color: var(--text-color);
+  opacity: 1;
 }
 
 .contact-button.contact-icon i {
@@ -623,25 +644,25 @@ body.error-page {
 .star.tiny {
   width: 1px;
   height: 1px;
-  opacity: 0.25;
+  opacity: 0.18;
 }
 
 .star.small {
   width: 2px;
   height: 2px;
-  opacity: 0.35;
+  opacity: 0.28;
 }
 
 .star.medium {
   width: 2px;
   height: 2px;
-  opacity: 0.55;
+  opacity: 0.42;
 }
 
 .star.bright {
   width: 3px;
   height: 3px;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .button:hover {
@@ -667,6 +688,10 @@ body.error-page {
   }
 
   .contact-buttons {
+    justify-content: center;
+  }
+
+  .tags {
     justify-content: center;
   }
 
