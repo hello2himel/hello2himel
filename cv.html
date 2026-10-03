@@ -4,17 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Curriculum Vitae of Himel Das — HSC Science student, CERN BL4S participant, physics educator and outreach coordinator from Bogura, Bangladesh.">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="icon" href="/res/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/res/apple-touch-icon.png" />
     <meta property="og:title" content="Curriculum Vitae - Himel Das">
     <meta property="og:description" content="HSC Science student from Bogura, Bangladesh. CERN BL4S Top-50 team member, physics tutor, Stargzr founder.">
+    <meta property="og:image" content="https://hello2himel.netlify.app/res/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta property="og:image:alt" content="Portrait of Himel Das">
     <meta property="og:url" content="https://hello2himel.netlify.app/cv.html">
-    <meta property="og:type" content="profile">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Himel Das">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Curriculum Vitae - Himel Das">
     <meta name="twitter:description" content="HSC Science student from Bogura, Bangladesh. CERN BL4S Top-50 team member, physics tutor, Stargzr founder.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self';">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23ffffff'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='700' fill='%23000000' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+    <meta name="twitter:image" content="https://hello2himel.netlify.app/res/og-image.jpg">
+    <meta name="twitter:image:alt" content="Portrait of Himel Das">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; connect-src 'self';">
     <link rel="canonical" href="https://hello2himel.netlify.app/cv.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "name": "Curriculum Vitae - Himel Das",
+      "url": "https://hello2himel.netlify.app/cv.html",
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://hello2himel.netlify.app/#person",
+        "name": "Himel Das",
+        "url": "https://hello2himel.netlify.app/"
+      }
+    }
+    </script>
     <title>Curriculum Vitae - Himel Das</title>
     <style>
         @page { size: A4; margin: 1.1cm 1.7cm; }
@@ -189,8 +211,23 @@
             border-bottom: 1px solid #bbb;
         }
 
+        .cv-footer {
+            text-align: center;
+            font-size: 9pt;
+            margin-top: 12pt;
+            padding-top: 6pt;
+            border-top: 1px solid #000;
+        }
+
+        .cv-footer a {
+            color: #333;
+            text-decoration: none;
+        }
+
         @media print {
-            .back-home {
+            .back-home,
+            .cv-footer,
+            .skip-link {
                 display: none;
             }
             body {
@@ -211,13 +248,15 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;">Skip to main content</a>
+    <main id="main-content">
 
     <div class="back-home"><a href="/">← Back to hello2himel.netlify.app</a></div>
 
     <h1>Himel Das</h1>
 
     <div class="contact">
-        Bogura, Rajshahi Division, Bangladesh<br>
+        Bogura, Rajshahi Division, Bangladesh · Last updated October 2026<br>
         <a href="mailto:hello2himel@proton.me">hello2himel@proton.me</a> |
         <a href="mailto:das.himel.bd@gmail.com">das.himel.bd@gmail.com</a> |
         +880 1868-735269 |
@@ -421,6 +460,15 @@
             <a href="mailto:asadgoni6@gmail.com">asadgoni6@gmail.com</a>
         </div>
     </div>
+
+    <footer class="cv-footer">
+        <a href="/">Portfolio</a> ·
+        <a href="/blog/">Blog</a> ·
+        <a href="/donate.html">Donate</a> ·
+        <a href="mailto:hello2himel@proton.me">Contact</a>
+    </footer>
+
+    </main>
 
 </body>
 </html>

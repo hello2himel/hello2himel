@@ -217,7 +217,7 @@ function renderProjects(projects) {
         ${project.link ? `
           <a class="learn-more-btn" href="${esc(project.link)}" target="_blank" rel="noopener noreferrer" aria-label="Learn more about ${esc(project.title)} (opens in a new tab)">
             ${esc(t(project, 'linkText'))}
-            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+            <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -248,7 +248,7 @@ function renderCompetitions(competitions) {
         ${competition.link ? `
           <a class="learn-more-btn" href="${esc(competition.link)}" target="_blank" rel="noopener noreferrer" aria-label="Learn more about ${esc(competition.title)} (opens in a new tab)">
             ${esc(t(competition, 'linkText')) || 'Learn More'}
-            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+            <svg class="arrow-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -400,6 +400,7 @@ document.addEventListener('DOMContentLoaded', function () {
       sidebar.classList.remove('active');
       overlay.classList.remove('active');
       sidebarCollapse.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
       if (refocus) menuToggle.focus({ preventScroll: true });
     };
@@ -408,6 +409,7 @@ document.addEventListener('DOMContentLoaded', function () {
       sidebar.classList.add('active');
       overlay.classList.add('active');
       sidebarCollapse.setAttribute('aria-expanded', 'true');
+      menuToggle.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
       sidebarCollapse.focus({ preventScroll: true });
     });
