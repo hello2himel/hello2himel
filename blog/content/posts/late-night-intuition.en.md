@@ -6,7 +6,7 @@ tags: ["Physics", "Relativity", "Spacetime", "Minkowski"]
 categories: ["Curious Mind"]
 translationKey: "late-night-intuition"
 summary: "A layperson's wonder, confusion, and joy about relativity, time dilation, the twin paradox, and spacetime -- written in the stillness of the night."
-images: ["/blog/images/late-night-intuition-graph1.png"]
+images: ["/blog/images/late-night-intuition-graph1.webp"]
 featured: true
 autoTranslated: false
 originalLang: "en"
@@ -28,7 +28,7 @@ Got it. That's the twin paradox.
 At this point in the conversation, something clicked.
 
 {{< figure 
-    src="/blog/images/late-night-intuition-graph1.png" alt="Spacetime diagram: a friend at rest traces a vertical worldline while the traveller worldline tilts toward the light cone" 
+    src="/blog/images/late-night-intuition-graph1.webp" alt="Spacetime diagram: a friend at rest traces a vertical worldline while the traveller worldline tilts toward the light cone" 
     title="Worldlines in Spacetime -- Graph 1"
     caption="Friend at rest traces a vertical worldline; the traveller's worldline tilts toward the light cone as velocity increases."
 >}}
@@ -49,7 +49,7 @@ He also said my setup was mostly right. I did make a mistake though -- I assumed
 If I take that 2D graph and make it 3D --
 
 {{< figure 
-    src="/blog/images/late-night-intuition-graph2.png" alt="Hand-drawn sketch imagining 2D spacetime intuition as a 3D projection" 
+    src="/blog/images/late-night-intuition-graph2.webp" alt="Hand-drawn sketch imagining 2D spacetime intuition as a 3D projection" 
     title="Hand-drawn 3D intuition sketch"
     caption="An attempt at imagining the 2D spacetime intuition as a 3D projection."
 >}}

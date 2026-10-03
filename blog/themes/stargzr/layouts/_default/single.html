@@ -69,6 +69,9 @@
     {{ $related = where (where $.Site.RegularPages "Type" "posts") "Permalink" "ne" $.Permalink }}
     {{ $related = where $related "Params.tags" "intersect" $tags }}
   {{ end }}
+  {{ if not $related }}
+    {{ $related = first 3 (where (where $.Site.RegularPages "Type" "posts") "Permalink" "ne" $.Permalink).ByDate.Reverse }}
+  {{ end }}
   {{ with $related }}
   <section class="related-posts" aria-label="{{ if eq $.Language.Lang "bn" }}সম্পর্কিত লেখা{{ else }}Related posts{{ end }}">
     <h2 class="section-title">{{ if eq $.Language.Lang "bn" }}সম্পর্কিত লেখা{{ else }}Related posts{{ end }}</h2>

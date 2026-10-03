@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="/res/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/res/apple-touch-icon.png">
   {{- $desc := "" }}
   {{- with .Description }}{{ $desc = . }}{{ else }}{{ with .Params.summary }}{{ $desc = . }}{{ else }}{{ $desc = .Site.Params.description }}{{ end }}{{ end }}
   <meta name="description" content="{{ $desc }}">
+  {{- if eq .Layout "search" }}<meta name="robots" content="noindex">{{ end }}
   <link rel="canonical" href="{{ .Permalink }}">
   <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
   <meta property="og:description" content="{{ $desc }}">
@@ -21,16 +25,17 @@
   {{- else }}
   <meta property="og:type" content="website">
   {{- end }}
-  {{- with .Params.images }}
-  <meta property="og:image" content="{{ (index . 0) | absURL }}">
+  {{- $ogimg := "res/og-image.jpg" }}
+  {{- with .Params.images }}{{ $ogimg = (index . 0) }}{{ end }}
+  <meta property="og:image" content="{{ $ogimg | absURL }}">
+  <meta property="og:image:alt" content="{{ with .Params.images }}{{ $.Title }}{{ else }}Portrait of Himel Das{{ end }}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="{{ (index . 0) | absURL }}">
-  {{- else }}
-  <meta name="twitter:card" content="summary">
-  {{- end }}
+  <meta name="twitter:image" content="{{ $ogimg | absURL }}">
+  <meta name="twitter:image:alt" content="{{ with .Params.images }}{{ $.Title }}{{ else }}Portrait of Himel Das{{ end }}">
   <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
   <meta name="twitter:description" content="{{ $desc }}">
   {{- range .Translations }}<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">{{ end }}
+  {{- with .Translations }}<link rel="alternate" hreflang="x-default" href="{{ (index . 0).Permalink }}">{{ end }}
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +53,9 @@
     "description": {{ $desc | jsonify }},
     "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
     {{- with .Lastmod }}"dateModified": "{{ .Format "2006-01-02T15:04:05Z07:00" }}",{{ end }}
-    "author": {"@type": "Person", "name": {{ with .Params.author }}{{ . | jsonify }}{{ else }}{{ .Site.Params.author | jsonify }}{{ end }}},
+    "author": {"@type": "Person", "name": {{ with .Params.author }}{{ . | jsonify }}{{ else }}{{ .Site.Params.author | jsonify }}{{ end }}, "url": {{ .Site.Home.Permalink | jsonify }}},
+    "publisher": {"@type": "Person", "name": {{ .Site.Params.author | jsonify }}, "url": {{ .Site.Home.Permalink | jsonify }}},
+    "mainEntityOfPage": {{ .Permalink | jsonify }},
     "inLanguage": "{{ .Language.Lang }}",
     "url": {{ .Permalink | jsonify }}
   }

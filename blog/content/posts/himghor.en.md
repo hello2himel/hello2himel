@@ -37,7 +37,7 @@ Father: If we take the dead body home this late, it'll decompose overnight. It'l
 Uncle: Then let's keep the body in the morgue tonight? It'll stay on ice, stay fresh. What do you say?
 Sister: But… without Turjo… I can't think of anything.
 Brother: Alright, Father. I'll tell them to keep the body in the morgue then. And I'll also let Mother know at home.
-Father: We'll need to hire a truck for tomorrow morning. The dead body has to be taken from Dhaka to Bogra. How much could it cost?
+Father: We'll need to hire a truck for tomorrow morning. The dead body has to be taken from Dhaka to Bogura. How much could it cost?
 Uncle: I know a truck broker. Don't worry about that. I'll handle this side.
 
 My body is being taken to the morgue. But they don't know — my heart is still frozen. Yet, to the morgue I go…

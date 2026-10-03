@@ -4,29 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#0a0a0a" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0a0a'/%3E%3Ctext x='32' y='44' font-family='sans-serif' font-size='36' font-weight='700' fill='%23f0f0f0' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="/res/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/res/apple-touch-icon.png" />
+  <link rel="manifest" href="/res/site.webmanifest" />
   <link rel="canonical" href="https://hello2himel.netlify.app/donate.html" />
   <meta name="description" content="Support Himel Das's science outreach in Bangladesh: materials, travel for rural demonstrations, and hosting costs." />
-  <meta property="og:title" content="Donate | Himel Das" />
+  <meta property="og:title" content="Donate to Student Science Outreach in Bangladesh | Himel Das" />
+  <meta property="og:site_name" content="Himel Das" />
   <meta property="og:description" content="Support science outreach in Bangladesh: materials, travel for rural demonstrations, and hosting costs." />
-  <meta property="og:image" content="https://hello2himel.netlify.app/res/himel_portfolio_profile.png" />
+  <meta property="og:image" content="https://hello2himel.netlify.app/res/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Portrait of Himel Das" />
   <meta property="og:url" content="https://hello2himel.netlify.app/donate.html" />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Donate | Himel Das" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Donate to Student Science Outreach in Bangladesh | Himel Das" />
   <meta name="twitter:description" content="Support science outreach in Bangladesh: materials, travel for rural demonstrations, and hosting costs." />
-  <meta name="twitter:image" content="https://hello2himel.netlify.app/res/himel_portfolio_profile.png" />
+  <meta name="twitter:image" content="https://hello2himel.netlify.app/res/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Portrait of Himel Das" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self';" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Donate | Himel Das",
-      "url": "https://hello2himel.netlify.app/donate.html"
+      "url": "https://hello2himel.netlify.app/donate.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Himel Das",
+        "url": "https://hello2himel.netlify.app/"
+      }
     }
   </script>
-  <title>Donate | Himel Das</title>
-  <link href="/res/fonts/remixicon.css" rel="stylesheet">
+  <title>Donate to Student Science Outreach in Bangladesh | Himel Das</title>
+  <link href="/res/fonts/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/donate.css">
 </head>
@@ -35,50 +47,50 @@
   <div id="space-container" aria-hidden="true"></div>
   <div class="overlay" id="overlay"></div>
 
-  <div class="sidebar" id="sidebar">
+  <nav class="sidebar" id="sidebar" aria-label="Primary">
     <div class="sidebar-controls sidebar-controls-single">
       <button class="sidebar-button" id="sidebar-collapse" title="Collapse sidebar" aria-label="Collapse sidebar" aria-expanded="false">
-        <i class="ri-lg ri-arrow-right-s-line"></i>
+        <i class="ri-lg ri-arrow-right-s-line" aria-hidden="true"></i>
       </button>
     </div>
 
     <div class="sidebar-menu">
       <a href="/" class="sidebar-link">
-        <i class="ri-lg ri-home-4-line"></i> <span>Home</span>
+        <i class="ri-lg ri-home-4-line" aria-hidden="true"></i> <span>Home</span>
       </a>
       <a href="/#projects" class="sidebar-link">
-        <i class="ri-lg ri-git-branch-line"></i> <span>Projects</span>
+        <i class="ri-lg ri-git-branch-line" aria-hidden="true"></i> <span>Projects</span>
       </a>
       <a href="/#competitions" class="sidebar-link">
-        <i class="ri-lg ri-trophy-line"></i> <span>Competitions</span>
+        <i class="ri-lg ri-trophy-line" aria-hidden="true"></i> <span>Competitions</span>
       </a>
       <a href="/#leadership" class="sidebar-link">
-        <i class="ri-lg ri-group-line"></i> <span>Leadership</span>
+        <i class="ri-lg ri-group-line" aria-hidden="true"></i> <span>Leadership</span>
       </a>
       <a href="/#vision" class="sidebar-link">
-        <i class="ri-lg ri-eye-line"></i> <span>Vision</span>
+        <i class="ri-lg ri-eye-line" aria-hidden="true"></i> <span>Vision</span>
       </a>
       <div class="sidebar-divider"></div>
       <a href="/blog/" class="sidebar-link" aria-label="Read Blog">
-        <i class="ri-lg ri-quill-pen-ai-line"></i> <span>Read Blog</span>
+        <i class="ri-lg ri-quill-pen-ai-line" aria-hidden="true"></i> <span>Read Blog</span>
       </a>
       <a href="/cv.html" class="sidebar-link" aria-label="View CV">
-        <i class="ri-lg ri-file-text-line"></i> <span>CV</span>
+        <i class="ri-lg ri-file-text-line" aria-hidden="true"></i> <span>CV</span>
       </a>
       <a href="mailto:hello2himel@proton.me" class="sidebar-link">
-        <i class="ri-lg ri-mail-line"></i> <span>Contact Me</span>
+        <i class="ri-lg ri-mail-line" aria-hidden="true"></i> <span>Contact Me</span>
       </a>
       <a href="https://github.com/hello2himel" class="sidebar-link" target="_blank" rel="noopener noreferrer" aria-label="View Projects (opens in a new tab)">
-        <i class="ri-lg ri-github-line"></i> <span>View Projects</span>
+        <i class="ri-lg ri-github-line" aria-hidden="true"></i> <span>View Projects</span>
       </a>
     </div>
-  </div>
+  </nav>
 
   <div class="header-controls">
     <button class="header-button" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
       <i class="ri-lg ri-moon-clear-fill"></i>
     </button>
-    <button class="header-button" id="menu-toggle" title="Menu" aria-label="Toggle menu">
+    <button class="header-button" id="menu-toggle" title="Menu" aria-label="Toggle menu" aria-expanded="false" aria-controls="sidebar">
       <i class="ri-lg ri-menu-2-line"></i>
     </button>
   </div>
@@ -192,9 +204,9 @@
         <a href="/blog/">Blog</a>
         <a href="/cv.html">CV</a>
         <a href="mailto:hello2himel@proton.me">Contact</a>
-        <a href="https://github.com/hello2himel" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/hello2himel" target="_blank" rel="me noopener noreferrer">GitHub</a>
       </nav>
-      <p>© 2026 Himel Das - Bogura, Bangladesh</p>
+      <p>© 2026 Himel Das - Bogura, Bangladesh · Last updated October 2026</p>
     </footer>
   </main>
 

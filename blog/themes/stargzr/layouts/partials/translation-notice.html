@@ -1,33 +1,37 @@
 {{ if .Params.autoTranslated }}
-<div class="translation-notice">
-  {{ if eq .Language.Lang "en" }}
+{{ if eq .Language.Lang "en" }}
+<div class="translation-notice" lang="en">
   ⚠️ This article was auto-translated from
   {{ if eq .Params.originalLang "bn" }}Bengali{{ else }}{{ .Params.originalLang }}{{ end }}
   and may not fully convey the original meaning.
   {{ range .Translations }}
   <a href="{{ .Permalink }}">Read the original →</a>
   {{ end }}
-  {{ else }}
+</div>
+{{ else }}
+<div class="translation-notice" lang="bn">
   ⚠️ এই প্রবন্ধটি
   {{ if eq .Params.originalLang "en" }}ইংরেজি{{ else }}{{ .Params.originalLang }}{{ end }}
   থেকে স্বয়ংক্রিয়ভাবে অনূদিত এবং মূল অর্থ সম্পূর্ণভাবে প্রকাশ নাও করতে পারে।
   {{ range .Translations }}
   <a href="{{ .Permalink }}">মূল লেখাটি পড়ুন →</a>
   {{ end }}
-  {{ end }}
 </div>
+{{ end }}
 {{ else if .Params.untranslated }}
-<div class="translation-notice">
-  {{ if eq .Language.Lang "en" }}
+{{ if eq .Language.Lang "en" }}
+<div class="translation-notice" lang="en">
   ℹ️ This piece is presented in its original language.
   {{ range .Translations }}
   <a href="{{ .Permalink }}">Read the translation →</a>
   {{ end }}
-  {{ else }}
+</div>
+{{ else }}
+<div class="translation-notice" lang="bn">
   ℹ️ এই লেখাটি মূল ভাষাতেই প্রকাশিত।
   {{ range .Translations }}
   <a href="{{ .Permalink }}">অনুবাদ পড়ুন →</a>
   {{ end }}
-  {{ end }}
 </div>
+{{ end }}
 {{ end }}

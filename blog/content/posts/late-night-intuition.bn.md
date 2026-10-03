@@ -6,7 +6,7 @@ tags: ["পদার্থবিদ্যা", "আপেক্ষিকতা",
 categories: ["নিউরণের তৃষ্ণা"]
 translationKey: "late-night-intuition"
 summary: "রাত্রির নিস্তব্ধতায় রিলেটিভিটি, টাইম ডাইলেশন, টুইন প্যারাডক্স আর স্পেসটাইম নিয়ে এক আনকোড়া মানুষের বিস্ময়, বিভ্রান্তি ও আনন্দের লেখা।"
-images: ["/blog/images/late-night-intuition-graph1.png"]
+images: ["/blog/images/late-night-intuition-graph1.webp"]
 featured: true
 ---
 আমি আনকোড়া একজন মানুষ। ফিজিক্স ভালোবাসি বটে, তবে এর কিছুই বুঝিনা। পপ সায়েন্সে আটকে আছি। রাত-বিরাতে কোয়ান্টাম দুনিয়া, 'Extra-dimensional দুনিয়া' ইত্যাদি নিয়ে চিন্তা মাথায় আসে, ঘুমাতে পারিনা। মাঝেসাঝে কেলভিন স্কেলের নেগেটিভ সাইডে চলে গিয়ে ঋণাত্মক আয়তনযুক্ত অসাধ্য সাধন করতে মন চায়।
@@ -23,7 +23,7 @@ featured: true
 আলাপচারিতার এই পর্যায়ে একটা কথা মাথায় আসলো।
 
 {{< figure 
-    src="/blog/images/late-night-intuition-graph1.png" alt="Spacetime diagram: a friend at rest traces a vertical worldline while the traveller worldline tilts toward the light cone" 
+    src="/blog/images/late-night-intuition-graph1.webp" alt="Spacetime diagram: a friend at rest traces a vertical worldline while the traveller worldline tilts toward the light cone" 
     title="Worldlines in Spacetime — Graph 1"
     caption="Friend at rest traces a vertical worldline; the traveller's worldline tilts toward the light cone as velocity increases."
 >}}
@@ -40,7 +40,7 @@ featured: true
 আগের 2D গ্রাফটাকে যদি 3D বানাই,
 
 {{< figure 
-    src="/blog/images/late-night-intuition-graph2.png" alt="Hand-drawn sketch imagining 2D spacetime intuition as a 3D projection" 
+    src="/blog/images/late-night-intuition-graph2.webp" alt="Hand-drawn sketch imagining 2D spacetime intuition as a 3D projection" 
     title="Hand-drawn 3D intuition sketch"
     caption="2D spacetime intuition-কে 3D projection হিসেবে কল্পনা করার চেষ্টা।"
 >}}
