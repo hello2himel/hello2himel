@@ -6,7 +6,7 @@ mkdir -p public
 
 # Copy portfolio files to public
 cp -r css js res *.html public/
-cp -f robots.txt sitemap.xml public/ 2>/dev/null || true
+cp -f robots.txt sitemap.xml favicon.ico public/ 2>/dev/null || true
 
 # Build Hugo blog and copy output into public/blog
 cd blog
