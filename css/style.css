@@ -507,6 +507,10 @@ footer p {
 .dotnav a,
 .dotnav button {
   position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
   display: flex;
   align-items: center;
   justify-content: center;
