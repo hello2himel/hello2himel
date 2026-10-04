@@ -76,3 +76,44 @@ with open(os.path.join(PUB, 'sitemap.xml'), 'w') as f:
     f.write('\n'.join(lines) + '\n')
 print(f'sitemap: {len(urls)} urls')
 PYEOF
+
+# Fingerprint cacheable assets (css/js/fonts) so browsers never go stale.
+# Content hash in filename -> safe to serve immutable. Rewrites refs in built HTML.
+python3 - <<'PYEOF'
+import glob, hashlib, os
+
+PUB = 'public'
+targets = (glob.glob(f'{PUB}/css/*.css') + glob.glob(f'{PUB}/js/*.js')
+           + glob.glob(f'{PUB}/res/fonts/*.css') + glob.glob(f'{PUB}/res/fonts/*.ttf')
+           + glob.glob(f'{PUB}/blog/css/*.css'))
+mapping = {}
+for path in targets:
+    with open(path, 'rb') as f:
+        digest = hashlib.sha1(f.read()).hexdigest()[:8]
+    rel = os.path.relpath(path, PUB).replace(os.sep, '/')
+    base, ext = rel.rsplit('.', 1)
+    hashed = f'{base}.{digest}.{ext}'
+    os.rename(path, os.path.join(PUB, hashed))
+    mapping['/' + rel] = '/' + hashed
+
+count = 0
+for html in glob.glob(f'{PUB}/**/*.html', recursive=True):
+    with open(html, encoding='utf-8') as f:
+        s = f.read()
+    orig = s
+    for old, new in mapping.items():
+        bare = old.lstrip('/')
+        for pat, rep in [(f'href="{old}"', f'href="{new}"'),
+                         (f"href='{old}'", f"href='{new}'"),
+                         (f'src="{old}"', f'src="{new}"'),
+                         (f'href={old}', f'href={new}'),
+                         (f'src={old}', f'src={new}'),
+                         (f'href={bare}', f'href={new}'),
+                         (f'src={bare}', f'src={new}')]:
+            s = s.replace(pat, rep)
+    if s != orig:
+        with open(html, 'w', encoding='utf-8') as f:
+            f.write(s)
+        count += 1
+print(f'fingerprinted {len(mapping)} assets in {count} pages')
+PYEOF
