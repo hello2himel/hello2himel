@@ -406,46 +406,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Sidebar functionality
-  const menuToggle = document.getElementById('menu-toggle');
-  const sidebar = document.getElementById('sidebar');
-  const sidebarCollapse = document.getElementById('sidebar-collapse');
-  const overlay = document.getElementById('overlay');
-
-  if (menuToggle && sidebar && sidebarCollapse && overlay) {
-    const closeSidebar = (refocus) => {
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
-      sidebarCollapse.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      if (refocus) menuToggle.focus({ preventScroll: true });
-    };
-
-    menuToggle.addEventListener('click', () => {
-      sidebar.classList.add('active');
-      overlay.classList.add('active');
-      sidebarCollapse.setAttribute('aria-expanded', 'true');
-      menuToggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      sidebarCollapse.focus({ preventScroll: true });
-    });
-
-    sidebarCollapse.addEventListener('click', () => closeSidebar(true));
-    overlay.addEventListener('click', () => closeSidebar(false));
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && sidebar.classList.contains('active')) {
-        closeSidebar(true);
-      }
-    });
-
-    document.querySelectorAll('.sidebar-link').forEach(link => {
-      link.addEventListener('click', () => {
-        if ((link.getAttribute('href') || '').startsWith('#')) {
-          closeSidebar(false);
+  // Dot constellation: highlight the section in view
+  const dots = Array.from(document.querySelectorAll('.dotnav a'));
+  if (dots.length) {
+    const byId = new Map(dots.map(d => [d.getAttribute('href').slice(1), d]));
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        dots.forEach((d) => {
+          d.classList.remove('active');
+          d.removeAttribute('aria-current');
+        });
+        const dot = byId.get(entry.target.id);
+        if (dot) {
+          dot.classList.add('active');
+          dot.setAttribute('aria-current', 'true');
         }
       });
-    });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    document.querySelectorAll('main .section[id]').forEach((s) => sectionObserver.observe(s));
   }
 });
