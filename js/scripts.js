@@ -12,17 +12,16 @@ const applyTheme = (theme) => {
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#f5f5f5');
   // Update all theme icons
-  const themeIcons = document.querySelectorAll('.theme-toggle i, #theme-toggle i');
+  const themeIcons = document.querySelectorAll('.theme-toggle i');
   themeIcons.forEach(icon => {
     icon.className = theme === 'dark' ? 'ri-lg ri-sun-fill' : 'ri-lg ri-moon-clear-fill';
   });
-  // Name the theme star after the mode it shows
-  const dot = document.getElementById('theme-toggle');
-  if (dot && dot.tagName.toLowerCase() === 'button') {
+  // Name any theme stars after the mode they show
+  document.querySelectorAll('.theme-toggle[data-label]').forEach((btn) => {
     const name = theme === 'dark' ? 'Dark mode' : 'Light mode';
-    dot.setAttribute('data-label', name);
-    dot.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
-  }
+    btn.setAttribute('data-label', name);
+    btn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+  });
 };
 
 const toggleTheme = () => {
@@ -438,8 +437,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Tonight's moon as the tab icon
   setMoonFavicon();
 
-  // Theme toggle event listeners
-  const themeToggleButtons = document.querySelectorAll('.theme-toggle, #theme-toggle');
+  // Theme toggle event listeners (constellation star + mobile shortcut)
+  const themeToggleButtons = document.querySelectorAll('.theme-toggle');
   themeToggleButtons.forEach(button => {
     if (button) {
       button.addEventListener('click', toggleTheme);

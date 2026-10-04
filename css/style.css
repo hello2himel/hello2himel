@@ -582,9 +582,18 @@ footer p {
   color: var(--text-color);
 }
 
+/* Header Controls: mobile-only theme shortcut (desktop uses the constellation) */
+.dotnav ~ .header-controls {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .dotnav {
-    right: calc(0.5rem + env(safe-area-inset-right, 0px));
+    display: none;
+  }
+
+  .dotnav ~ .header-controls {
+    display: flex;
   }
 }
 
