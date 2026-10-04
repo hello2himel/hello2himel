@@ -671,6 +671,10 @@ body.error-page {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --profile-image-size: 128px;
+  }
+
   .main-container {
     padding: 1.25rem;
   }
