@@ -678,7 +678,7 @@ body.error-page {
     flex-direction: column;
     text-align: center;
     gap: 1.5rem;
-    min-height: 60svh;
+    min-height: 0;
   }
 
   .profile-name-title,
