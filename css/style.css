@@ -449,6 +449,19 @@ footer p {
   z-index: 900;
 }
 
+.header-left {
+  position: fixed;
+  top: calc(1rem + env(safe-area-inset-top, 0px));
+  left: calc(1rem + env(safe-area-inset-left, 0px));
+  z-index: 900;
+}
+
+.home-button {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
 .header-button {
   display: flex;
   align-items: center;
