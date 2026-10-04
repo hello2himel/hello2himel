@@ -488,6 +488,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
     }, { rootMargin: '-45% 0px -45% 0px' });
-    document.querySelectorAll('main .section[id]').forEach((s) => sectionObserver.observe(s));
+    document.querySelectorAll('main .section[id], #top').forEach((s) => sectionObserver.observe(s));
   }
 });
