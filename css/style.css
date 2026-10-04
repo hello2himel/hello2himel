@@ -542,17 +542,12 @@ footer p {
 }
 
 .dotnav a.active span {
-  display: none;
+  background: var(--text-color);
+  border-color: var(--text-color);
 }
 
 .dotnav a i {
   display: none;
-  font-size: 1rem;
-  color: var(--text-color);
-}
-
-.dotnav a.active i {
-  display: block;
 }
 
 .dotnav a::after,
@@ -593,9 +588,10 @@ footer p {
   .dotnav {
     top: auto;
     bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
-    left: calc(0.75rem + env(safe-area-inset-left, 0px));
-    right: calc(4.25rem + env(safe-area-inset-right, 0px));
+    left: auto;
+    right: calc(60px + 0.75rem + env(safe-area-inset-right, 0px));
     transform: none;
+    width: max-content;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -604,6 +600,16 @@ footer p {
     border: 1px solid var(--border-color);
     border-radius: 999px;
     padding: 0.375rem 0.75rem;
+  }
+
+  .dotnav a.active span {
+    display: none;
+  }
+
+  .dotnav a.active i {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-color);
   }
 
   .dotnav a,
