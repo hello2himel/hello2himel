@@ -492,7 +492,7 @@ footer p {
   border-color: var(--card-hover-border);
 }
 
-/* Dot constellation nav */
+/* Dot constellation nav: ONE shared column, every item same box */
 .dotnav {
   position: fixed;
   right: calc(1rem + env(safe-area-inset-right, 0px));
@@ -500,8 +500,13 @@ footer p {
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   z-index: 900;
+}
+
+.dotnav-stars {
+  display: contents;
 }
 
 .dotnav a,
@@ -516,6 +521,7 @@ footer p {
   justify-content: center;
   width: 32px;
   height: 32px;
+  margin: 0;
   text-decoration: none;
   background: none;
   border: none;
@@ -592,18 +598,27 @@ footer p {
   display: none;
 }
 
-/* Bottom ribbon constellation on small screens */
+/* Bottom bar: ONE shared wrapper holding pill + toggle, centered */
 @media (max-width: 768px) {
   .dotnav {
     top: auto;
     bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
-    left: auto;
-    right: calc(60px + 0.75rem + env(safe-area-inset-right, 0px));
-    transform: none;
-    width: max-content;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .dotnav-stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: 0.25rem;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -632,14 +647,12 @@ footer p {
     display: none;
   }
 
-  /* Mode rides solo: separate circle beside the pill, same style */
+  /* Toggle rides in the shared bar: same height, vertically centered */
   .dotnav #theme-toggle {
-    position: fixed;
-    top: auto;
-    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
-    right: calc(0.75rem + env(safe-area-inset-right, 0px));
+    position: static;
     width: 54px;
     height: 54px;
+    margin: 0;
     border-radius: 50%;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -848,14 +861,14 @@ body.error-page {
     height: 50px;
   }
 
-  .dotnav {
+  .dotnav-stars {
     padding: 0.375rem 0.5rem;
   }
 }
 
 /* Landscape phones: compact hero */
 @media (min-width: 700px) and (max-height: 500px) {
-  .dotnav {
+  .dotnav-stars {
     padding: 0.375rem 0.5rem;
   }
 
