@@ -593,9 +593,9 @@ footer p {
   .dotnav {
     top: auto;
     bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
-    left: calc(0.75rem + env(safe-area-inset-left, 0px));
-    right: calc(4.25rem + env(safe-area-inset-right, 0px));
-    transform: none;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -615,23 +615,6 @@ footer p {
   .dotnav a::after,
   .dotnav button::after {
     display: none;
-  }
-
-  /* Mode rides solo: separate circle beside the pill */
-  .dotnav #theme-toggle {
-    position: fixed;
-    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
-    right: calc(0.75rem + env(safe-area-inset-right, 0px));
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    font-size: 1rem;
-  }
-
-  .dotnav #theme-toggle:hover {
-    border-color: var(--card-hover-border);
   }
 }
 
