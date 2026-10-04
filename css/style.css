@@ -494,6 +494,14 @@ footer p {
 
 .sidebar-controls-single {
   justify-content: flex-end;
+  position: static;
+  min-height: var(--min-touch-target-size);
+}
+
+#sidebar-collapse {
+  position: absolute;
+  top: calc(1rem + env(safe-area-inset-top, 0px));
+  right: calc(1rem + env(safe-area-inset-right, 0px));
 }
 
 .sidebar-button {
