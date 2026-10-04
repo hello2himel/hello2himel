@@ -363,6 +363,60 @@ function createStars() {
   }
 }
 
+// Moon-phase favicon: draws tonight's actual moon on a canvas and
+// installs it as the tab icon. Static /res/favicon.svg remains the fallback.
+function setMoonFavicon() {
+  try {
+    const SYNODIC = 29.530588853;
+    const KNOWN_NEW_MOON = Date.UTC(2000, 0, 6, 18, 14) / 86400000;
+    const days = Date.now() / 86400000 - KNOWN_NEW_MOON;
+    let phase = (days % SYNODIC) / SYNODIC;
+    if (phase < 0) phase += 1;
+
+    const S = 64, R = 26, cx = S / 2, cy = S / 2;
+    const canvas = document.createElement('canvas');
+    canvas.width = S;
+    canvas.height = S;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const LIT = '#ededed';
+    const DARK = '#4a4a4a';
+
+    // Dark-side base disk (always visible, so new moon still reads).
+    ctx.beginPath();
+    ctx.arc(cx, cy, R, 0, Math.PI * 2);
+    ctx.fillStyle = DARK;
+    ctx.fill();
+
+    // Lit region: lit-side semicircle, then the terminator ellipse
+    // painted lit (gibbous) or dark (crescent) over it.
+    const litLeft = phase > 0.5; // waxing: right lit; waning: left lit
+    const gibbous = phase > 0.25 && phase < 0.75;
+    const rx = Math.abs(R * Math.cos(2 * Math.PI * phase));
+    ctx.fillStyle = LIT;
+    ctx.beginPath();
+    ctx.arc(cx, cy, R, litLeft ? Math.PI / 2 : -Math.PI / 2, litLeft ? Math.PI * 1.5 : Math.PI / 2);
+    ctx.closePath();
+    ctx.fill();
+    if (rx > 0.5) {
+      ctx.fillStyle = gibbous ? LIT : DARK;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, rx, R, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    let link = document.querySelector('link[rel="icon"]');
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+    }
+    link.type = 'image/png';
+    link.href = canvas.toDataURL('image/png');
+  } catch (e) { /* keep static fallback icon */ }
+}
+
 // Initialize on DOM content loaded
 document.addEventListener('DOMContentLoaded', function () {
   document.documentElement.classList.add('js');
@@ -373,6 +427,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Static stars (skipped under reduced motion)
   createStars();
+
+  // Tonight's moon as the tab icon
+  setMoonFavicon();
 
   // Theme toggle event listeners
   const themeToggleButtons = document.querySelectorAll('.theme-toggle, #theme-toggle');
