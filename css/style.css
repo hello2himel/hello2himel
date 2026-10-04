@@ -542,12 +542,17 @@ footer p {
 }
 
 .dotnav a.active span {
-  background: var(--text-color);
-  border-color: var(--text-color);
+  display: none;
 }
 
 .dotnav a i {
   display: none;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.dotnav a.active i {
+  display: block;
 }
 
 .dotnav a::after,
