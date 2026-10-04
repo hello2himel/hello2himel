@@ -462,6 +462,17 @@ footer p {
   text-decoration: none;
 }
 
+#to-top {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+#to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 .header-button {
   display: flex;
   align-items: center;
