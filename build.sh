@@ -116,4 +116,22 @@ for html in glob.glob(f'{PUB}/**/*.html', recursive=True):
             f.write(s)
         count += 1
 print(f'fingerprinted {len(mapping)} assets in {count} pages')
+
+# Rewrite url() references inside built CSS (e.g. icon font path)
+csscount = 0
+for cssfile in glob.glob(f'{PUB}/**/*.css', recursive=True):
+    with open(cssfile, encoding='utf-8') as f:
+        s = f.read()
+    orig = s
+    for old, new in mapping.items():
+        oldfile = old.rsplit('/', 1)[-1]
+        newfile = new.rsplit('/', 1)[-1]
+        s = s.replace(f"url('{oldfile}')", f"url('{newfile}')")
+        s = s.replace(f'url("{oldfile}")', f'url("{newfile}")')
+        s = s.replace(f'url({oldfile})', f'url({newfile})')
+    if s != orig:
+        with open(cssfile, 'w', encoding='utf-8') as f:
+            f.write(s)
+        csscount += 1
+print(f'rewrote font paths in {csscount} css files')
 PYEOF
