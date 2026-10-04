@@ -620,6 +620,7 @@ footer p {
   /* Mode rides solo: separate circle beside the pill, same style */
   .dotnav #theme-toggle {
     position: fixed;
+    top: auto;
     bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
     right: calc(0.75rem + env(safe-area-inset-right, 0px));
     width: 48px;
