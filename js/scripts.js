@@ -389,6 +389,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // Back-to-top: appears after scrolling past the hero
+  const toTop = document.getElementById('to-top');
+  if (toTop) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const syncTop = () => {
+      const show = window.scrollY > window.innerHeight * 0.6;
+      toTop.classList.toggle('show', show);
+      if (show) toTop.removeAttribute('hidden');
+      else toTop.setAttribute('hidden', '');
+    };
+    window.addEventListener('scroll', syncTop, { passive: true });
+    syncTop();
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+
   // Sidebar functionality
   const menuToggle = document.getElementById('menu-toggle');
   const sidebar = document.getElementById('sidebar');
