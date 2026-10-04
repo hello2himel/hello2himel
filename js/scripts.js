@@ -16,6 +16,13 @@ const applyTheme = (theme) => {
   themeIcons.forEach(icon => {
     icon.className = theme === 'dark' ? 'ri-lg ri-sun-fill' : 'ri-lg ri-moon-clear-fill';
   });
+  // Name the theme star after the mode it shows
+  const dot = document.getElementById('theme-toggle');
+  if (dot && dot.tagName.toLowerCase() === 'button') {
+    const name = theme === 'dark' ? 'Dark mode' : 'Light mode';
+    dot.setAttribute('data-label', name);
+    dot.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+  }
 };
 
 const toggleTheme = () => {
