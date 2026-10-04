@@ -593,11 +593,12 @@ footer p {
   .dotnav {
     top: auto;
     bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
+    left: calc(0.75rem + env(safe-area-inset-left, 0px));
+    right: calc(4.25rem + env(safe-area-inset-right, 0px));
+    transform: none;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 0.25rem;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
