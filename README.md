@@ -38,7 +38,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Fusers%2Fhello2himel&query=%24.public_repos&label=PUBLIC%20REPOS&style=for-the-badge&color=0EA5E9&labelColor=21262D" alt="public repos">&nbsp;
   <img src="https://komarev.com/ghpvc/?username=hello2himel&style=for-the-badge&color=10B981&label=Page+Visits&labelColor=21262D" alt="page visits">&nbsp;
-  <img src="https://img.shields.io/badge/SINCE-2022-6B7280?style=for-the-badge&labelColor=21262D" alt="building since 2022">
+  <img src="https://img.shields.io/badge/LINES%20WRITTEN-96%2C061-EF4444?style=for-the-badge&labelColor=21262D" alt="lines written">
 </p>
 
 
@@ -47,31 +47,3 @@
 <br clear="both">
 
 <img src="https://raw.githubusercontent.com/hello2himel/hello2himel/output/snake.svg" alt="Snake animation" />
-
-###
-
-<p align="center">
-  <a href="https://github.com/hello2himel/mohakash"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=mohakash&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10" width="600" height="210" alt="mohakash"></a>
-</p>
-<p align="center">
-  <a href="https://github.com/hello2himel/linux-audio-fix"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=linux-audio-fix&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10" width="600" height="210" alt="linux-audio-fix"></a>
-</p>
-<p align="center">
-  <a href="https://github.com/hello2himel/chawk"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=chawk&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10&v=2" width="600" height="210" alt="chawk"></a>
-</p>
-<p align="center">
-  <a href="https://github.com/hello2himel/deshiPay"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=deshiPay&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10&v=5" width="600" height="210" alt="deshiPay"></a>
-</p>
-<p align="center">
-  <a href="https://github.com/hello2himel/atomicMemory"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=atomicMemory&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10&v=4" width="600" height="210" alt="atomicMemory"></a>
-</p>
-<p align="center">
-  <a href="https://github.com/hello2himel/Tyag"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=Tyag&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10" width="600" height="210" alt="Tyag"></a>
-</p>
-
-<p align="right"><sub><a href="https://github.com/hello2himel?tab=repositories">All repositories</a></sub></p>
-
-
-###
-
-<br clear="both">
