@@ -21,7 +21,7 @@
 ###
 
 <div align="center">
-  <a href="https://github.com/hello2himel"><img src="https://img.shields.io/badge/GitHub-hello2himel-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>&nbsp;
+  <a href="mailto:hello2himel@proton.me"><img src="https://img.shields.io/badge/PROTONMAIL-email-6D4AFF?style=for-the-badge&logo=protonmail&logoColor=white" alt="Email"></a>&nbsp;
   <a href="https://t.me/hello2himel"><img src="https://img.shields.io/badge/Telegram-@hello2himel-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"></a>&nbsp;
   <a href="https://facebook.com/hello2himel"><img src="https://img.shields.io/badge/Facebook-hello2himel-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook"></a>&nbsp;
   <a href="https://hello2himel.netlify.app"><img src="https://img.shields.io/badge/Website-hello2himel.netlify.app-2EA44F?style=for-the-badge&logo=netlify&logoColor=white" alt="Website"></a>&nbsp;
