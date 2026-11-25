@@ -9,7 +9,7 @@
   <a href="https://t.me/hello2himel"><img src="https://img.shields.io/badge/Telegram-@hello2himel-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"></a>&nbsp;
   <a href="https://facebook.com/hello2himel"><img src="https://img.shields.io/badge/Facebook-hello2himel-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook"></a>&nbsp;
   <a href="https://hello2himel.netlify.app"><img src="https://img.shields.io/badge/Website-hello2himel.netlify.app-2EA44F?style=for-the-badge&logo=netlify&logoColor=white" alt="Website"></a>&nbsp;
-  <a href="https://hello2himel.netlify.app/blog"><img src="https://img.shields.io/badge/Blog-read-FF5722?style=for-the-badge&logo=rss&logoColor=white" alt="Blog"></a>
+  <a href="https://orcid.org/0009-0003-7698-1255"><img src="https://img.shields.io/badge/ORCID-0009--0003--7698--1255-A6CE39?style=for-the-badge&logo=orcid&logoColor=white" alt="ORCID"></a>
 </div>
 
 
