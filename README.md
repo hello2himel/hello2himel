@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/skills.svg" height="80" alt="Astronomy, astrophysics, physics, Geant4, mathematics, computational science, open source" />
+  <img src="assets/skills.svg" width="960" alt="Astrophysics, particle physics, scientific computing, data analysis, instrumentation, science outreach, open source" />
 </div>
 
 ###
