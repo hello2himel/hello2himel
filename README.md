@@ -21,22 +21,54 @@
 ###
 
 <div align="center">
-  <a href="https://t.me/hello2himel" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Telegram&logo=telegram&label=&color=2CA5E0&logoColor=white&labelColor=&style=flat" height="45" alt="telegram logo"  />
-  </a>
-  <a href="mailto:hello2himel@proton.me?body=%0A%0A%0A--%0AConnecting%20from%20your%20Github%20profile." target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Gmail&logo=gmail&label=&color=D14836&logoColor=white&labelColor=&style=flat" height="45" alt="gmail logo"  />
-  </a>
-  <a href="https://facebook.com/hello2himel" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Facebook&logo=facebook&label=&color=1877F2&logoColor=white&labelColor=&style=flat" height="45" alt="facebook logo"  />
-  </a>
+  <a href="https://github.com/hello2himel"><img src="https://img.shields.io/badge/GitHub-hello2himel-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>&nbsp;
+  <a href="https://t.me/hello2himel"><img src="https://img.shields.io/badge/Telegram-@hello2himel-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"></a>&nbsp;
+  <a href="https://facebook.com/hello2himel"><img src="https://img.shields.io/badge/Facebook-hello2himel-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook"></a>&nbsp;
+  <a href="https://hello2himel.netlify.app"><img src="https://img.shields.io/badge/Website-hello2himel.netlify.app-2EA44F?style=for-the-badge&logo=netlify&logoColor=white" alt="Website"></a>&nbsp;
+  <a href="https://hello2himel.netlify.app/blog"><img src="https://img.shields.io/badge/Blog-read-FF5722?style=for-the-badge&logo=rss&logoColor=white" alt="Blog"></a>
 </div>
+
+
+###
+
+<div align="center">
+  <img src="https://img.shields.io/badge/COMMITS-2.7K-8B5CF6?style=for-the-badge&labelColor=21262D" alt="commits">&nbsp;
+  <img src="https://img.shields.io/badge/STARS-93-F59E0B?style=for-the-badge&labelColor=21262D" alt="stars">&nbsp;
+  <img src="https://img.shields.io/badge/FORKS-25-0EA5E9?style=for-the-badge&labelColor=21262D" alt="forks">&nbsp;
+  <img src="https://komarev.com/ghpvc/?username=hello2himel&style=for-the-badge&color=10B981&label=Page+Visits&labelColor=21262D" alt="page visits">&nbsp;
+  <img src="https://img.shields.io/badge/SINCE-2022-6B7280?style=for-the-badge&labelColor=21262D" alt="building since 2022">
+</div>
+
 
 ###
 
 <br clear="both">
 
 <img src="https://raw.githubusercontent.com/hello2himel/hello2himel/output/snake.svg" alt="Snake animation" />
+
+###
+
+<p align="center">
+  <a href="https://github.com/hello2himel/mohakash"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=mohakash&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10" width="600" height="210" alt="mohakash"></a>
+</p>
+<p align="center">
+  <a href="https://github.com/hello2himel/linux-audio-fix"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=linux-audio-fix&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10" width="600" height="210" alt="linux-audio-fix"></a>
+</p>
+<p align="center">
+  <a href="https://github.com/hello2himel/chawk"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=chawk&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10&v=2" width="600" height="210" alt="chawk"></a>
+</p>
+<p align="center">
+  <a href="https://github.com/hello2himel/deshiPay"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=deshiPay&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10&v=5" width="600" height="210" alt="deshiPay"></a>
+</p>
+<p align="center">
+  <a href="https://github.com/hello2himel/atomicMemory"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=atomicMemory&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10&v=4" width="600" height="210" alt="atomicMemory"></a>
+</p>
+<p align="center">
+  <a href="https://github.com/hello2himel/Tyag"><img src="https://github-readme-stats.vercel.app/api/pin/?username=hello2himel&repo=Tyag&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&border_radius=10" width="600" height="210" alt="Tyag"></a>
+</p>
+
+<p align="right"><sub><a href="https://github.com/hello2himel?tab=repositories">All repositories</a></sub></p>
+
 
 ###
 
