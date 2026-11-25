@@ -31,15 +31,13 @@
 
 ###
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=hello2himel&show_icons=true&include_all_commits=true&count_private=true&theme=github_dark&bg_color=161B22&border_color=30363D&hide_border=false&title_color=58A6FF&text_color=C9D1D9&icon_color=8B5CF6&hide_title=true&rank_icon=github&hide=contribs" width="576" alt="GitHub stats">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Fusers%2Fhello2himel&query=%24.public_repos&label=PUBLIC%20REPOS&style=for-the-badge&color=0EA5E9&labelColor=21262D" alt="public repos">&nbsp;
+<div align="center">
+  <img src="https://img.shields.io/badge/COMMITS-2.7K-8B5CF6?style=for-the-badge&labelColor=21262D" alt="commits">&nbsp;
+  <img src="https://img.shields.io/badge/STARS-93-F59E0B?style=for-the-badge&labelColor=21262D" alt="stars">&nbsp;
+  <img src="https://img.shields.io/badge/FORKS-25-0EA5E9?style=for-the-badge&labelColor=21262D" alt="forks">&nbsp;
   <img src="https://komarev.com/ghpvc/?username=hello2himel&style=for-the-badge&color=10B981&label=Page+Visits&labelColor=21262D" alt="page visits">&nbsp;
   <img src="https://img.shields.io/badge/LINES%20WRITTEN-96%2C061-EF4444?style=for-the-badge&labelColor=21262D" alt="lines written">
-</p>
+</div>
 
 
 ###
