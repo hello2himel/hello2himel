@@ -1,7 +1,6 @@
-<p align="center">
-  I study astrophysics and particle physics.<br>
-  I build open-source tools for scientific computing, data analysis, instrumentation, and science outreach.
-</p>
+<div align="center">
+  <img src="assets/skills.svg" width="960" alt="Astrophysics, particle physics, scientific computing, data analysis, instrumentation, science outreach, open source" />
+</div>
 
 ###
 
