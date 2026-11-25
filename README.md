@@ -1,21 +1,5 @@
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=linux" height="60" alt="linux logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=bash" height="60" alt="bash logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=py" height="60" alt="python logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=arduino" height="60" alt="arduino logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=c" height="60" alt="c logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=cpp" height="60" alt="cplusplus logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=bootstrap" height="60" alt="bootstrap logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=docker" height="60" alt="docker logo"  />
-  <img width="12" />
-  <img src="https://skillicons.dev/icons?i=netlify" height="60" alt="netlify logo"  />
+  <img src="assets/skills.svg" height="80" alt="Astronomy, astrophysics, physics, Geant4, mathematics, computational science, open source" />
 </div>
 
 ###

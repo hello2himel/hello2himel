@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="80" viewBox="0 0 960 80" role="img" aria-labelledby="t d">
+<title id="t">Astronomy, astrophysics, physics, Geant4, mathematics, computational science, open source</title>
+<desc id="d">Seven skill chips for astronomy, astrophysics, physics, Geant4, mathematics, computational science and open source</desc>
+<style>.chip{fill:#161b22;stroke:#30363d}.label{fill:#e6edf3;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;text-anchor:middle}</style>
+<rect class="chip" x="8" y="8" width="128" height="64" rx="10"/>
+<g transform="translate(60,18)" fill="none" stroke="#F59E0B" stroke-width="1.8"><ellipse cx="12" cy="12" rx="11" ry="4.5" transform="rotate(-25 12 12)"/><circle cx="12" cy="12" r="3.6" fill="#F59E0B" stroke="none"/><circle cx="21.5" cy="6.5" r="1.5" fill="#F59E0B" stroke="none"/></g>
+<text class="label" x="72" y="59">ASTRONOMY</text>
+<rect class="chip" x="144" y="8" width="128" height="64" rx="10"/>
+<path transform="translate(197,19)" d="M11 0 L14 8 L22 11 L14 14 L11 22 L8 14 L0 11 L8 8 Z" fill="#8B5CF6"/>
+<text class="label" x="208" y="59">ASTROPHYSICS</text>
+<rect class="chip" x="280" y="8" width="128" height="64" rx="10"/>
+<g transform="translate(332,18)" fill="none" stroke="#0EA5E9" stroke-width="1.5"><ellipse cx="12" cy="12" rx="11" ry="4.3"/><ellipse cx="12" cy="12" rx="11" ry="4.3" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.3" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2.2" fill="#0EA5E9" stroke="none"/></g>
+<text class="label" x="344" y="59">PHYSICS</text>
+<rect class="chip" x="416" y="8" width="128" height="64" rx="10"/>
+<g transform="translate(469,18)" fill="none" stroke="#14B8A6" stroke-width="1.7"><circle cx="11" cy="11" r="2.2" fill="#14B8A6" stroke="none"/><path d="M11 11 C6 8 5 3 9 2"/><path d="M11 11 C16 8 17 3 13 2"/><path d="M11 11 C6 14 5 19 9 21"/><path d="M11 11 C16 14 17 19 13 21"/></g>
+<text class="label" x="480" y="59">GEANT4</text>
+<rect class="chip" x="552" y="8" width="128" height="64" rx="10"/>
+<text x="616" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="25" font-weight="600" fill="#EF4444">&#931;</text>
+<text class="label" x="616" y="59">MATHEMATICS</text>
+<rect class="chip" x="688" y="8" width="128" height="64" rx="10"/>
+<text x="752" y="38" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="16" font-weight="600" fill="#10B981">&lt;/&gt;</text>
+<text class="label" x="752" y="59">COMPUTATIONAL</text>
+<rect class="chip" x="824" y="8" width="128" height="64" rx="10"/>
+<g transform="translate(877,19)" fill="none" stroke="#8B949E" stroke-width="1.8"><circle cx="4" cy="4" r="2.6"/><circle cx="4" cy="20" r="2.6"/><circle cx="18" cy="8" r="2.6"/><path d="M4 6.6 V17.4 M4 12 C10 12 18 12 18 10.6"/></g>
+<text class="label" x="888" y="59">OPEN SOURCE</text>
+</svg>
